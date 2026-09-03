@@ -1,0 +1,33 @@
+## .NET build output
+bin/
+obj/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio Code
+.vscode/
+
+## Test results and coverage
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+## NuGet
+*.nupkg
+*.snupkg
+packages/
+
+## ReSharper and JetBrains tools
+_ReSharper*/
+*.DotSettings.user
+.idea/
+
+## Windows
+Thumbs.db
+Desktop.ini
