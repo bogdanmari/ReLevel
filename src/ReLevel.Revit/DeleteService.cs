@@ -15,7 +15,10 @@ internal sealed class DeleteService(Document document)
             throw new InvalidOperationException("Удаление зависимого вида или вида с зависимыми видами не поддерживается.");
 
         // Read metadata before the trial deletion; rollback invalidates some API wrappers.
-        var metadata = new FilteredElementCollector(document).ToDictionary(e => e.Id.Value, e => (
+        // Revit requires a native filter; include both types and instances for dependency checks.
+        var metadata = new FilteredElementCollector(document)
+            .WherePasses(new LogicalOrFilter(new ElementIsElementTypeFilter(), new ElementIsElementTypeFilter(true)))
+            .ToDictionary(e => e.Id.Value, e => (
             Allowed: e is not Level && (e.Id == id || (element is View
                 ? e is not View && (e.OwnerViewId == id || e is Viewport vp && vp.ViewId == id)
                 : e is not View)),

@@ -27,6 +27,7 @@ internal sealed class TransferWindow : Window
     private readonly List<Button> viewButtons = [];
     private readonly Dictionary<long, string> statuses = [];
     private readonly Dictionary<DataGrid, CheckBox> checkAllHeaders = [];
+    private readonly Dictionary<DataGrid, TableSearch> searches = [];
     private bool updatingChecks;
     private List<TableRow> elementRows = [];
     private List<TableRow> viewRows = [];
@@ -62,12 +63,10 @@ internal sealed class TransferWindow : Window
         AddTextColumn(viewTable, "ID", nameof(TableRow.Id), 90);
         AddTextColumn(viewTable, "Имя вида", nameof(TableRow.Name));
         AddTextColumn(viewTable, "Тип вида", nameof(TableRow.Type), 230);
-        var viewsPanel = MakePanel(viewTable, "Показаны нешаблонные виды, связанные с уровнем через GenLevel. Пересоздание с настройками, аннотациями и связями пока не реализовано.", out var viewActions);
+        var viewsPanel = MakePanel(viewTable, "Пересоздание планов этажей, потолков и конструкций на другом уровне. Исходные виды и размещения на листах сохраняются.", out var viewActions);
         AddAction(viewActions, viewButtons, "Открыть виды", OpenViews);
         AddAction(viewActions, viewButtons, "Удалить виды", () => DeleteRows(viewRows));
-        var recreate = new Button { Content = "Пересоздать виды", IsEnabled = false, Margin = new Thickness(0, 8, 8, 0), Padding = new Thickness(10, 5, 10, 5),
-            ToolTip = "Недоступно: полное пересоздание вида с настройками, аннотациями и связями не реализовано." };
-        ToolTipService.SetShowOnDisabled(recreate, true); viewActions.Children.Add(recreate);
+        AddAction(viewActions, viewButtons, "Пересоздать виды", RecreateViews);
         viewsTab.Content = viewsPanel; tabs.Items.Add(viewsTab);
         shell.Children.Add(tabs); Content = shell;
         PreviewKeyDown += (_, e) =>
@@ -135,7 +134,7 @@ internal sealed class TransferWindow : Window
                 + (!IsSelectionMode && source.SelectedItem is null ? " Выберите уровень." : "");
         }
         catch (Exception ex) { summary.Text = $"Не удалось обновить таблицы: {ex.Message}"; }
-        elementTable.ItemsSource = elementRows; viewTable.ItemsSource = viewRows;
+        searches[elementTable].SetRows(elementRows); searches[viewTable].SetRows(viewRows);
         UpdateButtons();
     }
 
@@ -173,6 +172,26 @@ internal sealed class TransferWindow : Window
         var results = report.Items.ToDictionary(r => r.ElementId, r => $"{r.Status switch {
             TransferStatus.Transferred => "Перенесён", TransferStatus.Skipped => "Пропущен", _ => "Ошибка" }}: {r.Reason}");
         Complete($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}.", results);
+    }
+
+    private void RecreateViews()
+    {
+        var rows = Checked(viewRows);
+        if (rows.Count == 0 || source.SelectedItem is not Level sourceLevel) return;
+        var choices = levels.Where(l => l.Id != sourceLevel.Id).ToList();
+        if (choices.Count == 0) { OperationDialogs.Show(this, "Пересоздание недоступно", "Нет другого уровня."); return; }
+        var dialog = new RecreateViewsWindow(this, choices, rows.Count);
+        if (dialog.ShowDialog() != true) return;
+        var report = new ViewRecreationService(document).Execute(rows.Select(r => new ElementId(r.Id)).ToList(), dialog.Target.Id, dialog.Prefix);
+        foreach (var item in report.Results.Items) statuses[item.ElementId] = item.Reason;
+        if (!report.CriticalFailure) Refresh();
+        new ViewLogWindow(this, report, id =>
+        {
+            var created = document.GetElement(new ElementId(id)) as View
+                ?? throw new InvalidOperationException("Созданный вид больше не существует.");
+            application.ActiveUIDocument.ActiveView = created;
+        }).ShowDialog();
+        if (report.CriticalFailure) Close();
     }
 
     private void OpenViews()
@@ -239,12 +258,13 @@ internal sealed class TransferWindow : Window
     }
 
     private static string Format(Dictionary<long, string> results) => string.Join(Environment.NewLine, results.Select(p => $"ID {p.Key}: {p.Value}"));
-    private static List<TableRow> Checked(List<TableRow> rows) => rows.Where(r => r.IsChecked).ToList();
+    private List<TableRow> Checked(List<TableRow> rows) =>
+        (ReferenceEquals(rows, elementRows) ? elementTable : viewTable).Items.OfType<TableRow>().Where(r => r.IsChecked).ToList();
     private void UpdateButtons()
     {
         if (updatingChecks) return;
-        foreach (var button in elementButtons) button.IsEnabled = elementRows.Any(r => r.IsChecked);
-        foreach (var button in viewButtons) button.IsEnabled = !IsSelectionMode && viewRows.Any(r => r.IsChecked);
+        foreach (var button in elementButtons) button.IsEnabled = Checked(elementRows).Count > 0;
+        foreach (var button in viewButtons) button.IsEnabled = !IsSelectionMode && Checked(viewRows).Count > 0;
         foreach (var (table, header) in checkAllHeaders)
         {
             var rows = table.Items.OfType<TableRow>().ToList();
@@ -339,45 +359,14 @@ internal sealed class TransferWindow : Window
         table.Columns.Add(column); return column;
     }
 
-    private static DockPanel MakeSearchBar()
-    {
-        var bar = new DockPanel { Margin = new Thickness(0, 0, 0, 8), Height = 28 };
-        var filter = new Button { Content = "Фильтр", IsEnabled = false, Padding = new Thickness(10, 0, 10, 0),
-            Margin = new Thickness(0, 0, 8, 0), ToolTip = "Только строки с совпадениями — пока недоступно." };
-        ToolTipService.SetShowOnDisabled(filter, true);
-        DockPanel.SetDock(filter, Dock.Left); bar.Children.Add(filter);
-
-        var navigation = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(8, 0, 0, 0) };
-        navigation.Children.Add(new TextBlock { Text = "— вхождений", VerticalAlignment = VerticalAlignment.Center,
-            Margin = new Thickness(0, 0, 8, 0), ToolTip = "Количество появится после подключения поиска." });
-        foreach (var (symbol, label) in new[] { ("↑", "Предыдущее вхождение"), ("↓", "Следующее вхождение") })
-        {
-            var button = new Button { Content = symbol, Width = 28, IsEnabled = false,
-                Margin = new Thickness(4, 0, 0, 0), ToolTip = $"{label} — пока недоступно." };
-            System.Windows.Automation.AutomationProperties.SetName(button, label);
-            ToolTipService.SetShowOnDisabled(button, true);
-            navigation.Children.Add(button);
-        }
-        DockPanel.SetDock(navigation, Dock.Right); bar.Children.Add(navigation);
-
-        var inputPanel = new System.Windows.Controls.Grid();
-        var input = new TextBox { VerticalContentAlignment = VerticalAlignment.Center, Padding = new Thickness(6, 0, 6, 0) };
-        System.Windows.Automation.AutomationProperties.SetName(input, "Поиск по таблице");
-        var placeholder = new TextBlock { Text = "Поиск…", Foreground = System.Windows.Media.Brushes.Gray,
-            VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(7, 0, 0, 0), IsHitTestVisible = false };
-        input.TextChanged += (_, _) => placeholder.Visibility = input.Text.Length == 0
-            ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-        inputPanel.Children.Add(input); inputPanel.Children.Add(placeholder);
-        bar.Children.Add(inputPanel);
-        return bar;
-    }
-
-    private static DockPanel MakePanel(DataGrid table, string hint, out StackPanel actions)
+    private DockPanel MakePanel(DataGrid table, string hint, out StackPanel actions)
     {
         var panel = new DockPanel { Margin = new Thickness(8) };
         var text = new TextBlock { Text = hint, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 8) };
         DockPanel.SetDock(text, Dock.Top); panel.Children.Add(text);
-        var search = MakeSearchBar();
+        var controller = new TableSearch(table, UpdateButtons);
+        searches.Add(table, controller);
+        var search = controller.Bar;
         DockPanel.SetDock(search, Dock.Top); panel.Children.Add(search);
         actions = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
         DockPanel.SetDock(actions, Dock.Bottom); panel.Children.Add(actions);
