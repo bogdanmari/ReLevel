@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Name>ReLevel</Name>
+    <Assembly>ReLevel\ReLevel.Revit.dll</Assembly>
+    <AddInId>80A42799-B106-4F53-B6CB-14AE5681D519</AddInId>
+    <FullClassName>ReLevel.Revit.ReLevelCommand</FullClassName>
+    <Text>ReLevel</Text>
+    <VendorId>RLVL</VendorId>
+    <VendorDescription>ReLevel — change levels while preserving model position</VendorDescription>
+    <VisibilityMode>NotVisibleInFamily</VisibilityMode>
+  </AddIn>
+</RevitAddIns>

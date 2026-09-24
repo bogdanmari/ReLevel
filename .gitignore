@@ -31,3 +31,6 @@ _ReSharper*/
 ## Windows
 Thumbs.db
 Desktop.ini
+
+## Local verification / installation output
+artifacts/
