@@ -1,16 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+<Project>
   <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <BuildFamily>2025+</BuildFamily>
+    <BuildFamily Condition="'$(Configuration)' == 'Legacy'">2024-</BuildFamily>
+    <BaseIntermediateOutputPath>obj\$(BuildFamily)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <PropertyGroup>
+    <Configurations>Debug;Release;Legacy</Configurations>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework Condition="'$(BuildFamily)' == '2024-'">net48</TargetFramework>
+    <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PlatformTarget>x64</PlatformTarget>
     <UseWPF>true</UseWPF>
-    <RevitInstallDir Condition="'$(RevitInstallDir)' == ''">C:\Program Files\Autodesk\Revit 2025</RevitInstallDir>
+    <Optimize Condition="'$(Configuration)' == 'Legacy'">true</Optimize>
+    <ApiYear>2025</ApiYear>
+    <ApiYear Condition="'$(BuildFamily)' == '2024-'">2022</ApiYear>
+    <RevitInstallDir Condition="'$(RevitInstallDir)' == ''">C:\Program Files\Autodesk\Revit $(ApiYear)</RevitInstallDir>
+    <OutputPath>$(MSBuildProjectDirectory)\..\..\bin\$(BuildFamily)\ReLevel\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);obj\**;bin\**</DefaultItemExcludes>
+    <EnableDefaultCompileItems Condition="'$(BuildFamily)' == '2024-'">false</EnableDefaultCompileItems>
   </PropertyGroup>
-
-  <ItemGroup Condition="Exists('$(RevitInstallDir)\RevitAPI.dll') and Exists('$(RevitInstallDir)\RevitAPIUI.dll')">
-    <!-- Revit supplies the API dependency graph. Do not resolve/copy its private UI assemblies. -->
+  <ItemGroup Condition="'$(BuildFamily)' == '2024-'">
+    <Compile Include="..\..\legacy\src\ReLevel.Revit\**\*.cs" Exclude="..\..\legacy\src\ReLevel.Revit\**\obj\**;..\..\legacy\src\ReLevel.Revit\**\bin\**" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(BuildFamily)' != '2024-'">
+    <EmbeddedResource Include="Localization\English.json" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="RevitAPI">
       <ExternallyResolved>true</ExternallyResolved>
       <HintPath>$(RevitInstallDir)\RevitAPI.dll</HintPath>
@@ -22,9 +43,24 @@
       <Private>false</Private>
     </Reference>
   </ItemGroup>
-
-  <Target Name="CheckRevitApi" BeforeTargets="ResolveReferences">
-    <Error Condition="!Exists('$(RevitInstallDir)\RevitAPI.dll') or !Exists('$(RevitInstallDir)\RevitAPIUI.dll')" Text="Revit 2025 API not found. Install Revit 2025 or pass -p:RevitInstallDir=path containing RevitAPI.dll and RevitAPIUI.dll." />
+  <Target Name="CheckRevitApi" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(RevitVersion)' != ''" Text="RevitVersion is no longer used. Build Release (2025+) or Legacy (2024-)." />
+    <Error Condition="'$(Configuration)' != 'Debug' and '$(Configuration)' != 'Release' and '$(Configuration)' != 'Legacy'" Text="Choose Debug/Release (2025+) or Legacy (2024-)." />
+    <Error Condition="'$(BuildFamily)' == '2024-' and !Exists('$(MSBuildProjectDirectory)\..\..\legacy\src\ReLevel.Revit\ReLevelCommand.cs')" Text="Legacy sources not found in legacy/src/ReLevel.Revit." />
+    <Error Condition="!Exists('$(RevitInstallDir)\RevitAPI.dll') or !Exists('$(RevitInstallDir)\RevitAPIUI.dll')" Text="Revit $(ApiYear) reference API not found. Pass -p:RevitInstallDir=path to that API." />
+    <GetAssemblyIdentity AssemblyFiles="$(RevitInstallDir)\RevitAPI.dll;$(RevitInstallDir)\RevitAPIUI.dll">
+      <Output TaskParameter="Assemblies" ItemName="RevitApiIdentity" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <RevitApiIdentity Update="@(RevitApiIdentity)">
+        <Year>20$([System.Version]::Parse('%(RevitApiIdentity.Version)').Major)</Year>
+      </RevitApiIdentity>
+    </ItemGroup>
+    <Error Condition="'%(RevitApiIdentity.Year)' != '$(ApiYear)'" Text="The $(BuildFamily) build requires the Revit $(ApiYear) reference API, not %(RevitApiIdentity.Version)." />
   </Target>
-
+  <Target Name="CopyManifest" AfterTargets="Build">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\..\ReLevel.addin" DestinationFolder="$(OutputPath).." />
+    <Message Importance="high" Text="ReLevel $(BuildFamily): $(TargetPath)" />
+  </Target>
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 </Project>

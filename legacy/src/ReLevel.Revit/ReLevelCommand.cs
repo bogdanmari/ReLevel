@@ -14,7 +14,7 @@ public sealed class ReLevelCommand : IExternalCommand
         var document = ui.ActiveUIDocument?.Document;
         if (document is null || document.IsFamilyDocument || document.IsReadOnly)
         {
-            TaskDialog.Show("ReLevel", L.Get("Откройте доступный для изменения документ проекта Revit."));
+            TaskDialog.Show("ReLevel", "Откройте доступный для изменения документ проекта Revit.");
             return Result.Cancelled;
         }
         try

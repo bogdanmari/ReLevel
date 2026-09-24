@@ -17,7 +17,7 @@ internal sealed class ViewOperationLog(Document document, ViewRecreationReport r
         var failures = new ViewFailures(this, stage, elementId);
         using var transaction = new Transaction(document, "ReLevel: " + stage);
         if (transaction.Start() != TransactionStatus.Started)
-            throw new InvalidOperationException(L.Get("Revit не смог начать транзакцию: ") + stage);
+            throw new InvalidOperationException("Revit не смог начать транзакцию: " + stage);
         transaction.SetFailureHandlingOptions(transaction.GetFailureHandlingOptions()
             .SetFailuresPreprocessor(failures).SetClearAfterRollback(true).SetForcedModalHandling(true));
         var modified = new HashSet<long>();
@@ -25,8 +25,8 @@ internal sealed class ViewOperationLog(Document document, ViewRecreationReport r
         void Changed(object? sender, DocumentChangedEventArgs args)
         {
             if (!args.GetDocument().Equals(document) || args.Operation != UndoOperation.TransactionCommitted) return;
-            modified.UnionWith(args.GetModifiedElementIds().Select(id => id.Value).Where(originalIds.Contains));
-            deleted.UnionWith(args.GetDeletedElementIds().Select(id => id.Value).Where(originalIds.Contains));
+            modified.UnionWith(args.GetModifiedElementIds().Select(id => id.ToLong()).Where(originalIds.Contains));
+            deleted.UnionWith(args.GetDeletedElementIds().Select(id => id.ToLong()).Where(originalIds.Contains));
         }
         try
         {
@@ -37,31 +37,31 @@ internal sealed class ViewOperationLog(Document document, ViewRecreationReport r
             try { status = transaction.Commit(); }
             finally { document.Application.DocumentChanged -= Changed; }
             if (status != TransactionStatus.Committed)
-                throw new InvalidOperationException(failures.Reason ?? L.Format($"Статус фиксации: {status}."));
+                throw new InvalidOperationException(failures.Reason ?? $"Статус фиксации: {status}.");
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
         catch (Exception ex)
         {
             if (transaction.GetStatus() == TransactionStatus.Started && transaction.RollBack() != TransactionStatus.RolledBack)
-                throw new InvalidOperationException(L.Get("Revit не смог откатить этап: ") + stage, ex);
+                throw new InvalidOperationException("Revit не смог откатить этап: " + stage, ex);
             if (transaction.GetStatus() != TransactionStatus.RolledBack) throw;
             Add(LogSeverity.Error, stage, CreatedId is null
-                    ? L.Get("Вид не создан: Revit отклонил операцию.")
+                    ? "Вид не создан: Revit отклонил операцию."
                         + ReadableReason(ex.Message)
-                    : L.Get("Этап не выполнен. Его изменения отменены; ранее созданный вид сохранён.") + ReadableReason(ex.Message),
-                ex.ToString(), elementId, L.Get("Проверьте технические подробности. Исправьте причину в модели и повторите операцию с другим префиксом."));
+                    : "Этап не выполнен. Его изменения отменены; ранее созданный вид сохранён." + ReadableReason(ex.Message),
+                ex.ToString(), elementId, "Проверьте технические подробности. Исправьте причину в модели и повторите операцию с другим префиксом.");
             return false;
         }
-        var trackers = modified.Order().Select(id => document.GetElement(new ElementId(id)))
+        var trackers = modified.Order().Select(id => document.GetElement(ElementIds.Create(id)))
             .Where(IsKnownTracker).ToList();
-        modified.ExceptWith(trackers.Select(e => e!.Id.Value));
+        modified.ExceptWith(trackers.Select(e => e!.Id.ToLong()));
         if (trackers.Count > 0)
-            Add(LogSeverity.Info, stage, L.Get("Revit обновил служебные объекты отслеживания."),
-                string.Join("\n", trackers.Select(e => L.Format($"ID: {e!.Id.Value}; имя: {e.Name}; класс: {e.GetType().Name}; категория: <null>"))), elementId);
+            Add(LogSeverity.Info, stage, "Revit обновил служебные объекты отслеживания.",
+                string.Join("\n", trackers.Select(e => $"ID: {e!.Id.ToLong()}; имя: {e.Name}; класс: {e.GetType().Name}; категория: <null>")), elementId);
         if (modified.Count > 0 || deleted.Count > 0)
-            Add(LogSeverity.Warning, stage, L.Get("Revit изменил существующие объекты. Результат сохранён для проверки."),
-                L.Format($"Изменены ID: {string.Join(", ", modified.Order())}\nУдалены ID: {string.Join(", ", deleted.Order())}"), elementId,
-                L.Get("Проверьте перечисленные объекты. При нежелательных изменениях используйте Undo."));
+            Add(LogSeverity.Warning, stage, "Revit изменил существующие объекты. Результат сохранён для проверки.",
+                $"Изменены ID: {string.Join(", ", modified.Order())}\nУдалены ID: {string.Join(", ", deleted.Order())}", elementId,
+                "Проверьте перечисленные объекты. При нежелательных изменениях используйте Undo.");
         return true;
     }
 
@@ -78,12 +78,12 @@ internal sealed class ViewOperationLog(Document document, ViewRecreationReport r
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
         catch (Exception ex)
         {
-            Add(LogSeverity.Warning, stage, L.Get("Проверка выявила отличие или не смогла завершиться. Вид сохранён.") + ReadableReason(ex.Message), ex.ToString(),
-                elementId, L.Get("Откройте новый вид и проверьте указанные настройки вручную."));
+            Add(LogSeverity.Warning, stage, "Проверка выявила отличие или не смогла завершиться. Вид сохранён." + ReadableReason(ex.Message), ex.ToString(),
+                elementId, "Откройте новый вид и проверьте указанные настройки вручную.");
         }
     }
 
-    private static string ReadableReason(string message) => " " + message;
+    private static string ReadableReason(string message) => message.Any(c => c >= 'А' && c <= 'я') ? " " + message : " См. сообщение Revit в подробностях.";
 
     private sealed class ViewFailures(ViewOperationLog log, string stage, long? elementId) : IFailuresPreprocessor
     {
@@ -97,16 +97,16 @@ internal sealed class ViewOperationLog(Document document, ViewRecreationReport r
             {
                 var warning = failure.GetSeverity() == FailureSeverity.Warning;
                 var description = failure.GetDescriptionText();
-                var details = L.Format($"{description}\nКод Revit: {failure.GetFailureDefinitionId().Guid}\n")
-                    + L.Format($"Связанные ID Revit: {string.Join(", ", failure.GetFailingElementIds().Select(id => id.Value))}");
+                var details = $"{description}\nКод Revit: {failure.GetFailureDefinitionId().Guid}\n"
+                    + $"Связанные ID Revit: {string.Join(", ", failure.GetFailingElementIds().Select(id => id.ToLong()))}";
                 var message = description.Contains("lost", StringComparison.OrdinalIgnoreCase)
                     && description.Contains("References", StringComparison.OrdinalIgnoreCase)
-                    ? L.Get("При вставке размер потерял часть ссылок на модель.")
-                    : warning ? L.Get("Revit сообщил о проблеме, допускающей сохранение результата.") : L.Get("Revit не разрешил завершить этот этап.");
+                    ? "При вставке размер потерял часть ссылок на модель."
+                    : warning ? "Revit сообщил о проблеме, допускающей сохранение результата." : "Revit не разрешил завершить этот этап.";
                 if (recorded.Add(details))
                     log.Add(warning ? LogSeverity.Warning : LogSeverity.Error, stage, message, details, elementId,
-                        warning ? L.Get("Проверьте результат на новом виде; проблемный элемент мог быть изменён Revit.")
-                            : L.Get("Эта вставка или настройка будет отменена. Проверьте исходный элемент по ID."));
+                        warning ? "Проверьте результат на новом виде; проблемный элемент мог быть изменён Revit."
+                            : "Эта вставка или настройка будет отменена. Проверьте исходный элемент по ID.");
                 if (warning) accessor.DeleteWarning(failure); // Preserve the warning in the journal before dismissing it.
                 else { hasErrors = true; Reason = description; }
             }

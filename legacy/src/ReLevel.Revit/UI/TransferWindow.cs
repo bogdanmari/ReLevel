@@ -16,12 +16,9 @@ internal sealed class TransferWindow : Window
     private readonly IReadOnlyList<Level> levels;
     private readonly IReadOnlyList<ElementId> initialSelection;
     private readonly SearchableComboBox source = new() { DisplayMemberPath = "Name", MinWidth = 260 };
-    private readonly ComboBox language = new() { IsEditable = false, IsTextSearchEnabled = false, Width = 100,
-        ItemsSource = new[] { "English", "Русский" }, ToolTip = "Language / Язык", Margin = new Thickness(12, 0, 0, 0),
-        VerticalAlignment = VerticalAlignment.Top };
-    private readonly CheckBox selectedMode = new() { Content = L.Get("Работать с выбранными элементами"), Margin = new Thickness(20, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+    private readonly CheckBox selectedMode = new() { Content = "Работать с выбранными элементами", Margin = new Thickness(20, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
     private readonly TabControl tabs = new();
-    private readonly TabItem viewsTab = new() { Header = L.Get("Виды") };
+    private readonly TabItem viewsTab = new() { Header = "Виды" };
     private readonly DataGrid elementTable = NewTable();
     private readonly DataGrid viewTable = NewTable();
     private readonly TextBlock summary = new() { TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 8, 0, 0) };
@@ -43,74 +40,44 @@ internal sealed class TransferWindow : Window
         Title = "ReLevel"; Width = 920; Height = 607.2; MinWidth = 850; MinHeight = 430;
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         var shell = new DockPanel { Margin = new Thickness(16) };
-        var top = new DockPanel { Margin = new Thickness(0, 0, 0, 12) };
-        DockPanel.SetDock(language, Dock.Right); top.Children.Add(language);
-        language.SelectedIndex = L.UseEnglish ? 0 : 1;
-        var header = new StackPanel { Orientation = Orientation.Horizontal };
-        header.Children.Add(new TextBlock { Text = L.Get("Уровень"), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 10, 0) });
+        var header = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 0, 0, 12) };
+        header.Children.Add(new TextBlock { Text = "Уровень", VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 10, 0) });
         source.SetItems(levels, level => level.Name); header.Children.Add(source);
         selectedMode.IsEnabled = selected.Count > 0; header.Children.Add(selectedMode);
-        top.Children.Add(header);
-        DockPanel.SetDock(top, Dock.Top); shell.Children.Add(top);
+        DockPanel.SetDock(header, Dock.Top); shell.Children.Add(header);
         DockPanel.SetDock(summary, Dock.Bottom); shell.Children.Add(summary);
 
         AddCheckColumn(elementTable);
         AddTextColumn(elementTable, "ID", nameof(TableRow.Id), 90);
-        AddTextColumn(elementTable, L.Get("Категория"), nameof(TableRow.Category), 170);
-        AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name), 220);
-        levelColumn = AddTextColumn(elementTable, L.Get("Уровень"), nameof(TableRow.Level), 160);
-        AddTextColumn(elementTable, L.Get("Статус / причина"), nameof(TableRow.Status));
-        var elementsPanel = MakePanel(elementTable, L.Get("Поиск ограничен Element.LevelId и известными параметрами базового/опорного уровня. Все связи с уровнем пока не учитываются."), out var elementActions);
-        AddAction(elementActions, elementButtons, L.Get("Выделить элементы"), SelectElements);
-        AddAction(elementActions, elementButtons, L.Get("Удалить элементы"), () => DeleteRows(elementRows));
-        AddAction(elementActions, elementButtons, L.Get("Перенести элементы"), TransferElements);
-        tabs.Items.Add(new TabItem { Header = L.Get("Элементы"), Content = elementsPanel });
+        AddTextColumn(elementTable, "Категория", nameof(TableRow.Category), 170);
+        AddTextColumn(elementTable, "Имя элемента", nameof(TableRow.Name), 220);
+        levelColumn = AddTextColumn(elementTable, "Уровень", nameof(TableRow.Level), 160);
+        AddTextColumn(elementTable, "Статус / причина", nameof(TableRow.Status));
+        var elementsPanel = MakePanel(elementTable, "Поиск ограничен Element.LevelId и известными параметрами базового/опорного уровня. Все связи с уровнем пока не учитываются.", out var elementActions);
+        AddAction(elementActions, elementButtons, "Выделить элементы", SelectElements);
+        AddAction(elementActions, elementButtons, "Удалить элементы", () => DeleteRows(elementRows));
+        AddAction(elementActions, elementButtons, "Перенести элементы", TransferElements);
+        tabs.Items.Add(new TabItem { Header = "Элементы", Content = elementsPanel });
 
         AddCheckColumn(viewTable);
         AddTextColumn(viewTable, "ID", nameof(TableRow.Id), 90);
-        AddTextColumn(viewTable, L.Get("Имя вида"), nameof(TableRow.Name));
-        AddTextColumn(viewTable, L.Get("Тип вида"), nameof(TableRow.Type), 230);
-        var viewsPanel = MakePanel(viewTable, L.Get("Пересоздание планов этажей, потолков и конструкций на другом уровне. Исходные виды и размещения на листах сохраняются."), out var viewActions);
-        AddAction(viewActions, viewButtons, L.Get("Открыть виды"), OpenViews);
-        AddAction(viewActions, viewButtons, L.Get("Удалить виды"), () => DeleteRows(viewRows));
-        AddAction(viewActions, viewButtons, L.Get("Пересоздать виды"), RecreateViews);
+        AddTextColumn(viewTable, "Имя вида", nameof(TableRow.Name));
+        AddTextColumn(viewTable, "Тип вида", nameof(TableRow.Type), 230);
+        var viewsPanel = MakePanel(viewTable, "Пересоздание планов этажей, потолков и конструкций на другом уровне. Исходные виды и размещения на листах сохраняются.", out var viewActions);
+        AddAction(viewActions, viewButtons, "Открыть виды", OpenViews);
+        AddAction(viewActions, viewButtons, "Удалить виды", () => DeleteRows(viewRows));
+        AddAction(viewActions, viewButtons, "Пересоздать виды", RecreateViews);
         viewsTab.Content = viewsPanel; tabs.Items.Add(viewsTab);
         shell.Children.Add(tabs); Content = shell;
         PreviewKeyDown += (_, e) =>
         {
-            if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen && !language.IsDropDownOpen) { e.Handled = true; Close(); }
+            if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen) { e.Handled = true; Close(); }
         };
         source.SelectionChanged += (_, _) => ChangeSource();
         selectedMode.Checked += (_, _) => ChangeMode();
         selectedMode.Unchecked += (_, _) => ChangeMode();
         if (levels.Count > 0) source.SelectedIndex = 0;
         else Refresh();
-        language.SelectionChanged += (_, _) => ChangeLanguage();
-    }
-
-    private void ChangeLanguage()
-    {
-        if (language.SelectedIndex < 0 || L.UseEnglish == (language.SelectedIndex == 0)) return;
-        var tables = new[] { elementTable, viewTable };
-        var checkedIds = elementRows.Concat(viewRows).Where(row => row.IsChecked).Select(row => row.Id).ToHashSet();
-        var selectedIds = tables.ToDictionary(table => table,
-            table => table.SelectedItems.Cast<TableRow>().Select(row => row.Id).ToHashSet());
-        var sorts = tables.ToDictionary(table => table, table => table.Items.SortDescriptions.ToList());
-        L.UseEnglish = language.SelectedIndex == 0;
-        LanguageLabels.Refresh(this);
-        Refresh();
-        SetChecks(elementRows.Concat(viewRows).Where(row => checkedIds.Contains(row.Id)), true);
-        foreach (var table in tables)
-        {
-            using (table.Items.DeferRefresh())
-            {
-                table.Items.SortDescriptions.Clear();
-                foreach (var sort in sorts[table]) table.Items.SortDescriptions.Add(sort);
-            }
-            foreach (var row in table.Items.OfType<TableRow>())
-                if (selectedIds[table].Contains(row.Id)) table.SelectedItems.Add(row);
-            searches[table].RefreshLanguage();
-        }
     }
 
     private void ChangeMode()
@@ -143,30 +110,30 @@ internal sealed class TransferWindow : Window
                     .Where(e => !e.ViewSpecific && e.Category?.CategoryType == CategoryType.Model && analyzer.IsOnLevel(e, level.Id));
                 viewRows = new FilteredElementCollector(document).OfClass(typeof(View)).Cast<View>()
                     .Where(v => !v.IsTemplate && v.GenLevel?.Id == level.Id).OrderBy(v => v.Name)
-                    .Select(v => new TableRow(UpdateButtons) { Id = v.Id.Value, Name = v.Name, Type = ViewTypeName(v.ViewType) }).ToList();
+                    .Select(v => new TableRow(UpdateButtons) { Id = v.Id.ToLong(), Name = v.Name, Type = ViewTypeName(v.ViewType) }).ToList();
             }
-            foreach (var e in candidates.OrderBy(e => e.Id.Value))
+            foreach (var e in candidates.OrderBy(e => e.Id.ToLong()))
             {
                 string status;
                 string levelName;
                 try
                 {
                     var related = levels.Where(l => analyzer.IsOnLevel(e, l.Id)).ToList();
-                    levelName = related.Count > 0 ? string.Join(", ", related.Select(l => l.Name)) : L.Get("Не определён");
+                    levelName = related.Count > 0 ? string.Join(", ", related.Select(l => l.Name)) : "Не определён";
                     var target = levels.FirstOrDefault(l => !related.Any(r => r.Id == l.Id)) ?? levels.FirstOrDefault();
-                    status = e is Level ? L.Get("Удаление уровней запрещено; перенос не поддерживается.")
-                        : e is View ? L.Get("Операции с видами доступны на вкладке «Виды».")
-                        : target is null ? L.Get("Нет уровня для анализа переноса.")
-                        : Analyze(e, target).Reason ?? L.Get("Предварительная проверка пройдена; цель будет проверена при переносе.");
+                    status = e is Level ? "Удаление уровней запрещено; перенос не поддерживается."
+                        : e is View ? "Операции с видами доступны на вкладке «Виды»."
+                        : target is null ? "Нет уровня для анализа переноса."
+                        : Analyze(e, target).Reason ?? "Предварительная проверка пройдена; цель будет проверена при переносе.";
                 }
-                catch (Exception ex) { levelName = L.Get("Не определён"); status = L.Format($"Ошибка анализа: {ex.Message}"); }
-                elementRows.Add(new TableRow(UpdateButtons) { Id = e.Id.Value, Category = e.Category?.Name ?? "—", Name = e.Name,
-                    Level = levelName, Status = statuses.GetValueOrDefault(e.Id.Value, status) });
+                catch (Exception ex) { levelName = "Не определён"; status = $"Ошибка анализа: {ex.Message}"; }
+                elementRows.Add(new TableRow(UpdateButtons) { Id = e.Id.ToLong(), Category = e.Category?.Name ?? "—", Name = e.Name,
+                    Level = levelName, Status = statuses.GetValueOrDefault(e.Id.ToLong(), status) });
             }
-            summary.Text = L.Format($"Элементы: {elementRows.Count}. Виды: {viewRows.Count}.")
-                + (!IsSelectionMode && source.SelectedItem is null ? L.Get(" Выберите уровень.") : "");
+            summary.Text = $"Элементы: {elementRows.Count}. Виды: {viewRows.Count}."
+                + (!IsSelectionMode && source.SelectedItem is null ? " Выберите уровень." : "");
         }
-        catch (Exception ex) { summary.Text = L.Format($"Не удалось обновить таблицы: {ex.Message}"); }
+        catch (Exception ex) { summary.Text = $"Не удалось обновить таблицы: {ex.Message}"; }
         searches[elementTable].SetRows(elementRows); searches[viewTable].SetRows(viewRows);
         UpdateButtons();
     }
@@ -179,16 +146,16 @@ internal sealed class TransferWindow : Window
             if (plan.Ready) _ = GeometrySnapshot.Capture(element);
             return plan;
         }
-        catch (Exception ex) { return new(element.Id, element.Name, null, L.Format($"Ошибка предварительной проверки: {ex.Message}")); }
+        catch (Exception ex) { return new(element.Id, element.Name, null, $"Ошибка предварительной проверки: {ex.Message}"); }
     }
 
     private void SelectElements()
     {
         var rows = Checked(elementRows);
-        application.ActiveUIDocument.Selection.SetElementIds(rows.Select(r => new ElementId(r.Id)).ToList());
-        var actual = application.ActiveUIDocument.Selection.GetElementIds().Select(id => id.Value).ToHashSet();
-        Complete(L.Get("Выделение элементов"), rows.ToDictionary(r => r.Id,
-            r => actual.Contains(r.Id) ? L.Get("Выделен в модели.") : L.Get("Не выделен: Revit не включил объект в выделение.")));
+        application.ActiveUIDocument.Selection.SetElementIds(rows.Select(r => ElementIds.Create(r.Id)).ToList());
+        var actual = application.ActiveUIDocument.Selection.GetElementIds().Select(id => id.ToLong()).ToHashSet();
+        Complete("Выделение элементов", rows.ToDictionary(r => r.Id,
+            r => actual.Contains(r.Id) ? "Выделен в модели." : "Не выделен: Revit не включил объект в выделение."));
     }
 
     private void TransferElements()
@@ -196,15 +163,15 @@ internal sealed class TransferWindow : Window
         var rows = Checked(elementRows);
         var sourceId = (source.SelectedItem as Level)?.Id;
         var choices = levels.Where(l => IsSelectionMode || l.Id != sourceId).ToList();
-        if (choices.Count == 0) { OperationDialogs.Show(this, L.Get("Перенос недоступен"), L.Get("Нет другого уровня для переноса.")); return; }
+        if (choices.Count == 0) { OperationDialogs.Show(this, "Перенос недоступен", "Нет другого уровня для переноса."); return; }
         var dialog = new TargetLevelWindow(this, choices);
         if (dialog.ShowDialog() != true) return;
-        var plans = rows.Select(r => document.GetElement(new ElementId(r.Id)) is { } e
-            ? Analyze(e, dialog.Target) : new TransferPlan(new ElementId(r.Id), r.Name, null, L.Get("Элемент больше не существует."))).ToList();
+        var plans = rows.Select(r => document.GetElement(ElementIds.Create(r.Id)) is { } e
+            ? Analyze(e, dialog.Target) : new TransferPlan(ElementIds.Create(r.Id), r.Name, null, "Элемент больше не существует.")).ToList();
         var report = new TransferService(application).Execute(plans, dialog.Target);
         var results = report.Items.ToDictionary(r => r.ElementId, r => $"{r.Status switch {
-            TransferStatus.Transferred => L.Get("Перенесён"), TransferStatus.Skipped => L.Get("Пропущен"), _ => L.Get("Ошибка") }}: {r.Reason}");
-        Complete(L.Format($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}."), results);
+            TransferStatus.Transferred => "Перенесён", TransferStatus.Skipped => "Пропущен", _ => "Ошибка" }}: {r.Reason}");
+        Complete($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}.", results);
     }
 
     private void RecreateViews()
@@ -212,16 +179,16 @@ internal sealed class TransferWindow : Window
         var rows = Checked(viewRows);
         if (rows.Count == 0 || source.SelectedItem is not Level sourceLevel) return;
         var choices = levels.Where(l => l.Id != sourceLevel.Id).ToList();
-        if (choices.Count == 0) { OperationDialogs.Show(this, L.Get("Пересоздание недоступно"), L.Get("Нет другого уровня.")); return; }
+        if (choices.Count == 0) { OperationDialogs.Show(this, "Пересоздание недоступно", "Нет другого уровня."); return; }
         var dialog = new RecreateViewsWindow(this, choices, rows.Count);
         if (dialog.ShowDialog() != true) return;
-        var report = new ViewRecreationService(document).Execute(rows.Select(r => new ElementId(r.Id)).ToList(), dialog.Target.Id, dialog.Prefix);
+        var report = new ViewRecreationService(document).Execute(rows.Select(r => ElementIds.Create(r.Id)).ToList(), dialog.Target.Id, dialog.Prefix);
         foreach (var item in report.Results.Items) statuses[item.ElementId] = item.Reason;
         if (!report.CriticalFailure) Refresh();
         new ViewLogWindow(this, report, id =>
         {
-            var created = document.GetElement(new ElementId(id)) as View
-                ?? throw new InvalidOperationException(L.Get("Созданный вид больше не существует."));
+            var created = document.GetElement(ElementIds.Create(id)) as View
+                ?? throw new InvalidOperationException("Созданный вид больше не существует.");
             application.ActiveUIDocument.ActiveView = created;
         }).ShowDialog();
         if (report.CriticalFailure) Close();
@@ -234,16 +201,16 @@ internal sealed class TransferWindow : Window
         {
             try
             {
-                var view = document.GetElement(new ElementId(row.Id)) as View ?? throw new InvalidOperationException(L.Get("Вид больше не существует."));
+                var view = document.GetElement(ElementIds.Create(row.Id)) as View ?? throw new InvalidOperationException("Вид больше не существует.");
                 // Synchronous API call in the external command context, with no open transaction.
                 application.ActiveUIDocument.ActiveView = view;
                 if (!application.ActiveUIDocument.GetOpenUIViews().Any(v => v.ViewId == view.Id))
-                    throw new InvalidOperationException(L.Get("Revit не подтвердил открытие вида."));
-                results[row.Id] = L.Get("Вид открыт.");
+                    throw new InvalidOperationException("Revit не подтвердил открытие вида.");
+                results[row.Id] = "Вид открыт.";
             }
-            catch (Exception ex) { results[row.Id] = L.Format($"Ошибка: {ex.Message}"); }
+            catch (Exception ex) { results[row.Id] = $"Ошибка: {ex.Message}"; }
         }
-        Complete(L.Get("Открытие видов — результаты"), results);
+        Complete("Открытие видов — результаты", results);
     }
 
     private void DeleteRows(List<TableRow> tableRows)
@@ -256,31 +223,31 @@ internal sealed class TransferWindow : Window
         {
             try
             {
-                if (ReferenceEquals(tableRows, elementRows) && document.GetElement(new ElementId(row.Id)) is View)
-                    throw new InvalidOperationException(L.Get("Используйте вкладку «Виды»."));
-                previews.Add(service.Preview(new ElementId(row.Id)));
+                if (ReferenceEquals(tableRows, elementRows) && document.GetElement(ElementIds.Create(row.Id)) is View)
+                    throw new InvalidOperationException("Используйте вкладку «Виды».");
+                previews.Add(service.Preview(ElementIds.Create(row.Id)));
             }
             catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
-            catch (Exception ex) { results[row.Id] = L.Format($"Не удалён: {ex.Message}"); }
+            catch (Exception ex) { results[row.Id] = $"Не удалён: {ex.Message}"; }
         }
-        if (previews.Count == 0) { Complete(L.Get("Удаление не выполнено"), results); return; }
+        if (previews.Count == 0) { Complete("Удаление не выполнено", results); return; }
         var total = previews.SelectMany(p => p.DeletedIds).Distinct().Count();
-        var description = L.Format($"Отмечено объектов: {rows.Count}. Доступно для удаления: {previews.Count}.\n")
-            + L.Format($"Всего объектов с зависимостями: {total}. Удаление затронет следующие объекты:\n\n")
+        var description = $"Отмечено объектов: {rows.Count}. Доступно для удаления: {previews.Count}.\n"
+            + $"Всего объектов с зависимостями: {total}. Удаление затронет следующие объекты:\n\n"
             + string.Join("\n\n", previews.Select(p => p.Description))
-            + (results.Count == 0 ? "" : L.Get("\n\nНе будут удалены:\n") + Format(results));
-        if (!OperationDialogs.Show(this, L.Get("Подтвердить удаление"), description, L.Format($"Удалить ({total})"))) { Refresh(); return; }
+            + (results.Count == 0 ? "" : "\n\nНе будут удалены:\n" + Format(results));
+        if (!OperationDialogs.Show(this, "Подтвердить удаление", description, $"Удалить ({total})")) { Refresh(); return; }
         foreach (var preview in previews)
         {
             try
             {
-                if (document.GetElement(preview.Id) is null) { results[preview.Id.Value] = L.Get("Удалён как подтверждённая зависимость другого объекта."); continue; }
-                service.Delete(preview); results[preview.Id.Value] = L.Get("Удалён.");
+                if (document.GetElement(preview.Id) is null) { results[preview.Id.ToLong()] = "Удалён как подтверждённая зависимость другого объекта."; continue; }
+                service.Delete(preview); results[preview.Id.ToLong()] = "Удалён.";
             }
             catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
-            catch (Exception ex) { results[preview.Id.Value] = L.Format($"Не удалён: {ex.Message}"); }
+            catch (Exception ex) { results[preview.Id.ToLong()] = $"Не удалён: {ex.Message}"; }
         }
-        Complete(L.Get("Удаление — результаты по объектам"), results);
+        Complete("Удаление — результаты по объектам", results);
     }
 
     private void Complete(string title, Dictionary<long, string> results)
@@ -315,10 +282,10 @@ internal sealed class TransferWindow : Window
             try { action(); }
             catch (Autodesk.Revit.Exceptions.RegenerationFailedException ex)
             {
-                OperationDialogs.Show(this, L.Get("Критическая ошибка Revit"), L.Format($"Операция остановлена. Окно будет закрыто.\n{ex.Message}"));
+                OperationDialogs.Show(this, "Критическая ошибка Revit", $"Операция остановлена. Окно будет закрыто.\n{ex.Message}");
                 Close();
             }
-            catch (Exception ex) { Refresh(); OperationDialogs.Show(this, L.Get("Операция не выполнена"), ex.Message); }
+            catch (Exception ex) { Refresh(); OperationDialogs.Show(this, "Операция не выполнена", ex.Message); }
         };
         buttons.Add(button); panel.Children.Add(button);
     }
@@ -343,7 +310,7 @@ internal sealed class TransferWindow : Window
 
     private void AddCheckColumn(DataGrid table)
     {
-        var header = new CheckBox { ToolTip = L.Get("Отметить все / снять все отметки"), IsEnabled = false,
+        var header = new CheckBox { ToolTip = "Отметить все / снять все отметки", IsEnabled = false,
             HorizontalAlignment = HorizontalAlignment.Center };
         checkAllHeaders.Add(table, header);
         header.Click += (_, e) =>
@@ -408,7 +375,7 @@ internal sealed class TransferWindow : Window
 
     private static string ViewTypeName(ViewType type) => type switch
     {
-        ViewType.FloorPlan => L.Get("План этажа"), ViewType.CeilingPlan => L.Get("План потолка"), ViewType.EngineeringPlan => L.Get("План конструкций"),
-        ViewType.AreaPlan => L.Get("План площадей"), _ => type.ToString()
+        ViewType.FloorPlan => "План этажа", ViewType.CeilingPlan => "План потолка", ViewType.EngineeringPlan => "План конструкций",
+        ViewType.AreaPlan => "План площадей", _ => type.ToString()
     };
 }

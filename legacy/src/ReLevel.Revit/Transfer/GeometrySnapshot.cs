@@ -18,13 +18,13 @@ internal sealed class GeometrySnapshot
         typeId = e.GetTypeId();
         if (e.Location is LocationPoint p) { Add(p.Point); rotation = p.Rotation; }
         if (e.Location is LocationCurve c) foreach (var pnt in c.Curve.Tessellate()) Add(pnt);
-        var box = e.get_BoundingBox(null) ?? throw new InvalidOperationException(L.Get("Нет габаритов для проверки положения."));
+        var box = e.get_BoundingBox(null) ?? throw new InvalidOperationException("Нет габаритов для проверки положения.");
         Add(box.Transform.OfPoint(box.Min));
         Add(box.Transform.OfPoint(box.Max));
         using var options = new Options { DetailLevel = ViewDetailLevel.Fine, IncludeNonVisibleObjects = false };
-        using var geometry = e.get_Geometry(options) ?? throw new InvalidOperationException(L.Get("Нет геометрии для проверки."));
+        using var geometry = e.get_Geometry(options) ?? throw new InvalidOperationException("Нет геометрии для проверки.");
         Read(geometry);
-        if (volumes.Count == 0) throw new InvalidOperationException(L.Get("Нет твёрдотельной геометрии для надёжной проверки."));
+        if (volumes.Count == 0) throw new InvalidOperationException("Нет твёрдотельной геометрии для надёжной проверки.");
     }
 
     public static GeometrySnapshot Capture(Element e) => new(e);
@@ -67,6 +67,6 @@ internal sealed class GeometrySnapshot
             || points.Where((p, i) => !p.IsWithin(after.points[i], Tolerance)).Any()
             || volumes.Where((v, i) => Math.Abs(v - after.volumes[i]) > Math.Max(1, Math.Abs(v)) * 1e-9).Any()
             || areas.Where((a, i) => Math.Abs(a - after.areas[i]) > Math.Max(1, Math.Abs(a)) * 1e-9).Any())
-            throw new InvalidOperationException(L.Get("Положение, размеры или геометрия изменились. Перенос отменён."));
+            throw new InvalidOperationException("Положение, размеры или геометрия изменились. Перенос отменён.");
     }
 }

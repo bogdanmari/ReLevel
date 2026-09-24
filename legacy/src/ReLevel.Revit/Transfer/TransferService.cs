@@ -19,7 +19,7 @@ internal sealed class TransferService(UIApplication application)
             {
                 if (!plan.Ready)
                 {
-                    report.Items.Add(new(plan.Id.Value, plan.Name, TransferStatus.Skipped, plan.Reason ?? L.Get("Не поддерживается")));
+                    report.Items.Add(new(plan.Id.ToLong(), plan.Name, TransferStatus.Skipped, plan.Reason ?? "Не поддерживается"));
                     continue;
                 }
                 report.Items.Add(TransferOne(document, plan, target));
@@ -32,49 +32,49 @@ internal sealed class TransferService(UIApplication application)
             // A critical error invalidates all previous successes, including committed inner transactions.
             report.Items.Clear();
             foreach (var plan in plans)
-                report.Items.Add(new(plan.Id.Value, plan.Name, plan.Ready ? TransferStatus.Failed : TransferStatus.Skipped,
-                    plan.Ready ? L.Format($"Вся операция отменена: {ex.Message}") : plan.Reason ?? L.Get("Не поддерживается")));
+                report.Items.Add(new(plan.Id.ToLong(), plan.Name, plan.Ready ? TransferStatus.Failed : TransferStatus.Skipped,
+                    plan.Ready ? $"Вся операция отменена: {ex.Message}" : plan.Reason ?? "Не поддерживается"));
         }
         return report;
     }
 
     private TransferResult TransferOne(Document document, TransferPlan plan, Level target)
     {
-        using var attempt = new TransactionGroup(document, $"ReLevel {plan.Id.Value}");
+        using var attempt = new TransactionGroup(document, $"ReLevel {plan.Id.ToLong()}");
         Require(attempt.Start(), TransactionStatus.Started);
         try
         {
-            var element = document.GetElement(plan.Id) ?? throw new InvalidOperationException(L.Get("Элемент больше не существует."));
+            var element = document.GetElement(plan.Id) ?? throw new InvalidOperationException("Элемент больше не существует.");
             var current = new TransferAnalyzer().Analyze(element, target);
             if (!current.Ready)
             {
                 Require(attempt.RollBack(), TransactionStatus.RolledBack);
-                return new(plan.Id.Value, plan.Name, TransferStatus.Skipped, current.Reason!);
+                return new(plan.Id.ToLong(), plan.Name, TransferStatus.Skipped, current.Reason!);
             }
             var strategy = current.Strategy!;
             var snapshot = GeometrySnapshot.Capture(element);
-            var source = (Level)document.GetElement(element.get_Parameter(strategy.LevelParameter).AsElementId());
+            var source = (Level)document.GetElement(element.ParameterById(strategy.LevelParameter).AsElementId());
             var offset = LevelTransfer.NewOffset(source.ProjectElevation, target.ProjectElevation,
-                element.get_Parameter(strategy.OffsetParameter).AsDouble());
+                element.ParameterById(strategy.OffsetParameter).AsDouble());
             var failures = new RollBackFailures();
             var unexpectedChanges = new HashSet<long>();
             void Changed(object? sender, DocumentChangedEventArgs args)
             {
                 if (!args.GetDocument().Equals(document)) return;
-                foreach (var id in args.GetAddedElementIds().Concat(args.GetDeletedElementIds())) unexpectedChanges.Add(id.Value);
+                foreach (var id in args.GetAddedElementIds().Concat(args.GetDeletedElementIds())) unexpectedChanges.Add(id.ToLong());
                 foreach (var id in args.GetModifiedElementIds())
-                    if (id != plan.Id) unexpectedChanges.Add(id.Value);
+                    if (id != plan.Id) unexpectedChanges.Add(id.ToLong());
             }
 
-            using (var transaction = new Transaction(document, L.Get("ReLevel: уровень и смещение")))
+            using (var transaction = new Transaction(document, "ReLevel: уровень и смещение"))
             {
                 Require(transaction.Start(), TransactionStatus.Started);
                 transaction.SetFailureHandlingOptions(transaction.GetFailureHandlingOptions()
                     .SetFailuresPreprocessor(failures).SetClearAfterRollback(true).SetForcedModalHandling(true));
                 // No intermediate regeneration: level and compensating offset form one atomic change.
-                if (!element.get_Parameter(strategy.LevelParameter).Set(target.Id)
-                    || !element.get_Parameter(strategy.OffsetParameter).Set(offset))
-                    throw new InvalidOperationException(L.Get("Revit отклонил изменение параметра."));
+                if (!element.ParameterById(strategy.LevelParameter).Set(target.Id)
+                    || !element.ParameterById(strategy.OffsetParameter).Set(offset))
+                    throw new InvalidOperationException("Revit отклонил изменение параметра.");
                 document.Regenerate();
                 Verify(element, strategy, target, offset, snapshot);
                 application.Application.DocumentChanged += Changed;
@@ -82,16 +82,16 @@ internal sealed class TransferService(UIApplication application)
                 try { status = transaction.Commit(); }
                 finally { application.Application.DocumentChanged -= Changed; }
                 if (status != TransactionStatus.Committed)
-                    throw new InvalidOperationException(failures.Reason ?? L.Format($"Транзакция завершена со статусом {status}."));
+                    throw new InvalidOperationException(failures.Reason ?? $"Транзакция завершена со статусом {status}.");
             }
 
             // Commit can trigger joins, constraints, updaters and failure processing. Validate again.
             if (unexpectedChanges.Count > 0)
-                throw new InvalidOperationException(L.Get("Revit затронул другие элементы или добавил/удалил элементы; откат. Id: ")
+                throw new InvalidOperationException("Revit затронул другие элементы или добавил/удалил элементы; откат. Id: "
                     + string.Join(", ", unexpectedChanges.Order().Take(20)));
             Verify(document.GetElement(plan.Id), strategy, target, offset, snapshot);
             Require(attempt.Assimilate(), TransactionStatus.Committed);
-            return new(plan.Id.Value, plan.Name, TransferStatus.Transferred, L.Get("Уровень изменён, положение проверено."));
+            return new(plan.Id.ToLong(), plan.Name, TransferStatus.Transferred, "Уровень изменён, положение проверено.");
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {
@@ -102,22 +102,22 @@ internal sealed class TransferService(UIApplication application)
         catch (Exception ex)
         {
             if (attempt.GetStatus() == TransactionStatus.Started) Require(attempt.RollBack(), TransactionStatus.RolledBack);
-            return new(plan.Id.Value, plan.Name, TransferStatus.Failed, ex.Message);
+            return new(plan.Id.ToLong(), plan.Name, TransferStatus.Failed, ex.Message);
         }
     }
 
     private static void Verify(Element e, ITransferStrategy strategy, Level target, double offset, GeometrySnapshot snapshot)
     {
-        var actualOffset = e.get_Parameter(strategy.OffsetParameter).AsDouble();
-        if (e.get_Parameter(strategy.LevelParameter).AsElementId() != target.Id
-            || !double.IsFinite(actualOffset) || Math.Abs(actualOffset - offset) > GeometrySnapshot.Tolerance)
-            throw new InvalidOperationException(L.Get("Целевой уровень или смещение не совпадают с расчётом."));
+        var actualOffset = e.ParameterById(strategy.OffsetParameter).AsDouble();
+        if (e.ParameterById(strategy.LevelParameter).AsElementId() != target.Id
+            || !Numeric.IsFinite(actualOffset) || Math.Abs(actualOffset - offset) > GeometrySnapshot.Tolerance)
+            throw new InvalidOperationException("Целевой уровень или смещение не совпадают с расчётом.");
         snapshot.Verify(e);
     }
 
     private static void Require(TransactionStatus actual, TransactionStatus expected)
     {
-        if (actual != expected) throw new InvalidOperationException(L.Format($"Ошибка транзакции: {actual}, ожидалось {expected}."));
+        if (actual != expected) throw new InvalidOperationException($"Ошибка транзакции: {actual}, ожидалось {expected}.");
     }
 }
 

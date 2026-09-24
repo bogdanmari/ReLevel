@@ -10,15 +10,15 @@ internal sealed class ViewLogWindow : Window
 {
     public ViewLogWindow(Window owner, ViewRecreationReport report, Action<long> openView)
     {
-        Owner = owner; Title = L.Get("Журнал пересоздания видов"); Width = 1120; Height = 720;
+        Owner = owner; Title = "Журнал пересоздания видов"; Width = 1120; Height = 720;
         MinWidth = 760; MinHeight = 480; WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var panel = new DockPanel { Margin = new Thickness(12) };
         var summary = new TextBlock { Text = report.Summary, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 10) };
         DockPanel.SetDock(summary, Dock.Top); panel.Children.Add(summary);
         var filterBar = new DockPanel { Margin = new Thickness(0, 0, 0, 8) };
-        var issuesOnly = new CheckBox { Content = L.Get("Только замечания и ошибки"), Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        var issuesOnly = new CheckBox { Content = "Только замечания и ошибки", Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         DockPanel.SetDock(issuesOnly, Dock.Right); filterBar.Children.Add(issuesOnly);
-        var label = new TextBlock { Text = L.Get("Поиск / ID: "), VerticalAlignment = VerticalAlignment.Center };
+        var label = new TextBlock { Text = "Поиск / ID: ", VerticalAlignment = VerticalAlignment.Center };
         DockPanel.SetDock(label, Dock.Left); filterBar.Children.Add(label);
         var search = new TextBox { MinWidth = 180 }; filterBar.Children.Add(search);
         DockPanel.SetDock(filterBar, Dock.Top); panel.Children.Add(filterBar);
@@ -33,12 +33,12 @@ internal sealed class ViewLogWindow : Window
             ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader };
         void Column(string title, string property, double width) => table.Columns.Add(new DataGridTextColumn
             { Header = title, Binding = new Binding(property), Width = width });
-        Column(L.Get("Уровень"), nameof(ViewLogEntry.SeverityLabel), 95);
-        Column(L.Get("Этап"), nameof(ViewLogEntry.Stage), 155);
-        Column(L.Get("Исходный вид"), nameof(ViewLogEntry.SourceViewId), 100);
-        Column(L.Get("Новый вид"), nameof(ViewLogEntry.CreatedViewId), 100);
-        Column(L.Get("Исходный элемент"), nameof(ViewLogEntry.ElementId), 125);
-        table.Columns.Add(new DataGridTextColumn { Header = L.Get("Результат"), Binding = new Binding(nameof(ViewLogEntry.Message)),
+        Column("Уровень", nameof(ViewLogEntry.SeverityLabel), 95);
+        Column("Этап", nameof(ViewLogEntry.Stage), 155);
+        Column("Исходный вид", nameof(ViewLogEntry.SourceViewId), 100);
+        Column("Новый вид", nameof(ViewLogEntry.CreatedViewId), 100);
+        Column("Исходный элемент", nameof(ViewLogEntry.ElementId), 125);
+        table.Columns.Add(new DataGridTextColumn { Header = "Результат", Binding = new Binding(nameof(ViewLogEntry.Message)),
             Width = new DataGridLength(1, DataGridLengthUnitType.Star),
             ElementStyle = new Style(typeof(TextBlock)) { Setters = { new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap) } } });
         var details = new TextBox { IsReadOnly = true, TextWrapping = TextWrapping.Wrap,
@@ -51,33 +51,33 @@ internal sealed class ViewLogWindow : Window
         void Safely(Action action)
         {
             try { action(); }
-            catch (Exception ex) { MessageBox.Show(this, ex.Message, L.Get("Действие не выполнено"), MessageBoxButton.OK, MessageBoxImage.Warning); }
+            catch (Exception ex) { MessageBox.Show(this, ex.Message, "Действие не выполнено", MessageBoxButton.OK, MessageBoxImage.Warning); }
         }
         Button Button(string text, Action action)
         {
             var button = new Button { Content = text, Margin = new Thickness(6, 10, 0, 0), Padding = new Thickness(10, 5, 10, 5) };
             button.Click += (_, _) => Safely(action); buttons.Children.Add(button); return button;
         }
-        var open = Button(L.Get("Открыть новый вид"), () =>
+        var open = Button("Открыть новый вид", () =>
         {
             if (table.SelectedItem is ViewLogEntry { CreatedViewId: { } id }) openView(id);
         });
-        var copy = Button(L.Get("Копировать запись"), () =>
+        var copy = Button("Копировать запись", () =>
         {
             if (table.SelectedItem is ViewLogEntry entry) Clipboard.SetText(entry.FullText);
         });
         open.IsEnabled = false; copy.IsEnabled = false;
-        Button(L.Get("Копировать весь журнал"), () => Clipboard.SetText(report.FullText));
-        Button(L.Get("Сохранить .txt"), () =>
+        Button("Копировать весь журнал", () => Clipboard.SetText(report.FullText));
+        Button("Сохранить .txt", () =>
         {
-            var dialog = new Microsoft.Win32.SaveFileDialog { Filter = L.Get("Текстовый журнал (*.txt)|*.txt"), FileName = "ReLevel-log.txt" };
+            var dialog = new Microsoft.Win32.SaveFileDialog { Filter = "Текстовый журнал (*.txt)|*.txt", FileName = "ReLevel-log.txt" };
             if (dialog.ShowDialog(this) == true) File.WriteAllText(dialog.FileName, report.FullText, System.Text.Encoding.UTF8);
         });
-        Button(L.Get("Закрыть"), Close).IsCancel = true;
+        Button("Закрыть", Close).IsCancel = true;
         table.SelectionChanged += (_, _) =>
         {
             var entry = table.SelectedItem as ViewLogEntry;
-            details.Text = entry?.FullText ?? L.Get("Выберите строку, чтобы увидеть подробности.");
+            details.Text = entry?.FullText ?? "Выберите строку, чтобы увидеть подробности.";
             open.IsEnabled = !report.CriticalFailure && entry?.CreatedViewId is not null;
             copy.IsEnabled = entry is not null;
         };
