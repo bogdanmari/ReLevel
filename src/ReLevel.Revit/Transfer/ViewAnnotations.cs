@@ -10,12 +10,16 @@ internal sealed class ViewAnnotations
     private readonly ViewOperationLog log;
     private readonly Dictionary<long, List<ElementId>> copies = [];
     private readonly HashSet<long> failed = [];
+    private readonly Dictionary<long, AnnotationSnapshot> snapshots = [];
+    private readonly HashSet<long> needsReview = [];
+    private readonly HashSet<string> recordedChecks = [];
 
     public ViewAnnotations(ViewPlan source, ViewOperationLog log)
     {
         sourceViewId = source.Id;
         this.log = log;
         ids = Collect(source).Select(e => e.Id).ToList();
+        foreach (var id in ids) snapshots[id.Value] = new AnnotationSnapshot(source.Document.GetElement(id), source);
     }
 
     public void CopyTo(ViewPlan target)
@@ -108,17 +112,39 @@ internal sealed class ViewAnnotations
     public void Verify(ViewPlan target)
     {
         foreach (var (sourceId, createdIds) in copies)
-            if (!createdIds.Any(id => target.Document.GetElement(id)?.OwnerViewId == target.Id)) MarkMissing(sourceId);
+        {
+            var live = createdIds.Select(target.Document.GetElement).Where(e => e?.OwnerViewId == target.Id).ToArray();
+            if (live.Length == 0) { MarkMissing(sourceId); continue; }
+            if (live.Length != 1)
+            {
+                needsReview.Add(sourceId);
+                Record(sourceId, new(false, L.Get("Несколько копий аннотации: соответствие исходнику требует ручной проверки.")), createdIds);
+                continue;
+            }
+            var checks = snapshots[sourceId].Verify(live[0], target);
+            if (checks.Count > 0) needsReview.Add(sourceId); else needsReview.Remove(sourceId);
+            foreach (var check in checks) Record(sourceId, check, createdIds);
+        }
+    }
+
+    private void Record(long sourceId, AnnotationCheck check, IEnumerable<ElementId> createdIds)
+    {
+        if (!recordedChecks.Add($"{sourceId}:{check.Error}:{check.Message}")) return;
+        log.Add(check.Error ? LogSeverity.Error : LogSeverity.Warning, L.Get("Проверка содержимого аннотации"), check.Message,
+            L.Get("ID аннотаций: ") + string.Join(", ", createdIds.Select(id => id.Value)), sourceId,
+            L.Get("Сравните исходную аннотацию и копию на новом виде; копия сохранена для проверки."));
     }
 
     private void MarkMissing(long sourceId)
     {
+        needsReview.Remove(sourceId);
         if (!failed.Add(sourceId)) return;
         log.Add(LogSeverity.Error, L.Get("Проверка вставки"), L.Get("Аннотация не сохранилась после обработки Revit. Новый вид сохранён."),
             elementId: sourceId, recommendation: L.Get("Проверьте исходный элемент и его ссылки; при необходимости вставьте его вручную."));
     }
 
     public string Report => L.Format($"Скопировано аннотаций: {copies.Keys.Count(id => !failed.Contains(id))} из {ids.Count}. Не скопировано: {failed.Count}.")
+        + L.Format($" Требуют проверки содержимого: {needsReview.Count}. Без замечаний автоматической проверки: {copies.Keys.Count(id => !failed.Contains(id) && !needsReview.Contains(id))}.")
         + (failed.Count == 0 ? "" : L.Get(" Исходные ID: ") + string.Join(", ", failed.Order()));
 
     private static List<Element> Collect(View view)

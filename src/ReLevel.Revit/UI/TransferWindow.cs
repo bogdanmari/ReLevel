@@ -60,7 +60,7 @@ internal sealed class TransferWindow : Window
         AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name), 220);
         levelColumn = AddTextColumn(elementTable, L.Get("Уровень"), nameof(TableRow.Level), 160);
         AddTextColumn(elementTable, L.Get("Статус / причина"), nameof(TableRow.Status));
-        var elementsPanel = MakePanel(elementTable, L.Get("Поиск ограничен Element.LevelId и известными параметрами базового/опорного уровня. Все связи с уровнем пока не учитываются."), out var elementActions);
+        var elementsPanel = MakePanel(elementTable, L.Get("Поиск учитывает известные нижние, верхние и опорные привязки, связи через хост и рабочую плоскость. Найденная связь не означает возможность переноса."), out var elementActions);
         AddAction(elementActions, elementButtons, L.Get("Выделить элементы"), SelectElements);
         AddAction(elementActions, elementButtons, L.Get("Удалить элементы"), () => DeleteRows(elementRows));
         AddAction(elementActions, elementButtons, L.Get("Перенести элементы"), TransferElements);
@@ -70,6 +70,7 @@ internal sealed class TransferWindow : Window
         AddTextColumn(viewTable, "ID", nameof(TableRow.Id), 90);
         AddTextColumn(viewTable, L.Get("Имя вида"), nameof(TableRow.Name));
         AddTextColumn(viewTable, L.Get("Тип вида"), nameof(TableRow.Type), 230);
+        AddTextColumn(viewTable, L.Get("Статус / причина"), nameof(TableRow.Status), 280);
         var viewsPanel = MakePanel(viewTable, L.Get("Пересоздание планов этажей, потолков и конструкций на другом уровне. Исходные виды и размещения на листах сохраняются."), out var viewActions);
         AddAction(viewActions, viewButtons, L.Get("Открыть виды"), OpenViews);
         AddAction(viewActions, viewButtons, L.Get("Удалить виды"), () => DeleteRows(viewRows));
@@ -133,53 +134,90 @@ internal sealed class TransferWindow : Window
         levelColumn.Visibility = IsSelectionMode ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
         try
         {
-            var analyzer = new TransferAnalyzer();
+            var finder = new LevelRelationFinder(document);
             IEnumerable<Element> candidates = [];
             if (IsSelectionMode)
                 candidates = initialSelection.Select(document.GetElement).OfType<Element>();
             else if (source.SelectedItem is Level level)
             {
                 candidates = new FilteredElementCollector(document).WhereElementIsNotElementType()
-                    .Where(e => !e.ViewSpecific && e.Category?.CategoryType == CategoryType.Model && analyzer.IsOnLevel(e, level.Id));
+                    .Where(e => e is not Level && !e.ViewSpecific && e.Category?.CategoryType == CategoryType.Model);
                 viewRows = new FilteredElementCollector(document).OfClass(typeof(View)).Cast<View>()
                     .Where(v => !v.IsTemplate && v.GenLevel?.Id == level.Id).OrderBy(v => v.Name)
-                    .Select(v => new TableRow(UpdateButtons) { Id = v.Id.Value, Name = v.Name, Type = ViewTypeName(v.ViewType) }).ToList();
+                    .Select(v => new TableRow(UpdateButtons) { Id = v.Id.Value, Name = v.Name,
+                        Type = ViewTypeName(v.ViewType), Status = ViewStatus(v) }).ToList();
             }
-            foreach (var e in candidates.OrderBy(e => e.Id.Value))
+            foreach (var e in candidates.DistinctBy(e => e.Id.Value).OrderBy(e => e.Id.Value))
             {
                 string status;
                 string levelName;
+                var related = finder.Find(e);
+                var sourceId = IsSelectionMode ? null : (source.SelectedItem as Level)?.Id;
+                if (sourceId is not null && !related.IsOnLevel(sourceId)) continue;
+                var relatedIds = related.Relations.Select(r => r.LevelId.Value).ToHashSet();
+                levelName = relatedIds.Count > 0
+                    ? string.Join(", ", levels.Where(l => relatedIds.Contains(l.Id.Value)).Select(l => l.Name))
+                    : L.Get("Не определён");
                 try
                 {
-                    var related = levels.Where(l => analyzer.IsOnLevel(e, l.Id)).ToList();
-                    levelName = related.Count > 0 ? string.Join(", ", related.Select(l => l.Name)) : L.Get("Не определён");
-                    var target = levels.FirstOrDefault(l => !related.Any(r => r.Id == l.Id)) ?? levels.FirstOrDefault();
+                    var target = levels.FirstOrDefault(l => !relatedIds.Contains(l.Id.Value))
+                        ?? levels.FirstOrDefault(l => sourceId is null || l.Id != sourceId);
+                    var preview = target is not null && e is not (Level or View) ? Analyze(e, Context(target)) : null;
                     status = e is Level ? L.Get("Удаление уровней запрещено; перенос не поддерживается.")
                         : e is View ? L.Get("Операции с видами доступны на вкладке «Виды».")
                         : target is null ? L.Get("Нет уровня для анализа переноса.")
-                        : Analyze(e, target).Reason ?? L.Get("Предварительная проверка пройдена; цель будет проверена при переносе.");
+                        : preview?.Reason ?? L.Get("Предварительная проверка пройдена; цель будет проверена при переносе.");
+                    if (preview is { Ready: true, Dependencies.Count: > 0 })
+                        status += L.Format($" Проверяемых зависимостей: {preview.Dependencies.Count}; самостоятельно они не переносятся.");
                 }
-                catch (Exception ex) { levelName = L.Get("Не определён"); status = L.Format($"Ошибка анализа: {ex.Message}"); }
+                catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
+                catch (Exception ex) { status = L.Format($"Ошибка анализа: {ex.Message}"); }
                 elementRows.Add(new TableRow(UpdateButtons) { Id = e.Id.Value, Category = e.Category?.Name ?? "—", Name = e.Name,
-                    Level = levelName, Status = statuses.GetValueOrDefault(e.Id.Value, status) });
+                    Level = levelName, LevelRelations = related,
+                    Status = statuses.GetValueOrDefault(e.Id.Value, status) + Environment.NewLine
+                        + LevelRelationText.Describe(related, document, sourceId) });
             }
             summary.Text = L.Format($"Элементы: {elementRows.Count}. Виды: {viewRows.Count}.")
                 + (!IsSelectionMode && source.SelectedItem is null ? L.Get(" Выберите уровень.") : "");
+        }
+        catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
+        {
+            OperationDialogs.Show(this, L.Get("Операция отменена"), L.Get("Критическая ошибка Revit. Команда закрыта; проверьте состояние документа."));
+            Close();
+            return;
         }
         catch (Exception ex) { summary.Text = L.Format($"Не удалось обновить таблицы: {ex.Message}"); }
         searches[elementTable].SetRows(elementRows); searches[viewTable].SetRows(viewRows);
         UpdateButtons();
     }
 
-    private static TransferPlan Analyze(Element element, Level target)
+    private string ViewStatus(View view)
+    {
+        string status;
+        try
+        {
+            var reason = ViewRecreationSupport.UnsupportedReason(view);
+            status = reason is null ? L.Get("Поддерживается: пересоздание вида.")
+                : L.Get("Не поддерживается") + ": " + reason;
+        }
+        catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
+        catch (Exception ex) { status = L.Get("Не поддерживается") + ": " + L.Format($"Ошибка анализа: {ex.Message}"); }
+        return statuses.TryGetValue(view.Id.Value, out var result) ? status + Environment.NewLine + result : status;
+    }
+
+    private TransferContext Context(Level target) => new(IsSelectionMode ? TransferMode.Selection : TransferMode.SourceLevel,
+        IsSelectionMode ? null : (source.SelectedItem as Level)?.Id, target.Id);
+
+    private static TransferPlan Analyze(Element element, TransferContext context)
     {
         try
         {
-            var plan = new TransferAnalyzer().Analyze(element, target);
-            if (plan.Ready) _ = GeometrySnapshot.Capture(element);
+            var plan = new TransferAnalyzer().Analyze(element, context);
+            if (plan.Ready) _ = new TransferSnapshot(element, plan);
             return plan;
         }
-        catch (Exception ex) { return new(element.Id, element.Name, null, L.Format($"Ошибка предварительной проверки: {ex.Message}")); }
+        catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
+        catch (Exception ex) { return TransferPlan.Skip(element.Id, element.Name, context, L.Format($"Ошибка предварительной проверки: {ex.Message}")); }
     }
 
     private void SelectElements()
@@ -193,18 +231,42 @@ internal sealed class TransferWindow : Window
 
     private void TransferElements()
     {
+        try { TransferElementsCore(); }
+        catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
+        {
+            OperationDialogs.Show(this, L.Get("Операция отменена"), L.Get("Критическая ошибка Revit. Команда закрыта; проверьте состояние документа."));
+            Close();
+        }
+        catch (Exception ex)
+        {
+            // An escaped service/rollback error must not be followed by model reads.
+            OperationDialogs.Show(this, L.Get("Операция отменена"), ex.Message);
+            Close();
+        }
+    }
+
+    private void TransferElementsCore()
+    {
         var rows = Checked(elementRows);
         var sourceId = (source.SelectedItem as Level)?.Id;
         var choices = levels.Where(l => IsSelectionMode || l.Id != sourceId).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(this, L.Get("Перенос недоступен"), L.Get("Нет другого уровня для переноса.")); return; }
         var dialog = new TargetLevelWindow(this, choices);
         if (dialog.ShowDialog() != true) return;
+        var context = Context(dialog.Target);
         var plans = rows.Select(r => document.GetElement(new ElementId(r.Id)) is { } e
-            ? Analyze(e, dialog.Target) : new TransferPlan(new ElementId(r.Id), r.Name, null, L.Get("Элемент больше не существует."))).ToList();
-        var report = new TransferService(application).Execute(plans, dialog.Target);
+            ? Analyze(e, context) : TransferPlan.Skip(new ElementId(r.Id), r.Name, context, L.Get("Элемент больше не существует."))).ToList();
+        var report = new TransferService(application).Execute(plans, document, context);
         var results = report.Items.ToDictionary(r => r.ElementId, r => $"{r.Status switch {
             TransferStatus.Transferred => L.Get("Перенесён"), TransferStatus.Skipped => L.Get("Пропущен"), _ => L.Get("Ошибка") }}: {r.Reason}");
-        Complete(L.Format($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}."), results);
+        var title = L.Format($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}.");
+        if (report.CriticalFailure)
+        {
+            OperationDialogs.Show(this, title, Format(results));
+            Close();
+            return;
+        }
+        Complete(title, results);
     }
 
     private void RecreateViews()

@@ -11,6 +11,7 @@ public sealed class ReLevelCommand : IExternalCommand
     public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
     {
         var ui = commandData.Application;
+        L.Initialize(ui.Application.Language);
         var document = ui.ActiveUIDocument?.Document;
         if (document is null || document.IsFamilyDocument || document.IsReadOnly)
         {

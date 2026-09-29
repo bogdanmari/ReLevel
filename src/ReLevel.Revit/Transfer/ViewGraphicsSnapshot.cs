@@ -6,18 +6,19 @@ namespace ReLevel.Revit.Transfer;
 internal sealed class ViewGraphicsSnapshot : IDisposable
 {
     private readonly List<(ElementId Id, OverrideGraphicSettings Overrides, bool Hidden)> elements = [];
+    private readonly List<ElementId> defaults = [];
 
     public ViewGraphicsSnapshot(View source)
     {
-        using var defaults = new OverrideGraphicSettings();
-        var defaultKey = Key(defaults);
+        using var defaultGraphics = new OverrideGraphicSettings();
+        var defaultKey = Key(defaultGraphics);
         foreach (var element in new FilteredElementCollector(source.Document).WhereElementIsNotElementType()
             .Where(e => !e.ViewSpecific && e is not View))
         {
             var graphics = source.GetElementOverrides(element.Id);
             var hidden = element.IsHidden(source);
             if (hidden || Key(graphics) != defaultKey) elements.Add((element.Id, graphics, hidden));
-            else graphics.Dispose();
+            else { defaults.Add(element.Id); graphics.Dispose(); }
         }
     }
 
@@ -32,6 +33,16 @@ internal sealed class ViewGraphicsSnapshot : IDisposable
 
     public void Apply(View target)
     {
+        using var defaultGraphics = new OverrideGraphicSettings();
+        var defaultKey = Key(defaultGraphics);
+        foreach (var id in defaults)
+        {
+            var element = target.Document.GetElement(id)
+                ?? throw new InvalidOperationException(L.Format($"Элемент {id.Value} отсутствует в документе."));
+            using var actual = target.GetElementOverrides(id);
+            if (Key(actual) != defaultKey) target.SetElementOverrides(id, defaultGraphics);
+            if (element.IsHidden(target)) target.UnhideElements([id]);
+        }
         foreach (var (id, graphics, hidden) in elements)
         {
             var element = target.Document.GetElement(id)
@@ -48,6 +59,16 @@ internal sealed class ViewGraphicsSnapshot : IDisposable
 
     public void Verify(View target)
     {
+        using var defaultGraphics = new OverrideGraphicSettings();
+        var defaultKey = Key(defaultGraphics);
+        foreach (var id in defaults)
+        {
+            var element = target.Document.GetElement(id)
+                ?? throw new InvalidOperationException(L.Format($"Элемент {id.Value} не сохранился после переноса графики."));
+            using var actual = target.GetElementOverrides(id);
+            if (Key(actual) != defaultKey || element.IsHidden(target))
+                throw new InvalidOperationException(L.Format($"Не перенесена видимость или графика элемента {id.Value}."));
+        }
         foreach (var (id, graphics, hidden) in elements)
         {
             var element = target.Document.GetElement(id)

@@ -33,6 +33,7 @@ public sealed record TransferResult(long ElementId, string Name, TransferStatus 
 public sealed class TransferReport
 {
     public List<TransferResult> Items { get; } = [];
+    public bool CriticalFailure { get; set; }
     public int Transferred => Items.Count(x => x.Status == TransferStatus.Transferred);
     public int Skipped => Items.Count(x => x.Status == TransferStatus.Skipped);
     public int Failed => Items.Count(x => x.Status == TransferStatus.Failed);

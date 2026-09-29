@@ -43,10 +43,8 @@ internal sealed class ViewRecreationService(Document document)
         {
             source = document.GetElement(sourceId) as ViewPlan ?? throw new NotSupportedException(L.Get("Выбранный объект не является планом."));
             name = source.Name;
-            if (source.IsTemplate || source.ViewType is not (ViewType.FloorPlan or ViewType.CeilingPlan or ViewType.EngineeringPlan))
-                throw new NotSupportedException(L.Get("Поддерживаются только планы этажей, потолков и конструкций."));
-            if (source.GetPrimaryViewId() != ElementId.InvalidElementId || source.GetDependentViewIds().Count > 0)
-                throw new NotSupportedException(L.Get("Зависимые виды и виды с зависимыми видами пока не поддерживаются."));
+            if (ViewRecreationSupport.UnsupportedReason(source) is { } unsupported)
+                throw new NotSupportedException(unsupported);
             if (source.GenLevel is null || document.GetElement(targetLevelId) is not Level || source.GenLevel.Id == targetLevelId)
                 throw new NotSupportedException(L.Get("Нужен другой существующий целевой уровень."));
             if (new FilteredElementCollector(document).OfClass(typeof(View)).Cast<View>()

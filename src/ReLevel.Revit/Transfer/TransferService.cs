@@ -7,10 +7,11 @@ namespace ReLevel.Revit.Transfer;
 
 internal sealed class TransferService(UIApplication application)
 {
-    public TransferReport Execute(IReadOnlyList<TransferPlan> plans, Level target)
+    public TransferReport Execute(IReadOnlyList<TransferPlan> plans, Document document, TransferContext context)
     {
-        var document = target.Document;
         var report = new TransferReport();
+        if (plans.Any(p => p.Context != context))
+            throw new InvalidOperationException(L.Get("Контекст планов не совпадает с контекстом операции."));
         using var batch = new TransactionGroup(document, "ReLevel");
         Require(batch.Start(), TransactionStatus.Started);
         try
@@ -22,12 +23,13 @@ internal sealed class TransferService(UIApplication application)
                     report.Items.Add(new(plan.Id.Value, plan.Name, TransferStatus.Skipped, plan.Reason ?? L.Get("Не поддерживается")));
                     continue;
                 }
-                report.Items.Add(TransferOne(document, plan, target));
+                report.Items.Add(TransferOne(document, plan));
             }
             Require(batch.Assimilate(), TransactionStatus.Committed);
         }
         catch (Exception ex)
         {
+            report.CriticalFailure = true;
             if (batch.GetStatus() == TransactionStatus.Started) Require(batch.RollBack(), TransactionStatus.RolledBack);
             // A critical error invalidates all previous successes, including committed inner transactions.
             report.Items.Clear();
@@ -38,24 +40,23 @@ internal sealed class TransferService(UIApplication application)
         return report;
     }
 
-    private TransferResult TransferOne(Document document, TransferPlan plan, Level target)
+    private TransferResult TransferOne(Document document, TransferPlan plan)
     {
         using var attempt = new TransactionGroup(document, $"ReLevel {plan.Id.Value}");
         Require(attempt.Start(), TransactionStatus.Started);
         try
         {
             var element = document.GetElement(plan.Id) ?? throw new InvalidOperationException(L.Get("Элемент больше не существует."));
-            var current = new TransferAnalyzer().Analyze(element, target);
+            var current = new TransferAnalyzer().Analyze(element, plan.Context);
             if (!current.Ready)
             {
                 Require(attempt.RollBack(), TransactionStatus.RolledBack);
                 return new(plan.Id.Value, plan.Name, TransferStatus.Skipped, current.Reason!);
             }
-            var strategy = current.Strategy!;
-            var snapshot = GeometrySnapshot.Capture(element);
-            var source = (Level)document.GetElement(element.get_Parameter(strategy.LevelParameter).AsElementId());
-            var offset = LevelTransfer.NewOffset(source.ProjectElevation, target.ProjectElevation,
-                element.get_Parameter(strategy.OffsetParameter).AsDouble());
+            if (!current.Dependencies.OrderBy(d => d.Id.Value).SequenceEqual(plan.Dependencies.OrderBy(d => d.Id.Value))
+                || !current.Bindings.Select(b => b.Parameters).SequenceEqual(plan.Bindings.Select(b => b.Parameters)))
+                throw new InvalidOperationException(L.Get("Состав привязок или зависимостей изменился после подготовки; повторите операцию."));
+            var snapshot = new TransferSnapshot(element, current);
             var failures = new RollBackFailures();
             var unexpectedChanges = new HashSet<long>();
             void Changed(object? sender, DocumentChangedEventArgs args)
@@ -63,7 +64,7 @@ internal sealed class TransferService(UIApplication application)
                 if (!args.GetDocument().Equals(document)) return;
                 foreach (var id in args.GetAddedElementIds().Concat(args.GetDeletedElementIds())) unexpectedChanges.Add(id.Value);
                 foreach (var id in args.GetModifiedElementIds())
-                    if (id != plan.Id) unexpectedChanges.Add(id.Value);
+                    if (!snapshot.AllowsModification(id)) unexpectedChanges.Add(id.Value);
             }
 
             using (var transaction = new Transaction(document, L.Get("ReLevel: уровень и смещение")))
@@ -71,12 +72,24 @@ internal sealed class TransferService(UIApplication application)
                 Require(transaction.Start(), TransactionStatus.Started);
                 transaction.SetFailureHandlingOptions(transaction.GetFailureHandlingOptions()
                     .SetFailuresPreprocessor(failures).SetClearAfterRollback(true).SetForcedModalHandling(true));
-                // No intermediate regeneration: level and compensating offset form one atomic change.
-                if (!element.get_Parameter(strategy.LevelParameter).Set(target.Id)
-                    || !element.get_Parameter(strategy.OffsetParameter).Set(offset))
-                    throw new InvalidOperationException(L.Get("Revit отклонил изменение параметра."));
+                // All changed constraints and compensations precede the first regeneration.
+                foreach (var binding in current.Bindings.Where(b => b.Changes))
+                    if (!element.get_Parameter(binding.Parameters.Level).Set(binding.ResultLevelId))
+                        throw new InvalidOperationException(L.Get("Revit отклонил изменение параметра."));
+                foreach (var binding in current.Bindings.Where(b => b.Changes))
+                {
+                    var offset = element.get_Parameter(binding.Parameters.Offset);
+                    if (!offset.IsReadOnly && offset.AsDouble() != binding.ResultOffset && !offset.Set(binding.ResultOffset))
+                        throw new InvalidOperationException(L.Get("Revit отклонил изменение параметра."));
+                    if (binding.Parameters.SecondOffset is { } secondId)
+                    {
+                        var second = element.get_Parameter(secondId);
+                        if (!second.IsReadOnly && second.AsDouble() != binding.ResultSecondOffset!.Value && !second.Set(binding.ResultSecondOffset.Value))
+                            throw new InvalidOperationException(L.Get("Revit отклонил изменение параметра."));
+                    }
+                }
                 document.Regenerate();
-                Verify(element, strategy, target, offset, snapshot);
+                snapshot.Verify(document);
                 application.Application.DocumentChanged += Changed;
                 TransactionStatus status;
                 try { status = transaction.Commit(); }
@@ -89,9 +102,10 @@ internal sealed class TransferService(UIApplication application)
             if (unexpectedChanges.Count > 0)
                 throw new InvalidOperationException(L.Get("Revit затронул другие элементы или добавил/удалил элементы; откат. Id: ")
                     + string.Join(", ", unexpectedChanges.Order().Take(20)));
-            Verify(document.GetElement(plan.Id), strategy, target, offset, snapshot);
+            snapshot.Verify(document);
             Require(attempt.Assimilate(), TransactionStatus.Committed);
-            return new(plan.Id.Value, plan.Name, TransferStatus.Transferred, L.Get("Уровень изменён, положение проверено."));
+            return new(plan.Id.Value, plan.Name, TransferStatus.Transferred, L.Get("Уровень изменён, положение проверено.")
+                + L.Format($" Проверено зависимостей: {current.Dependencies.Count}."));
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {
@@ -104,15 +118,6 @@ internal sealed class TransferService(UIApplication application)
             if (attempt.GetStatus() == TransactionStatus.Started) Require(attempt.RollBack(), TransactionStatus.RolledBack);
             return new(plan.Id.Value, plan.Name, TransferStatus.Failed, ex.Message);
         }
-    }
-
-    private static void Verify(Element e, ITransferStrategy strategy, Level target, double offset, GeometrySnapshot snapshot)
-    {
-        var actualOffset = e.get_Parameter(strategy.OffsetParameter).AsDouble();
-        if (e.get_Parameter(strategy.LevelParameter).AsElementId() != target.Id
-            || !double.IsFinite(actualOffset) || Math.Abs(actualOffset - offset) > GeometrySnapshot.Tolerance)
-            throw new InvalidOperationException(L.Get("Целевой уровень или смещение не совпадают с расчётом."));
-        snapshot.Verify(e);
     }
 
     private static void Require(TransactionStatus actual, TransactionStatus expected)

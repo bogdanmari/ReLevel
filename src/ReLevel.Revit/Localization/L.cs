@@ -6,7 +6,16 @@ namespace ReLevel.Revit;
 internal static class L
 {
     private static readonly Dictionary<string, string> English = Load();
+    private static bool initialized;
     public static bool UseEnglish { get; set; } = true;
+
+    public static void Initialize(Autodesk.Revit.ApplicationServices.LanguageType language)
+    {
+        if (initialized) return;
+        UseEnglish = language != Autodesk.Revit.ApplicationServices.LanguageType.Russian;
+        initialized = true;
+    }
+
     public static string Get(string russian) => UseEnglish && English.TryGetValue(russian, out var value) ? value : russian;
     public static string Format(FormattableString text) => string.Format(
         CultureInfo.GetCultureInfo(UseEnglish ? "en-US" : "ru-RU"), Get(text.Format), text.GetArguments());

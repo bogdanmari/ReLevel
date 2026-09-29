@@ -1,129 +1,118 @@
 using Autodesk.Revit.DB;
-using ReLevel.Revit.Logic;
 
 namespace ReLevel.Revit.Transfer;
 
 internal interface ITransferStrategy
 {
     bool Matches(Element element);
-    BuiltInParameter LevelParameter { get; }
-    BuiltInParameter OffsetParameter { get; }
+    IReadOnlyList<LevelParameterPair> GetBindings(Element element);
+    IReadOnlyList<TransferDependency> GetDependencies(Element element);
     string? UnsupportedReason(Element element);
 }
 
 internal sealed class PointFamilyStrategy : ITransferStrategy
 {
-    private static readonly HashSet<long> Categories = [
-        (long)BuiltInCategory.OST_Furniture, (long)BuiltInCategory.OST_FurnitureSystems,
-        (long)BuiltInCategory.OST_Casework, (long)BuiltInCategory.OST_GenericModel,
-        (long)BuiltInCategory.OST_SpecialityEquipment,
-        (long)BuiltInCategory.OST_Planting, (long)BuiltInCategory.OST_Entourage,
-        (long)BuiltInCategory.OST_Site];
-    public bool Matches(Element e) => e is FamilyInstance && Categories.Contains(e.Category?.Id.Value ?? 0);
-    public BuiltInParameter LevelParameter => BuiltInParameter.FAMILY_LEVEL_PARAM;
-    public BuiltInParameter OffsetParameter => BuiltInParameter.INSTANCE_ELEVATION_PARAM;
+    public bool Matches(Element e) => e is FamilyInstance;
+    public IReadOnlyList<TransferDependency> GetDependencies(Element e) => TransferDependencies.Collect(e, false, true);
+    public IReadOnlyList<LevelParameterPair> GetBindings(Element e)
+    {
+        // Match placement and actual parameter storage, not a category allow-list.
+        foreach (var level in new[] { BuiltInParameter.FAMILY_LEVEL_PARAM, BuiltInParameter.INSTANCE_REFERENCE_LEVEL_PARAM })
+            if (WritableLevel(e, level)
+                && e.get_Parameter(BuiltInParameter.INSTANCE_ELEVATION_PARAM) is { StorageType: StorageType.Double, HasValue: true })
+                return [new(level, BuiltInParameter.INSTANCE_ELEVATION_PARAM, AllowDerivedOffsets: e is FamilyInstance { MEPModel: not null })];
+        if (e is FamilyInstance { MEPModel: not null }
+            && WritableLevel(e, BuiltInParameter.RBS_START_LEVEL_PARAM)
+            && e.get_Parameter(BuiltInParameter.RBS_OFFSET_PARAM) is { StorageType: StorageType.Double, HasValue: true })
+            return [new(BuiltInParameter.RBS_START_LEVEL_PARAM, BuiltInParameter.RBS_OFFSET_PARAM, AllowDerivedOffsets: true)];
+        if (e is FamilyInstance f && (f.Host is not null || f.HostFace is not null)
+            && WritableLevel(e, BuiltInParameter.INSTANCE_SCHEDULE_ONLY_LEVEL_PARAM))
+            foreach (var offset in new[] { BuiltInParameter.INSTANCE_FREE_HOST_OFFSET_PARAM, BuiltInParameter.INSTANCE_ELEVATION_PARAM })
+                if (e.get_Parameter(offset) is { StorageType: StorageType.Double, HasValue: true })
+                    return [new(BuiltInParameter.INSTANCE_SCHEDULE_ONLY_LEVEL_PARAM, offset, CompensateOffset: false)];
+        return [];
+    }
+    private static bool WritableLevel(Element element, BuiltInParameter id)
+        => element.get_Parameter(id) is { StorageType: StorageType.ElementId, HasValue: true, IsReadOnly: false } p
+            && element.Document.GetElement(p.AsElementId()) is Level;
+
     public string? UnsupportedReason(Element element)
     {
         var f = (FamilyInstance)element;
-        if (f.Symbol.Family.IsInPlace || f.Symbol.Family.FamilyPlacementType != FamilyPlacementType.OneLevelBased)
-            return L.Get("Поддерживаются только загружаемые одноуровневые семейства без хоста.");
-        if (f.Host is not null || f.SuperComponent is not null || f.GetSubComponentIds().Count > 0)
-            return L.Get("Семейство имеет хост или вложенные общие компоненты.");
-        if (f.MEPModel is not null) return L.Get("MEP-семейства пока не поддерживаются.");
-        return f.Location is LocationPoint ? null : L.Get("У семейства нет точечного размещения.");
+        if (f.Symbol.Family.IsInPlace || f.SuperComponent is not null)
+            return L.Get("In-Place и вложенные компоненты не переносятся самостоятельно.");
+        if (f.Symbol.Family.FamilyPlacementType is not (FamilyPlacementType.OneLevelBased
+            or FamilyPlacementType.OneLevelBasedHosted or FamilyPlacementType.WorkPlaneBased))
+            return L.Get("Способ размещения семейства не поддерживает одноуровневый перенос.");
+        if (f.Location is not LocationPoint) return L.Get("У семейства нет точечного размещения.");
+        if (GetBindings(f).Count == 0)
+            return f.Host is not null || f.HostFace is not null
+                ? L.Get("Зависит от хоста: доступной самостоятельной привязки нет.")
+                : L.Get("Параметры уровня/смещения отсутствуют или недоступны для записи.");
+        return null;
     }
 }
 
-internal sealed class HorizontalHostStrategy : ITransferStrategy
+internal sealed class HorizontalHostStrategy(bool floor) : ITransferStrategy
 {
-    private readonly bool floor;
-    public HorizontalHostStrategy(bool floor) => this.floor = floor;
     public bool Matches(Element e) => floor ? e is Floor : e is Ceiling;
-    public BuiltInParameter LevelParameter => BuiltInParameter.LEVEL_PARAM;
-    public BuiltInParameter OffsetParameter => floor ? BuiltInParameter.FLOOR_HEIGHTABOVELEVEL_PARAM : BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM;
+    public IReadOnlyList<LevelParameterPair> GetBindings(Element e) =>
+        [new(BuiltInParameter.LEVEL_PARAM, floor ? BuiltInParameter.FLOOR_HEIGHTABOVELEVEL_PARAM : BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM)];
+    public IReadOnlyList<TransferDependency> GetDependencies(Element e) => TransferDependencies.Collect(e, true, true);
     public string? UnsupportedReason(Element element)
     {
-        if (element is Floor f && (f.GetSlabShapeEditor() is not { IsEnabled: false }))
+        if (element is Floor f && f.GetSlabShapeEditor() is not { IsEnabled: false })
             return L.Get("Перекрытия с уклоном или редактированной формой пока не поддерживаются.");
         var faces = HostObjectUtils.GetTopFaces((HostObject)element);
-        if (faces.Count == 0 || faces.Any(r => element.GetGeometryObjectFromReference(r) is not PlanarFace face
-                || Math.Abs(face.FaceNormal.Z) < 1 - 1e-9))
-            return L.Get("Поддерживаются только горизонтальные плоские перекрытия и потолки.");
-        return ((HostObject)element).FindInserts(true, true, true, true).Count > 0
-            ? L.Get("Есть вставки или размещённые на хосте элементы.") : null;
+        return faces.Count == 0 || faces.Any(r => element.GetGeometryObjectFromReference(r) is not PlanarFace face
+                || Math.Abs(face.FaceNormal.Z) < 1 - 1e-9)
+            ? L.Get("Поддерживаются только горизонтальные плоские перекрытия и потолки.") : null;
     }
 }
 
-internal sealed class UnconnectedWallStrategy : ITransferStrategy
+internal sealed class WallStrategy : ITransferStrategy
 {
     public bool Matches(Element e) => e is Wall;
-    public BuiltInParameter LevelParameter => BuiltInParameter.WALL_BASE_CONSTRAINT;
-    public BuiltInParameter OffsetParameter => BuiltInParameter.WALL_BASE_OFFSET;
+    public IReadOnlyList<LevelParameterPair> GetBindings(Element e) =>
+        [new(BuiltInParameter.WALL_BASE_CONSTRAINT, BuiltInParameter.WALL_BASE_OFFSET),
+            new(BuiltInParameter.WALL_HEIGHT_TYPE, BuiltInParameter.WALL_TOP_OFFSET, Optional: true)];
+    public IReadOnlyList<TransferDependency> GetDependencies(Element e) => TransferDependencies.Collect(e, true, true);
     public string? UnsupportedReason(Element element)
     {
         var w = (Wall)element;
         if (w.WallType.Kind != WallKind.Basic || w.IsStackedWallMember || w.CrossSection != WallCrossSection.Vertical
             || w.Location is not LocationCurve { Curve: Line } || w.SketchId != ElementId.InvalidElementId)
             return L.Get("Поддерживаются только прямые вертикальные базовые стены без изменённого профиля.");
-        if (w.get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE)?.AsElementId() != ElementId.InvalidElementId
-            || w.get_Parameter(BuiltInParameter.WALL_TOP_IS_ATTACHED)?.AsInteger() != 0
+        if (w.get_Parameter(BuiltInParameter.WALL_TOP_IS_ATTACHED)?.AsInteger() != 0
             || w.get_Parameter(BuiltInParameter.WALL_BOTTOM_IS_ATTACHED)?.AsInteger() != 0)
-            return L.Get("Стена имеет верхнюю привязку или присоединение к основанию/верху.");
-        if (w.FindInserts(true, true, true, true).Count > 0) return L.Get("Стена содержит вставки или проёмы.");
-        var location = (LocationCurve)w.Location;
-        if (location.get_ElementsAtJoin(0).Cast<Element>().Any(e => e.Id != w.Id)
-            || location.get_ElementsAtJoin(1).Cast<Element>().Any(e => e.Id != w.Id))
-            return L.Get("Стена соединена с другими стенами.");
+            return L.Get("Присоединённые стены не поддерживаются.");
         return null;
     }
 }
 
-internal sealed record TransferPlan(ElementId Id, string Name, ITransferStrategy? Strategy, string? Reason)
+internal sealed class ColumnStrategy : ITransferStrategy
 {
-    public bool Ready => Strategy is not null && Reason is null;
-}
-
-internal sealed class TransferAnalyzer
-{
-    private readonly ITransferStrategy[] strategies = [new PointFamilyStrategy(), new HorizontalHostStrategy(true),
-        new HorizontalHostStrategy(false), new UnconnectedWallStrategy()];
-
-    public TransferPlan Analyze(Element e, Level target)
+    public bool Matches(Element e) => e is FamilyInstance && e.Category?.Id.Value is
+        (long)BuiltInCategory.OST_Columns or (long)BuiltInCategory.OST_StructuralColumns;
+    public IReadOnlyList<LevelParameterPair> GetBindings(Element e) =>
+        [new(BuiltInParameter.FAMILY_BASE_LEVEL_PARAM, BuiltInParameter.FAMILY_BASE_LEVEL_OFFSET_PARAM),
+            new(BuiltInParameter.FAMILY_TOP_LEVEL_PARAM, BuiltInParameter.FAMILY_TOP_LEVEL_OFFSET_PARAM)];
+    public IReadOnlyList<TransferDependency> GetDependencies(Element e) => TransferDependencies.Collect(e, true, true);
+    public string? UnsupportedReason(Element element)
     {
-        var strategy = strategies.FirstOrDefault(s => s.Matches(e));
-        string? reason = null;
-        if (e.Pinned) reason = L.Get("Элемент закреплён.");
-        else if (e.GroupId != ElementId.InvalidElementId || e.AssemblyInstanceId != ElementId.InvalidElementId)
-            reason = L.Get("Элемент входит в группу или сборку.");
-        else if (e.DesignOption is not null) reason = L.Get("Элементы вариантов конструкции пока не поддерживаются.");
-        else if (strategy is null) reason = L.Get("Механизм привязки этой категории пока не поддерживается.");
-        else if (JoinGeometryUtils.GetJoinedElements(e.Document, e).Count > 0) reason = L.Get("Геометрия соединена с другими элементами.");
-        else reason = strategy.UnsupportedReason(e);
-
-        if (reason is null && strategy is not null)
-        {
-            var level = e.get_Parameter(strategy.LevelParameter);
-            var offset = e.get_Parameter(strategy.OffsetParameter);
-            if (level is null || level.StorageType != StorageType.ElementId || level.IsReadOnly
-                || offset is null || offset.StorageType != StorageType.Double || offset.IsReadOnly || !offset.HasValue)
-                reason = L.Get("Параметры уровня/смещения отсутствуют или недоступны для записи.");
-            else if (e.Document.GetElement(level.AsElementId()) is not Level source)
-                reason = L.Get("Не удалось определить исходный уровень.");
-            else if (source.Id == target.Id) reason = L.Get("Элемент уже на целевом уровне.");
-            else _ = LevelTransfer.NewOffset(source.ProjectElevation, target.ProjectElevation, offset.AsDouble());
-        }
-        return new(e.Id, $"{e.Category?.Name}: {e.Name}", strategy, reason);
-    }
-
-    public bool IsOnLevel(Element e, ElementId levelId)
-    {
-        if (e.LevelId == levelId) return true;
-        // Read-only discovery includes unsupported categories, without attempting to modify them.
-        BuiltInParameter[] levelParameters = [BuiltInParameter.FAMILY_LEVEL_PARAM, BuiltInParameter.LEVEL_PARAM,
-            BuiltInParameter.WALL_BASE_CONSTRAINT, BuiltInParameter.FAMILY_BASE_LEVEL_PARAM,
-            BuiltInParameter.INSTANCE_REFERENCE_LEVEL_PARAM, BuiltInParameter.RBS_START_LEVEL_PARAM,
-            BuiltInParameter.STAIRS_BASE_LEVEL_PARAM, BuiltInParameter.ROOF_BASE_LEVEL_PARAM];
-        return levelParameters.Any(p => e.get_Parameter(p) is { StorageType: StorageType.ElementId } parameter
-            && parameter.AsElementId() == levelId);
+        var f = (FamilyInstance)element;
+        if (f.Symbol.Family.IsInPlace || f.SuperComponent is not null)
+            return L.Get("In-Place и вложенные компоненты не переносятся самостоятельно.");
+        if (f.Symbol.Family.FamilyPlacementType != FamilyPlacementType.TwoLevelsBased
+            || f.IsSlantedColumn || f.GetTransform().BasisZ.CrossProduct(XYZ.BasisZ).GetLength() > 1e-9)
+            return L.Get("Поддерживаются только вертикальные двухуровневые колонны.");
+        if (f.get_Parameter(BuiltInParameter.COLUMN_BASE_ATTACHED_PARAM)?.AsInteger() == 1
+            || f.get_Parameter(BuiltInParameter.COLUMN_TOP_ATTACHED_PARAM)?.AsInteger() == 1)
+            return L.Get("Присоединённые колонны не поддерживаются.");
+        if (ColumnAttachment.IsValidColumn(f))
+            for (var end = 0; end < 2; ++end)
+                if (ColumnAttachment.GetColumnAttachment(f, end) is { } attachment)
+                { attachment.Dispose(); return L.Get("Присоединённые колонны не поддерживаются."); }
+        return null;
     }
 }
