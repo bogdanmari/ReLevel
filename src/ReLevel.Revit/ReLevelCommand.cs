@@ -20,13 +20,9 @@ public sealed class ReLevelCommand : IExternalCommand
         }
         try
         {
-            var levels = new FilteredElementCollector(document).OfClass(typeof(Level)).Cast<Level>()
-                .OrderBy(l => l.ProjectElevation).ThenBy(l => l.Name).ToList();
-            var window = new TransferWindow(ui, levels);
-            new System.Windows.Interop.WindowInteropHelper(window) { Owner = ui.MainWindowHandle };
-            window.ShowDialog();
-            if (window.InspectElementRequested) ElementInspectorAction.Run(ui);
-            // Operations are committed while the window is open. Closing it must not undo them.
+            var controller = ReLevelApplication.Controller
+                ?? throw new InvalidOperationException(L.Get("Панель не зарегистрирована. Обновите ReLevel.addin и перезапустите Revit."));
+            controller.Show(ui);
             return Result.Succeeded;
         }
         catch (Exception ex)

@@ -9,9 +9,9 @@ internal sealed class SelectByCaseWindow : Window
     private readonly ComboBox cases = new() { DisplayMemberPath = nameof(TransferCase.Name), MinWidth = 440 };
     public TransferCase SelectedCase => (TransferCase)cases.SelectedItem;
 
-    public SelectByCaseWindow(Window owner)
+    public SelectByCaseWindow(FrameworkElement owner)
     {
-        Owner = owner; Title = L.Get("Выделить все элементы по"); Width = 610;
+        DialogOwner.Attach(this, owner); Title = L.Get("Выделить все элементы по"); Width = 610;
         SizeToContent = SizeToContent.Height; ResizeMode = ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var panel = new StackPanel { Margin = new Thickness(16) };

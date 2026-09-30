@@ -60,7 +60,12 @@
     <Error Condition="'%(RevitApiIdentity.Year)' != '$(ApiYear)'" Text="The $(BuildFamily) build requires the Revit $(ApiYear) reference API, not %(RevitApiIdentity.Version)." />
   </Target>
   <Target Name="CopyManifest" AfterTargets="Build">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\..\ReLevel.addin" DestinationFolder="$(OutputPath).." />
+    <Copy Condition="'$(BuildFamily)' != '2024-'" SourceFiles="$(MSBuildProjectDirectory)\..\..\ReLevel.addin" DestinationFolder="$(OutputPath).." />
+    <XmlPeek Condition="'$(BuildFamily)' == '2024-'" XmlInputPath="$(MSBuildProjectDirectory)\..\..\ReLevel.addin" Query="/RevitAddIns/AddIn[@Type='Command']">
+      <Output TaskParameter="Result" ItemName="LegacyCommandManifest" />
+    </XmlPeek>
+    <WriteLinesToFile Condition="'$(BuildFamily)' == '2024-'" File="$(OutputPath)..\ReLevel.addin"
+      Lines="&lt;RevitAddIns&gt;;@(LegacyCommandManifest);&lt;/RevitAddIns&gt;" Overwrite="true" Encoding="UTF-8" />
     <Message Importance="high" Text="ReLevel $(BuildFamily): $(TargetPath)" />
   </Target>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

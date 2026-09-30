@@ -11,9 +11,9 @@ internal sealed class RecreateViewsWindow : Window
     public Level Target => (Level)target.SelectedItem;
     public string Prefix => prefix.Text;
 
-    public RecreateViewsWindow(Window owner, IEnumerable<Level> levels, int count)
+    public RecreateViewsWindow(FrameworkElement owner, IEnumerable<Level> levels, int count)
     {
-        Owner = owner; Title = L.Get("Пересоздать виды"); Width = 470;
+        DialogOwner.Attach(this, owner); Title = L.Get("Пересоздать виды"); Width = 470;
         SizeToContent = SizeToContent.Height; ResizeMode = ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var panel = new StackPanel { Margin = new Thickness(16) };

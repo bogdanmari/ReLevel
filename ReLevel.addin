@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ReLevel Panel</Name>
+    <Assembly>ReLevel\ReLevel.Revit.dll</Assembly>
+    <AddInId>46F61696-2B10-4E6C-B243-90DAE3F790B4</AddInId>
+    <FullClassName>ReLevel.Revit.ReLevelApplication</FullClassName>
+    <VendorId>RLVL</VendorId>
+    <VendorDescription>ReLevel dockable panel</VendorDescription>
+  </AddIn>
   <AddIn Type="Command">
     <Name>ReLevel</Name>
     <Assembly>ReLevel\ReLevel.Revit.dll</Assembly>

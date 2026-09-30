@@ -9,9 +9,9 @@ internal sealed class TargetLevelWindow : Window
     private readonly SearchableComboBox target = new() { DisplayMemberPath = "Name", MinWidth = 280 };
     public Level Target => (Level)target.SelectedItem;
 
-    public TargetLevelWindow(Window owner, IEnumerable<Level> levels)
+    public TargetLevelWindow(FrameworkElement owner, IEnumerable<Level> levels)
     {
-        Owner = owner; Title = L.Get("Перенести элементы"); Width = 420;
+        DialogOwner.Attach(this, owner); Title = L.Get("Перенести элементы"); Width = 420;
         SizeToContent = SizeToContent.Height; ResizeMode = ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var panel = new StackPanel { Margin = new Thickness(16) };
@@ -30,10 +30,11 @@ internal sealed class TargetLevelWindow : Window
 
 internal static class OperationDialogs
 {
-    public static bool Show(Window owner, string title, string text, string? confirmation = null)
+    public static bool Show(FrameworkElement owner, string title, string text, string? confirmation = null)
     {
-        var window = new Window { Owner = owner, Title = title, Width = 780, Height = 470,
+        var window = new Window { Title = title, Width = 780, Height = 470,
             WindowStartupLocation = WindowStartupLocation.CenterOwner };
+        DialogOwner.Attach(window, owner);
         var panel = new DockPanel { Margin = new Thickness(16) };
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
         if (confirmation is not null)

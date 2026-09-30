@@ -8,9 +8,9 @@ namespace ReLevel.Revit.UI;
 
 internal sealed class ViewLogWindow : Window
 {
-    public ViewLogWindow(Window owner, ViewRecreationReport report, Action<long> openView)
+    public ViewLogWindow(FrameworkElement owner, ViewRecreationReport report, Action<long> openView)
     {
-        Owner = owner; Title = L.Get("Журнал пересоздания видов"); Width = 1120; Height = 720;
+        DialogOwner.Attach(this, owner); Title = L.Get("Журнал пересоздания видов"); Width = 1120; Height = 720;
         MinWidth = 760; MinHeight = 480; WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var panel = new DockPanel { Margin = new Thickness(12) };
         var summary = new TextBlock { Text = report.Summary, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 10) };

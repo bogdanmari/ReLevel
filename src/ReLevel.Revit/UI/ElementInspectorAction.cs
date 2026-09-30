@@ -6,7 +6,7 @@ namespace ReLevel.Revit.UI;
 
 internal static class ElementInspectorAction
 {
-    // Called after the modal WPF window has closed, in the external command context.
+    // Called in the panel's ExternalEvent context; the panel is disabled while picking.
     public static void Run(UIApplication application)
     {
         try
@@ -26,8 +26,7 @@ internal static class ElementInspectorAction
         catch (Autodesk.Revit.Exceptions.OperationCanceledException) { } // Escape: no write.
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {
-            TaskDialog.Show(L.Get("ReLevel инспектор"),
-                L.Get("Критическая ошибка Revit. Отчёт не записан; проверьте состояние документа."));
+            throw; // The panel must stop instead of refreshing a corrupted document.
         }
         catch (Exception ex)
         {

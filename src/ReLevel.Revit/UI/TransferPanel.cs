@@ -9,12 +9,17 @@ using Binding = System.Windows.Data.Binding;
 
 namespace ReLevel.Revit.UI;
 
-internal sealed class TransferWindow : Window
+internal sealed class TransferPanel : UserControl
 {
     private readonly UIApplication application;
     private readonly Document document;
-    private readonly IReadOnlyList<Level> levels;
-    private readonly SearchableComboBox source = new() { DisplayMemberPath = "Name", MinWidth = 260 };
+    private readonly ReLevelPaneController controller;
+    private IReadOnlyList<Level> levels = [];
+    private bool loading;
+    private readonly TextBlock documentName = new() { TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(0, 0, 0, 6) };
+    public IntPtr MainWindowHandle { get; }
+    private ElementId? SelectedSourceId => source.SelectedItem is LevelChoice choice ? new ElementId(choice.Id) : null;
+    private readonly SearchableComboBox source = new() { DisplayMemberPath = "Name", MinWidth = 120 };
     private readonly ComboBox language = new() { IsEditable = false, IsTextSearchEnabled = false, Width = 100,
         ItemsSource = new[] { "English", "Русский" }, ToolTip = "Language / Язык", Margin = new Thickness(12, 0, 0, 0),
         VerticalAlignment = VerticalAlignment.Top };
@@ -31,34 +36,35 @@ internal sealed class TransferWindow : Window
     private bool updatingChecks;
     private List<TableRow> elementRows = [];
     private List<TableRow> viewRows = [];
-    public bool InspectElementRequested { get; private set; }
-
-    public TransferWindow(UIApplication application, IReadOnlyList<Level> levels)
+    public TransferPanel(UIApplication application, ReLevelPaneController controller)
     {
         this.application = application; document = application.ActiveUIDocument.Document;
-        this.levels = levels;
-        Title = "ReLevel"; Width = 920; Height = 607.2; MinWidth = 850; MinHeight = 430;
-        WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        var shell = new DockPanel { Margin = new Thickness(16) };
+        this.controller = controller;
+        MainWindowHandle = application.MainWindowHandle;
+        MinWidth = 320;
+        var shell = new DockPanel { Margin = new Thickness(8) };
+        DockPanel.SetDock(documentName, Dock.Top); shell.Children.Add(documentName);
         var top = new DockPanel { Margin = new Thickness(0, 0, 0, 12) };
         DockPanel.SetDock(language, Dock.Right); top.Children.Add(language);
         language.SelectedIndex = L.UseEnglish ? 0 : 1;
-        var header = new StackPanel { Orientation = Orientation.Horizontal };
-        header.Children.Add(new TextBlock { Text = L.Get("Уровень"), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 10, 0) });
-        source.SetItems(levels, level => level.Name); header.Children.Add(source);
+        var header = new DockPanel();
+        var levelLabel = new TextBlock { Text = L.Get("Уровень"), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 6, 0) };
+        DockPanel.SetDock(levelLabel, Dock.Left); header.Children.Add(levelLabel);
+        header.Children.Add(source);
         top.Children.Add(header);
         DockPanel.SetDock(top, Dock.Top); shell.Children.Add(top);
-        var debugTools = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right,
+        var debugTools = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Left,
             Margin = new Thickness(0, 0, 0, 8) };
         AddAction(debugTools, null, L.Get("Выделить все элементы по…"), SelectAllByCase);
-        AddAction(debugTools, null, L.Get("ReLevel инспектор"), () => { InspectElementRequested = true; Close(); });
+        AddAction(debugTools, null, L.Get("ReLevel инспектор"), () => ElementInspectorAction.Run(application));
+        AddAction(debugTools, null, L.Get("Обновить"), Reload);
         DockPanel.SetDock(debugTools, Dock.Top); shell.Children.Add(debugTools);
         DockPanel.SetDock(summary, Dock.Bottom); shell.Children.Add(summary);
 
         AddCheckColumn(elementTable);
-        AddTextColumn(elementTable, "ID", nameof(TableRow.Id), 90);
-        AddTextColumn(elementTable, L.Get("Категория"), nameof(TableRow.Category), 170);
-        AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name), 220);
+        AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name));
+        AddTextColumn(elementTable, L.Get("Категория"), nameof(TableRow.Category), 130);
+        AddTextColumn(elementTable, "ID", nameof(TableRow.Id), 80);
         AddTextColumn(elementTable, L.Get("Привязка"), nameof(TableRow.Level), 90);
         AddTextColumn(elementTable, L.Get("Статус / причина"), nameof(TableRow.Status));
         var elementsPanel = MakePanel(elementTable, L.Get("Показаны доступные элементы реализованных кейсов. Меняются только привязки к выбранному исходному уровню."), out var elementActions);
@@ -68,25 +74,57 @@ internal sealed class TransferWindow : Window
         tabs.Items.Add(new TabItem { Header = L.Get("Элементы"), Content = elementsPanel });
 
         AddCheckColumn(viewTable);
-        AddTextColumn(viewTable, "ID", nameof(TableRow.Id), 90);
         AddTextColumn(viewTable, L.Get("Имя вида"), nameof(TableRow.Name));
-        AddTextColumn(viewTable, L.Get("Тип вида"), nameof(TableRow.Type), 230);
-        AddTextColumn(viewTable, L.Get("Статус / причина"), nameof(TableRow.Status), 280);
+        AddTextColumn(viewTable, L.Get("Тип вида"), nameof(TableRow.Type), 130);
+        AddTextColumn(viewTable, "ID", nameof(TableRow.Id), 80);
+        AddTextColumn(viewTable, L.Get("Статус / причина"), nameof(TableRow.Status), 180);
         var viewsPanel = MakePanel(viewTable, L.Get("Пересоздание планов этажей, потолков и конструкций на другом уровне. Исходные виды и размещения на листах сохраняются."), out var viewActions);
         AddAction(viewActions, viewButtons, L.Get("Открыть виды"), OpenViews);
         AddAction(viewActions, viewButtons, L.Get("Удалить виды"), () => DeleteRows(viewRows, DeleteScope.Views));
         AddAction(viewActions, viewButtons, L.Get("Пересоздать виды"), RecreateViews);
         viewsTab.Content = viewsPanel; tabs.Items.Add(viewsTab);
         shell.Children.Add(tabs); Content = shell;
-        PreviewKeyDown += (_, e) =>
+        source.SelectionChanged += (_, _) =>
         {
-            if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen && !language.IsDropDownOpen) { e.Handled = true; Close(); }
+            if (loading) return;
+            if (source.SelectedItem is LevelChoice) QueueAction(ChangeSource);
+            else
+            {
+                // Typing a query clears the selection. Keep the editor responsive without an API call.
+                elementRows = []; viewRows = []; statuses.Clear();
+                searches[elementTable].SetRows(elementRows); searches[viewTable].SetRows(viewRows);
+                summary.Text = L.Get("Выберите уровень."); summary.ToolTip = null;
+                UpdateButtons();
+            }
         };
-        source.SelectionChanged += (_, _) => ChangeSource();
-        if (levels.Count > 0) source.SelectedIndex = 0;
-        else Refresh();
-        language.SelectionChanged += (_, _) => ChangeLanguage();
+        language.SelectionChanged += (_, _) => { if (!loading) QueueAction(ChangeLanguage); };
+        Reload();
     }
+
+    // Called only in a Revit API callback. The combo box receives plain values, not Revit elements.
+    public void Reload()
+    {
+        var selected = (source.SelectedItem as LevelChoice)?.Id;
+        loading = true;
+        try
+        {
+            language.SelectedIndex = L.UseEnglish ? 0 : 1;
+            levels = new FilteredElementCollector(document).OfClass(typeof(Level)).Cast<Level>()
+                .OrderBy(level => level.ProjectElevation).ThenBy(level => level.Name).ToList();
+            var choices = levels.Select(level => new LevelChoice(level.Id.Value, level.Name)).ToList();
+            source.SetItems(choices, choice => choice.Name);
+            source.SelectedItem = choices.FirstOrDefault(choice => choice.Id == selected) ?? choices.FirstOrDefault();
+            documentName.Text = document.Title;
+            documentName.ToolTip = document.Title;
+        }
+        finally { loading = false; }
+        Refresh();
+    }
+
+    public void ShowMessage(string message) => summary.Text = message;
+    private void Stop() => controller.Suspend();
+    private void QueueAction(Action action) => controller.Request(this, action);
+    private sealed record LevelChoice(long Id, string Name);
 
     private void ChangeLanguage()
     {
@@ -98,6 +136,7 @@ internal sealed class TransferWindow : Window
         var sorts = tables.ToDictionary(table => table, table => table.Items.SortDescriptions.ToList());
         L.UseEnglish = language.SelectedIndex == 0;
         LanguageLabels.Refresh(this);
+        documentName.Text = document.Title;
         Refresh();
         SetChecks(elementRows.Concat(viewRows).Where(row => checkedIds.Contains(row.Id)), true);
         foreach (var table in tables)
@@ -126,14 +165,14 @@ internal sealed class TransferWindow : Window
         var elementErrors = new List<string>();
         try
         {
-            var sourceLevelId = (source.SelectedItem as Level)?.Id;
+            var sourceLevelId = SelectedSourceId;
             IEnumerable<Element> candidates = sourceLevelId is not null ? TransferCases.Candidates(document) : [];
             elementRows = candidates.OrderBy(e => e.Id.Value)
                 .Select(e => ElementRow(e, sourceLevelId, elementErrors)).OfType<TableRow>().ToList();
-            if (source.SelectedItem is Level level)
+            if (sourceLevelId is not null)
             {
                 viewRows = new FilteredElementCollector(document).OfClass(typeof(View)).Cast<View>()
-                    .Where(v => !v.IsTemplate && v.GenLevel?.Id == level.Id).OrderBy(v => v.Name)
+                    .Where(v => !v.IsTemplate && v.GenLevel?.Id == sourceLevelId).OrderBy(v => v.Name)
                     .Select(v => new TableRow(UpdateButtons) { Id = v.Id.Value, Name = v.Name,
                         Type = ViewTypeName(v.ViewType), Status = ViewStatus(v) }).ToList();
             }
@@ -147,8 +186,8 @@ internal sealed class TransferWindow : Window
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {
-            OperationDialogs.Show(this, L.Get("Операция отменена"), L.Get("Критическая ошибка Revit. Команда закрыта; проверьте состояние документа."));
-            Close();
+            OperationDialogs.Show(this, L.Get("Операция отменена"), L.Get("Критическая ошибка Revit. Панель остановлена; проверьте состояние документа."));
+            Stop();
             return;
         }
         catch (Exception ex) { summary.Text = L.Format($"Не удалось обновить таблицы: {ex.Message}"); }
@@ -210,7 +249,7 @@ internal sealed class TransferWindow : Window
     {
         var rows = Checked(elementRows);
         if (rows.Count == 0) return;
-        var sourceLevelId = (source.SelectedItem as Level)?.Id;
+        var sourceLevelId = SelectedSourceId;
         if (sourceLevelId is null) return;
         var choices = levels.Where(level => level.Id != sourceLevelId).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(this, L.Get("Перенос недоступен"), L.Get("Нет другого уровня.")); return; }
@@ -229,9 +268,9 @@ internal sealed class TransferWindow : Window
             var title = L.Format($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}.");
             if (report.Stopped)
             {
-                OperationDialogs.Show(this, title, L.Get("Обработка остановлена. Ранее завершённые переносы сохранены; окно будет закрыто. Проверьте документ и при необходимости используйте Undo.")
+                OperationDialogs.Show(this, title, L.Get("Обработка остановлена. Ранее завершённые переносы сохранены; панель будет остановлена. Проверьте документ и при необходимости используйте Undo.")
                     + Environment.NewLine + Format(results));
-                Close();
+                Stop();
                 return;
             }
             Complete(title, results);
@@ -240,7 +279,7 @@ internal sealed class TransferWindow : Window
         {
             // Never refresh after an escaped transaction or regeneration error.
             OperationDialogs.Show(this, L.Get("Операция отменена"), ex.Message);
-            Close();
+            Stop();
         }
     }
 
@@ -261,8 +300,8 @@ internal sealed class TransferWindow : Window
     private void RecreateViews()
     {
         var rows = Checked(viewRows);
-        if (rows.Count == 0 || source.SelectedItem is not Level sourceLevel) return;
-        var choices = levels.Where(l => l.Id != sourceLevel.Id).ToList();
+        if (rows.Count == 0 || SelectedSourceId is not { } sourceLevelId) return;
+        var choices = levels.Where(l => l.Id != sourceLevelId).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(this, L.Get("Пересоздание недоступно"), L.Get("Нет другого уровня.")); return; }
         var dialog = new RecreateViewsWindow(this, choices, rows.Count);
         if (dialog.ShowDialog() != true) return;
@@ -275,7 +314,7 @@ internal sealed class TransferWindow : Window
                 ?? throw new InvalidOperationException(L.Get("Созданный вид больше не существует."));
             application.ActiveUIDocument.ActiveView = created;
         }).ShowDialog();
-        if (report.CriticalFailure) Close();
+        if (report.CriticalFailure) Stop();
     }
 
     private void OpenViews()
@@ -286,12 +325,13 @@ internal sealed class TransferWindow : Window
             try
             {
                 var view = document.GetElement(new ElementId(row.Id)) as View ?? throw new InvalidOperationException(L.Get("Вид больше не существует."));
-                // Synchronous API call in the external command context, with no open transaction.
+                // Executed in the ExternalEvent callback, with no open transaction.
                 application.ActiveUIDocument.ActiveView = view;
                 if (!application.ActiveUIDocument.GetOpenUIViews().Any(v => v.ViewId == view.Id))
                     throw new InvalidOperationException(L.Get("Revit не подтвердил открытие вида."));
                 results[row.Id] = L.Get("Вид открыт.");
             }
+            catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
             catch (Exception ex) { results[row.Id] = L.Format($"Ошибка: {ex.Message}"); }
         }
         Complete(L.Get("Открытие видов — результаты"), results);
@@ -358,29 +398,29 @@ internal sealed class TransferWindow : Window
         }
     }
 
-    private void AddAction(StackPanel panel, List<Button>? buttons, string label, Action? action)
+    private void AddAction(System.Windows.Controls.Panel panel, List<Button>? buttons, string label, Action? action)
     {
         var button = new Button { Content = label, IsEnabled = buttons is null && action is not null,
             Margin = new Thickness(0, 8, 8, 0), Padding = new Thickness(10, 5, 10, 5) };
-        if (action is not null) button.Click += (_, _) =>
+        if (action is not null) button.Click += (_, _) => QueueAction(() =>
         {
             try { action(); }
             catch (Autodesk.Revit.Exceptions.RegenerationFailedException ex)
             {
-                OperationDialogs.Show(this, L.Get("Критическая ошибка Revit"), L.Format($"Операция остановлена. Окно будет закрыто.\n{ex.Message}"));
-                Close();
+                OperationDialogs.Show(this, L.Get("Критическая ошибка Revit"), L.Format($"Панель остановлена из-за критической ошибки Revit.\n{ex.Message}"));
+                Stop();
             }
             catch (DeleteStoppedException ex)
             {
                 OperationDialogs.Show(this, L.Get("Операция отменена"), ex.Message);
-                Close();
+                Stop();
             }
             catch (Exception ex)
             {
                 if (buttons is not null) Refresh();
                 OperationDialogs.Show(this, L.Get("Операция не выполнена"), ex.Message);
             }
-        };
+        });
         if (action is not null) buttons?.Add(button);
         panel.Children.Add(button);
     }
@@ -446,6 +486,7 @@ internal sealed class TransferWindow : Window
     private static DataGridTextColumn AddTextColumn(DataGrid table, string title, string property, double? width = null)
     {
         var column = new DataGridTextColumn { Header = title, Binding = new Binding(property),
+            MinWidth = property == nameof(TableRow.Status) ? 180 : width ?? 100,
             Width = width is { } value ? new DataGridLength(value) : new DataGridLength(1, DataGridLengthUnitType.Star) };
         var style = new Style(typeof(TextBlock));
         style.Setters.Add(new Setter(FrameworkElement.ToolTipProperty, new Binding(property)));
@@ -454,16 +495,17 @@ internal sealed class TransferWindow : Window
         table.Columns.Add(column); return column;
     }
 
-    private DockPanel MakePanel(DataGrid table, string hint, out StackPanel actions)
+    private DockPanel MakePanel(DataGrid table, string hint, out WrapPanel actions)
     {
-        var panel = new DockPanel { Margin = new Thickness(8) };
-        var text = new TextBlock { Text = hint, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 8) };
-        DockPanel.SetDock(text, Dock.Top); panel.Children.Add(text);
+        var panel = new DockPanel { Margin = new Thickness(2) };
+        var text = new TextBlock { Text = hint, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 8) };
+        var help = new Expander { Header = L.Get("Описание"), Content = text, Margin = new Thickness(0, 0, 0, 6) };
+        DockPanel.SetDock(help, Dock.Top); panel.Children.Add(help);
         var controller = new TableSearch(table, UpdateButtons);
         searches.Add(table, controller);
         var search = controller.Bar;
         DockPanel.SetDock(search, Dock.Top); panel.Children.Add(search);
-        actions = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
+        actions = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Left };
         DockPanel.SetDock(actions, Dock.Bottom); panel.Children.Add(actions);
         panel.Children.Add(table); return panel;
     }
