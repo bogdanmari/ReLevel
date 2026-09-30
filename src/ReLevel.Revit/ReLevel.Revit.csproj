@@ -30,6 +30,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(BuildFamily)' != '2024-'">
     <EmbeddedResource Include="Localization\English.json" />
+    <AssemblyMetadata Include="ReLevelProjectDirectory" Value="$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="RevitAPI">

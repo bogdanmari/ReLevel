@@ -22,9 +22,10 @@ public sealed class ReLevelCommand : IExternalCommand
         {
             var levels = new FilteredElementCollector(document).OfClass(typeof(Level)).Cast<Level>()
                 .OrderBy(l => l.ProjectElevation).ThenBy(l => l.Name).ToList();
-            var window = new TransferWindow(ui, levels, ui.ActiveUIDocument!.Selection.GetElementIds().ToList());
+            var window = new TransferWindow(ui, levels);
             new System.Windows.Interop.WindowInteropHelper(window) { Owner = ui.MainWindowHandle };
             window.ShowDialog();
+            if (window.InspectElementRequested) ElementInspectorAction.Run(ui);
             // Operations are committed while the window is open. Closing it must not undo them.
             return Result.Succeeded;
         }

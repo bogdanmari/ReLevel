@@ -24,7 +24,7 @@ internal sealed class ViewRecreationService(Document document)
             if (batch.GetStatus() == TransactionStatus.Started) Require(batch.RollBack(), TransactionStatus.RolledBack);
             report.Results.Items.Clear();
             foreach (var id in sourceIds)
-                report.Results.Items.Add(new(id.Value, id.Value.ToString(), TransferStatus.Failed, L.Get("Пакет отменён из-за критической ошибки Revit.")));
+                report.Results.Items.Add(new(id.Value, id.Value.ToString(), ViewResultStatus.Failed, L.Get("Пакет отменён из-за критической ошибки Revit.")));
             report.Entries.Add(new(LogSeverity.Error, L.Get("Операция отменена"), 0, null, null,
                 L.Get("Revit не позволил безопасно продолжить. Все изменения этого запуска отменены; ранее записанные ID новых видов недействительны."),
                 ex.ToString(), L.Get("Сохраните журнал. При сбое регенерации закройте команду и проверьте состояние документа.")));
@@ -33,7 +33,7 @@ internal sealed class ViewRecreationService(Document document)
         return report;
     }
 
-    private TransferResult RecreateOne(ElementId sourceId, ElementId targetLevelId, string prefix,
+    private ViewResult RecreateOne(ElementId sourceId, ElementId targetLevelId, string prefix,
         ViewRecreationReport report, HashSet<long> originalIds)
     {
         var log = new ViewOperationLog(document, report, sourceId.Value, originalIds);
@@ -55,7 +55,7 @@ internal sealed class ViewRecreationService(Document document)
         catch (Exception ex)
         {
             log.Add(LogSeverity.Error, L.Get("Подготовка"), ex.Message, ex.ToString(), recommendation: L.Get("Исправьте указанную причину и повторите создание."));
-            return new(sourceId.Value, name, TransferStatus.Skipped, ex.Message);
+            return new(sourceId.Value, name, ViewResultStatus.Skipped, ex.Message);
         }
 
         var newId = ElementId.InvalidElementId;
@@ -65,7 +65,7 @@ internal sealed class ViewRecreationService(Document document)
             var target = ViewPlan.Create(document, source.GetTypeId(), targetLevelId);
             target.Name = newName;
             newId = target.Id;
-        })) return new(sourceId.Value, name, TransferStatus.Failed, L.Get("Вид не создан. Подробности в журнале."));
+        })) return new(sourceId.Value, name, ViewResultStatus.Failed, L.Get("Вид не создан. Подробности в журнале."));
 
         log.CreatedId = newId.Value;
         log.Add(LogSeverity.Info, L.Get("Создание вида"), L.Format($"Создан «{newName}», ID {newId.Value}."),
@@ -109,7 +109,7 @@ internal sealed class ViewRecreationService(Document document)
             log.Add(LogSeverity.Info, L.Get("Итог копирования"), annotations.Report);
         }
         var issues = report.Entries.Count(e => e.SourceViewId == sourceId.Value && e.Severity != LogSeverity.Info);
-        return new(sourceId.Value, name, TransferStatus.Transferred,
+        return new(sourceId.Value, name, ViewResultStatus.Created,
             L.Format($"Создан «{newName}», ID {newId.Value}. Замечаний и ошибок этапов: {issues}. См. журнал."));
     }
 

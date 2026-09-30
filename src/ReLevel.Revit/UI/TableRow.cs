@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using ReLevel.Revit.Transfer;
 
 namespace ReLevel.Revit.UI;
 
@@ -24,5 +23,4 @@ internal sealed class TableRow(Action selectionChanged) : INotifyPropertyChanged
     public string Level { get; init; } = "";
     public string Type { get; init; } = "";
     public string Status { get; init; } = "";
-    public LevelRelationResult? LevelRelations { get; init; }
 }

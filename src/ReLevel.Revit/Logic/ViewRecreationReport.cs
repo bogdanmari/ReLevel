@@ -13,9 +13,19 @@ internal sealed record ViewLogEntry(LogSeverity Severity, string Stage, long Sou
 internal sealed class ViewRecreationReport
 {
     public bool CriticalFailure { get; set; }
-    public TransferReport Results { get; } = new();
+    public ViewResults Results { get; } = new();
     public List<ViewLogEntry> Entries { get; } = [];
-    public string Summary => L.Format($"Создано видов: {Results.Transferred}. Не создано: {Results.Skipped + Results.Failed}. ")
+    public string Summary => L.Format($"Создано видов: {Results.Created}. Не создано: {Results.Skipped + Results.Failed}. ")
         + L.Format($"Замечаний: {Entries.Count(e => e.Severity == LogSeverity.Warning)}. Записей об ошибках: {Entries.Count(e => e.Severity == LogSeverity.Error)}.");
     public string FullText => Summary + "\n\n" + string.Join("\n\n", Entries.Select(e => e.FullText));
+}
+
+internal enum ViewResultStatus { Created, Skipped, Failed }
+internal sealed record ViewResult(long ElementId, string Name, ViewResultStatus Status, string Reason);
+internal sealed class ViewResults
+{
+    public List<ViewResult> Items { get; } = [];
+    public int Created => Items.Count(x => x.Status == ViewResultStatus.Created);
+    public int Skipped => Items.Count(x => x.Status == ViewResultStatus.Skipped);
+    public int Failed => Items.Count(x => x.Status == ViewResultStatus.Failed);
 }

@@ -8,6 +8,8 @@ internal sealed record AnnotationCheck(bool Error, string Message);
 // Capture before copying: comparing two live objects could miss a change to the source.
 internal sealed class AnnotationSnapshot
 {
+    // Internal feet: approximately 0.003 mm.
+    private const double Tolerance = 1e-5;
     private readonly Dictionary<string, string> text = [];
     private readonly Dictionary<string, double> numbers = [];
     private readonly Dictionary<string, ModelPoint[]> points = [];
@@ -181,11 +183,11 @@ internal sealed class AnnotationSnapshot
                 checks.Add(new(true, L.Format($"Не совпадает содержимое аннотации: {key}.")));
         foreach (var (key, value) in numbers)
             if (after.numbers.TryGetValue(key, out var actual)
-                && (!double.IsFinite(actual) || !double.IsFinite(value) || Math.Abs(value - actual) > GeometrySnapshot.Tolerance))
+                && (!double.IsFinite(actual) || !double.IsFinite(value) || Math.Abs(value - actual) > Tolerance))
                 checks.Add(new(true, L.Format($"Не совпадает значение аннотации: {key}.")));
         foreach (var (key, value) in points)
             if (after.points.TryGetValue(key, out var actual) && (value.Length != actual.Length
-                || value.Where((p, i) => !p.IsWithin(actual[i], GeometrySnapshot.Tolerance)).Any()))
+                || value.Where((p, i) => !p.IsWithin(actual[i], Tolerance)).Any()))
                 checks.Add(new(true, L.Format($"Не совпадает положение аннотации: {key}.")));
         if (!text.Keys.Order().SequenceEqual(after.text.Keys.Order()) || !numbers.Keys.Order().SequenceEqual(after.numbers.Keys.Order())
             || !points.Keys.Order().SequenceEqual(after.points.Keys.Order()))
