@@ -5,9 +5,11 @@ namespace ReLevel.Revit.Transfer;
 
 internal sealed class ElementTransferService(Document document)
 {
-    public ElementTransferReport Execute(IReadOnlyList<ElementId> ids, ElementId targetLevelId, ElementId sourceLevelId)
+    public ElementTransferReport Execute(IReadOnlyList<ElementId> ids, ElementId targetLevelId, ElementId sourceLevelId,
+        Action<int, int, long?>? progress = null)
     {
         var report = new ElementTransferReport();
+        var completed = 0;
         foreach (var id in ids)
         {
             if (report.Stopped)
@@ -15,6 +17,7 @@ internal sealed class ElementTransferService(Document document)
                 report.Items.Add(new(id.Value, ElementTransferStatus.Skipped, L.Get("Не обработан: выполнение остановлено.")));
                 continue;
             }
+            progress?.Invoke(completed, ids.Count, id.Value);
             try { report.Items.Add(TransferOne(id, targetLevelId, sourceLevelId)); }
             catch (Exception ex)
             {
@@ -23,6 +26,8 @@ internal sealed class ElementTransferService(Document document)
                 report.Items.Add(new(id.Value, ElementTransferStatus.Failed,
                     L.Format($"Обработка остановлена: {ex.Message}")));
             }
+            completed++;
+            progress?.Invoke(completed, ids.Count, null);
         }
         return report;
     }
@@ -62,7 +67,7 @@ internal sealed class ElementTransferService(Document document)
             if (failures.Corrupted) throw new TransferStoppedException(failures.Reason);
             if (status != TransactionStatus.Committed)
                 throw new InvalidOperationException(failures.Reason ?? L.Format($"Перенос не зафиксирован: {status}."));
-            return Result(ElementTransferStatus.Transferred, operation.SuccessMessage);
+            return Result(ElementTransferStatus.Transferred, operation.SuccessMessage + failures.UnjoinMessage);
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {
@@ -101,18 +106,4 @@ internal sealed class ElementTransferService(Document document)
 
     private sealed class TransferStoppedException(string? message, Exception? inner = null) : Exception(message, inner);
 
-    private sealed class TransferFailures : IFailuresPreprocessor
-    {
-        public string? Reason { get; private set; }
-        public bool Corrupted { get; private set; }
-
-        public FailureProcessingResult PreprocessFailures(FailuresAccessor accessor)
-        {
-            var errors = accessor.GetFailureMessages().Where(f => f.GetSeverity() != FailureSeverity.Warning).ToList();
-            if (errors.Count == 0) return FailureProcessingResult.Continue; // Warnings retain Revit's normal handling.
-            Reason = string.Join(Environment.NewLine, errors.Select(f => f.GetDescriptionText()));
-            Corrupted |= errors.Any(f => f.GetSeverity() == FailureSeverity.DocumentCorruption);
-            return FailureProcessingResult.ProceedWithRollBack;
-        }
-    }
 }

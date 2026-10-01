@@ -1,0 +1,275 @@
+{
+  "error": "Traceback (most recent call last):\n  File \"<string>\", line 130, in main\nException: Input type(Autodesk.Revit.DB.Area) is of an element type that exists in the API, but not in Revit's native object model. Try using Autodesk.Revit.DB.SpatialElement instead, and then postprocessing the results to find the elements of interest.\r\nParameter name: type\n",
+  "example_id": 2219718,
+  "source_level_id": 1518530,
+  "scope": "Read-only; all Areas on source and target levels",
+  "units": "feet / square feet",
+  "document": "US-SVL-BRGUP123_A_detached_bmarishenko",
+  "revit_build": "25.4.41.14",
+  "levels": [
+    {
+      "id": 30,
+      "project_elevation_ft": 0.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 0",
+      "category": "Levels"
+    },
+    {
+      "id": 9946,
+      "project_elevation_ft": 14.000000000005071,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 2",
+      "category": "Levels"
+    },
+    {
+      "id": 153777,
+      "project_elevation_ft": 28.00000000000507,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 3",
+      "category": "Levels"
+    },
+    {
+      "id": 153814,
+      "project_elevation_ft": 42.000000000005073,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 4",
+      "category": "Levels"
+    },
+    {
+      "id": 153841,
+      "project_elevation_ft": 56.000000000005073,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "ROOF",
+      "category": "Levels"
+    },
+    {
+      "id": 1518530,
+      "project_elevation_ft": -6.1106675275368616e-12,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "Level LL",
+      "category": "Levels"
+    },
+    {
+      "id": 1519130,
+      "project_elevation_ft": 11.999999999993889,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "Level 1",
+      "category": "Levels"
+    },
+    {
+      "id": 1519442,
+      "project_elevation_ft": 79.166666666666501,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "HEIGHT LIMIT",
+      "category": "Levels"
+    },
+    {
+      "id": 1519822,
+      "project_elevation_ft": 31.999999999993904,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "Level R",
+      "category": "Levels"
+    },
+    {
+      "id": 1520148,
+      "project_elevation_ft": 63.249999999993889,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. COOLING BLDG.",
+      "category": "Levels"
+    },
+    {
+      "id": 1550831,
+      "project_elevation_ft": 27.625,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "HEATING ROOF H.P.",
+      "category": "Levels"
+    },
+    {
+      "id": 1550860,
+      "project_elevation_ft": 39.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. HEATING BLDG",
+      "category": "Levels"
+    },
+    {
+      "id": 1566711,
+      "project_elevation_ft": 26.572916666666664,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. ANCILLARY ROOF",
+      "category": "Levels"
+    },
+    {
+      "id": 1679833,
+      "project_elevation_ft": 22.500000000000018,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "SHROUD",
+      "category": "Levels"
+    },
+    {
+      "id": 1684280,
+      "project_elevation_ft": 4.166666666666667,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "AVG T.O. CURB",
+      "category": "Levels"
+    },
+    {
+      "id": 1857542,
+      "project_elevation_ft": 61.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. COLD WATER",
+      "category": "Levels"
+    },
+    {
+      "id": 3220892,
+      "project_elevation_ft": 6.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL LL+6'",
+      "category": "Levels"
+    },
+    {
+      "id": 5948801,
+      "project_elevation_ft": 44.333333333333336,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "STAIRS ROOF T.O. ROOF",
+      "category": "Levels"
+    },
+    {
+      "id": 8674221,
+      "project_elevation_ft": 7.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "B/O TANK",
+      "category": "Levels"
+    },
+    {
+      "id": 8691003,
+      "project_elevation_ft": 11.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T/O WALL, B/O SCREEN",
+      "category": "Levels"
+    },
+    {
+      "id": 8691077,
+      "project_elevation_ft": 1.4583333333333335,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "B/O CW TANK",
+      "category": "Levels"
+    },
+    {
+      "id": 8695925,
+      "project_elevation_ft": 5.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "B/O HW TANK",
+      "category": "Levels"
+    },
+    {
+      "id": 8709530,
+      "project_elevation_ft": 35.000000000000121,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "CW SCREEN HIGH POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 8709865,
+      "project_elevation_ft": 15.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "CW SCREEN LOW POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 8712145,
+      "project_elevation_ft": 25.000000000000043,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T/O HW SCREEN HIGH POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 8712554,
+      "project_elevation_ft": 15.000000000000011,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T/O HW SCREEN LOW POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 10690457,
+      "project_elevation_ft": 3.1666666666664991,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "ANCILLARY LL",
+      "category": "Levels"
+    },
+    {
+      "id": 11254152,
+      "project_elevation_ft": 32.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. STEEL",
+      "category": "Levels"
+    },
+    {
+      "id": 11518570,
+      "project_elevation_ft": 28.114583333333332,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. WALL",
+      "category": "Levels"
+    }
+  ],
+  "area_plans": [],
+  "target_level_id": 30,
+  "revit_version": "2025"
+}

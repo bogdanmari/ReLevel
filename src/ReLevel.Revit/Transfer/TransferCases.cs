@@ -1,4 +1,6 @@
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
+using Autodesk.Revit.DB.Plumbing;
 
 namespace ReLevel.Revit.Transfer;
 
@@ -33,6 +35,46 @@ internal static class TransferCases
             (element, source) => FloorCase.SourceLevel(element)?.Id == source,
             (element, _) => FloorCase.WriteRestriction(element),
             (element, source) => new LevelOffsetOperation(element, source, FloorCase.Binding),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 5 — крыши выдавливанием ExtrusionRoof"),
+            [typeof(ExtrusionRoof)], ExtrusionRoofCase.UnsupportedReason,
+            (element, source) => ExtrusionRoofCase.SourceLevel(element)?.Id == source,
+            (element, _) => ExtrusionRoofCase.WriteRestriction(element),
+            (element, source) => new LevelOffsetOperation(element, source, ExtrusionRoofCase.Binding),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 6 — крыши по контуру FootPrintRoof"),
+            [typeof(FootPrintRoof)], FootPrintRoofCase.UnsupportedReason,
+            (element, source) => FootPrintRoofCase.SourceLevel(element)?.Id == source,
+            (element, _) => FootPrintRoofCase.WriteRestriction(element),
+            (element, source) => new LevelOffsetOperation(element, source, FootPrintRoofCase.Binding),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 7 — балки с Reference Level"),
+            [typeof(FamilyInstance)], BeamCase.UnsupportedReason,
+            (element, source) => BeamCase.SourceLevel(element)?.Id == source,
+            (element, _) => BeamCase.WriteRestriction(element),
+            (element, _) => new BeamOperation(element),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 8 — пересоздание Room Separation Lines"),
+            [typeof(CurveElement)], RoomSeparatorCase.UnsupportedReason,
+            (element, source) => element.LevelId == source,
+            (element, _) => RoomSeparatorCase.WriteRestriction(element),
+            (element, _) => new RoomSeparatorOperation(element),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 9 — лестницы Stairs"),
+            [typeof(Stairs)], StairsCase.UnsupportedReason, StairsCase.IsOnLevel,
+            StairsCase.WriteRestriction, (element, source) => new StairsOperation(element, source),
+            StairsCase.Relation),
+        new TransferCase(() => L.Get("Кейс 10 — ограждения без хоста"),
+            [typeof(Railing)], RailingCase.UnsupportedReason,
+            (element, source) => RailingCase.SourceLevel(element)?.Id == source,
+            (element, _) => RailingCase.WriteRestriction(element),
+            (element, source) => new LevelOffsetOperation(element, source, RailingCase.Binding),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 11 — трубы Pipe"),
+            [typeof(Pipe)], PipeCase.UnsupportedReason,
+            (element, source) => PipeCase.SourceLevel(element)?.Id == source,
+            (element, _) => PipeCase.WriteRestriction(element),
+            (element, _) => new PipeOperation(element),
             (_, _) => L.Get("Уровень"))
     });
 

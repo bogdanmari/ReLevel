@@ -1,0 +1,1282 @@
+{
+  "source_schemes_without_target_plan": [
+    239784
+  ],
+  "areas": [
+    {
+      "unique_id": "d5520977-de9d-4c94-9da4-d8a25af0c1d7-0021dec6",
+      "id": 2219718,
+      "dependent_elements": [
+        {
+          "level_id": 1518530,
+          "id": 2219718,
+          "name": "BIKES 16",
+          "category": "Areas",
+          "class": "Autodesk.Revit.DB.Area",
+          "owner_view_id": -1
+        }
+      ],
+      "assembly_id": -1,
+      "parameters": [
+        {
+          "id": -1152385,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": false,
+          "name": "Image",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1140363,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "shared_guid": null,
+          "value": -2003200
+        },
+        {
+          "id": -1140362,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "shared_guid": null,
+          "value": -2003200
+        },
+        {
+          "id": -1019016,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "IFC Predefined Type",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1019014,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Export to IFC As",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1019012,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Export to IFC",
+          "shared_guid": null,
+          "value": 0
+        },
+        {
+          "id": -1019000,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "IfcGUID",
+          "shared_guid": null,
+          "value": "3LKWbttfrCb9sasA9QqHyH"
+        },
+        {
+          "id": -1013201,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Design Option",
+          "shared_guid": null,
+          "value": -1
+        },
+        {
+          "id": -1013200,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Design Option",
+          "shared_guid": null,
+          "value": "Main Model"
+        },
+        {
+          "id": -1012704,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Area Scheme Id",
+          "shared_guid": null,
+          "value": 239784
+        },
+        {
+          "id": -1012703,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Area Type",
+          "shared_guid": null,
+          "value": "Building Common Area"
+        },
+        {
+          "id": -1012701,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Area Type",
+          "shared_guid": null,
+          "value": 239786
+        },
+        {
+          "id": -1010106,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Comments",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1007101,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Level",
+          "shared_guid": null,
+          "value": "Level LL"
+        },
+        {
+          "id": -1006928,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Computation Height",
+          "shared_guid": null,
+          "value": 3.0
+        },
+        {
+          "id": -1006917,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Perimeter",
+          "shared_guid": null,
+          "value": 61.5
+        },
+        {
+          "id": -1006916,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Level",
+          "shared_guid": null,
+          "value": 1518530
+        },
+        {
+          "id": -1006902,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Area",
+          "shared_guid": null,
+          "value": 224.43055555555839
+        },
+        {
+          "id": -1006901,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Number",
+          "shared_guid": null,
+          "value": "16"
+        },
+        {
+          "id": -1006900,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Name",
+          "shared_guid": null,
+          "value": "BIKES"
+        },
+        {
+          "id": -1002067,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Edited by",
+          "shared_guid": null,
+          "value": ""
+        },
+        {
+          "id": -1002053,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Workset",
+          "shared_guid": null,
+          "value": 467
+        },
+        {
+          "id": -1002002,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Family Name",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1002001,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Type Name",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": 1050130,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "BOMA Space Class",
+          "shared_guid": "b0d65b19-5231-46cc-916b-b0ab015aa3c3",
+          "value": null
+        },
+        {
+          "id": 1100994,
+          "readonly": false,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Occupant Load Factor",
+          "shared_guid": "849b90bf-2b0c-435e-8688-8464db76b33d",
+          "value": 300.0
+        },
+        {
+          "id": 1100997,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupant Load Factor Text",
+          "shared_guid": "b0980d9a-eb96-4def-a128-fdaf2a53220b",
+          "value": "1:300"
+        },
+        {
+          "id": 1101000,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupant Load Factor Metric Text",
+          "shared_guid": "ab409f6d-e0df-4e7d-9d50-650b9d59b220",
+          "value": "1:27.87"
+        },
+        {
+          "id": 1101003,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Occupancy Fixed Seating",
+          "shared_guid": "85194098-1faf-49ad-ae38-78817311d849",
+          "value": -1
+        },
+        {
+          "id": 1101006,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Occupant Load",
+          "shared_guid": "f6a427a7-f7cd-41ec-92c4-e35db50b8399",
+          "value": 1
+        },
+        {
+          "id": 1101009,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupant Load Text",
+          "shared_guid": "c4d57298-82a3-491b-b840-3d72e94690fe",
+          "value": "1"
+        },
+        {
+          "id": 1101012,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Group",
+          "shared_guid": "8fd62376-eac4-412f-bc5f-f7c3e9647e04",
+          "value": "F-1"
+        },
+        {
+          "id": 1101015,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Type Key",
+          "shared_guid": "be7cdf61-7a6f-4482-99db-a3a22e723ce6",
+          "value": "F-1-300"
+        },
+        {
+          "id": 1101018,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Separation",
+          "shared_guid": "bf1be3b1-31b9-42db-9517-13eba6040941",
+          "value": "ACCESSORY"
+        },
+        {
+          "id": 2181370,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Fixed Seating Type",
+          "shared_guid": "1e141ce5-e0a0-47bb-abf2-9ca3afff02f6",
+          "value": "NOT_FIXED"
+        },
+        {
+          "id": 3131940,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Building",
+          "shared_guid": null,
+          "value": "COOLING"
+        },
+        {
+          "id": 6348674,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Classification.Space.Number",
+          "shared_guid": "55425773-5e60-45ab-a79d-4f1cc9f0f64a",
+          "value": null
+        },
+        {
+          "id": 6348683,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Classification.Space.Description",
+          "shared_guid": "eccb49fb-3189-4e04-a4bb-6c3fa7bb57df",
+          "value": null
+        },
+        {
+          "id": 21890848,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS QR Code",
+          "shared_guid": "f261bb2e-5798-4755-93ba-dc924c7a452c",
+          "value": null
+        },
+        {
+          "id": 21890959,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS Status Name",
+          "shared_guid": "ace75dae-d80b-4a4d-855b-3a7207514f4d",
+          "value": null
+        }
+      ],
+      "level_id": 1518530,
+      "pinned": false,
+      "design_option": null,
+      "owner_view_id": -1,
+      "area_sq_ft": 224.43055555555839,
+      "boundary_loops": [
+        [
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1000.6613493087186,
+                  595.14115217597839,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1000.6613493087184,
+                  575.67240217597828,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 19.468750000000114
+            },
+            "element": null
+          },
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1000.343640975385,
+                  575.99011050931165,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1012.8957243087186,
+                  575.99011050931165,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 12.552083333333599
+            },
+            "element": null
+          },
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1012.5780159753853,
+                  575.67240217597828,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1012.5780159753853,
+                  595.14115217597816,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 19.468749999999886
+            },
+            "element": null
+          },
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1012.8957243087186,
+                  594.82344384264479,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1000.3436409753853,
+                  594.82344384264502,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 12.552083333333371
+            },
+            "element": null
+          }
+        ]
+      ],
+      "scheme": {
+        "level_id": -1,
+        "id": 239784,
+        "name": "2.0_Documents-Life Safety1",
+        "category": "Area Schemes",
+        "class": "Autodesk.Revit.DB.AreaScheme",
+        "owner_view_id": -1
+      },
+      "group_id": -1,
+      "name": "BIKES 16",
+      "category": "Areas",
+      "class": "Autodesk.Revit.DB.Area",
+      "point_ft": [
+        1003.6454821808439,
+        594.40193230692694,
+        -6.1106675275368616e-12
+      ]
+    },
+    {
+      "unique_id": "57ade3c6-b2dc-4778-be2d-a924b096a69d-002faf23",
+      "id": 3125027,
+      "dependent_elements": [
+        {
+          "level_id": 1518530,
+          "id": 3125027,
+          "name": "METER SWITCHGEAR 23",
+          "category": "Areas",
+          "class": "Autodesk.Revit.DB.Area",
+          "owner_view_id": -1
+        }
+      ],
+      "assembly_id": -1,
+      "parameters": [
+        {
+          "id": -1152385,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": false,
+          "name": "Image",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1140363,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "shared_guid": null,
+          "value": -2003200
+        },
+        {
+          "id": -1140362,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "shared_guid": null,
+          "value": -2003200
+        },
+        {
+          "id": -1019016,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "IFC Predefined Type",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1019014,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Export to IFC As",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1019012,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Export to IFC",
+          "shared_guid": null,
+          "value": 0
+        },
+        {
+          "id": -1019000,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "IfcGUID",
+          "shared_guid": null,
+          "value": "1NhUF6ijn7UBujgIImkGc_"
+        },
+        {
+          "id": -1013201,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Design Option",
+          "shared_guid": null,
+          "value": -1
+        },
+        {
+          "id": -1013200,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Design Option",
+          "shared_guid": null,
+          "value": "Main Model"
+        },
+        {
+          "id": -1012704,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Area Scheme Id",
+          "shared_guid": null,
+          "value": 239784
+        },
+        {
+          "id": -1012703,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Area Type",
+          "shared_guid": null,
+          "value": "Building Common Area"
+        },
+        {
+          "id": -1012701,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Area Type",
+          "shared_guid": null,
+          "value": 239786
+        },
+        {
+          "id": -1010106,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Comments",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1007101,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Level",
+          "shared_guid": null,
+          "value": "Level LL"
+        },
+        {
+          "id": -1006928,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Computation Height",
+          "shared_guid": null,
+          "value": 3.0
+        },
+        {
+          "id": -1006917,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Perimeter",
+          "shared_guid": null,
+          "value": 120.49999999999852
+        },
+        {
+          "id": -1006916,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Level",
+          "shared_guid": null,
+          "value": 1518530
+        },
+        {
+          "id": -1006902,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Area",
+          "shared_guid": null,
+          "value": 883.74999999997453
+        },
+        {
+          "id": -1006901,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Number",
+          "shared_guid": null,
+          "value": "23"
+        },
+        {
+          "id": -1006900,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Name",
+          "shared_guid": null,
+          "value": "METER SWITCHGEAR"
+        },
+        {
+          "id": -1002067,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Edited by",
+          "shared_guid": null,
+          "value": ""
+        },
+        {
+          "id": -1002053,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Workset",
+          "shared_guid": null,
+          "value": 467
+        },
+        {
+          "id": -1002002,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Family Name",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": -1002001,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Type Name",
+          "shared_guid": null,
+          "value": null
+        },
+        {
+          "id": 1050130,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "BOMA Space Class",
+          "shared_guid": "b0d65b19-5231-46cc-916b-b0ab015aa3c3",
+          "value": null
+        },
+        {
+          "id": 1100994,
+          "readonly": false,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Occupant Load Factor",
+          "shared_guid": "849b90bf-2b0c-435e-8688-8464db76b33d",
+          "value": 300.0
+        },
+        {
+          "id": 1100997,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupant Load Factor Text",
+          "shared_guid": "b0980d9a-eb96-4def-a128-fdaf2a53220b",
+          "value": "1:300"
+        },
+        {
+          "id": 1101000,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupant Load Factor Metric Text",
+          "shared_guid": "ab409f6d-e0df-4e7d-9d50-650b9d59b220",
+          "value": "1:27.87"
+        },
+        {
+          "id": 1101003,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Occupancy Fixed Seating",
+          "shared_guid": "85194098-1faf-49ad-ae38-78817311d849",
+          "value": -1
+        },
+        {
+          "id": 1101006,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Occupant Load",
+          "shared_guid": "f6a427a7-f7cd-41ec-92c4-e35db50b8399",
+          "value": 3
+        },
+        {
+          "id": 1101009,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupant Load Text",
+          "shared_guid": "c4d57298-82a3-491b-b840-3d72e94690fe",
+          "value": "3"
+        },
+        {
+          "id": 1101012,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Group",
+          "shared_guid": "8fd62376-eac4-412f-bc5f-f7c3e9647e04",
+          "value": "F-1"
+        },
+        {
+          "id": 1101015,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Type Key",
+          "shared_guid": "be7cdf61-7a6f-4482-99db-a3a22e723ce6",
+          "value": "F-1-300"
+        },
+        {
+          "id": 1101018,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Separation",
+          "shared_guid": "bf1be3b1-31b9-42db-9517-13eba6040941",
+          "value": "PRIMARY"
+        },
+        {
+          "id": 2181370,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Occupancy Fixed Seating Type",
+          "shared_guid": "1e141ce5-e0a0-47bb-abf2-9ca3afff02f6",
+          "value": "NOT_FIXED"
+        },
+        {
+          "id": 3131940,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Building",
+          "shared_guid": null,
+          "value": "HEATING"
+        },
+        {
+          "id": 6348674,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Classification.Space.Number",
+          "shared_guid": "55425773-5e60-45ab-a79d-4f1cc9f0f64a",
+          "value": null
+        },
+        {
+          "id": 6348683,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Classification.Space.Description",
+          "shared_guid": "eccb49fb-3189-4e04-a4bb-6c3fa7bb57df",
+          "value": null
+        },
+        {
+          "id": 21890848,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS QR Code",
+          "shared_guid": "f261bb2e-5798-4755-93ba-dc924c7a452c",
+          "value": null
+        },
+        {
+          "id": 21890959,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS Status Name",
+          "shared_guid": "ace75dae-d80b-4a4d-855b-3a7207514f4d",
+          "value": null
+        }
+      ],
+      "level_id": 1518530,
+      "pinned": false,
+      "design_option": null,
+      "owner_view_id": -1,
+      "area_sq_ft": 883.74999999997453,
+      "boundary_loops": [
+        [
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1033.3384326420514,
+                  761.71940738430953,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1058.5050993087179,
+                  761.71940738430953,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 25.166666666666515
+            },
+            "element": {
+              "level_id": 1518530,
+              "id": 2219623,
+              "name": "Model Lines",
+              "category": "<Area Boundary>",
+              "class": "Autodesk.Revit.DB.ModelLine",
+              "owner_view_id": -1
+            }
+          },
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1058.5884326420505,
+                  761.71940738430953,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1058.5884326420505,
+                  796.71940738430965,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 35.000000000000114
+            },
+            "element": {
+              "level_id": 1518530,
+              "id": 3124992,
+              "name": "Model Lines",
+              "category": "<Area Boundary>",
+              "class": "Autodesk.Revit.DB.ModelLine",
+              "owner_view_id": -1
+            }
+          },
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1058.5884326420505,
+                  796.71940738430965,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1033.3384326420514,
+                  796.71940738430976,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 25.249999999999091
+            },
+            "element": {
+              "level_id": 1518530,
+              "id": 3124956,
+              "name": "Model Lines",
+              "category": "<Area Boundary>",
+              "class": "Autodesk.Revit.DB.ModelLine",
+              "owner_view_id": -1
+            }
+          },
+          {
+            "curve": {
+              "bound": true,
+              "points_ft": [
+                [
+                  1033.3384326420514,
+                  796.71940738430976,
+                  -6.1106675275368616e-12
+                ],
+                [
+                  1033.3384326420514,
+                  761.71940738430953,
+                  -6.1106675275368616e-12
+                ]
+              ],
+              "class": "Autodesk.Revit.DB.Line",
+              "length_ft": 35.000000000000227
+            },
+            "element": {
+              "level_id": 1518530,
+              "id": 3131655,
+              "name": "Model Lines",
+              "category": "<Area Boundary>",
+              "class": "Autodesk.Revit.DB.ModelLine",
+              "owner_view_id": -1
+            }
+          }
+        ]
+      ],
+      "scheme": {
+        "level_id": -1,
+        "id": 239784,
+        "name": "2.0_Documents-Life Safety1",
+        "category": "Area Schemes",
+        "class": "Autodesk.Revit.DB.AreaScheme",
+        "owner_view_id": -1
+      },
+      "group_id": -1,
+      "name": "METER SWITCHGEAR 23",
+      "category": "Areas",
+      "class": "Autodesk.Revit.DB.Area",
+      "point_ft": [
+        1039.4624523892721,
+        772.17596244894355,
+        -6.1106675275368616e-12
+      ]
+    }
+  ],
+  "example_id": 2219718,
+  "source_level_id": 1518530,
+  "scope": "Read-only; all Areas on source and target levels",
+  "area_tags": [],
+  "units": "feet / square feet",
+  "document": "US-SVL-BRGUP123_A_detached_bmarishenko",
+  "revit_build": "25.4.41.14",
+  "levels": [
+    {
+      "id": 30,
+      "project_elevation_ft": 0.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 0",
+      "category": "Levels"
+    },
+    {
+      "id": 9946,
+      "project_elevation_ft": 14.000000000005071,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 2",
+      "category": "Levels"
+    },
+    {
+      "id": 153777,
+      "project_elevation_ft": 28.00000000000507,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 3",
+      "category": "Levels"
+    },
+    {
+      "id": 153814,
+      "project_elevation_ft": 42.000000000005073,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL 4",
+      "category": "Levels"
+    },
+    {
+      "id": 153841,
+      "project_elevation_ft": 56.000000000005073,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "ROOF",
+      "category": "Levels"
+    },
+    {
+      "id": 1518530,
+      "project_elevation_ft": -6.1106675275368616e-12,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "Level LL",
+      "category": "Levels"
+    },
+    {
+      "id": 1519130,
+      "project_elevation_ft": 11.999999999993889,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "Level 1",
+      "category": "Levels"
+    },
+    {
+      "id": 1519442,
+      "project_elevation_ft": 79.166666666666501,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "HEIGHT LIMIT",
+      "category": "Levels"
+    },
+    {
+      "id": 1519822,
+      "project_elevation_ft": 31.999999999993904,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "Level R",
+      "category": "Levels"
+    },
+    {
+      "id": 1520148,
+      "project_elevation_ft": 63.249999999993889,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. COOLING BLDG.",
+      "category": "Levels"
+    },
+    {
+      "id": 1550831,
+      "project_elevation_ft": 27.625,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "HEATING ROOF H.P.",
+      "category": "Levels"
+    },
+    {
+      "id": 1550860,
+      "project_elevation_ft": 39.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. HEATING BLDG",
+      "category": "Levels"
+    },
+    {
+      "id": 1566711,
+      "project_elevation_ft": 26.572916666666664,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. ANCILLARY ROOF",
+      "category": "Levels"
+    },
+    {
+      "id": 1679833,
+      "project_elevation_ft": 22.500000000000018,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "SHROUD",
+      "category": "Levels"
+    },
+    {
+      "id": 1684280,
+      "project_elevation_ft": 4.166666666666667,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "AVG T.O. CURB",
+      "category": "Levels"
+    },
+    {
+      "id": 1857542,
+      "project_elevation_ft": 61.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. COLD WATER",
+      "category": "Levels"
+    },
+    {
+      "id": 3220892,
+      "project_elevation_ft": 6.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "LEVEL LL+6'",
+      "category": "Levels"
+    },
+    {
+      "id": 5948801,
+      "project_elevation_ft": 44.333333333333336,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "STAIRS ROOF T.O. ROOF",
+      "category": "Levels"
+    },
+    {
+      "id": 8674221,
+      "project_elevation_ft": 7.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "B/O TANK",
+      "category": "Levels"
+    },
+    {
+      "id": 8691003,
+      "project_elevation_ft": 11.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T/O WALL, B/O SCREEN",
+      "category": "Levels"
+    },
+    {
+      "id": 8691077,
+      "project_elevation_ft": 1.4583333333333335,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "B/O CW TANK",
+      "category": "Levels"
+    },
+    {
+      "id": 8695925,
+      "project_elevation_ft": 5.0,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "B/O HW TANK",
+      "category": "Levels"
+    },
+    {
+      "id": 8709530,
+      "project_elevation_ft": 35.000000000000121,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "CW SCREEN HIGH POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 8709865,
+      "project_elevation_ft": 15.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "CW SCREEN LOW POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 8712145,
+      "project_elevation_ft": 25.000000000000043,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T/O HW SCREEN HIGH POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 8712554,
+      "project_elevation_ft": 15.000000000000011,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T/O HW SCREEN LOW POINT",
+      "category": "Levels"
+    },
+    {
+      "id": 10690457,
+      "project_elevation_ft": 3.1666666666664991,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "ANCILLARY LL",
+      "category": "Levels"
+    },
+    {
+      "id": 11254152,
+      "project_elevation_ft": 32.5,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. STEEL",
+      "category": "Levels"
+    },
+    {
+      "id": 11518570,
+      "project_elevation_ft": 28.114583333333332,
+      "level_id": -1,
+      "class": "Autodesk.Revit.DB.Level",
+      "owner_view_id": -1,
+      "name": "T.O. WALL",
+      "category": "Levels"
+    }
+  ],
+  "area_plans": [],
+  "target_level_id": 30,
+  "revit_version": "2025",
+  "example": {
+    "level_id": 1518530,
+    "id": 2219718,
+    "name": "BIKES 16",
+    "category": "Areas",
+    "class": "Autodesk.Revit.DB.Area",
+    "owner_view_id": -1
+  }
+}

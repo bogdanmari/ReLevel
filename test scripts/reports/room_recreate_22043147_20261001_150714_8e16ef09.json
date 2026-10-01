@@ -1,0 +1,230 @@
+{
+  "status": "RolledBack",
+  "parameter_copy": [
+    {
+      "id": -1012100,
+      "result": "AlreadyEqual",
+      "name": "Phase Created"
+    },
+    {
+      "id": -1002053,
+      "result": "Set",
+      "name": "Workset"
+    },
+    {
+      "id": -1001370,
+      "result": "AlreadyEqual",
+      "name": "Moves With Nearby Elements"
+    },
+    {
+      "id": -1012101,
+      "result": "AlreadyEqual",
+      "name": "Phase Demolished"
+    }
+  ],
+  "before": {
+    "owner_view_id": -1,
+    "id": 22043147,
+    "level_id": 1518530,
+    "end_ft": [
+      1024.8384326420519,
+      567.88607405097878,
+      -6.1106675275368616e-12
+    ],
+    "sketch_plane_id": 22043151,
+    "length_ft": 119.00000000000023,
+    "unique_id": "3bdc72ab-8722-41b6-9ca1-b53dc6972403-01505a0b",
+    "plane_origin_ft": [
+      0.0,
+      0.0,
+      -6.1106675275368616e-12
+    ],
+    "start_ft": [
+      905.83843264205166,
+      567.88607405097878,
+      -6.1106675275368616e-12
+    ],
+    "dependent_ids": [
+      22043147,
+      22043170,
+      22043173
+    ],
+    "curve_type": "Autodesk.Revit.DB.Line",
+    "plane_normal": [
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "target": {
+    "id": 30,
+    "view_id": 29237,
+    "name": "LEVEL 0"
+  },
+  "scope": "Diagnostic only; always rolled back; preserves XYZ",
+  "parameters_before": [
+    {
+      "id": -1140363,
+      "readonly": true,
+      "storage": "ElementId",
+      "has_value": true,
+      "name": "Category",
+      "shared_guid": null,
+      "value": -2000066
+    },
+    {
+      "id": -1140362,
+      "readonly": true,
+      "storage": "ElementId",
+      "has_value": true,
+      "name": "Category",
+      "shared_guid": null,
+      "value": -2000066
+    },
+    {
+      "id": -1013201,
+      "readonly": true,
+      "storage": "ElementId",
+      "has_value": true,
+      "name": "Design Option",
+      "shared_guid": null,
+      "value": -1
+    },
+    {
+      "id": -1013200,
+      "readonly": true,
+      "storage": "String",
+      "has_value": true,
+      "name": "Design Option",
+      "shared_guid": null,
+      "value": "Main Model"
+    },
+    {
+      "id": -1012101,
+      "readonly": false,
+      "storage": "ElementId",
+      "has_value": true,
+      "name": "Phase Demolished",
+      "shared_guid": null,
+      "value": -1
+    },
+    {
+      "id": -1012100,
+      "readonly": false,
+      "storage": "ElementId",
+      "has_value": true,
+      "name": "Phase Created",
+      "shared_guid": null,
+      "value": 118390
+    },
+    {
+      "id": -1004011,
+      "readonly": true,
+      "storage": "Integer",
+      "has_value": true,
+      "name": "Detail Line",
+      "shared_guid": null,
+      "value": 0
+    },
+    {
+      "id": -1004005,
+      "readonly": true,
+      "storage": "Double",
+      "has_value": true,
+      "name": "Length",
+      "shared_guid": null,
+      "value": 119.00000000000023
+    },
+    {
+      "id": -1002067,
+      "readonly": true,
+      "storage": "String",
+      "has_value": true,
+      "name": "Edited by",
+      "shared_guid": null,
+      "value": ""
+    },
+    {
+      "id": -1002053,
+      "readonly": false,
+      "storage": "Integer",
+      "has_value": true,
+      "name": "Workset",
+      "shared_guid": null,
+      "value": 70503
+    },
+    {
+      "id": -1002002,
+      "readonly": true,
+      "storage": "String",
+      "has_value": false,
+      "name": "Family Name",
+      "shared_guid": null,
+      "value": null
+    },
+    {
+      "id": -1002001,
+      "readonly": true,
+      "storage": "String",
+      "has_value": false,
+      "name": "Type Name",
+      "shared_guid": null,
+      "value": null
+    },
+    {
+      "id": -1001370,
+      "readonly": false,
+      "storage": "Integer",
+      "has_value": true,
+      "name": "Moves With Nearby Elements",
+      "shared_guid": null,
+      "value": 0
+    }
+  ],
+  "document": "US-SVL-BRGUP123_A_detached_bmarishenko",
+  "deleted_elements": [
+    {
+      "id": 22043147,
+      "name": "Model Lines",
+      "category": "<Room Separation>",
+      "class": "Autodesk.Revit.DB.ModelLine"
+    },
+    {
+      "id": 22043170,
+      "name": "",
+      "category": null,
+      "class": "Autodesk.Revit.DB.Element"
+    },
+    {
+      "id": 22043173,
+      "name": "",
+      "category": null,
+      "class": "Autodesk.Revit.DB.Element"
+    }
+  ],
+  "revit_build": "25.4.41.14",
+  "revit_version": "2025",
+  "failures": [
+    {
+      "definition_id": "f7b3a015-c3eb-4a3f-b345-c474ec07d43f",
+      "description": "A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.",
+      "severity": "Warning",
+      "additional_ids": [],
+      "failing_ids": [
+        21940731,
+        22122980
+      ]
+    },
+    {
+      "definition_id": "f7b3a015-c3eb-4a3f-b345-c474ec07d43f",
+      "description": "A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap.",
+      "severity": "Warning",
+      "additional_ids": [],
+      "failing_ids": [
+        21940743,
+        22122980
+      ]
+    }
+  ],
+  "group_rollback": "RolledBack"
+}

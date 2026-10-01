@@ -1,0 +1,1875 @@
+{
+  "document_path": "C:\\Users\\b.marishchenko\\Documents\\US-SVL-BRGUP123_A_detached_bmarishenko.rvt",
+  "existing_warnings": [],
+  "wall": {
+    "unique_id": "78aa45dc-44d8-461f-b622-56ccad3f5ba3-00a6b2af",
+    "id": 10925001,
+    "dependent_elements": [
+      {
+        "id": 10925001,
+        "name": "Concrete - 8\"",
+        "category": "Walls",
+        "class": "Autodesk.Revit.DB.Wall"
+      }
+    ],
+    "geometry_joins": [],
+    "assembly_id": -1,
+    "wall_kind": "Basic",
+    "ends": [
+      {
+        "end": 0,
+        "join_allowed": true,
+        "join_type": "Abut",
+        "elements_at_join": [
+          {
+            "id": 21941575,
+            "name": "12\" Concrete",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.Wall"
+          },
+          {
+            "id": 10925001,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.Wall"
+          }
+        ]
+      },
+      {
+        "end": 1,
+        "join_allowed": true,
+        "join_type": "Abut",
+        "elements_at_join": [
+          {
+            "id": 10925001,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.Wall"
+          },
+          {
+            "id": 10925002,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.Wall"
+          }
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "id": -1152385,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": false,
+        "name": "Image",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1140363,
+        "readonly": true,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Category",
+        "formatted": "Walls",
+        "value": {
+          "id": -2000011,
+          "exists": false
+        }
+      },
+      {
+        "id": -1140362,
+        "readonly": true,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Category",
+        "formatted": "Walls",
+        "value": {
+          "id": -2000011,
+          "exists": false
+        }
+      },
+      {
+        "id": -1019100,
+        "readonly": false,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Cross-Section",
+        "formatted": "Vertical",
+        "value": 1
+      },
+      {
+        "id": -1019016,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "IFC Predefined Type",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1019014,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "Export to IFC As",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1019012,
+        "readonly": false,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Export to IFC",
+        "formatted": "By Type",
+        "value": 0
+      },
+      {
+        "id": -1019000,
+        "readonly": false,
+        "storage": "String",
+        "has_value": true,
+        "name": "IfcGUID",
+        "formatted": "1ugaNSHDX67xOYLiojcUaC",
+        "value": "1ugaNSHDX67xOYLiojcUaC"
+      },
+      {
+        "id": -1013201,
+        "readonly": true,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Design Option",
+        "formatted": "-1",
+        "value": {
+          "id": -1,
+          "exists": false
+        }
+      },
+      {
+        "id": -1013200,
+        "readonly": true,
+        "storage": "String",
+        "has_value": true,
+        "name": "Design Option",
+        "formatted": "Main Model",
+        "value": "Main Model"
+      },
+      {
+        "id": -1012829,
+        "readonly": true,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Base Extension Distance",
+        "formatted": "0\"",
+        "value": 0.0
+      },
+      {
+        "id": -1012828,
+        "readonly": true,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Top Extension Distance",
+        "formatted": "0\"",
+        "value": 0.0
+      },
+      {
+        "id": -1012806,
+        "readonly": true,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Volume",
+        "formatted": "8.19 CF",
+        "value": 8.1887811264521684
+      },
+      {
+        "id": -1012805,
+        "readonly": true,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Area",
+        "formatted": "13 SF",
+        "value": 12.502014842372887
+      },
+      {
+        "id": -1012101,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Phase Demolished",
+        "formatted": "None",
+        "value": {
+          "id": -1,
+          "exists": false
+        }
+      },
+      {
+        "id": -1012100,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Phase Created",
+        "formatted": "Phase 1",
+        "value": {
+          "id": 118390,
+          "name": "Phase 1",
+          "category": "Phases",
+          "class": "Autodesk.Revit.DB.Phase"
+        }
+      },
+      {
+        "id": -1010106,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "Comments",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1004005,
+        "readonly": true,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Length",
+        "formatted": "21' - 5 33/128\"",
+        "value": 21.438107573732054
+      },
+      {
+        "id": -1002067,
+        "readonly": true,
+        "storage": "String",
+        "has_value": true,
+        "name": "Edited by",
+        "formatted": "bmarishenko",
+        "value": "bmarishenko"
+      },
+      {
+        "id": -1002053,
+        "readonly": false,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Workset",
+        "formatted": "21-07 00 00 Sitework",
+        "value": 7045
+      },
+      {
+        "id": -1002052,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Family and Type",
+        "formatted": "Basic Wall: Concrete - 8\"",
+        "value": {
+          "id": 7633510,
+          "name": "Concrete - 8\"",
+          "category": "Walls",
+          "class": "Autodesk.Revit.DB.WallType"
+        }
+      },
+      {
+        "id": -1002051,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Family",
+        "formatted": "Basic Wall",
+        "value": {
+          "id": 7633510,
+          "name": "Concrete - 8\"",
+          "category": "Walls",
+          "class": "Autodesk.Revit.DB.WallType"
+        }
+      },
+      {
+        "id": -1002050,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Type",
+        "formatted": "Concrete - 8\"",
+        "value": {
+          "id": 7633510,
+          "name": "Concrete - 8\"",
+          "category": "Walls",
+          "class": "Autodesk.Revit.DB.WallType"
+        }
+      },
+      {
+        "id": -1002002,
+        "readonly": true,
+        "storage": "String",
+        "has_value": false,
+        "name": "Family Name",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1002001,
+        "readonly": true,
+        "storage": "String",
+        "has_value": false,
+        "name": "Type Name",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1002000,
+        "readonly": true,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Type Id",
+        "formatted": "7633510",
+        "value": {
+          "id": 7633510,
+          "name": "Concrete - 8\"",
+          "category": "Walls",
+          "class": "Autodesk.Revit.DB.WallType"
+        }
+      },
+      {
+        "id": -1001713,
+        "readonly": true,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Related to Mass",
+        "formatted": "No",
+        "value": 0
+      },
+      {
+        "id": -1001596,
+        "readonly": false,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Structural",
+        "formatted": "No",
+        "value": 0
+      },
+      {
+        "id": -1001203,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "Mark",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": -1001122,
+        "readonly": false,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Location Line",
+        "formatted": "Finish Face: Exterior",
+        "value": 2
+      },
+      {
+        "id": -1001119,
+        "readonly": true,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Structural Usage",
+        "formatted": "Non-bearing",
+        "value": 0
+      },
+      {
+        "id": -1001118,
+        "readonly": true,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Base is Attached",
+        "formatted": "No",
+        "value": 0
+      },
+      {
+        "id": -1001117,
+        "readonly": true,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Top is Attached",
+        "formatted": "No",
+        "value": 0
+      },
+      {
+        "id": -1001109,
+        "readonly": false,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Top Offset",
+        "formatted": "2' - 0\"",
+        "value": 2.0
+      },
+      {
+        "id": -1001108,
+        "readonly": false,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Base Offset",
+        "formatted": "1' - 5 1/8\"",
+        "value": 1.4270833333333335
+      },
+      {
+        "id": -1001107,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Base Constraint",
+        "formatted": "Level LL",
+        "value": {
+          "id": 1518530,
+          "name": "Level LL",
+          "category": "Levels",
+          "class": "Autodesk.Revit.DB.Level"
+        }
+      },
+      {
+        "id": -1001105,
+        "readonly": true,
+        "storage": "Double",
+        "has_value": true,
+        "name": "Unconnected Height",
+        "formatted": "6 7/8\"",
+        "value": 0.57291666666666652
+      },
+      {
+        "id": -1001103,
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "name": "Top Constraint",
+        "formatted": "Up to level: Level LL",
+        "value": {
+          "id": 1518530,
+          "name": "Level LL",
+          "category": "Levels",
+          "class": "Autodesk.Revit.DB.Level"
+        }
+      },
+      {
+        "id": -1001007,
+        "readonly": false,
+        "storage": "Integer",
+        "has_value": true,
+        "name": "Room Bounding",
+        "formatted": "Yes",
+        "value": 1
+      },
+      {
+        "id": 487694,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "Partition Designation",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": 21890848,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "STRATUS QR Code",
+        "formatted": null,
+        "value": null
+      },
+      {
+        "id": 21890959,
+        "readonly": false,
+        "storage": "String",
+        "has_value": false,
+        "name": "STRATUS Status Name",
+        "formatted": null,
+        "value": null
+      }
+    ],
+    "bounding_box_ft": {
+      "max": [
+        1031.6978076400478,
+        574.72038844344354,
+        1.9999999999938907
+      ],
+      "min": [
+        1031.0311409733811,
+        552.39868980948359,
+        1.4270833333272228
+      ]
+    },
+    "pinned": false,
+    "level": {
+      "id": 1518530,
+      "name": "Level LL",
+      "category": "Levels",
+      "class": "Autodesk.Revit.DB.Level"
+    },
+    "curve": {
+      "length_ft": 21.438107573732054,
+      "class": "Autodesk.Revit.DB.Line",
+      "start_ft": [
+        1031.3644743067143,
+        552.39868980948359,
+        -6.1106675275368616e-12
+      ],
+      "end_ft": [
+        1031.3644743067143,
+        573.83679738321564,
+        -6.1106675275368616e-12
+      ]
+    },
+    "cross_section": "Vertical",
+    "group_id": -1,
+    "name": "Concrete - 8\"",
+    "category": "Walls",
+    "class": "Autodesk.Revit.DB.Wall",
+    "type": {
+      "id": 7633510,
+      "name": "Concrete - 8\"",
+      "category": "Walls",
+      "class": "Autodesk.Revit.DB.WallType"
+    }
+  },
+  "scope": "Read-only snapshot; optional rolled-back probe. No unjoin.",
+  "probe": {
+    "failures": [
+      {
+        "definition_id": "6650b20b-592d-41a0-9f52-51f5f26e3fc3",
+        "description": "Can't keep elements joined.",
+        "severity": "Error",
+        "additional_ids": [],
+        "failing_ids": [
+          21941484,
+          21941575,
+          22051679,
+          22051757
+        ]
+      }
+    ],
+    "new_offsets_ft": [
+      1.4270833333272228,
+      1.9999999999938893
+    ],
+    "commit_status": "RolledBack",
+    "source_level": {
+      "id": 1518530,
+      "name": "Level LL",
+      "category": "Levels",
+      "class": "Autodesk.Revit.DB.Level"
+    },
+    "group_rollback": "RolledBack",
+    "target_level": {
+      "id": 30,
+      "name": "LEVEL 0",
+      "category": "Levels",
+      "class": "Autodesk.Revit.DB.Level"
+    }
+  },
+  "units": "feet / radians",
+  "document": "US-SVL-BRGUP123_A_detached_bmarishenko",
+  "revit_build": "25.4.41.14",
+  "levels": [
+    {
+      "id": 1518530,
+      "name": "Level LL",
+      "project_elevation_ft": -6.1106675275368616e-12
+    },
+    {
+      "id": 30,
+      "name": "LEVEL 0",
+      "project_elevation_ft": 0.0
+    },
+    {
+      "id": 8691077,
+      "name": "B/O CW TANK",
+      "project_elevation_ft": 1.4583333333333335
+    },
+    {
+      "id": 10690457,
+      "name": "ANCILLARY LL",
+      "project_elevation_ft": 3.1666666666664991
+    },
+    {
+      "id": 1684280,
+      "name": "AVG T.O. CURB",
+      "project_elevation_ft": 4.166666666666667
+    },
+    {
+      "id": 8695925,
+      "name": "B/O HW TANK",
+      "project_elevation_ft": 5.0
+    },
+    {
+      "id": 3220892,
+      "name": "LEVEL LL+6'",
+      "project_elevation_ft": 6.0
+    },
+    {
+      "id": 8674221,
+      "name": "B/O TANK",
+      "project_elevation_ft": 7.5
+    },
+    {
+      "id": 8691003,
+      "name": "T/O WALL, B/O SCREEN",
+      "project_elevation_ft": 11.5
+    },
+    {
+      "id": 1519130,
+      "name": "Level 1",
+      "project_elevation_ft": 11.999999999993889
+    },
+    {
+      "id": 9946,
+      "name": "LEVEL 2",
+      "project_elevation_ft": 14.000000000005071
+    },
+    {
+      "id": 8712554,
+      "name": "T/O HW SCREEN LOW POINT",
+      "project_elevation_ft": 15.000000000000011
+    },
+    {
+      "id": 8709865,
+      "name": "CW SCREEN LOW POINT",
+      "project_elevation_ft": 15.5
+    },
+    {
+      "id": 1679833,
+      "name": "SHROUD",
+      "project_elevation_ft": 22.500000000000018
+    },
+    {
+      "id": 8712145,
+      "name": "T/O HW SCREEN HIGH POINT",
+      "project_elevation_ft": 25.000000000000043
+    },
+    {
+      "id": 1566711,
+      "name": "T.O. ANCILLARY ROOF",
+      "project_elevation_ft": 26.572916666666664
+    },
+    {
+      "id": 1550831,
+      "name": "HEATING ROOF H.P.",
+      "project_elevation_ft": 27.625
+    },
+    {
+      "id": 153777,
+      "name": "LEVEL 3",
+      "project_elevation_ft": 28.00000000000507
+    },
+    {
+      "id": 11518570,
+      "name": "T.O. WALL",
+      "project_elevation_ft": 28.114583333333332
+    },
+    {
+      "id": 1519822,
+      "name": "Level R",
+      "project_elevation_ft": 31.999999999993904
+    },
+    {
+      "id": 11254152,
+      "name": "T.O. STEEL",
+      "project_elevation_ft": 32.5
+    },
+    {
+      "id": 8709530,
+      "name": "CW SCREEN HIGH POINT",
+      "project_elevation_ft": 35.000000000000121
+    },
+    {
+      "id": 1550860,
+      "name": "T.O. HEATING BLDG",
+      "project_elevation_ft": 39.5
+    },
+    {
+      "id": 153814,
+      "name": "LEVEL 4",
+      "project_elevation_ft": 42.000000000005073
+    },
+    {
+      "id": 5948801,
+      "name": "STAIRS ROOF T.O. ROOF",
+      "project_elevation_ft": 44.333333333333336
+    },
+    {
+      "id": 153841,
+      "name": "ROOF",
+      "project_elevation_ft": 56.000000000005073
+    },
+    {
+      "id": 1857542,
+      "name": "T.O. COLD WATER",
+      "project_elevation_ft": 61.0
+    },
+    {
+      "id": 1520148,
+      "name": "T.O. COOLING BLDG.",
+      "project_elevation_ft": 63.249999999993889
+    },
+    {
+      "id": 1519442,
+      "name": "HEIGHT LIMIT",
+      "project_elevation_ft": 79.166666666666501
+    }
+  ],
+  "neighbors": [
+    {
+      "unique_id": "78aa45dc-44d8-461f-b622-56ccad3f5ba3-00a6b2c9",
+      "id": 10925002,
+      "dependent_elements": [
+        {
+          "id": 10925002,
+          "name": "Concrete - 8\"",
+          "category": "Walls",
+          "class": "Autodesk.Revit.DB.Wall"
+        }
+      ],
+      "geometry_joins": [],
+      "assembly_id": -1,
+      "wall_kind": "Basic",
+      "ends": [
+        {
+          "end": 0,
+          "join_allowed": true,
+          "join_type": "Abut",
+          "elements_at_join": [
+            {
+              "id": 21941259,
+              "name": "12\" Concrete",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            },
+            {
+              "id": 10925002,
+              "name": "Concrete - 8\"",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            }
+          ]
+        },
+        {
+          "end": 1,
+          "join_allowed": true,
+          "join_type": "Abut",
+          "elements_at_join": [
+            {
+              "id": 10925001,
+              "name": "Concrete - 8\"",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            },
+            {
+              "id": 10925002,
+              "name": "Concrete - 8\"",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "id": -1152385,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": false,
+          "name": "Image",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1140363,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "formatted": "Walls",
+          "value": {
+            "id": -2000011,
+            "exists": false
+          }
+        },
+        {
+          "id": -1140362,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "formatted": "Walls",
+          "value": {
+            "id": -2000011,
+            "exists": false
+          }
+        },
+        {
+          "id": -1123512,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Keep Concentric",
+          "formatted": "Yes",
+          "value": 1
+        },
+        {
+          "id": -1019100,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Cross-Section",
+          "formatted": "Vertical",
+          "value": 1
+        },
+        {
+          "id": -1019016,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "IFC Predefined Type",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1019014,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Export to IFC As",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1019012,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Export to IFC",
+          "formatted": "By Type",
+          "value": 0
+        },
+        {
+          "id": -1019000,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "IfcGUID",
+          "formatted": "1ugaNSHDX67xOYLiojcUbg",
+          "value": "1ugaNSHDX67xOYLiojcUbg"
+        },
+        {
+          "id": -1013201,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Design Option",
+          "formatted": "-1",
+          "value": {
+            "id": -1,
+            "exists": false
+          }
+        },
+        {
+          "id": -1013200,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Design Option",
+          "formatted": "Main Model",
+          "value": "Main Model"
+        },
+        {
+          "id": -1012829,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Base Extension Distance",
+          "formatted": "0\"",
+          "value": 0.0
+        },
+        {
+          "id": -1012828,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Top Extension Distance",
+          "formatted": "0\"",
+          "value": 0.0
+        },
+        {
+          "id": -1012806,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Volume",
+          "formatted": "21.99 CF",
+          "value": 21.992118295991357
+        },
+        {
+          "id": -1012805,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Area",
+          "formatted": "34 SF",
+          "value": 33.870773740647394
+        },
+        {
+          "id": -1012101,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Phase Demolished",
+          "formatted": "None",
+          "value": {
+            "id": -1,
+            "exists": false
+          }
+        },
+        {
+          "id": -1012100,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Phase Created",
+          "formatted": "Phase 1",
+          "value": {
+            "id": 118390,
+            "name": "Phase 1",
+            "category": "Phases",
+            "class": "Autodesk.Revit.DB.Phase"
+          }
+        },
+        {
+          "id": -1010106,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Comments",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1007900,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Center Mark Visible",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1004005,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Length",
+          "formatted": "61' - 11 63/256\"",
+          "value": 61.937313147144764
+        },
+        {
+          "id": -1002067,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Edited by",
+          "formatted": "bmarishenko",
+          "value": "bmarishenko"
+        },
+        {
+          "id": -1002053,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Workset",
+          "formatted": "21-07 00 00 Sitework",
+          "value": 7045
+        },
+        {
+          "id": -1002052,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Family and Type",
+          "formatted": "Basic Wall: Concrete - 8\"",
+          "value": {
+            "id": 7633510,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1002051,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Family",
+          "formatted": "Basic Wall",
+          "value": {
+            "id": 7633510,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1002050,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Type",
+          "formatted": "Concrete - 8\"",
+          "value": {
+            "id": 7633510,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1002002,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Family Name",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1002001,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Type Name",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1002000,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Type Id",
+          "formatted": "7633510",
+          "value": {
+            "id": 7633510,
+            "name": "Concrete - 8\"",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1001713,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Related to Mass",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001596,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Structural",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001203,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Mark",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1001122,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Location Line",
+          "formatted": "Finish Face: Exterior",
+          "value": 2
+        },
+        {
+          "id": -1001119,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Structural Usage",
+          "formatted": "Non-bearing",
+          "value": 0
+        },
+        {
+          "id": -1001118,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Base is Attached",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001117,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Top is Attached",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001109,
+          "readonly": false,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Top Offset",
+          "formatted": "2' - 0\"",
+          "value": 2.0
+        },
+        {
+          "id": -1001108,
+          "readonly": false,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Base Offset",
+          "formatted": "1' - 5 1/8\"",
+          "value": 1.4270833333333335
+        },
+        {
+          "id": -1001107,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Base Constraint",
+          "formatted": "LEVEL 0",
+          "value": {
+            "id": 30,
+            "name": "LEVEL 0",
+            "category": "Levels",
+            "class": "Autodesk.Revit.DB.Level"
+          }
+        },
+        {
+          "id": -1001105,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Unconnected Height",
+          "formatted": "6 7/8\"",
+          "value": 0.57291666666666652
+        },
+        {
+          "id": -1001103,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Top Constraint",
+          "formatted": "Up to level: LEVEL 0",
+          "value": {
+            "id": 30,
+            "name": "LEVEL 0",
+            "category": "Levels",
+            "class": "Autodesk.Revit.DB.Level"
+          }
+        },
+        {
+          "id": -1001007,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Room Bounding",
+          "formatted": "Yes",
+          "value": 1
+        },
+        {
+          "id": 487694,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Partition Designation",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": 21890848,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS QR Code",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": 21890959,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS Status Name",
+          "formatted": null,
+          "value": null
+        }
+      ],
+      "bounding_box_ft": {
+        "max": [
+          1077.472435349689,
+          590.22878335307826,
+          1.9999999999938909
+        ],
+        "min": [
+          1031.1179391027006,
+          564.89353101929225,
+          1.4270833333272228
+        ]
+      },
+      "pinned": false,
+      "level": {
+        "id": 30,
+        "name": "LEVEL 0",
+        "category": "Levels",
+        "class": "Autodesk.Revit.DB.Level"
+      },
+      "curve": {
+        "length_ft": 61.937313147144764,
+        "class": "Autodesk.Revit.DB.Arc",
+        "start_ft": [
+          1077.1395393506159,
+          590.21171393855423,
+          -6.1106675275368616e-12
+        ],
+        "end_ft": [
+          1031.3644743067148,
+          573.83679738321541,
+          -6.1106675275368616e-12
+        ]
+      },
+      "cross_section": "Vertical",
+      "group_id": -1,
+      "name": "Concrete - 8\"",
+      "category": "Walls",
+      "class": "Autodesk.Revit.DB.Wall",
+      "type": {
+        "id": 7633510,
+        "name": "Concrete - 8\"",
+        "category": "Walls",
+        "class": "Autodesk.Revit.DB.WallType"
+      }
+    },
+    {
+      "unique_id": "88bc9681-2e36-4137-aa95-77fded689072-014ecd47",
+      "id": 21941575,
+      "dependent_elements": [
+        {
+          "id": 21941575,
+          "name": "12\" Concrete",
+          "category": "Walls",
+          "class": "Autodesk.Revit.DB.Wall"
+        },
+        {
+          "id": 21941576,
+          "name": "4'-0\" CONT",
+          "category": "Structural Foundations",
+          "class": "Autodesk.Revit.DB.WallFoundation"
+        },
+        {
+          "id": 22053564,
+          "name": "",
+          "category": null,
+          "class": "Autodesk.Revit.DB.Element"
+        }
+      ],
+      "geometry_joins": [
+        {
+          "element": {
+            "id": 21160772,
+            "name": "24\" x 24\"",
+            "category": "Columns",
+            "class": "Autodesk.Revit.DB.FamilyInstance"
+          },
+          "this_element_cuts_other": true
+        },
+        {
+          "element": {
+            "id": 21941848,
+            "name": "24x24",
+            "category": "Structural Columns",
+            "class": "Autodesk.Revit.DB.FamilyInstance"
+          },
+          "this_element_cuts_other": true
+        },
+        {
+          "element": {
+            "id": 22051966,
+            "name": "24x24",
+            "category": "Structural Columns",
+            "class": "Autodesk.Revit.DB.FamilyInstance"
+          },
+          "this_element_cuts_other": true
+        }
+      ],
+      "assembly_id": -1,
+      "wall_kind": "Basic",
+      "ends": [
+        {
+          "end": 0,
+          "join_allowed": true,
+          "join_type": "Abut",
+          "elements_at_join": [
+            {
+              "id": 21941484,
+              "name": "12\" Concrete",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            },
+            {
+              "id": 21941575,
+              "name": "12\" Concrete",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            }
+          ]
+        },
+        {
+          "end": 1,
+          "join_allowed": true,
+          "join_type": "Abut",
+          "elements_at_join": [
+            {
+              "id": 21941575,
+              "name": "12\" Concrete",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            },
+            {
+              "id": 21941908,
+              "name": "8\" Concrete",
+              "category": "Walls",
+              "class": "Autodesk.Revit.DB.Wall"
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "id": -1152385,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": false,
+          "name": "Image",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1140363,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "formatted": "Walls",
+          "value": {
+            "id": -2000011,
+            "exists": false
+          }
+        },
+        {
+          "id": -1140362,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Category",
+          "formatted": "Walls",
+          "value": {
+            "id": -2000011,
+            "exists": false
+          }
+        },
+        {
+          "id": -1019100,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Cross-Section",
+          "formatted": "Vertical",
+          "value": 1
+        },
+        {
+          "id": -1019016,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "IFC Predefined Type",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1019014,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Export to IFC As",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1019012,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Export to IFC",
+          "formatted": "By Type",
+          "value": 0
+        },
+        {
+          "id": -1019000,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "IfcGUID",
+          "formatted": "28l9Q1BZP1DwgLT$ti9bqr",
+          "value": "28l9Q1BZP1DwgLT$ti9bqr"
+        },
+        {
+          "id": -1013449,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Has Association",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1013437,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": false,
+          "name": "Rebar Cover - Other Faces",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1013436,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Rebar Cover - Interior Face",
+          "formatted": "Exterior - #3 to #5 <0' - 1 1/2\">",
+          "value": {
+            "id": 3412554,
+            "name": "Exterior - #3 to #5",
+            "category": "Cover Type",
+            "class": "Autodesk.Revit.DB.Structure.RebarCoverType"
+          }
+        },
+        {
+          "id": -1013435,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Rebar Cover - Exterior Face",
+          "formatted": "Exterior - #3 to #5 <0' - 1 1/2\">",
+          "value": {
+            "id": 3412554,
+            "name": "Exterior - #3 to #5",
+            "category": "Cover Type",
+            "class": "Autodesk.Revit.DB.Structure.RebarCoverType"
+          }
+        },
+        {
+          "id": -1013201,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Design Option",
+          "formatted": "-1",
+          "value": {
+            "id": -1,
+            "exists": false
+          }
+        },
+        {
+          "id": -1013200,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Design Option",
+          "formatted": "Main Model",
+          "value": "Main Model"
+        },
+        {
+          "id": -1012829,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Base Extension Distance",
+          "formatted": "0\"",
+          "value": 0.0
+        },
+        {
+          "id": -1012828,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Top Extension Distance",
+          "formatted": "0\"",
+          "value": 0.0
+        },
+        {
+          "id": -1012806,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Volume",
+          "formatted": "99.40 CF",
+          "value": 99.400162125892493
+        },
+        {
+          "id": -1012805,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Area",
+          "formatted": "99 SF",
+          "value": 99.446752577724766
+        },
+        {
+          "id": -1012101,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Phase Demolished",
+          "formatted": "None",
+          "value": {
+            "id": -1,
+            "exists": false
+          }
+        },
+        {
+          "id": -1012100,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Phase Created",
+          "formatted": "Phase 1",
+          "value": {
+            "id": 118390,
+            "name": "Phase 1",
+            "category": "Phases",
+            "class": "Autodesk.Revit.DB.Phase"
+          }
+        },
+        {
+          "id": -1010106,
+          "readonly": false,
+          "storage": "String",
+          "has_value": true,
+          "name": "Comments",
+          "formatted": "#5 @ 12\" OC IF                                #6 @ 12\" OC OF",
+          "value": "#5 @ 12\" OC IF                                #6 @ 12\" OC OF"
+        },
+        {
+          "id": -1004005,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Length",
+          "formatted": "17' - 8 7/8\"",
+          "value": 17.739459943128566
+        },
+        {
+          "id": -1002067,
+          "readonly": true,
+          "storage": "String",
+          "has_value": true,
+          "name": "Edited by",
+          "formatted": "",
+          "value": ""
+        },
+        {
+          "id": -1002053,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Workset",
+          "formatted": "21-02 10 00 Superstructure Concrete",
+          "value": 70488
+        },
+        {
+          "id": -1002052,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Family and Type",
+          "formatted": "Basic Wall: 12\" Concrete",
+          "value": {
+            "id": 18453859,
+            "name": "12\" Concrete",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1002051,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Family",
+          "formatted": "Basic Wall",
+          "value": {
+            "id": 18453859,
+            "name": "12\" Concrete",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1002050,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Type",
+          "formatted": "12\" Concrete",
+          "value": {
+            "id": 18453859,
+            "name": "12\" Concrete",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1002002,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Family Name",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1002001,
+          "readonly": true,
+          "storage": "String",
+          "has_value": false,
+          "name": "Type Name",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1002000,
+          "readonly": true,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Type Id",
+          "formatted": "18453859",
+          "value": {
+            "id": 18453859,
+            "name": "12\" Concrete",
+            "category": "Walls",
+            "class": "Autodesk.Revit.DB.WallType"
+          }
+        },
+        {
+          "id": -1001713,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Related to Mass",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001596,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Structural",
+          "formatted": "Yes",
+          "value": 1
+        },
+        {
+          "id": -1001203,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Mark",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": -1001122,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Location Line",
+          "formatted": "Finish Face: Exterior",
+          "value": 2
+        },
+        {
+          "id": -1001119,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Structural Usage",
+          "formatted": "Bearing",
+          "value": 1
+        },
+        {
+          "id": -1001118,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Base is Attached",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001117,
+          "readonly": true,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Top is Attached",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": -1001109,
+          "readonly": false,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Top Offset",
+          "formatted": "-2' - 11\"",
+          "value": -2.9166666666666665
+        },
+        {
+          "id": -1001108,
+          "readonly": false,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Base Offset",
+          "formatted": "-2' - 5\"",
+          "value": -2.4166666666666665
+        },
+        {
+          "id": -1001107,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Base Constraint",
+          "formatted": "LEVEL 0",
+          "value": {
+            "id": 30,
+            "name": "LEVEL 0",
+            "category": "Levels",
+            "class": "Autodesk.Revit.DB.Level"
+          }
+        },
+        {
+          "id": -1001105,
+          "readonly": true,
+          "storage": "Double",
+          "has_value": true,
+          "name": "Unconnected Height",
+          "formatted": "5' - 6\"",
+          "value": 5.5
+        },
+        {
+          "id": -1001103,
+          "readonly": false,
+          "storage": "ElementId",
+          "has_value": true,
+          "name": "Top Constraint",
+          "formatted": "Up to level: LEVEL LL+6'",
+          "value": {
+            "id": 3220892,
+            "name": "LEVEL LL+6'",
+            "category": "Levels",
+            "class": "Autodesk.Revit.DB.Level"
+          }
+        },
+        {
+          "id": -1001007,
+          "readonly": false,
+          "storage": "Integer",
+          "has_value": true,
+          "name": "Room Bounding",
+          "formatted": "No",
+          "value": 0
+        },
+        {
+          "id": 487694,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "Partition Designation",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": 21890848,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS QR Code",
+          "formatted": null,
+          "value": null
+        },
+        {
+          "id": 21890959,
+          "readonly": false,
+          "storage": "String",
+          "has_value": false,
+          "name": "STRATUS Status Name",
+          "formatted": null,
+          "value": null
+        }
+      ],
+      "bounding_box_ft": {
+        "max": [
+          1049.1123687277704,
+          552.89868980948359,
+          3.0833333333333339
+        ],
+        "min": [
+          1031.0311409863659,
+          551.89868980948347,
+          -2.416666666666663
+        ]
+      },
+      "pinned": false,
+      "level": {
+        "id": 30,
+        "name": "LEVEL 0",
+        "category": "Levels",
+        "class": "Autodesk.Revit.DB.Level"
+      },
+      "curve": {
+        "length_ft": 17.739459943128566,
+        "class": "Autodesk.Revit.DB.Line",
+        "start_ft": [
+          1049.1039342628276,
+          552.39868980948347,
+          3.5527136788005009e-15
+        ],
+        "end_ft": [
+          1031.364474319699,
+          552.39868980948359,
+          3.5527136788005009e-15
+        ]
+      },
+      "cross_section": "Vertical",
+      "group_id": -1,
+      "name": "12\" Concrete",
+      "category": "Walls",
+      "class": "Autodesk.Revit.DB.Wall",
+      "type": {
+        "id": 18453859,
+        "name": "12\" Concrete",
+        "category": "Walls",
+        "class": "Autodesk.Revit.DB.WallType"
+      }
+    }
+  ],
+  "revit_version": "2025",
+  "timestamp_local": "2026-10-01T11:47:40.491000"
+}

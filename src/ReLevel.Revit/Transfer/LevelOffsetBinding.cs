@@ -21,16 +21,17 @@ internal sealed record LevelOffsetBinding(BuiltInParameter LevelParameter, Built
 
 internal sealed record LevelOffsetState(LevelOffsetBinding Binding, long LevelId, LevelEndPosition Position)
 {
+    public bool WriteOffset { get; init; } = true;
     public bool Changes(ElementId source) => LevelId == source.Value;
     public bool CanWrite(Element element) => !LevelOffsetBinding.Require(element, Binding.LevelParameter, StorageType.ElementId).IsReadOnly
-        && !LevelOffsetBinding.Require(element, Binding.OffsetParameter, StorageType.Double).IsReadOnly;
+        && (!WriteOffset || !LevelOffsetBinding.Require(element, Binding.OffsetParameter, StorageType.Double).IsReadOnly);
 
     public void Apply(Element element, ElementId source, Level target)
     {
         if (!Changes(source)) return;
-        var offset = Position.OffsetAt(target.ProjectElevation);
         if (!LevelOffsetBinding.Require(element, Binding.LevelParameter, StorageType.ElementId).Set(target.Id)
-            || !LevelOffsetBinding.Require(element, Binding.OffsetParameter, StorageType.Double).Set(offset))
+            || (WriteOffset && !LevelOffsetBinding.Require(element, Binding.OffsetParameter, StorageType.Double)
+                .Set(Position.OffsetAt(target.ProjectElevation))))
             throw new InvalidOperationException(L.Get("Revit отклонил запись уровня или смещения."));
     }
 

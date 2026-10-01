@@ -15,9 +15,10 @@ internal static class TwoLevelWallCase
             return L.Get("Кейс 2: требуется вертикальная стена.");
         if (wall.GroupId != ElementId.InvalidElementId || wall.AssemblyInstanceId != ElementId.InvalidElementId)
             return L.Get("Кейс 2: элементы групп и сборок пока не поддерживаются.");
-        if (wall.get_Parameter(BuiltInParameter.WALL_BOTTOM_IS_ATTACHED)?.AsInteger() == 1
-            || wall.get_Parameter(BuiltInParameter.WALL_TOP_IS_ATTACHED)?.AsInteger() == 1)
-            return L.Get("Кейс 2: присоединённый верх или низ стены не поддерживается.");
+        if (wall.get_Parameter(BuiltInParameter.WALL_BOTTOM_IS_ATTACHED)?.AsInteger() == 1)
+            return L.Get("Кейс 2: присоединённый низ стены пока не поддерживается.");
+        // An attached top keeps its attachment. Compensating both level/offset pairs
+        // preserves the nominal top minus base (Unconnected Height), not the attached geometry's height.
         Capture(wall);
         return null;
     }

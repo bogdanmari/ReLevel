@@ -29,6 +29,8 @@ internal sealed class TransferWindow : Window
     private readonly Dictionary<DataGrid, CheckBox> checkAllHeaders = [];
     private readonly Dictionary<DataGrid, TableSearch> searches = [];
     private bool updatingChecks;
+    private bool transferring;
+    private readonly TransferProgress transferProgress = new();
     private List<TableRow> elementRows = [];
     private List<TableRow> viewRows = [];
     public bool InspectElementRequested { get; private set; }
@@ -54,6 +56,7 @@ internal sealed class TransferWindow : Window
         AddAction(debugTools, null, L.Get("ReLevel инспектор"), () => { InspectElementRequested = true; Close(); });
         DockPanel.SetDock(debugTools, Dock.Top); shell.Children.Add(debugTools);
         DockPanel.SetDock(summary, Dock.Bottom); shell.Children.Add(summary);
+        DockPanel.SetDock(transferProgress, Dock.Bottom); shell.Children.Add(transferProgress);
 
         AddCheckColumn(elementTable);
         AddTextColumn(elementTable, "ID", nameof(TableRow.Id), 90);
@@ -80,8 +83,10 @@ internal sealed class TransferWindow : Window
         shell.Children.Add(tabs); Content = shell;
         PreviewKeyDown += (_, e) =>
         {
+            if (transferring) { e.Handled = true; return; }
             if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen && !language.IsDropDownOpen) { e.Handled = true; Close(); }
         };
+        Closing += (_, e) => { if (transferring) e.Cancel = true; };
         source.SelectionChanged += (_, _) => ChangeSource();
         if (levels.Count > 0) source.SelectedIndex = 0;
         else Refresh();
@@ -208,6 +213,7 @@ internal sealed class TransferWindow : Window
 
     private void TransferElements()
     {
+        if (transferring) return;
         var rows = Checked(elementRows);
         if (rows.Count == 0) return;
         var sourceLevelId = (source.SelectedItem as Level)?.Id;
@@ -218,8 +224,25 @@ internal sealed class TransferWindow : Window
         if (dialog.ShowDialog() != true) return;
         try
         {
-            var report = new ElementTransferService(document).Execute(
-                rows.Select(row => new ElementId(row.Id)).ToList(), dialog.Target.Id, sourceLevelId);
+            ElementTransferReport report;
+            transferring = true;
+            var controls = (UIElement)Content;
+            controls.IsEnabled = false;
+            var stopped = true;
+            try
+            {
+                transferProgress.Begin(rows.Count);
+                report = new ElementTransferService(document).Execute(
+                    rows.Select(row => new ElementId(row.Id)).ToList(), dialog.Target.Id, sourceLevelId,
+                    transferProgress.Report);
+                stopped = report.Stopped;
+            }
+            finally
+            {
+                transferring = false;
+                controls.IsEnabled = true;
+                transferProgress.Finish(stopped);
+            }
             var results = report.Items.ToDictionary(item => item.Id, item => (item.Status switch
             {
                 ElementTransferStatus.Transferred => L.Get("Перенесён"),
@@ -364,6 +387,7 @@ internal sealed class TransferWindow : Window
             Margin = new Thickness(0, 8, 8, 0), Padding = new Thickness(10, 5, 10, 5) };
         if (action is not null) button.Click += (_, _) =>
         {
+            if (transferring) return;
             try { action(); }
             catch (Autodesk.Revit.Exceptions.RegenerationFailedException ex)
             {

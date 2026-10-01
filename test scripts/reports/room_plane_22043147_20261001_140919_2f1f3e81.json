@@ -1,0 +1,51 @@
+{
+  "status": "NotStarted",
+  "error": "Traceback (most recent call last):\n  File \"<string>\", line 136, in main\nException: Changing the SketchPlane of this CurveElem is not allowed.\n",
+  "before": {
+    "owner_view_id": -1,
+    "id": 22043147,
+    "level_id": 1518530,
+    "end_ft": [
+      1024.8384326420519,
+      567.88607405097878,
+      -6.1106675275368616e-12
+    ],
+    "sketch_plane_id": 22043151,
+    "length_ft": 119.00000000000023,
+    "unique_id": "3bdc72ab-8722-41b6-9ca1-b53dc6972403-01505a0b",
+    "plane_origin_ft": [
+      0.0,
+      0.0,
+      -6.1106675275368616e-12
+    ],
+    "start_ft": [
+      905.83843264205166,
+      567.88607405097878,
+      -6.1106675275368616e-12
+    ],
+    "dependent_ids": [
+      22043147,
+      22043170,
+      22043173
+    ],
+    "curve_type": "Autodesk.Revit.DB.Line",
+    "plane_normal": [
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "target": {
+    "id": 30,
+    "name": "LEVEL 0",
+    "project_elevation_ft": 0.0
+  },
+  "scope": "SketchPlane assignment only. Successful change kept. Units: feet.",
+  "document": "US-SVL-BRGUP123_A_detached_bmarishenko",
+  "revit_build": "25.4.41.14",
+  "revit_version": "2025",
+  "timestamp_local": "2026-10-01T14:09:19.207000",
+  "created_plane_id": 22122833,
+  "rollback_status": "RolledBack",
+  "failures": []
+}
