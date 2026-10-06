@@ -29,7 +29,7 @@ internal sealed class RoomSeparatorOperation(Element source) : IElementTransferO
         if (created.Size != 1)
             throw new InvalidOperationException(L.Get("Кейс 8: Revit не создал единственную линию замены."));
         var replacement = created.get_Item(0);
-        RoomSeparatorParameters.Copy(original, replacement);
+        RecreatedElementParameters.Copy(original, replacement, L.Get("Кейс 8"));
         // Replacement and deletion, including the original's internal dependents, share the caller's transaction.
         document.Delete(id);
         replacementId = replacement.Id.Value;

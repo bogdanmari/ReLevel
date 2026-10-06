@@ -4777,3 +4777,2902 @@
 | Ошибок чтения | 0 |
 | Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
 
+
+
+## Элемент ID 18658167 — 2026-10-02 14:14:15 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 18658167 |
+| Element.UniqueId | 3b980801-0578-4ce0-9598-de656bfe694b-011cb377 |
+| API class | Autodesk.Revit.DB.Architecture.BuildingPad |
+| Name | Pad 4 |
+| Category | Pads; ID -2001263; OST&#95;BuildingPad |
+| GetTypeId() | ID 18053473; BuildingPadType; Pad 4 |
+| LevelId | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | ID 18657338; DesignOption; OPTION 2a (SELECTED) |
+| WorksetId | 33056 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(1050.4806195614674, 689.8271511204433, -1); Max=(1073.417196318768, 806.490979352679, 6); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings without a host | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2001263 (не разрешён в элемент документа; возможное служебное значение) | Site: Pads | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2001263 (не разрешён в элемент документа; возможное служебное значение) | Site: Pads | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 0xc0W11NXCu9MOtcLgujey | 0xc0W11NXCu9MOtcLgujey | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | ID 18657338; DesignOption; OPTION 2a (SELECTED) | 18657338 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | BOARDWALK VE : OPTION 2a (SELECTED) | BOARDWALK VE : OPTION 2a (SELECTED) | — |
+| -1012806 / HOST&#95;VOLUME&#95;COMPUTED | Volume | — | autodesk.spec.aec:volume-2.0.0 | Double | True | True | 8119.8209718702565 | 8119.82 CF | autodesk.unit.unit:cubicFeet-1.0.1 |
+| -1012805 / HOST&#95;AREA&#95;COMPUTED | Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 1159.9902792166251 | 1160 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1012502 / BUILDINGPAD&#95;HEIGHTABOVELEVEL&#95;PARAM | Height Offset From Level | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6 | 6' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1006016 / ROOF&#95;SLOPE | Slope | — | autodesk.spec.aec:slope-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002062 / SCHEDULE&#95;LEVEL&#95;PARAM | Level | — |  | ElementId | True | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 33056 | 21-07 20 00 Site Improvements | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 18053473; BuildingPadType; Pad 4 | Pad: Pad 4 | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 18053473; BuildingPadType; Pad 4 | Pad | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 18053473; BuildingPadType; Pad 4 | Pad 4 | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 18053473; BuildingPadType; Pad 4 | 18053473 | — |
+| -1001953 / HOST&#95;PERIMETER&#95;COMPUTED | Perimeter | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 280.2359889320024 | 280' - 2 213/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001952 / LEVEL&#95;PARAM | Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001007 / WALL&#95;ATTR&#95;ROOM&#95;BOUNDING | Room Bounding | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2001263 (не разрешён в элемент документа; возможное служебное значение) | Site: Pads | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2001263 (не разрешён в элемент документа; возможное служебное значение) | Site: Pads | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 0Wrx4&#95;quP5PhpsFEiI4Nfc | 0Wrx4&#95;quP5PhpsFEiI4Nfc | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1012501 / BUILDINGPAD&#95;THICKNESS | Thickness | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 7 | 7' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1005436 / ANALYTICAL&#95;ROUGHNESS | Roughness | — | autodesk.spec:spec.int64-2.0.0 | Integer | False | True | 3 | 3 | — |
+| -1005435 / ANALYTICAL&#95;ABSORPTANCE | Absorptance | — | autodesk.spec.aec:number-2.0.0 | Double | False | True | 0.7 | 0.7 | autodesk.unit.unit:general-1.0.1 |
+| -1005434 / ANALYTICAL&#95;THERMAL&#95;MASS | Thermal Mass | — | autodesk.spec.aec.energy:heatCapacityPerArea-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:britishThermalUnitsPerSquareFootDegreeFahrenheit-1.0.0 |
+| -1005431 / ANALYTICAL&#95;THERMAL&#95;RESISTANCE | Thermal Resistance (R) | — | autodesk.spec.aec.energy:thermalResistance-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:hourSquareFootDegreesFahrenheitPerBritishThermalUnit-1.0.1 |
+| -1005430 / ANALYTICAL&#95;HEAT&#95;TRANSFER&#95;COEFFICIENT | Heat Transfer Coefficient (U) | — | autodesk.spec.aec.energy:heatTransferCoefficient-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:britishThermalUnitsPerHourSquareFootDegreeFahrenheit-1.0.1 |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002119 / BUILIDING&#95;PAD&#95;STRUCTURE&#95;ID&#95;PARAM | Structure | — |  | None | False | False | (нет значения) | — | — |
+| -1002110 / COARSE&#95;SCALE&#95;FILL&#95;PATTERN&#95;COLOR | Coarse Scale Fill Color | — |  | Integer | False | True | 0 | null | — |
+| -1002106 / COARSE&#95;SCALE&#95;FILL&#95;PATTERN&#95;ID&#95;PARAM | Coarse Scale Fill Pattern | — |  | ElementId | False | True | -1 (InvalidElementId) |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 37 | Pad Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Pad | Pad | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Pad 4 | Pad 4 | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 32 |
+| ID 18658164 | ID 18658164; SketchPlane; LEVEL 0 |
+| ID 18658165 | ID 18658165; Sketch; Sketch |
+| ID 18658166 | ID 18658166; TopographySurface; Surface |
+| ID 18658167 | ID 18658167; BuildingPad; Pad 4 |
+| ID 18658168 | ID 18658168; ModelLine; Model Lines |
+| ID 18658169 | ID 18658169; ModelLine; Model Lines |
+| ID 18658170 | ID 18658170; ModelArc; Model Lines |
+| ID 18658171 | ID 18658171; ModelLine; Model Lines |
+| ID 18658172 | ID 18658172; ModelLine; Model Lines |
+| ID 18658173 | ID 18658173; ModelLine; Model Lines |
+| ID 18658174 | ID 18658174; ModelLine; Model Lines |
+| ID 18658175 | ID 18658175; ModelLine; Model Lines |
+| ID 18658176 | ID 18658176; ModelLine; Model Lines |
+| ID 18658177 | ID 18658177; ModelLine; Model Lines |
+| ID 18658178 | ID 18658178; ModelLine; Model Lines |
+| ID 18658179 | ID 18658179; ModelArc; Model Lines |
+| ID 18658180 | ID 18658180; ModelArc; Model Lines |
+| ID 18658181 | ID 18658181; ModelLine; Model Lines |
+| ID 18658597 | ID 18658597; RadialDimension; Linear Dimension Style |
+| ID 18658598 | ID 18658598; RadialDimension; Linear Dimension Style |
+| ID 18658599 | ID 18658599; RadialDimension; Linear Dimension Style |
+| ID 21752506 | ID 21752506; Element;  |
+| ID 21752507 | ID 21752507; Element;  |
+| ID 21752508 | ID 21752508; Element;  |
+| ID 21752509 | ID 21752509; Element;  |
+| ID 21752510 | ID 21752510; Element;  |
+| ID 21752511 | ID 21752511; Element;  |
+| ID 21752512 | ID 21752512; Element;  |
+| ID 21752513 | ID 21752513; Element;  |
+| ID 21752514 | ID 21752514; Element;  |
+| ID 21752515 | ID 21752515; Element;  |
+| ID 21752516 | ID 21752516; Element;  |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 7058266 — 2026-10-02 14:35:52 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 7058266 |
+| Element.UniqueId | e161408c-d48f-4985-bc70-4b57752f7caa-006bb35a |
+| API class | Autodesk.Revit.DB.Mechanical.Duct |
+| Name | AMX-M-Duct-Lined |
+| Category | Ducts; ID -2008000; OST&#95;DuctCurves |
+| GetTypeId() | ID 7062060; DuctType; AMX-M-Duct-Lined |
+| LevelId | ID 1684280; Level; AVG T.O. CURB; Elevation=4.166666666666667; ProjectElevation=4.166666666666667 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 27211 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | ID 118390; Phase; Phase 1 |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationCurve |
+| LocationCurve.Curve class | Autodesk.Revit.DB.Line |
+| Curve.IsBound | True |
+| Curve.GetEndPoint(0) (ft) | (917.4061409801118, 569.9589907199457, 10.666666666666696) |
+| Curve.GetEndPoint(1) (ft) | (917.4061409801118, 573.0692947590021, 10.666666666666725) |
+| Curve.Length (ft) | 3.110304039056359 |
+| BoundingBox (model, ft) | Min=(916.9061409801118, 569.9589907199457, 10.333333333333362); Max=(917.9061409801118, 573.0692947590021, 11.00000000000003); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings without a host | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150468 / RBS&#95;DUCT&#95;PIPE&#95;SYSTEM&#95;ABBREVIATION&#95;PARAM | System Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | EA | EA | — |
+| -1150436 / DUCT&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150435 / RBS&#95;REFERENCE&#95;FREESIZE | Free Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12"x8" | 12"x8" | — |
+| -1150434 / RBS&#95;REFERENCE&#95;OVERALLSIZE | Overall Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12"x8" | 12"x8" | — |
+| -1150433 / RBS&#95;REFERENCE&#95;LINING&#95;THICKNESS | Lining Thickness | — | autodesk.spec.aec.hvac:ductLiningThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150432 / RBS&#95;REFERENCE&#95;LINING&#95;TYPE | Lining Type | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1150431 / RBS&#95;REFERENCE&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150430 / RBS&#95;REFERENCE&#95;INSULATION&#95;TYPE | Insulation Type | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141029 / MEP&#95;LOWER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.166666666666695 | 6' - 2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141028 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.833333333333363 | 6' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141027 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.166666666666724 | 6' - 2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141026 / MEP&#95;UPPER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.833333333333392 | 6' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141024 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION | Lower End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.833333333333363 | 6' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141023 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION | Upper End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.166666666666724 | 6' - 2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141021 / MEP&#95;LOWER&#95;CENTERLINE&#95;ELEVATION | Lower End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.500000000000029 | 6' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141020 / MEP&#95;UPPER&#95;CENTERLINE&#95;ELEVATION | Upper End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.500000000000058 | 6' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008000 (не разрешён в элемент документа; возможное служебное значение) | Ducts | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008000 (не разрешён в элемент документа; возможное служебное значение) | Ducts | — |
+| -1140333 / RBS&#95;DUCT&#95;SYSTEM&#95;TYPE&#95;PARAM | System Type | — |  | ElementId | False | True | ID 7062126; MechanicalSystemType; AMX - Exhaust Air | AMX - Exhaust Air | — |
+| -1140325 / RBS&#95;SYSTEM&#95;CLASSIFICATION&#95;PARAM | System Classification | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Exhaust Air | Exhaust Air | — |
+| -1140324 / RBS&#95;SYSTEM&#95;NAME&#95;PARAM | System Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | EA 2 | EA 2 | — |
+| -1140255 / RBS&#95;DUCT&#95;SLOPE | Slope | — | autodesk.spec.aec.hvac:slope-2.0.0 | Double | True | True | 0 | 0" / 12" | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1140240 / RBS&#95;DUCT&#95;BOTTOM&#95;ELEVATION | Lower End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.166666666666695 | 6' - 2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140239 / RBS&#95;DUCT&#95;TOP&#95;ELEVATION | Upper End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.833333333333392 | 6' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140210 / RELATIVE&#95;ROUGHNESS | Relative Roughness | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0.00375 | 0.00375 | autodesk.unit.unit:general-1.0.1 |
+| -1114240 / RBS&#95;CALCULATED&#95;SIZE | Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12x8 | 12x8 | — |
+| -1114167 / RBS&#95;SIZE&#95;LOCK | Size Lock | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1114166 / RBS&#95;ADDITIONAL&#95;FLOW | Additional Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | False | True | 0 | 0 CFM | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1114132 / RBS&#95;OFFSET&#95;PARAM | Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.500000000000029 | 6' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114129 / RBS&#95;HYDRAULIC&#95;DIAMETER&#95;PARAM | Hydraulic Diameter | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | True | True | 0.8 | 10" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1114128 / RBS&#95;REYNOLDSNUMBER&#95;PARAM | Reynolds number | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 169488 | 169488 | autodesk.unit.unit:general-1.0.1 |
+| -1114127 / RBS&#95;EQ&#95;DIAMETER&#95;PARAM | Equivalent Diameter | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | True | True | 0.8880228236234463 | 11" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1114125 / RBS&#95;SECTION | Section | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 1 | 1 | — |
+| -1114124 / RBS&#95;LOSS&#95;COEFFICIENT | Loss Coefficient | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0.10855483590654408 | 0.108555 | autodesk.unit.unit:general-1.0.1 |
+| -1114121 / RBS&#95;VELOCITY&#95;PRESSURE | Velocity Pressure | — | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | True | True | 20.12000428643208 | 0.27 in-wg | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| -1114120 / RBS&#95;CURVE&#95;SURFACE&#95;AREA | Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 10.367680130187864 | 10 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1114116 / RBS&#95;FRICTION | Friction | — | autodesk.spec.aec.hvac:friction-2.0.0 | Double | True | True | 0.7022219488276276 | 0.93 in-wg/100ft | autodesk.unit.unit:inchesOfWater60DegreesFahrenheitPer100Feet-1.0.1 |
+| -1114108 / RBS&#95;PRESSURE&#95;DROP | Pressure Drop | — | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | True | True | 2.184123763752598 | 0.03 in-wg | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| -1114107 / RBS&#95;VELOCITY | Velocity | — | autodesk.spec.aec.hvac:velocity-2.0.0 | Double | True | True | 34.375 | 2063 FPM | autodesk.unit.unit:feetPerMinute-1.0.1 |
+| -1114106 / RBS&#95;CURVE&#95;VERT&#95;OFFSET&#95;PARAM | Vertical Justification | — |  | Integer | False | True | 0 | Middle | — |
+| -1114105 / RBS&#95;CURVE&#95;HOR&#95;OFFSET&#95;PARAM | Horizontal Justification | — |  | Integer | False | True | 0 | Center | — |
+| -1114102 / RBS&#95;CURVE&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 0.6666666666666667 | 8" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1114101 / RBS&#95;CURVE&#95;WIDTH&#95;PARAM | Width | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 1 | 12" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1114003 / RBS&#95;END&#95;OFFSET&#95;PARAM | End Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.500000000000058 | 6' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114002 / RBS&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.500000000000029 | 6' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114000 / RBS&#95;START&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | False | True | ID 1684280; Level; AVG T.O. CURB; Elevation=4.166666666666667; ProjectElevation=4.166666666666667 ft | AVG T.O. CURB | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3XOK2Cr8z9XRnmIrTrHC$m | 3XOK2Cr8z9XRnmIrTrHC$m | — |
+| -1013405 / RBS&#95;DUCT&#95;FLOW&#95;PARAM | Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | True | True | 22.916666666666668 | 1375 CFM | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 3.110304039056359 | 3' - 1 83/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 27211 | 21-04 30 00 HVAC&#42; | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 7062060; DuctType; AMX-M-Duct-Lined | Rectangular Duct: AMX-M-Duct-Lined | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 7062060; DuctType; AMX-M-Duct-Lined | Rectangular Duct | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 7062060; DuctType; AMX-M-Duct-Lined | AMX-M-Duct-Lined | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 7062060; DuctType; AMX-M-Duct-Lined | 7062060 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 19226936 | Vic&#95;Zone | fb4de820-2d17-4e47-b9ac-69ddbdf23d9a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21932569 | Designated System | 35a14e0c-c5b8-451f-9cdb-e1a64a6009a5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008000 (не разрешён в элемент документа; возможное служебное значение) | Ducts | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008000 (не разрешён в элемент документа; возможное служебное значение) | Ducts | — |
+| -1140280 / RBS&#95;DUCT&#95;ROUTING&#95;PREFERENCE&#95;PARAM | Routing Preferences | — |  | None | False | False | (нет значения) | — | — |
+| -1114114 / DUCT&#95;ROUGHNESS | Roughness | — | autodesk.spec.aec.hvac:roughness-2.0.0 | Double | False | True | 0.003 | 0.0030' | autodesk.unit.unit:feet-1.0.1 |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3XOK2Cr8z9XRnmIrTrHBw6 | 3XOK2Cr8z9XRnmIrTrHBw6 | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 67 | Duct Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Rectangular Duct | Rectangular Duct | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | AMX-M-Duct-Lined | AMX-M-Duct-Lined | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 1 |
+| ID 7058266 | ID 7058266; Duct; AMX-M-Duct-Lined |
+
+### MEP-коннекторы
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| Connector 0.Domain | DomainHvac |
+| Connector 0.ConnectorType | End |
+| Connector 0.Origin (ft) | (917.4061409801118, 569.9589907199457, 10.666666666666696) |
+| Connector 0.IsConnected | True |
+| Connector 0.AllRefs (включая логические) | ID 7058266; Duct; AMX-M-Duct-Lined; Connector 1; ID 7058265; FamilyInstance; 72" L x 12x8 Neck; Connector 1 |
+| Connector 1.Domain | DomainHvac |
+| Connector 1.ConnectorType | End |
+| Connector 1.Origin (ft) | (917.4061409801118, 573.0692947590021, 10.666666666666725) |
+| Connector 1.IsConnected | True |
+| Connector 1.AllRefs (включая логические) | ID 7058266; Duct; AMX-M-Duct-Lined; Connector 0; ID 7058496; FamilyInstance; 1.5 W; Connector 1 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 18599544 — 2026-10-02 14:45:09 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 18599544 |
+| Element.UniqueId | 1be990ce-3139-4abb-97af-8d5e1f0884a3-011bce78 |
+| API class | Autodesk.Revit.DB.Architecture.Railing |
+| Name | Guardrail - Picket Cap |
+| Category | Railings; ID -2000126; OST&#95;StairsRailing |
+| GetTypeId() | ID 7981396; RailingType; Guardrail - Picket Cap |
+| LevelId | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | ID 18599504; DesignOption; --OLD-- OPTION 2 (25%) |
+| WorksetId | 467 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(886.1059567112883, 737.1382709268104, 10.333333333327221); Max=(889.1980738401013, 754.1829490509754, 15.583333333327223); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings without a host | Case 10: a hosted railing is not transferred separately yet. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1152300 / STAIRS&#95;RAILING&#95;PLACEMENT&#95;OFFSET | Offset from Path | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | -0.14583333333333331 | -1 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 0RwP3ECJbAkvUlZLuU4qhR | 0RwP3ECJbAkvUlZLuU4qhR | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | ID 18599504; DesignOption; --OLD-- OPTION 2 (25%) | 18599504 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | BOARDWALK VE : --OLD-- OPTION 2 (25%) | BOARDWALK VE : --OLD-- OPTION 2 (25%) | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008621 / STAIRS&#95;RAILING&#95;HEIGHT&#95;OFFSET | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008620 / STAIRS&#95;RAILING&#95;BASE&#95;LEVEL&#95;PARAM | Base Level | — |  | ElementId | True | True | -1 (InvalidElementId) |  | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 18.950225517502535 | 18' - 11 103/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 467 | 21-02 00 00 Shell | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Railing: Guardrail - Picket Cap | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Railing | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Guardrail - Picket Cap | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 7981396; RailingType; Guardrail - Picket Cap | 7981396 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150380 / RAILING&#95;SYSTEM&#95;HAS&#95;TOP&#95;RAIL | Use Top Rail | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| -1150336 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;LATTERAL&#95;OFFSET | Lateral Offset | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150335 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150334 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;POSITION&#95;PARAM | Position | — |  | Integer | True | True | 0 | None | — |
+| -1150333 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | -1 (InvalidElementId) | &lt;None&gt; | — |
+| -1150332 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;LATTERAL&#95;OFFSET | Lateral Offset | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.2875 | 3 115/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150331 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.9166666666666665 | 2' - 11" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150330 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;POSITION&#95;PARAM | Position | — |  | Integer | False | True | 1 | Left | — |
+| -1150329 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | ID 16578975; HandRailType; Circular 1 1/2" | Circular 1 1/2" | — |
+| -1150328 / RAILING&#95;SYSTEM&#95;TOP&#95;RAIL&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 3.5 | 3' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150327 / RAILING&#95;SYSTEM&#95;TOP&#95;RAIL&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | ID 8325519; TopRailType; Rectangle 2" | Rectangle 2" | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3oPISz425DYBHRPcbSasNa | 3oPISz425DYBHRPcbSasNa | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008632 / STAIRS&#95;RAILING&#95;CONNECTION | Rail Connections | — |  | Integer | False | True | 0 | Trim | — |
+| -1008631 / STAIRS&#95;RAILING&#95;ANGLED&#95;CONNECTION | Angled Joins | — |  | Integer | False | True | 0 | Add Vertical/Horizontal Segments | — |
+| -1008630 / STAIRS&#95;RAILING&#95;TANGENT&#95;CONNECTION | Tangent Joins | — |  | Integer | False | True | 0 | Add Vertical/Horizontal Segments | — |
+| -1008629 / STAIRS&#95;RAILING&#95;HEIGHT&#95;SHIFT&#95;VAL | Landing Height Adjustment | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008628 / STAIRS&#95;RAILING&#95;HEIGHT&#95;SHIFT&#95;TYPE | Use Landing Height Adjustment | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1008626 / STAIRS&#95;RAILING&#95;BALUSTER&#95;PLACEMENT | Baluster Placement | — |  | None | False | False | (нет значения) | — | — |
+| -1008619 / STAIRS&#95;RAILING&#95;BALUSTER&#95;OFFSET | Baluster Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008615 / STAIRS&#95;RAILING&#95;RAIL&#95;STRUCTURE | Rail Structure (Non-Continuous) | — |  | None | False | False | (нет значения) | — | — |
+| -1008602 / STAIRS&#95;RAILING&#95;HEIGHT | Railing Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 3.5 | 3' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 33 | Railing Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Railing | Railing | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Guardrail - Picket Cap | Guardrail - Picket Cap | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 37 |
+| ID 18599543 | ID 18599543; Sketch; Sketch |
+| ID 18599544 | ID 18599544; Railing; Guardrail - Picket Cap |
+| ID 18599545 | ID 18599545; ElementType; Railing |
+| ID 18599546 | ID 18599546; TopRail; Rectangle 2" |
+| ID 18599547 | ID 18599547; ElementType; Top Rail(Internal) |
+| ID 18599548 | ID 18599548; Path3d; Picked Path |
+| ID 18599549 | ID 18599549; ReferencePlane; Reference Plane |
+| ID 18599550 | ID 18599550; SketchPlane; Reference Plane |
+| ID 18599551 | ID 18599551; SketchPlane; &lt;not associated&gt; |
+| ID 18599552 | ID 18599552; ReferencePlane; Reference Plane |
+| ID 18599553 | ID 18599553; SketchPlane; Reference Plane |
+| ID 18599554 | ID 18599554; SketchPlane; &lt;not associated&gt; |
+| ID 18599555 | ID 18599555; ModelLine; Model Lines |
+| ID 18599556 | ID 18599556; DatumPlane; Profile plane |
+| ID 18599557 | ID 18599557; SketchPlane; Level 1 |
+| ID 18599558 | ID 18599558; ModelLine; Model Lines |
+| ID 18599559 | ID 18599559; ModelLine; Model Lines |
+| ID 18599561 | ID 18599561; ModelLine; Model Lines |
+| ID 18599562 | ID 18599562; HandRail; Circular 1 1/2" |
+| ID 18599563 | ID 18599563; ElementType; Handrail(Internal) |
+| ID 18599564 | ID 18599564; Path3d; Picked Path |
+| ID 18599565 | ID 18599565; ReferencePlane; Reference Plane |
+| ID 18599566 | ID 18599566; SketchPlane; Reference Plane |
+| ID 18599567 | ID 18599567; SketchPlane; &lt;not associated&gt; |
+| ID 18599568 | ID 18599568; ReferencePlane; Reference Plane |
+| ID 18599569 | ID 18599569; SketchPlane; Reference Plane |
+| ID 18599570 | ID 18599570; SketchPlane; &lt;not associated&gt; |
+| ID 18599571 | ID 18599571; ModelLine; Model Lines |
+| ID 18599572 | ID 18599572; ModelLine; Model Lines |
+| ID 18599573 | ID 18599573; DatumPlane; Profile plane |
+| ID 18599678 | ID 18599678; LinearDimension; Linear Dimension Style |
+| ID 18599679 | ID 18599679; LinearDimension; Linear Dimension Style |
+| ID 18599680 | ID 18599680; LinearDimension; Linear Dimension Style |
+| ID 18599884 | ID 18599884; FamilyInstance; baluster&#95;picket |
+| ID 18599885 | ID 18599885; FamilyInstance; baluster&#95;picket 3 |
+| ID 18599908 | ID 18599908; Element;  |
+| ID 21728904 | ID 21728904; FamilyInstance; baluster&#95;picket 3 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 4171260 — 2026-10-02 15:04:44 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 4171260 |
+| Element.UniqueId | 8d53a147-6153-4222-8027-ee81b85feb16-003f7e5e |
+| API class | Autodesk.Revit.DB.Floor |
+| Name | Composite Concrete Decking 6.5" |
+| Category | Floors; ID -2000032; OST&#95;Floors |
+| GetTypeId() | ID 1582030; FloorType; Composite Concrete Decking 6.5" |
+| LevelId | ID 1519130; Level; Level 1; Elevation=11.99999999999389; ProjectElevation=11.99999999999389 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 7043 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(994.8384326420512, 694.5527407188033, 11.083333333333334); Max=(1058.8384326420512, 797.2194073872845, 12.000000000000002); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Соответствует условиям отбора |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings without a host | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000032 (не разрешён в элемент документа; возможное служебное значение) | Floors | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000032 (не разрешён в элемент документа; возможное служебное значение) | Floors | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2DKw57OLD28e0dxe6uO9L8 | 2DKw57OLD28e0dxe6uO9L8 | — |
+| -1013449 / ANALYTICAL&#95;ELEMENT&#95;HAS&#95;ASSOCIATION | Has Association | — | autodesk.spec:spec.bool-1.0.0 | Integer | True | True | 0 | No | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012806 / HOST&#95;VOLUME&#95;COMPUTED | Volume | — | autodesk.spec.aec:volume-2.0.0 | Double | True | True | 3740.477608197353 | 3740.48 CF | autodesk.unit.unit:cubicFeet-1.0.1 |
+| -1012805 / HOST&#95;AREA&#95;COMPUTED | Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 4080.748412199159 | 4081 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1006016 / ROOF&#95;SLOPE | Slope | — | autodesk.spec.aec:slope-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002062 / SCHEDULE&#95;LEVEL&#95;PARAM | Level | — |  | ElementId | True | True | ID 1519130; Level; Level 1; Elevation=11.99999999999389; ProjectElevation=11.99999999999389 ft | Level 1 | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 7043 | 21-03 20 30 Flooring | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 1582030; FloorType; Composite Concrete Decking 6.5" | Floor: Composite Concrete Decking 6.5" | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 1582030; FloorType; Composite Concrete Decking 6.5" | Floor | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 1582030; FloorType; Composite Concrete Decking 6.5" | Composite Concrete Decking 6.5" | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 1582030; FloorType; Composite Concrete Decking 6.5" | 1582030 | — |
+| -1001954 / FLOOR&#95;PARAM&#95;IS&#95;STRUCTURAL | Structural | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1001953 / HOST&#95;PERIMETER&#95;COMPUTED | Perimeter | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 333.33333333696237 | 333' - 4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001952 / LEVEL&#95;PARAM | Level | — |  | ElementId | False | True | ID 1519130; Level; Level 1; Elevation=11.99999999999389; ProjectElevation=11.99999999999389 ft | Level 1 | — |
+| -1001951 / FLOOR&#95;HEIGHTABOVELEVEL&#95;PARAM | Height Offset From Level | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001900 / FLOOR&#95;ATTR&#95;THICKNESS&#95;PARAM | Thickness | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.9166666666666666 | 11" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001713 / RELATED&#95;TO&#95;MASS | Related to Mass | — | autodesk.spec:spec.bool-1.0.0 | Integer | True | True | 0 | No | — |
+| -1001655 / STRUCTURAL&#95;ELEVATION&#95;AT&#95;BOTTOM&#95;CORE | Elevation at Bottom Core | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 11.458333333333334 | 11' - 5 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001654 / STRUCTURAL&#95;ELEVATION&#95;AT&#95;TOP&#95;CORE | Elevation at Top Core | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 12 | 12' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001603 / HOST&#95;SSE&#95;CURVED&#95;EDGE&#95;CONDITION&#95;PARAM | Curved Edge Condition | — |  | Integer | True | True | 0 | 0 | — |
+| -1001598 / STRUCTURAL&#95;ELEVATION&#95;AT&#95;TOP | Elevation at Top | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 12 | 12' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001561 / STRUCTURAL&#95;ELEVATION&#95;AT&#95;BOTTOM | Elevation at Bottom | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 11.083333333333334 | 11' - 1" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001007 / WALL&#95;ATTR&#95;ROOM&#95;BOUNDING | Room Bounding | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000032 (не разрешён в элемент документа; возможное служебное значение) | Floors | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000032 (не разрешён в элемент документа; возможное служебное значение) | Floors | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3PcwVnFmbCWRNFpHzaHHqJ | 3PcwVnFmbCWRNFpHzaHHqJ | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1005500 / STRUCTURAL&#95;MATERIAL&#95;PARAM | Structural Material | — | autodesk.spec.aec:material-1.0.0 | ElementId | True | True | ID 18949; Material; Metal - Galvanized - Deck | Metal - Galvanized - Deck | — |
+| -1005436 / ANALYTICAL&#95;ROUGHNESS | Roughness | — | autodesk.spec:spec.int64-2.0.0 | Integer | False | True | 1 | 1 | — |
+| -1005435 / ANALYTICAL&#95;ABSORPTANCE | Absorptance | — | autodesk.spec.aec:number-2.0.0 | Double | False | True | 0.1 | 0.1 | autodesk.unit.unit:general-1.0.1 |
+| -1005434 / ANALYTICAL&#95;THERMAL&#95;MASS | Thermal Mass | — | autodesk.spec.aec.energy:heatCapacityPerArea-2.0.0 | Double | True | True | 249482.61 | 12.2046 BTU/(ft²·°F) | autodesk.unit.unit:britishThermalUnitsPerSquareFootDegreeFahrenheit-1.0.0 |
+| -1005431 / ANALYTICAL&#95;THERMAL&#95;RESISTANCE | Thermal Resistance (R) | — | autodesk.spec.aec.energy:thermalResistance-2.0.0 | Double | True | True | 0.15783938814531548 | 0.8963 (h·ft²·°F)/BTU | autodesk.unit.unit:hourSquareFootDegreesFahrenheitPerBritishThermalUnit-1.0.1 |
+| -1005430 / ANALYTICAL&#95;HEAT&#95;TRANSFER&#95;COEFFICIENT | Heat Transfer Coefficient (U) | — | autodesk.spec.aec.energy:heatTransferCoefficient-2.0.0 | Double | True | True | 6.335554209569958 | 1.1158 | autodesk.unit.unit:britishThermalUnitsPerHourSquareFootDegreeFahrenheit-1.0.1 |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Floor Construction | Floor Construction | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True | B1010 | B1010 | — |
+| -1002116 / FLOOR&#95;STRUCTURE&#95;ID&#95;PARAM | Structure | — |  | None | False | False | (нет значения) | — | — |
+| -1002110 / COARSE&#95;SCALE&#95;FILL&#95;PATTERN&#95;COLOR | Coarse Scale Fill Color | — |  | Integer | False | True | 0 | null | — |
+| -1002106 / COARSE&#95;SCALE&#95;FILL&#95;PATTERN&#95;ID&#95;PARAM | Coarse Scale Fill Pattern | — |  | ElementId | False | True | -1 (InvalidElementId) |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 17 | Floor Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Floor | Floor | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Composite Concrete Decking 6.5" | Composite Concrete Decking 6.5" | — |
+| -1001902 / FLOOR&#95;ATTR&#95;DEFAULT&#95;THICKNESS&#95;PARAM | Default Thickness | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.9166666666666666 | 11" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| -1001006 / FUNCTION&#95;PARAM | Function | — |  | Integer | False | True | 0 | Interior | — |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 1281 |
+| ID 4171259 | ID 4171259; Sketch; Sketch |
+| ID 4171260 | ID 4171260; Floor; Composite Concrete Decking 6.5" |
+| ID 4171262 | ID 4171262; ModelLine; Model Lines |
+| ID 4171263 | ID 4171263; SketchPlane; Level 1 |
+| ID 4171264 | ID 4171264; ModelLine; Model Lines |
+| ID 4171265 | ID 4171265; ModelLine; Model Lines |
+| ID 4171266 | ID 4171266; ModelLine; Model Lines |
+| ID 4565010 | ID 4565010; ModelLine; Model Lines |
+| ID 4565014 | ID 4565014; ModelLine; Model Lines |
+| ID 4736798 | ID 4736798; ModelLine; Model Lines |
+| ID 6011538 | ID 6011538; IndependentTag; Standard |
+| ID 6011800 | ID 6011800; IndependentTag; Standard |
+| ID 7650083 | ID 7650083; SpotDimension; Target (Project) |
+| ID 7650085 | ID 7650085; SpotDimension; Target (Project) |
+| ID 7650092 | ID 7650092; IndependentTag; Standard |
+| ID 7650264 | ID 7650264; SpotDimension; Target (Project) |
+| ID 7650276 | ID 7650276; SpotDimension; Target (Project) |
+| ID 7656212 | ID 7656212; IndependentTag; Standard |
+| ID 7978232 | ID 7978232; ModelLine; Model Lines |
+| ID 7978233 | ID 7978233; ModelLine; Model Lines |
+| ID 8608612 | ID 8608612; SpotDimension; Target (Project) |
+| ID 10643062 | ID 10643062; LinearDimension; Linear - Feet &amp; Inches |
+| ID 10837956 | ID 10837956; LinearDimension; Linear - Feet &amp; Inches |
+| ID 10837975 | ID 10837975; LinearDimension; Linear - Feet &amp; Inches |
+| ID 10837983 | ID 10837983; LinearDimension; Linear - Feet &amp; Inches |
+| ID 11287375 | ID 11287375; LinearDimension; Linear - Feet &amp; Inches |
+| ID 12112496 | ID 12112496; Sketch; Sketch |
+| ID 12112497 | ID 12112497; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 12112498 | ID 12112498; ElementType; Railing |
+| ID 12112499 | ID 12112499; ModelLine; Model Lines |
+| ID 12112501 | ID 12112501; TopRail; Rectangle 2" |
+| ID 12112502 | ID 12112502; ElementType; Top Rail(Internal) |
+| ID 12112503 | ID 12112503; Path3d; Picked Path |
+| ID 12112504 | ID 12112504; ReferencePlane; Reference Plane |
+| ID 12112505 | ID 12112505; SketchPlane; Reference Plane |
+| ID 12112506 | ID 12112506; SketchPlane; &lt;not associated&gt; |
+| ID 12112507 | ID 12112507; ReferencePlane; Reference Plane |
+| ID 12112508 | ID 12112508; SketchPlane; Reference Plane |
+| ID 12112509 | ID 12112509; SketchPlane; &lt;not associated&gt; |
+| ID 12112510 | ID 12112510; ModelLine; Model Lines |
+| ID 12112511 | ID 12112511; DatumPlane; Profile plane |
+| ID 12134407 | ID 12134407; SketchPlane; Level 1 |
+| ID 12691177 | ID 12691177; FamilyInstance; baluster&#95;picket 3 |
+| ID 13827292 | ID 13827292; ModelLine; Model Lines |
+| ID 13827299 | ID 13827299; Sketch; Sketch |
+| ID 13827300 | ID 13827300; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 13827301 | ID 13827301; ElementType; Railing |
+| ID 13827303 | ID 13827303; TopRail; Rectangle 2" |
+| ID 13827304 | ID 13827304; ElementType; Top Rail(Internal) |
+| ID 13827305 | ID 13827305; Path3d; Picked Path |
+| ID 13827306 | ID 13827306; ReferencePlane; Reference Plane |
+| ID 13827307 | ID 13827307; SketchPlane; Reference Plane |
+| ID 13827308 | ID 13827308; SketchPlane; &lt;not associated&gt; |
+| ID 13827309 | ID 13827309; ReferencePlane; Reference Plane |
+| ID 13827310 | ID 13827310; SketchPlane; Reference Plane |
+| ID 13827311 | ID 13827311; SketchPlane; &lt;not associated&gt; |
+| ID 13827312 | ID 13827312; ModelLine; Model Lines |
+| ID 13827313 | ID 13827313; DatumPlane; Profile plane |
+| ID 13827314 | ID 13827314; SketchPlane; Level 1 |
+| ID 13827317 | ID 13827317; FamilyInstance; baluster&#95;picket 3 |
+| ID 13827322 | ID 13827322; ModelLine; Model Lines |
+| ID 13827627 | ID 13827627; LinearDimension; Linear Dimension Style |
+| ID 15011350 | ID 15011350; Element;  |
+| ID 15011352 | ID 15011352; Element;  |
+| ID 15015921 | ID 15015921; ModelLine; Model Lines |
+| ID 18292167 | ID 18292167; Family; Sloping at Pump Room Drain |
+| ID 18292168 | ID 18292168; Element; Sloping at Pump Room Drain |
+| ID 18292656 | ID 18292656; FamilySymbol; Sloping at Pump Room Drain |
+| ID 18292657 | ID 18292657; Element; Sloping at Pump Room Drain |
+| ID 18292658 | ID 18292658; FamilyInstance; Sloping at Pump Room Drain |
+| ID 18456081 | ID 18456081; RadialDimension; Radial - Feet &amp; Inches |
+| ID 18461323 | ID 18461323; SpotDimension; Target (Project) |
+| ID 18461471 | ID 18461471; SpotDimension; Target (Project) |
+| ID 18461478 | ID 18461478; SpotDimension; Target (Project) |
+| ID 18599135 | ID 18599135; Sketch; Sketch |
+| ID 18599136 | ID 18599136; Railing; Guardrail - Picket Cap |
+| ID 18599137 | ID 18599137; ElementType; Railing |
+| ID 18599138 | ID 18599138; TopRail; Rectangle 2" |
+| ID 18599139 | ID 18599139; ElementType; Top Rail(Internal) |
+| ID 18599140 | ID 18599140; Path3d; Picked Path |
+| ID 18599141 | ID 18599141; ReferencePlane; Reference Plane |
+| ID 18599142 | ID 18599142; SketchPlane; Reference Plane |
+| ID 18599143 | ID 18599143; SketchPlane; &lt;not associated&gt; |
+| ID 18599144 | ID 18599144; ReferencePlane; Reference Plane |
+| ID 18599145 | ID 18599145; SketchPlane; Reference Plane |
+| ID 18599146 | ID 18599146; SketchPlane; &lt;not associated&gt; |
+| ID 18599147 | ID 18599147; ModelLine; Model Lines |
+| ID 18599148 | ID 18599148; DatumPlane; Profile plane |
+| ID 18599149 | ID 18599149; SketchPlane; Level 1 |
+| ID 18599150 | ID 18599150; ModelLine; Model Lines |
+| ID 18599151 | ID 18599151; ModelLine; Model Lines |
+| ID 18599153 | ID 18599153; ModelLine; Model Lines |
+| ID 18599154 | ID 18599154; HandRail; Circular 1 1/2" |
+| ID 18599155 | ID 18599155; ElementType; Handrail(Internal) |
+| ID 18599156 | ID 18599156; Path3d; Picked Path |
+| ID 18599157 | ID 18599157; ReferencePlane; Reference Plane |
+| ID 18599158 | ID 18599158; SketchPlane; Reference Plane |
+| ID 18599159 | ID 18599159; SketchPlane; &lt;not associated&gt; |
+| ID 18599160 | ID 18599160; ReferencePlane; Reference Plane |
+| ID 18599161 | ID 18599161; SketchPlane; Reference Plane |
+| ID 18599162 | ID 18599162; SketchPlane; &lt;not associated&gt; |
+| ID 18599163 | ID 18599163; ModelLine; Model Lines |
+| ID 18599164 | ID 18599164; ModelLine; Model Lines |
+| ID 18599165 | ID 18599165; DatumPlane; Profile plane |
+| ID 18599270 | ID 18599270; LinearDimension; Linear Dimension Style |
+| ID 18599271 | ID 18599271; LinearDimension; Linear Dimension Style |
+| ID 18599272 | ID 18599272; LinearDimension; Linear Dimension Style |
+| ID 18599278 | ID 18599278; Railing; Guardrail - Picket Cap |
+| ID 18599279 | ID 18599279; ElementType; Railing |
+| ID 18599280 | ID 18599280; Sketch; Sketch |
+| ID 18599281 | ID 18599281; TopRail; Rectangle 2" |
+| ID 18599282 | ID 18599282; ElementType; Top Rail(Internal) |
+| ID 18599283 | ID 18599283; Path3d; Picked Path |
+| ID 18599284 | ID 18599284; ReferencePlane; Reference Plane |
+| ID 18599285 | ID 18599285; SketchPlane; Reference Plane |
+| ID 18599286 | ID 18599286; SketchPlane; &lt;not associated&gt; |
+| ID 18599287 | ID 18599287; ReferencePlane; Reference Plane |
+| ID 18599288 | ID 18599288; SketchPlane; Reference Plane |
+| ID 18599289 | ID 18599289; SketchPlane; &lt;not associated&gt; |
+| ID 18599290 | ID 18599290; ModelArc; Model Lines |
+| ID 18599291 | ID 18599291; DatumPlane; Profile plane |
+| ID 18599292 | ID 18599292; HandRail; Circular 1 1/2" |
+| ID 18599293 | ID 18599293; ElementType; Handrail(Internal) |
+| ID 18599294 | ID 18599294; Path3d; Picked Path |
+| ID 18599295 | ID 18599295; ReferencePlane; Reference Plane |
+| ID 18599296 | ID 18599296; SketchPlane; Reference Plane |
+| ID 18599297 | ID 18599297; SketchPlane; &lt;not associated&gt; |
+| ID 18599298 | ID 18599298; ReferencePlane; Reference Plane |
+| ID 18599299 | ID 18599299; SketchPlane; Reference Plane |
+| ID 18599300 | ID 18599300; SketchPlane; &lt;not associated&gt; |
+| ID 18599301 | ID 18599301; ModelArc; Model Lines |
+| ID 18599302 | ID 18599302; DatumPlane; Profile plane |
+| ID 18599303 | ID 18599303; ModelLine; Model Lines |
+| ID 18599304 | ID 18599304; ModelArc; Model Lines |
+| ID 18599305 | ID 18599305; ModelLine; Model Lines |
+| ID 18599306 | ID 18599306; ModelArc; Model Lines |
+| ID 18599307 | ID 18599307; SketchPlane; Level 1 |
+| ID 18599429 | ID 18599429; ModelArc; Model Lines |
+| ID 18599430 | ID 18599430; ModelArc; Model Lines |
+| ID 18599431 | ID 18599431; ModelArc; Model Lines |
+| ID 18599432 | ID 18599432; ModelArc; Model Lines |
+| ID 18599476 | ID 18599476; FamilyInstance; baluster&#95;picket |
+| ID 18599477 | ID 18599477; FamilyInstance; baluster&#95;picket 3 |
+| ID 18599479 | ID 18599479; FamilyInstance; baluster&#95;picket |
+| ID 18599480 | ID 18599480; FamilyInstance; baluster&#95;picket 3 |
+| ID 18599500 | ID 18599500; Element;  |
+| ID 18599501 | ID 18599501; Element;  |
+| ID 18599543 | ID 18599543; Sketch; Sketch |
+| ID 18599544 | ID 18599544; Railing; Guardrail - Picket Cap |
+| ID 18599545 | ID 18599545; ElementType; Railing |
+| ID 18599546 | ID 18599546; TopRail; Rectangle 2" |
+| ID 18599547 | ID 18599547; ElementType; Top Rail(Internal) |
+| ID 18599548 | ID 18599548; Path3d; Picked Path |
+| ID 18599549 | ID 18599549; ReferencePlane; Reference Plane |
+| ID 18599550 | ID 18599550; SketchPlane; Reference Plane |
+| ID 18599551 | ID 18599551; SketchPlane; &lt;not associated&gt; |
+| ID 18599552 | ID 18599552; ReferencePlane; Reference Plane |
+| ID 18599553 | ID 18599553; SketchPlane; Reference Plane |
+| ID 18599554 | ID 18599554; SketchPlane; &lt;not associated&gt; |
+| ID 18599555 | ID 18599555; ModelLine; Model Lines |
+| ID 18599556 | ID 18599556; DatumPlane; Profile plane |
+| ID 18599557 | ID 18599557; SketchPlane; Level 1 |
+| ID 18599558 | ID 18599558; ModelLine; Model Lines |
+| ID 18599559 | ID 18599559; ModelLine; Model Lines |
+| ID 18599561 | ID 18599561; ModelLine; Model Lines |
+| ID 18599562 | ID 18599562; HandRail; Circular 1 1/2" |
+| ID 18599563 | ID 18599563; ElementType; Handrail(Internal) |
+| ID 18599564 | ID 18599564; Path3d; Picked Path |
+| ID 18599565 | ID 18599565; ReferencePlane; Reference Plane |
+| ID 18599566 | ID 18599566; SketchPlane; Reference Plane |
+| ID 18599567 | ID 18599567; SketchPlane; &lt;not associated&gt; |
+| ID 18599568 | ID 18599568; ReferencePlane; Reference Plane |
+| ID 18599569 | ID 18599569; SketchPlane; Reference Plane |
+| ID 18599570 | ID 18599570; SketchPlane; &lt;not associated&gt; |
+| ID 18599571 | ID 18599571; ModelLine; Model Lines |
+| ID 18599572 | ID 18599572; ModelLine; Model Lines |
+| ID 18599573 | ID 18599573; DatumPlane; Profile plane |
+| ID 18599678 | ID 18599678; LinearDimension; Linear Dimension Style |
+| ID 18599679 | ID 18599679; LinearDimension; Linear Dimension Style |
+| ID 18599680 | ID 18599680; LinearDimension; Linear Dimension Style |
+| ID 18599686 | ID 18599686; Railing; Guardrail - Picket Cap |
+| ID 18599687 | ID 18599687; ElementType; Railing |
+| ID 18599688 | ID 18599688; Sketch; Sketch |
+| ID 18599689 | ID 18599689; TopRail; Rectangle 2" |
+| ID 18599690 | ID 18599690; ElementType; Top Rail(Internal) |
+| ID 18599691 | ID 18599691; Path3d; Picked Path |
+| ID 18599692 | ID 18599692; ReferencePlane; Reference Plane |
+| ID 18599693 | ID 18599693; SketchPlane; Reference Plane |
+| ID 18599694 | ID 18599694; SketchPlane; &lt;not associated&gt; |
+| ID 18599695 | ID 18599695; ReferencePlane; Reference Plane |
+| ID 18599696 | ID 18599696; SketchPlane; Reference Plane |
+| ID 18599697 | ID 18599697; SketchPlane; &lt;not associated&gt; |
+| ID 18599698 | ID 18599698; ModelLine; Model Lines |
+| ID 18599699 | ID 18599699; DatumPlane; Profile plane |
+| ID 18599700 | ID 18599700; HandRail; Circular 1 1/2" |
+| ID 18599701 | ID 18599701; ElementType; Handrail(Internal) |
+| ID 18599702 | ID 18599702; Path3d; Picked Path |
+| ID 18599703 | ID 18599703; ReferencePlane; Reference Plane |
+| ID 18599704 | ID 18599704; SketchPlane; Reference Plane |
+| ID 18599705 | ID 18599705; SketchPlane; &lt;not associated&gt; |
+| ID 18599706 | ID 18599706; ReferencePlane; Reference Plane |
+| ID 18599707 | ID 18599707; SketchPlane; Reference Plane |
+| ID 18599708 | ID 18599708; SketchPlane; &lt;not associated&gt; |
+| ID 18599709 | ID 18599709; ModelLine; Model Lines |
+| ID 18599710 | ID 18599710; DatumPlane; Profile plane |
+| ID 18599711 | ID 18599711; ModelArc; Model Lines |
+| ID 18599712 | ID 18599712; ModelLine; Model Lines |
+| ID 18599713 | ID 18599713; ModelArc; Model Lines |
+| ID 18599714 | ID 18599714; ModelLine; Model Lines |
+| ID 18599715 | ID 18599715; SketchPlane; Level 1 |
+| ID 18599837 | ID 18599837; ModelLine; Model Lines |
+| ID 18599838 | ID 18599838; ModelArc; Model Lines |
+| ID 18599839 | ID 18599839; ModelLine; Model Lines |
+| ID 18599840 | ID 18599840; ModelArc; Model Lines |
+| ID 18599884 | ID 18599884; FamilyInstance; baluster&#95;picket |
+| ID 18599885 | ID 18599885; FamilyInstance; baluster&#95;picket 3 |
+| ID 18599887 | ID 18599887; FamilyInstance; baluster&#95;picket |
+| ID 18599888 | ID 18599888; FamilyInstance; baluster&#95;picket 3 |
+| ID 18599908 | ID 18599908; Element;  |
+| ID 18599909 | ID 18599909; Element;  |
+| ID 18600787 | ID 18600787; ModelArc; Model Lines |
+| ID 18600788 | ID 18600788; ModelArc; Model Lines |
+| ID 18600789 | ID 18600789; ModelArc; Model Lines |
+| ID 18600790 | ID 18600790; ModelLine; Model Lines |
+| ID 18600793 | ID 18600793; ModelArc; Model Lines |
+| ID 18600794 | ID 18600794; ModelArc; Model Lines |
+| ID 18600795 | ID 18600795; ModelArc; Model Lines |
+| ID 18600796 | ID 18600796; ModelLine; Model Lines |
+| ID 18601003 | ID 18601003; Railing; Guardrail - Picket Cap |
+| ID 18601004 | ID 18601004; ElementType; Railing |
+| ID 18601005 | ID 18601005; Sketch; Sketch |
+| ID 18601006 | ID 18601006; TopRail; Rectangle 2" |
+| ID 18601007 | ID 18601007; ElementType; Top Rail(Internal) |
+| ID 18601008 | ID 18601008; Path3d; Picked Path |
+| ID 18601009 | ID 18601009; ReferencePlane; Reference Plane |
+| ID 18601010 | ID 18601010; SketchPlane; Reference Plane |
+| ID 18601011 | ID 18601011; SketchPlane; &lt;not associated&gt; |
+| ID 18601012 | ID 18601012; ReferencePlane; Reference Plane |
+| ID 18601013 | ID 18601013; SketchPlane; Reference Plane |
+| ID 18601014 | ID 18601014; SketchPlane; &lt;not associated&gt; |
+| ID 18601015 | ID 18601015; ModelLine; Model Lines |
+| ID 18601016 | ID 18601016; DatumPlane; Profile plane |
+| ID 18601017 | ID 18601017; HandRail; Circular 1 1/2" |
+| ID 18601018 | ID 18601018; ElementType; Handrail(Internal) |
+| ID 18601019 | ID 18601019; Path3d; Picked Path |
+| ID 18601020 | ID 18601020; ReferencePlane; Reference Plane |
+| ID 18601021 | ID 18601021; SketchPlane; Reference Plane |
+| ID 18601022 | ID 18601022; SketchPlane; &lt;not associated&gt; |
+| ID 18601023 | ID 18601023; ReferencePlane; Reference Plane |
+| ID 18601024 | ID 18601024; SketchPlane; Reference Plane |
+| ID 18601025 | ID 18601025; SketchPlane; &lt;not associated&gt; |
+| ID 18601026 | ID 18601026; ModelLine; Model Lines |
+| ID 18601027 | ID 18601027; DatumPlane; Profile plane |
+| ID 18601028 | ID 18601028; ModelLine; Model Lines |
+| ID 18601030 | ID 18601030; ModelArc; Model Lines |
+| ID 18601031 | ID 18601031; ModelArc; Model Lines |
+| ID 18601032 | ID 18601032; ModelArc; Model Lines |
+| ID 18601033 | ID 18601033; ModelLine; Model Lines |
+| ID 18601034 | ID 18601034; ModelArc; Model Lines |
+| ID 18601035 | ID 18601035; ModelArc; Model Lines |
+| ID 18601036 | ID 18601036; ModelLine; Model Lines |
+| ID 18601037 | ID 18601037; ModelArc; Model Lines |
+| ID 18601038 | ID 18601038; ModelLine; Model Lines |
+| ID 18601039 | ID 18601039; ModelArc; Model Lines |
+| ID 18601040 | ID 18601040; ModelArc; Model Lines |
+| ID 18601041 | ID 18601041; ModelLine; Model Lines |
+| ID 18601042 | ID 18601042; ModelArc; Model Lines |
+| ID 18601043 | ID 18601043; SketchPlane; Level 1 |
+| ID 18601106 | ID 18601106; ModelArc; Model Lines |
+| ID 18601108 | ID 18601108; ModelArc; Model Lines |
+| ID 18601131 | ID 18601131; FamilyInstance; baluster&#95;picket |
+| ID 18601132 | ID 18601132; FamilyInstance; baluster&#95;picket 3 |
+| ID 18601173 | ID 18601173; Element;  |
+| ID 18601867 | ID 18601867; ModelArc; Model Lines |
+| ID 18601869 | ID 18601869; ModelArc; Model Lines |
+| ID 18610724 | ID 18610724; ModelLine; Model Lines |
+| ID 18610725 | ID 18610725; ModelArc; Model Lines |
+| ID 18610726 | ID 18610726; ModelArc; Model Lines |
+| ID 18610727 | ID 18610727; ModelArc; Model Lines |
+| ID 18610728 | ID 18610728; ModelArc; Model Lines |
+| ID 18610729 | ID 18610729; ModelArc; Model Lines |
+| ID 18610730 | ID 18610730; ModelArc; Model Lines |
+| ID 18610745 | ID 18610745; LinearDimension; Linear Dimension Style |
+| ID 18610746 | ID 18610746; LinearDimension; Linear Dimension Style |
+| ID 18610747 | ID 18610747; LinearDimension; Linear Dimension Style |
+| ID 18610748 | ID 18610748; LinearDimension; Linear Dimension Style |
+| ID 18610749 | ID 18610749; LinearDimension; Linear Dimension Style |
+| ID 18610750 | ID 18610750; LinearDimension; Linear Dimension Style |
+| ID 18610751 | ID 18610751; LinearDimension; Linear Dimension Style |
+| ID 18610752 | ID 18610752; LinearDimension; Linear Dimension Style |
+| ID 18610753 | ID 18610753; LinearDimension; Linear Dimension Style |
+| ID 18610754 | ID 18610754; LinearDimension; Linear Dimension Style |
+| ID 18610755 | ID 18610755; LinearDimension; Linear Dimension Style |
+| ID 18610756 | ID 18610756; LinearDimension; Linear Dimension Style |
+| ID 18610757 | ID 18610757; LinearDimension; Linear Dimension Style |
+| ID 18610758 | ID 18610758; LinearDimension; Linear Dimension Style |
+| ID 18610759 | ID 18610759; LinearDimension; Linear Dimension Style |
+| ID 18610760 | ID 18610760; LinearDimension; Linear Dimension Style |
+| ID 18610761 | ID 18610761; LinearDimension; Linear Dimension Style |
+| ID 18610762 | ID 18610762; LinearDimension; Linear Dimension Style |
+| ID 18610763 | ID 18610763; ModelArc; Model Lines |
+| ID 18610764 | ID 18610764; ModelArc; Model Lines |
+| ID 18610769 | ID 18610769; ModelLine; Model Lines |
+| ID 18610774 | ID 18610774; ModelArc; Model Lines |
+| ID 18610781 | ID 18610781; ModelLine; Model Lines |
+| ID 18610787 | ID 18610787; LinearDimension; Linear Dimension Style |
+| ID 18610788 | ID 18610788; LinearDimension; Linear Dimension Style |
+| ID 18610789 | ID 18610789; LinearDimension; Linear Dimension Style |
+| ID 18610790 | ID 18610790; LinearDimension; Linear Dimension Style |
+| ID 18610791 | ID 18610791; LinearDimension; Linear Dimension Style |
+| ID 18610792 | ID 18610792; LinearDimension; Linear Dimension Style |
+| ID 18610793 | ID 18610793; LinearDimension; Linear Dimension Style |
+| ID 18610794 | ID 18610794; LinearDimension; Linear Dimension Style |
+| ID 18610795 | ID 18610795; LinearDimension; Linear Dimension Style |
+| ID 18610796 | ID 18610796; LinearDimension; Linear Dimension Style |
+| ID 18610797 | ID 18610797; LinearDimension; Linear Dimension Style |
+| ID 18610798 | ID 18610798; LinearDimension; Linear Dimension Style |
+| ID 18610799 | ID 18610799; LinearDimension; Linear Dimension Style |
+| ID 18610800 | ID 18610800; LinearDimension; Linear Dimension Style |
+| ID 18610801 | ID 18610801; LinearDimension; Linear Dimension Style |
+| ID 18610802 | ID 18610802; LinearDimension; Linear Dimension Style |
+| ID 18611811 | ID 18611811; ModelArc; Model Lines |
+| ID 18611812 | ID 18611812; ModelLine; Model Lines |
+| ID 18611813 | ID 18611813; ModelLine; Model Lines |
+| ID 18611814 | ID 18611814; ModelArc; Model Lines |
+| ID 18611815 | ID 18611815; ModelArc; Model Lines |
+| ID 18611816 | ID 18611816; ModelArc; Model Lines |
+| ID 18611817 | ID 18611817; ModelArc; Model Lines |
+| ID 18611818 | ID 18611818; ModelLine; Model Lines |
+| ID 18611860 | ID 18611860; ModelLine; Model Lines |
+| ID 18612019 | ID 18612019; LinearDimension; Linear Dimension Style |
+| ID 18612020 | ID 18612020; LinearDimension; Linear Dimension Style |
+| ID 18612021 | ID 18612021; LinearDimension; Linear Dimension Style |
+| ID 18612022 | ID 18612022; LinearDimension; Linear Dimension Style |
+| ID 18612023 | ID 18612023; LinearDimension; Linear Dimension Style |
+| ID 18612024 | ID 18612024; LinearDimension; Linear Dimension Style |
+| ID 18612025 | ID 18612025; LinearDimension; Linear Dimension Style |
+| ID 18612026 | ID 18612026; LinearDimension; Linear Dimension Style |
+| ID 18612027 | ID 18612027; LinearDimension; Linear Dimension Style |
+| ID 18612028 | ID 18612028; LinearDimension; Linear Dimension Style |
+| ID 18612029 | ID 18612029; LinearDimension; Linear Dimension Style |
+| ID 18612030 | ID 18612030; LinearDimension; Linear Dimension Style |
+| ID 18612031 | ID 18612031; LinearDimension; Linear Dimension Style |
+| ID 18612032 | ID 18612032; LinearDimension; Linear Dimension Style |
+| ID 18612033 | ID 18612033; LinearDimension; Linear Dimension Style |
+| ID 18612034 | ID 18612034; LinearDimension; Linear Dimension Style |
+| ID 18612035 | ID 18612035; LinearDimension; Linear Dimension Style |
+| ID 18612036 | ID 18612036; LinearDimension; Linear Dimension Style |
+| ID 18615149 | ID 18615149; Sketch; Sketch |
+| ID 18615150 | ID 18615150; Railing; Guardrail - Picket Cap |
+| ID 18615151 | ID 18615151; ElementType; Railing |
+| ID 18615152 | ID 18615152; TopRail; Rectangle 2" |
+| ID 18615153 | ID 18615153; ElementType; Top Rail(Internal) |
+| ID 18615154 | ID 18615154; Path3d; Picked Path |
+| ID 18615155 | ID 18615155; ReferencePlane; Reference Plane |
+| ID 18615156 | ID 18615156; SketchPlane; Reference Plane |
+| ID 18615157 | ID 18615157; SketchPlane; &lt;not associated&gt; |
+| ID 18615158 | ID 18615158; ReferencePlane; Reference Plane |
+| ID 18615159 | ID 18615159; SketchPlane; Reference Plane |
+| ID 18615160 | ID 18615160; SketchPlane; &lt;not associated&gt; |
+| ID 18615161 | ID 18615161; ModelLine; Model Lines |
+| ID 18615162 | ID 18615162; DatumPlane; Profile plane |
+| ID 18615163 | ID 18615163; SketchPlane; Level 1 |
+| ID 18615164 | ID 18615164; ModelLine; Model Lines |
+| ID 18615165 | ID 18615165; ModelLine; Model Lines |
+| ID 18615167 | ID 18615167; ModelLine; Model Lines |
+| ID 18615193 | ID 18615193; HandRail; Circular 1 1/2" |
+| ID 18615194 | ID 18615194; ElementType; Handrail(Internal) |
+| ID 18615195 | ID 18615195; Path3d; Picked Path |
+| ID 18615196 | ID 18615196; ReferencePlane; Reference Plane |
+| ID 18615197 | ID 18615197; SketchPlane; Reference Plane |
+| ID 18615198 | ID 18615198; SketchPlane; &lt;not associated&gt; |
+| ID 18615199 | ID 18615199; ReferencePlane; Reference Plane |
+| ID 18615200 | ID 18615200; SketchPlane; Reference Plane |
+| ID 18615201 | ID 18615201; SketchPlane; &lt;not associated&gt; |
+| ID 18615202 | ID 18615202; ModelLine; Model Lines |
+| ID 18615203 | ID 18615203; ModelLine; Model Lines |
+| ID 18615204 | ID 18615204; DatumPlane; Profile plane |
+| ID 18615366 | ID 18615366; LinearDimension; Linear Dimension Style |
+| ID 18615367 | ID 18615367; LinearDimension; Linear Dimension Style |
+| ID 18615368 | ID 18615368; LinearDimension; Linear Dimension Style |
+| ID 18615404 | ID 18615404; Railing; Guardrail - Picket Cap |
+| ID 18615405 | ID 18615405; ElementType; Railing |
+| ID 18615406 | ID 18615406; Sketch; Sketch |
+| ID 18615407 | ID 18615407; TopRail; Rectangle 2" |
+| ID 18615408 | ID 18615408; ElementType; Top Rail(Internal) |
+| ID 18615409 | ID 18615409; Path3d; Picked Path |
+| ID 18615410 | ID 18615410; ReferencePlane; Reference Plane |
+| ID 18615411 | ID 18615411; SketchPlane; Reference Plane |
+| ID 18615412 | ID 18615412; SketchPlane; &lt;not associated&gt; |
+| ID 18615413 | ID 18615413; ReferencePlane; Reference Plane |
+| ID 18615414 | ID 18615414; SketchPlane; Reference Plane |
+| ID 18615415 | ID 18615415; SketchPlane; &lt;not associated&gt; |
+| ID 18615416 | ID 18615416; ModelLine; Model Lines |
+| ID 18615417 | ID 18615417; DatumPlane; Profile plane |
+| ID 18615418 | ID 18615418; HandRail; Circular 1 1/2" |
+| ID 18615419 | ID 18615419; ElementType; Handrail(Internal) |
+| ID 18615420 | ID 18615420; Path3d; Picked Path |
+| ID 18615421 | ID 18615421; ReferencePlane; Reference Plane |
+| ID 18615422 | ID 18615422; SketchPlane; Reference Plane |
+| ID 18615423 | ID 18615423; SketchPlane; &lt;not associated&gt; |
+| ID 18615424 | ID 18615424; ReferencePlane; Reference Plane |
+| ID 18615425 | ID 18615425; SketchPlane; Reference Plane |
+| ID 18615426 | ID 18615426; SketchPlane; &lt;not associated&gt; |
+| ID 18615427 | ID 18615427; ModelLine; Model Lines |
+| ID 18615428 | ID 18615428; DatumPlane; Profile plane |
+| ID 18615429 | ID 18615429; ModelArc; Model Lines |
+| ID 18615430 | ID 18615430; ModelArc; Model Lines |
+| ID 18615431 | ID 18615431; SketchPlane; Level 1 |
+| ID 18615649 | ID 18615649; FamilyInstance; baluster&#95;picket |
+| ID 18615650 | ID 18615650; FamilyInstance; baluster&#95;picket 3 |
+| ID 18615652 | ID 18615652; FamilyInstance; baluster&#95;picket |
+| ID 18615653 | ID 18615653; FamilyInstance; baluster&#95;picket 3 |
+| ID 18615665 | ID 18615665; Element;  |
+| ID 18615666 | ID 18615666; Element;  |
+| ID 18615948 | ID 18615948; ModelArc; Model Lines |
+| ID 18615949 | ID 18615949; ModelArc; Model Lines |
+| ID 18626686 | ID 18626686; ModelLine; Model Lines |
+| ID 18626730 | ID 18626730; ModelLine; Model Lines |
+| ID 18626732 | ID 18626732; ModelLine; Model Lines |
+| ID 18645796 | ID 18645796; ModelArc; Model Lines |
+| ID 18645802 | ID 18645802; ModelArc; Model Lines |
+| ID 18645809 | ID 18645809; ModelLine; Model Lines |
+| ID 18645830 | ID 18645830; LinearDimension; Linear Dimension Style |
+| ID 18645831 | ID 18645831; LinearDimension; Linear Dimension Style |
+| ID 18645832 | ID 18645832; LinearDimension; Linear Dimension Style |
+| ID 18645833 | ID 18645833; LinearDimension; Linear Dimension Style |
+| ID 18645834 | ID 18645834; LinearDimension; Linear Dimension Style |
+| ID 18645835 | ID 18645835; LinearDimension; Linear Dimension Style |
+| ID 18645836 | ID 18645836; LinearDimension; Linear Dimension Style |
+| ID 18645837 | ID 18645837; LinearDimension; Linear Dimension Style |
+| ID 18657419 | ID 18657419; Sketch; Sketch |
+| ID 18657420 | ID 18657420; Railing; Guardrail - Picket Cap |
+| ID 18657421 | ID 18657421; ElementType; Railing |
+| ID 18657422 | ID 18657422; TopRail; Rectangle 2" |
+| ID 18657423 | ID 18657423; ElementType; Top Rail(Internal) |
+| ID 18657424 | ID 18657424; Path3d; Picked Path |
+| ID 18657425 | ID 18657425; ReferencePlane; Reference Plane |
+| ID 18657426 | ID 18657426; SketchPlane; Reference Plane |
+| ID 18657427 | ID 18657427; SketchPlane; &lt;not associated&gt; |
+| ID 18657428 | ID 18657428; ReferencePlane; Reference Plane |
+| ID 18657429 | ID 18657429; SketchPlane; Reference Plane |
+| ID 18657430 | ID 18657430; SketchPlane; &lt;not associated&gt; |
+| ID 18657431 | ID 18657431; ModelLine; Model Lines |
+| ID 18657432 | ID 18657432; DatumPlane; Profile plane |
+| ID 18657433 | ID 18657433; SketchPlane; Level 1 |
+| ID 18657434 | ID 18657434; ModelLine; Model Lines |
+| ID 18657435 | ID 18657435; ModelLine; Model Lines |
+| ID 18657437 | ID 18657437; ModelLine; Model Lines |
+| ID 18657463 | ID 18657463; HandRail; Circular 1 1/2" |
+| ID 18657464 | ID 18657464; ElementType; Handrail(Internal) |
+| ID 18657465 | ID 18657465; Path3d; Picked Path |
+| ID 18657466 | ID 18657466; ReferencePlane; Reference Plane |
+| ID 18657467 | ID 18657467; SketchPlane; Reference Plane |
+| ID 18657468 | ID 18657468; SketchPlane; &lt;not associated&gt; |
+| ID 18657469 | ID 18657469; ReferencePlane; Reference Plane |
+| ID 18657470 | ID 18657470; SketchPlane; Reference Plane |
+| ID 18657471 | ID 18657471; SketchPlane; &lt;not associated&gt; |
+| ID 18657472 | ID 18657472; ModelLine; Model Lines |
+| ID 18657473 | ID 18657473; ModelLine; Model Lines |
+| ID 18657474 | ID 18657474; DatumPlane; Profile plane |
+| ID 18657609 | ID 18657609; LinearDimension; Linear Dimension Style |
+| ID 18657610 | ID 18657610; LinearDimension; Linear Dimension Style |
+| ID 18657611 | ID 18657611; LinearDimension; Linear Dimension Style |
+| ID 18657630 | ID 18657630; Railing; Guardrail - Picket Cap |
+| ID 18657631 | ID 18657631; ElementType; Railing |
+| ID 18657632 | ID 18657632; Sketch; Sketch |
+| ID 18657633 | ID 18657633; TopRail; Rectangle 2" |
+| ID 18657634 | ID 18657634; ElementType; Top Rail(Internal) |
+| ID 18657635 | ID 18657635; Path3d; Picked Path |
+| ID 18657636 | ID 18657636; ReferencePlane; Reference Plane |
+| ID 18657637 | ID 18657637; SketchPlane; Reference Plane |
+| ID 18657638 | ID 18657638; SketchPlane; &lt;not associated&gt; |
+| ID 18657639 | ID 18657639; ReferencePlane; Reference Plane |
+| ID 18657640 | ID 18657640; SketchPlane; Reference Plane |
+| ID 18657641 | ID 18657641; SketchPlane; &lt;not associated&gt; |
+| ID 18657642 | ID 18657642; ModelLine; Model Lines |
+| ID 18657643 | ID 18657643; DatumPlane; Profile plane |
+| ID 18657644 | ID 18657644; HandRail; Circular 1 1/2" |
+| ID 18657645 | ID 18657645; ElementType; Handrail(Internal) |
+| ID 18657646 | ID 18657646; Path3d; Picked Path |
+| ID 18657647 | ID 18657647; ReferencePlane; Reference Plane |
+| ID 18657648 | ID 18657648; SketchPlane; Reference Plane |
+| ID 18657649 | ID 18657649; SketchPlane; &lt;not associated&gt; |
+| ID 18657650 | ID 18657650; ReferencePlane; Reference Plane |
+| ID 18657651 | ID 18657651; SketchPlane; Reference Plane |
+| ID 18657652 | ID 18657652; SketchPlane; &lt;not associated&gt; |
+| ID 18657653 | ID 18657653; ModelLine; Model Lines |
+| ID 18657654 | ID 18657654; DatumPlane; Profile plane |
+| ID 18657655 | ID 18657655; SketchPlane; Level 1 |
+| ID 18657656 | ID 18657656; Railing; Guardrail - Picket Cap |
+| ID 18657657 | ID 18657657; ElementType; Railing |
+| ID 18657658 | ID 18657658; Sketch; Sketch |
+| ID 18657659 | ID 18657659; TopRail; Rectangle 2" |
+| ID 18657660 | ID 18657660; ElementType; Top Rail(Internal) |
+| ID 18657661 | ID 18657661; Path3d; Picked Path |
+| ID 18657662 | ID 18657662; ReferencePlane; Reference Plane |
+| ID 18657663 | ID 18657663; SketchPlane; Reference Plane |
+| ID 18657664 | ID 18657664; SketchPlane; &lt;not associated&gt; |
+| ID 18657665 | ID 18657665; ReferencePlane; Reference Plane |
+| ID 18657666 | ID 18657666; SketchPlane; Reference Plane |
+| ID 18657667 | ID 18657667; SketchPlane; &lt;not associated&gt; |
+| ID 18657668 | ID 18657668; ModelLine; Model Lines |
+| ID 18657669 | ID 18657669; DatumPlane; Profile plane |
+| ID 18657670 | ID 18657670; HandRail; Circular 1 1/2" |
+| ID 18657671 | ID 18657671; ElementType; Handrail(Internal) |
+| ID 18657672 | ID 18657672; Path3d; Picked Path |
+| ID 18657673 | ID 18657673; ReferencePlane; Reference Plane |
+| ID 18657674 | ID 18657674; SketchPlane; Reference Plane |
+| ID 18657675 | ID 18657675; SketchPlane; &lt;not associated&gt; |
+| ID 18657676 | ID 18657676; ReferencePlane; Reference Plane |
+| ID 18657677 | ID 18657677; SketchPlane; Reference Plane |
+| ID 18657678 | ID 18657678; SketchPlane; &lt;not associated&gt; |
+| ID 18657679 | ID 18657679; ModelLine; Model Lines |
+| ID 18657680 | ID 18657680; DatumPlane; Profile plane |
+| ID 18657681 | ID 18657681; ModelLine; Model Lines |
+| ID 18657682 | ID 18657682; ModelLine; Model Lines |
+| ID 18657683 | ID 18657683; SketchPlane; Level 1 |
+| ID 18657684 | ID 18657684; ModelLine; Model Lines |
+| ID 18657733 | ID 18657733; ModelLine; Model Lines |
+| ID 18657734 | ID 18657734; LinearDimension; Linear Dimension Style |
+| ID 18657735 | ID 18657735; LinearDimension; Linear Dimension Style |
+| ID 18657757 | ID 18657757; ModelLine; Model Lines |
+| ID 18658504 | ID 18658504; FamilyInstance; baluster&#95;picket |
+| ID 18658505 | ID 18658505; FamilyInstance; baluster&#95;picket 3 |
+| ID 18658507 | ID 18658507; FamilyInstance; baluster&#95;picket |
+| ID 18658508 | ID 18658508; FamilyInstance; baluster&#95;picket 3 |
+| ID 18658510 | ID 18658510; FamilyInstance; baluster&#95;picket |
+| ID 18658511 | ID 18658511; FamilyInstance; baluster&#95;picket 3 |
+| ID 18658608 | ID 18658608; Element;  |
+| ID 18658609 | ID 18658609; Element;  |
+| ID 18658610 | ID 18658610; Element;  |
+| ID 18658695 | ID 18658695; Sketch; Sketch |
+| ID 18658696 | ID 18658696; Railing; Guardrail - Picket Cap |
+| ID 18658697 | ID 18658697; ElementType; Railing |
+| ID 18658698 | ID 18658698; TopRail; Rectangle 2" |
+| ID 18658699 | ID 18658699; ElementType; Top Rail(Internal) |
+| ID 18658700 | ID 18658700; Path3d; Picked Path |
+| ID 18658701 | ID 18658701; ReferencePlane; Reference Plane |
+| ID 18658702 | ID 18658702; SketchPlane; Reference Plane |
+| ID 18658703 | ID 18658703; SketchPlane; &lt;not associated&gt; |
+| ID 18658704 | ID 18658704; ReferencePlane; Reference Plane |
+| ID 18658705 | ID 18658705; SketchPlane; Reference Plane |
+| ID 18658706 | ID 18658706; SketchPlane; &lt;not associated&gt; |
+| ID 18658707 | ID 18658707; ModelLine; Model Lines |
+| ID 18658708 | ID 18658708; DatumPlane; Profile plane |
+| ID 18658709 | ID 18658709; SketchPlane; Level 1 |
+| ID 18658710 | ID 18658710; ModelLine; Model Lines |
+| ID 18658711 | ID 18658711; ModelLine; Model Lines |
+| ID 18658713 | ID 18658713; ModelLine; Model Lines |
+| ID 18658739 | ID 18658739; HandRail; Circular 1 1/2" |
+| ID 18658740 | ID 18658740; ElementType; Handrail(Internal) |
+| ID 18658741 | ID 18658741; Path3d; Picked Path |
+| ID 18658742 | ID 18658742; ReferencePlane; Reference Plane |
+| ID 18658743 | ID 18658743; SketchPlane; Reference Plane |
+| ID 18658744 | ID 18658744; SketchPlane; &lt;not associated&gt; |
+| ID 18658745 | ID 18658745; ReferencePlane; Reference Plane |
+| ID 18658746 | ID 18658746; SketchPlane; Reference Plane |
+| ID 18658747 | ID 18658747; SketchPlane; &lt;not associated&gt; |
+| ID 18658748 | ID 18658748; ModelLine; Model Lines |
+| ID 18658749 | ID 18658749; ModelLine; Model Lines |
+| ID 18658750 | ID 18658750; DatumPlane; Profile plane |
+| ID 18658885 | ID 18658885; LinearDimension; Linear Dimension Style |
+| ID 18658886 | ID 18658886; LinearDimension; Linear Dimension Style |
+| ID 18658887 | ID 18658887; LinearDimension; Linear Dimension Style |
+| ID 18658906 | ID 18658906; Railing; Guardrail - Picket Cap |
+| ID 18658907 | ID 18658907; ElementType; Railing |
+| ID 18658908 | ID 18658908; Sketch; Sketch |
+| ID 18658909 | ID 18658909; TopRail; Rectangle 2" |
+| ID 18658910 | ID 18658910; ElementType; Top Rail(Internal) |
+| ID 18658911 | ID 18658911; Path3d; Picked Path |
+| ID 18658912 | ID 18658912; ReferencePlane; Reference Plane |
+| ID 18658913 | ID 18658913; SketchPlane; Reference Plane |
+| ID 18658914 | ID 18658914; SketchPlane; &lt;not associated&gt; |
+| ID 18658915 | ID 18658915; ReferencePlane; Reference Plane |
+| ID 18658916 | ID 18658916; SketchPlane; Reference Plane |
+| ID 18658917 | ID 18658917; SketchPlane; &lt;not associated&gt; |
+| ID 18658918 | ID 18658918; ModelLine; Model Lines |
+| ID 18658919 | ID 18658919; DatumPlane; Profile plane |
+| ID 18658920 | ID 18658920; HandRail; Circular 1 1/2" |
+| ID 18658921 | ID 18658921; ElementType; Handrail(Internal) |
+| ID 18658922 | ID 18658922; Path3d; Picked Path |
+| ID 18658923 | ID 18658923; ReferencePlane; Reference Plane |
+| ID 18658924 | ID 18658924; SketchPlane; Reference Plane |
+| ID 18658925 | ID 18658925; SketchPlane; &lt;not associated&gt; |
+| ID 18658926 | ID 18658926; ReferencePlane; Reference Plane |
+| ID 18658927 | ID 18658927; SketchPlane; Reference Plane |
+| ID 18658928 | ID 18658928; SketchPlane; &lt;not associated&gt; |
+| ID 18658929 | ID 18658929; ModelLine; Model Lines |
+| ID 18658930 | ID 18658930; DatumPlane; Profile plane |
+| ID 18658931 | ID 18658931; SketchPlane; Level 1 |
+| ID 18658932 | ID 18658932; Railing; Guardrail - Picket Cap |
+| ID 18658933 | ID 18658933; ElementType; Railing |
+| ID 18658934 | ID 18658934; Sketch; Sketch |
+| ID 18658935 | ID 18658935; TopRail; Rectangle 2" |
+| ID 18658936 | ID 18658936; ElementType; Top Rail(Internal) |
+| ID 18658937 | ID 18658937; Path3d; Picked Path |
+| ID 18658938 | ID 18658938; ReferencePlane; Reference Plane |
+| ID 18658939 | ID 18658939; SketchPlane; Reference Plane |
+| ID 18658940 | ID 18658940; SketchPlane; &lt;not associated&gt; |
+| ID 18658941 | ID 18658941; ReferencePlane; Reference Plane |
+| ID 18658942 | ID 18658942; SketchPlane; Reference Plane |
+| ID 18658943 | ID 18658943; SketchPlane; &lt;not associated&gt; |
+| ID 18658944 | ID 18658944; ModelLine; Model Lines |
+| ID 18658945 | ID 18658945; DatumPlane; Profile plane |
+| ID 18658946 | ID 18658946; HandRail; Circular 1 1/2" |
+| ID 18658947 | ID 18658947; ElementType; Handrail(Internal) |
+| ID 18658948 | ID 18658948; Path3d; Picked Path |
+| ID 18658949 | ID 18658949; ReferencePlane; Reference Plane |
+| ID 18658950 | ID 18658950; SketchPlane; Reference Plane |
+| ID 18658951 | ID 18658951; SketchPlane; &lt;not associated&gt; |
+| ID 18658952 | ID 18658952; ReferencePlane; Reference Plane |
+| ID 18658953 | ID 18658953; SketchPlane; Reference Plane |
+| ID 18658954 | ID 18658954; SketchPlane; &lt;not associated&gt; |
+| ID 18658955 | ID 18658955; ModelLine; Model Lines |
+| ID 18658956 | ID 18658956; DatumPlane; Profile plane |
+| ID 18658957 | ID 18658957; ModelLine; Model Lines |
+| ID 18658958 | ID 18658958; ModelLine; Model Lines |
+| ID 18658959 | ID 18658959; SketchPlane; Level 1 |
+| ID 18658960 | ID 18658960; ModelLine; Model Lines |
+| ID 18659009 | ID 18659009; ModelLine; Model Lines |
+| ID 18659010 | ID 18659010; LinearDimension; Linear Dimension Style |
+| ID 18659011 | ID 18659011; LinearDimension; Linear Dimension Style |
+| ID 18659022 | ID 18659022; ModelLine; Model Lines |
+| ID 18659142 | ID 18659142; LinearDimension; Linear Dimension Style |
+| ID 18659780 | ID 18659780; FamilyInstance; baluster&#95;picket |
+| ID 18659781 | ID 18659781; FamilyInstance; baluster&#95;picket 3 |
+| ID 18659783 | ID 18659783; FamilyInstance; baluster&#95;picket |
+| ID 18659784 | ID 18659784; FamilyInstance; baluster&#95;picket 3 |
+| ID 18659786 | ID 18659786; FamilyInstance; baluster&#95;picket |
+| ID 18659787 | ID 18659787; FamilyInstance; baluster&#95;picket 3 |
+| ID 18659884 | ID 18659884; Element;  |
+| ID 18659885 | ID 18659885; Element;  |
+| ID 18659886 | ID 18659886; Element;  |
+| ID 18683700 | ID 18683700; Sketch; Sketch |
+| ID 18683701 | ID 18683701; Railing; Guardrail - Picket Cap |
+| ID 18683702 | ID 18683702; ElementType; Railing |
+| ID 18683703 | ID 18683703; TopRail; Rectangle 2" |
+| ID 18683704 | ID 18683704; ElementType; Top Rail(Internal) |
+| ID 18683705 | ID 18683705; Path3d; Picked Path |
+| ID 18683706 | ID 18683706; ReferencePlane; Reference Plane |
+| ID 18683707 | ID 18683707; SketchPlane; Reference Plane |
+| ID 18683708 | ID 18683708; SketchPlane; &lt;not associated&gt; |
+| ID 18683709 | ID 18683709; ReferencePlane; Reference Plane |
+| ID 18683710 | ID 18683710; SketchPlane; Reference Plane |
+| ID 18683711 | ID 18683711; SketchPlane; &lt;not associated&gt; |
+| ID 18683712 | ID 18683712; ModelLine; Model Lines |
+| ID 18683713 | ID 18683713; DatumPlane; Profile plane |
+| ID 18683714 | ID 18683714; SketchPlane; Level 1 |
+| ID 18683715 | ID 18683715; ModelLine; Model Lines |
+| ID 18683716 | ID 18683716; ModelLine; Model Lines |
+| ID 18683718 | ID 18683718; ModelLine; Model Lines |
+| ID 18683744 | ID 18683744; HandRail; Circular 1 1/2" |
+| ID 18683745 | ID 18683745; ElementType; Handrail(Internal) |
+| ID 18683746 | ID 18683746; Path3d; Picked Path |
+| ID 18683747 | ID 18683747; ReferencePlane; Reference Plane |
+| ID 18683748 | ID 18683748; SketchPlane; Reference Plane |
+| ID 18683749 | ID 18683749; SketchPlane; &lt;not associated&gt; |
+| ID 18683750 | ID 18683750; ReferencePlane; Reference Plane |
+| ID 18683751 | ID 18683751; SketchPlane; Reference Plane |
+| ID 18683752 | ID 18683752; SketchPlane; &lt;not associated&gt; |
+| ID 18683753 | ID 18683753; ModelLine; Model Lines |
+| ID 18683754 | ID 18683754; ModelLine; Model Lines |
+| ID 18683755 | ID 18683755; DatumPlane; Profile plane |
+| ID 18683911 | ID 18683911; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18683912 | ID 18683912; ElementType; Railing |
+| ID 18683913 | ID 18683913; Sketch; Sketch |
+| ID 18683914 | ID 18683914; TopRail; Rectangle 2" |
+| ID 18683915 | ID 18683915; ElementType; Top Rail(Internal) |
+| ID 18683916 | ID 18683916; Path3d; Picked Path |
+| ID 18683917 | ID 18683917; ReferencePlane; Reference Plane |
+| ID 18683918 | ID 18683918; SketchPlane; Reference Plane |
+| ID 18683919 | ID 18683919; SketchPlane; &lt;not associated&gt; |
+| ID 18683920 | ID 18683920; ReferencePlane; Reference Plane |
+| ID 18683921 | ID 18683921; SketchPlane; Reference Plane |
+| ID 18683922 | ID 18683922; SketchPlane; &lt;not associated&gt; |
+| ID 18683923 | ID 18683923; ModelLine; Model Lines |
+| ID 18683924 | ID 18683924; DatumPlane; Profile plane |
+| ID 18683936 | ID 18683936; SketchPlane; Level 1 |
+| ID 18683937 | ID 18683937; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18683938 | ID 18683938; ElementType; Railing |
+| ID 18683939 | ID 18683939; Sketch; Sketch |
+| ID 18683940 | ID 18683940; TopRail; Rectangle 2" |
+| ID 18683941 | ID 18683941; ElementType; Top Rail(Internal) |
+| ID 18683942 | ID 18683942; Path3d; Picked Path |
+| ID 18683943 | ID 18683943; ReferencePlane; Reference Plane |
+| ID 18683944 | ID 18683944; SketchPlane; Reference Plane |
+| ID 18683945 | ID 18683945; SketchPlane; &lt;not associated&gt; |
+| ID 18683946 | ID 18683946; ReferencePlane; Reference Plane |
+| ID 18683947 | ID 18683947; SketchPlane; Reference Plane |
+| ID 18683948 | ID 18683948; SketchPlane; &lt;not associated&gt; |
+| ID 18683949 | ID 18683949; ModelLine; Model Lines |
+| ID 18683950 | ID 18683950; DatumPlane; Profile plane |
+| ID 18683962 | ID 18683962; ModelLine; Model Lines |
+| ID 18683964 | ID 18683964; SketchPlane; Level 1 |
+| ID 18683965 | ID 18683965; ModelLine; Model Lines |
+| ID 18684014 | ID 18684014; ModelLine; Model Lines |
+| ID 18684968 | ID 18684968; FamilyInstance; baluster&#95;picket |
+| ID 18684969 | ID 18684969; FamilyInstance; baluster&#95;picket 3 |
+| ID 18684975 | ID 18684975; FamilyInstance; baluster&#95;picket 3 |
+| ID 18685072 | ID 18685072; Element;  |
+| ID 18685073 | ID 18685073; Element;  |
+| ID 18685074 | ID 18685074; Element;  |
+| ID 18689278 | ID 18689278; LinearDimension; Linear Dimension Style |
+| ID 18692261 | ID 18692261; Sketch; Sketch |
+| ID 18692262 | ID 18692262; Railing; Guardrail - Picket Cap |
+| ID 18692263 | ID 18692263; ElementType; Railing |
+| ID 18692264 | ID 18692264; TopRail; Rectangle 2" |
+| ID 18692265 | ID 18692265; ElementType; Top Rail(Internal) |
+| ID 18692266 | ID 18692266; Path3d; Picked Path |
+| ID 18692267 | ID 18692267; ReferencePlane; Reference Plane |
+| ID 18692268 | ID 18692268; SketchPlane; Reference Plane |
+| ID 18692269 | ID 18692269; SketchPlane; &lt;not associated&gt; |
+| ID 18692270 | ID 18692270; ReferencePlane; Reference Plane |
+| ID 18692271 | ID 18692271; SketchPlane; Reference Plane |
+| ID 18692272 | ID 18692272; SketchPlane; &lt;not associated&gt; |
+| ID 18692273 | ID 18692273; ModelLine; Model Lines |
+| ID 18692274 | ID 18692274; DatumPlane; Profile plane |
+| ID 18692275 | ID 18692275; SketchPlane; Level 1 |
+| ID 18692276 | ID 18692276; ModelLine; Model Lines |
+| ID 18692277 | ID 18692277; ModelLine; Model Lines |
+| ID 18692279 | ID 18692279; ModelLine; Model Lines |
+| ID 18692318 | ID 18692318; HandRail; Circular 1 1/2" |
+| ID 18692319 | ID 18692319; ElementType; Handrail(Internal) |
+| ID 18692320 | ID 18692320; Path3d; Picked Path |
+| ID 18692321 | ID 18692321; ReferencePlane; Reference Plane |
+| ID 18692322 | ID 18692322; SketchPlane; Reference Plane |
+| ID 18692323 | ID 18692323; SketchPlane; &lt;not associated&gt; |
+| ID 18692324 | ID 18692324; ReferencePlane; Reference Plane |
+| ID 18692325 | ID 18692325; SketchPlane; Reference Plane |
+| ID 18692326 | ID 18692326; SketchPlane; &lt;not associated&gt; |
+| ID 18692327 | ID 18692327; ModelLine; Model Lines |
+| ID 18692328 | ID 18692328; ModelLine; Model Lines |
+| ID 18692329 | ID 18692329; DatumPlane; Profile plane |
+| ID 18692536 | ID 18692536; LinearDimension; Linear Dimension Style |
+| ID 18692537 | ID 18692537; LinearDimension; Linear Dimension Style |
+| ID 18692538 | ID 18692538; LinearDimension; Linear Dimension Style |
+| ID 18692577 | ID 18692577; Railing; Guardrail - Picket Cap |
+| ID 18692578 | ID 18692578; ElementType; Railing |
+| ID 18692579 | ID 18692579; Sketch; Sketch |
+| ID 18692580 | ID 18692580; TopRail; Rectangle 2" |
+| ID 18692581 | ID 18692581; ElementType; Top Rail(Internal) |
+| ID 18692582 | ID 18692582; Path3d; Picked Path |
+| ID 18692583 | ID 18692583; ReferencePlane; Reference Plane |
+| ID 18692584 | ID 18692584; SketchPlane; Reference Plane |
+| ID 18692585 | ID 18692585; SketchPlane; &lt;not associated&gt; |
+| ID 18692586 | ID 18692586; ReferencePlane; Reference Plane |
+| ID 18692587 | ID 18692587; SketchPlane; Reference Plane |
+| ID 18692588 | ID 18692588; SketchPlane; &lt;not associated&gt; |
+| ID 18692589 | ID 18692589; ModelArc; Model Lines |
+| ID 18692590 | ID 18692590; DatumPlane; Profile plane |
+| ID 18692591 | ID 18692591; HandRail; Circular 1 1/2" |
+| ID 18692592 | ID 18692592; ElementType; Handrail(Internal) |
+| ID 18692593 | ID 18692593; Path3d; Picked Path |
+| ID 18692594 | ID 18692594; ReferencePlane; Reference Plane |
+| ID 18692595 | ID 18692595; SketchPlane; Reference Plane |
+| ID 18692596 | ID 18692596; SketchPlane; &lt;not associated&gt; |
+| ID 18692597 | ID 18692597; ReferencePlane; Reference Plane |
+| ID 18692598 | ID 18692598; SketchPlane; Reference Plane |
+| ID 18692599 | ID 18692599; SketchPlane; &lt;not associated&gt; |
+| ID 18692600 | ID 18692600; ModelArc; Model Lines |
+| ID 18692601 | ID 18692601; DatumPlane; Profile plane |
+| ID 18692602 | ID 18692602; ModelLine; Model Lines |
+| ID 18692603 | ID 18692603; ModelLine; Model Lines |
+| ID 18692604 | ID 18692604; ModelArc; Model Lines |
+| ID 18692605 | ID 18692605; ModelArc; Model Lines |
+| ID 18692606 | ID 18692606; ModelLine; Model Lines |
+| ID 18692607 | ID 18692607; ModelArc; Model Lines |
+| ID 18692608 | ID 18692608; ModelArc; Model Lines |
+| ID 18692609 | ID 18692609; ModelLine; Model Lines |
+| ID 18692610 | ID 18692610; ModelArc; Model Lines |
+| ID 18692611 | ID 18692611; ModelLine; Model Lines |
+| ID 18692612 | ID 18692612; ModelArc; Model Lines |
+| ID 18692613 | ID 18692613; ModelArc; Model Lines |
+| ID 18692614 | ID 18692614; ModelLine; Model Lines |
+| ID 18692615 | ID 18692615; ModelArc; Model Lines |
+| ID 18692616 | ID 18692616; ModelArc; Model Lines |
+| ID 18692617 | ID 18692617; SketchPlane; Level 1 |
+| ID 18692621 | ID 18692621; ModelArc; Model Lines |
+| ID 18692622 | ID 18692622; Railing; Guardrail - Picket Cap |
+| ID 18692623 | ID 18692623; ElementType; Railing |
+| ID 18692624 | ID 18692624; Sketch; Sketch |
+| ID 18692625 | ID 18692625; TopRail; Rectangle 2" |
+| ID 18692626 | ID 18692626; ElementType; Top Rail(Internal) |
+| ID 18692627 | ID 18692627; Path3d; Picked Path |
+| ID 18692628 | ID 18692628; ReferencePlane; Reference Plane |
+| ID 18692629 | ID 18692629; SketchPlane; Reference Plane |
+| ID 18692630 | ID 18692630; SketchPlane; &lt;not associated&gt; |
+| ID 18692631 | ID 18692631; ReferencePlane; Reference Plane |
+| ID 18692632 | ID 18692632; SketchPlane; Reference Plane |
+| ID 18692633 | ID 18692633; SketchPlane; &lt;not associated&gt; |
+| ID 18692634 | ID 18692634; ModelArc; Model Lines |
+| ID 18692635 | ID 18692635; DatumPlane; Profile plane |
+| ID 18692636 | ID 18692636; HandRail; Circular 1 1/2" |
+| ID 18692637 | ID 18692637; ElementType; Handrail(Internal) |
+| ID 18692638 | ID 18692638; Path3d; Picked Path |
+| ID 18692639 | ID 18692639; ReferencePlane; Reference Plane |
+| ID 18692640 | ID 18692640; SketchPlane; Reference Plane |
+| ID 18692641 | ID 18692641; SketchPlane; &lt;not associated&gt; |
+| ID 18692642 | ID 18692642; ReferencePlane; Reference Plane |
+| ID 18692643 | ID 18692643; SketchPlane; Reference Plane |
+| ID 18692644 | ID 18692644; SketchPlane; &lt;not associated&gt; |
+| ID 18692645 | ID 18692645; ModelArc; Model Lines |
+| ID 18692646 | ID 18692646; DatumPlane; Profile plane |
+| ID 18692647 | ID 18692647; ModelArc; Model Lines |
+| ID 18692648 | ID 18692648; ModelLine; Model Lines |
+| ID 18692649 | ID 18692649; ModelArc; Model Lines |
+| ID 18692650 | ID 18692650; ModelLine; Model Lines |
+| ID 18692651 | ID 18692651; SketchPlane; Level 1 |
+| ID 18692655 | ID 18692655; ModelArc; Model Lines |
+| ID 18692656 | ID 18692656; ModelLine; Model Lines |
+| ID 18692657 | ID 18692657; ModelArc; Model Lines |
+| ID 18692658 | ID 18692658; LinearDimension; Linear Dimension Style |
+| ID 18692659 | ID 18692659; LinearDimension; Linear Dimension Style |
+| ID 18692660 | ID 18692660; LinearDimension; Linear Dimension Style |
+| ID 18692661 | ID 18692661; LinearDimension; Linear Dimension Style |
+| ID 18692662 | ID 18692662; LinearDimension; Linear Dimension Style |
+| ID 18692663 | ID 18692663; LinearDimension; Linear Dimension Style |
+| ID 18692664 | ID 18692664; LinearDimension; Linear Dimension Style |
+| ID 18692665 | ID 18692665; LinearDimension; Linear Dimension Style |
+| ID 18692666 | ID 18692666; LinearDimension; Linear Dimension Style |
+| ID 18692667 | ID 18692667; LinearDimension; Linear Dimension Style |
+| ID 18692668 | ID 18692668; LinearDimension; Linear Dimension Style |
+| ID 18692669 | ID 18692669; LinearDimension; Linear Dimension Style |
+| ID 18692670 | ID 18692670; LinearDimension; Linear Dimension Style |
+| ID 18692671 | ID 18692671; LinearDimension; Linear Dimension Style |
+| ID 18692672 | ID 18692672; LinearDimension; Linear Dimension Style |
+| ID 18692673 | ID 18692673; LinearDimension; Linear Dimension Style |
+| ID 18692674 | ID 18692674; LinearDimension; Linear Dimension Style |
+| ID 18692675 | ID 18692675; LinearDimension; Linear Dimension Style |
+| ID 18692676 | ID 18692676; LinearDimension; Linear Dimension Style |
+| ID 18692677 | ID 18692677; LinearDimension; Linear Dimension Style |
+| ID 18692678 | ID 18692678; LinearDimension; Linear Dimension Style |
+| ID 18692679 | ID 18692679; LinearDimension; Linear Dimension Style |
+| ID 18693475 | ID 18693475; FamilyInstance; baluster&#95;picket |
+| ID 18693476 | ID 18693476; FamilyInstance; baluster&#95;picket 3 |
+| ID 18693478 | ID 18693478; FamilyInstance; baluster&#95;picket |
+| ID 18693479 | ID 18693479; FamilyInstance; baluster&#95;picket 3 |
+| ID 18693481 | ID 18693481; FamilyInstance; baluster&#95;picket |
+| ID 18693482 | ID 18693482; FamilyInstance; baluster&#95;picket 3 |
+| ID 18693484 | ID 18693484; Element;  |
+| ID 18693485 | ID 18693485; Element;  |
+| ID 18693486 | ID 18693486; Element;  |
+| ID 18702758 | ID 18702758; Sketch; Sketch |
+| ID 18702759 | ID 18702759; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18702760 | ID 18702760; ElementType; Railing |
+| ID 18702761 | ID 18702761; ModelLine; Model Lines |
+| ID 18702762 | ID 18702762; TopRail; Rectangle 2" |
+| ID 18702763 | ID 18702763; ElementType; Top Rail(Internal) |
+| ID 18702764 | ID 18702764; Path3d; Picked Path |
+| ID 18702765 | ID 18702765; ReferencePlane; Reference Plane |
+| ID 18702766 | ID 18702766; SketchPlane; Reference Plane |
+| ID 18702767 | ID 18702767; SketchPlane; &lt;not associated&gt; |
+| ID 18702768 | ID 18702768; ReferencePlane; Reference Plane |
+| ID 18702769 | ID 18702769; SketchPlane; Reference Plane |
+| ID 18702770 | ID 18702770; SketchPlane; &lt;not associated&gt; |
+| ID 18702771 | ID 18702771; ModelArc; Model Lines |
+| ID 18702772 | ID 18702772; DatumPlane; Profile plane |
+| ID 18702773 | ID 18702773; SketchPlane; Level 1 |
+| ID 18702775 | ID 18702775; ModelLine; Model Lines |
+| ID 18702777 | ID 18702777; ModelArc; Model Lines |
+| ID 18702778 | ID 18702778; ModelLine; Model Lines |
+| ID 18702780 | ID 18702780; ModelLine; Model Lines |
+| ID 18702781 | ID 18702781; LinearDimension; Linear Dimension Style |
+| ID 18702782 | ID 18702782; LinearDimension; Linear Dimension Style |
+| ID 18702783 | ID 18702783; LinearDimension; Linear Dimension Style |
+| ID 18702784 | ID 18702784; LinearDimension; Linear Dimension Style |
+| ID 18702785 | ID 18702785; LinearDimension; Linear Dimension Style |
+| ID 18702786 | ID 18702786; LinearDimension; Linear Dimension Style |
+| ID 18702796 | ID 18702796; FamilyInstance; baluster&#95;picket 3 |
+| ID 18702811 | ID 18702811; Sketch; Sketch |
+| ID 18702812 | ID 18702812; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18702813 | ID 18702813; ElementType; Railing |
+| ID 18702814 | ID 18702814; ModelLine; Model Lines |
+| ID 18702815 | ID 18702815; TopRail; Rectangle 2" |
+| ID 18702816 | ID 18702816; ElementType; Top Rail(Internal) |
+| ID 18702817 | ID 18702817; Path3d; Picked Path |
+| ID 18702818 | ID 18702818; ReferencePlane; Reference Plane |
+| ID 18702819 | ID 18702819; SketchPlane; Reference Plane |
+| ID 18702820 | ID 18702820; SketchPlane; &lt;not associated&gt; |
+| ID 18702821 | ID 18702821; ReferencePlane; Reference Plane |
+| ID 18702822 | ID 18702822; SketchPlane; Reference Plane |
+| ID 18702823 | ID 18702823; SketchPlane; &lt;not associated&gt; |
+| ID 18702824 | ID 18702824; ModelArc; Model Lines |
+| ID 18702825 | ID 18702825; DatumPlane; Profile plane |
+| ID 18702826 | ID 18702826; SketchPlane; Level 1 |
+| ID 18702828 | ID 18702828; ModelLine; Model Lines |
+| ID 18702830 | ID 18702830; ModelArc; Model Lines |
+| ID 18702831 | ID 18702831; ModelLine; Model Lines |
+| ID 18702833 | ID 18702833; ModelLine; Model Lines |
+| ID 18702834 | ID 18702834; LinearDimension; Linear Dimension Style |
+| ID 18702835 | ID 18702835; LinearDimension; Linear Dimension Style |
+| ID 18702836 | ID 18702836; LinearDimension; Linear Dimension Style |
+| ID 18702837 | ID 18702837; LinearDimension; Linear Dimension Style |
+| ID 18702838 | ID 18702838; LinearDimension; Linear Dimension Style |
+| ID 18702839 | ID 18702839; LinearDimension; Linear Dimension Style |
+| ID 18702849 | ID 18702849; FamilyInstance; baluster&#95;picket 3 |
+| ID 18702864 | ID 18702864; Sketch; Sketch |
+| ID 18702865 | ID 18702865; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18702866 | ID 18702866; ElementType; Railing |
+| ID 18702867 | ID 18702867; ModelLine; Model Lines |
+| ID 18702868 | ID 18702868; TopRail; Rectangle 2" |
+| ID 18702869 | ID 18702869; ElementType; Top Rail(Internal) |
+| ID 18702870 | ID 18702870; Path3d; Picked Path |
+| ID 18702871 | ID 18702871; ReferencePlane; Reference Plane |
+| ID 18702872 | ID 18702872; SketchPlane; Reference Plane |
+| ID 18702873 | ID 18702873; SketchPlane; &lt;not associated&gt; |
+| ID 18702874 | ID 18702874; ReferencePlane; Reference Plane |
+| ID 18702875 | ID 18702875; SketchPlane; Reference Plane |
+| ID 18702876 | ID 18702876; SketchPlane; &lt;not associated&gt; |
+| ID 18702877 | ID 18702877; ModelArc; Model Lines |
+| ID 18702878 | ID 18702878; DatumPlane; Profile plane |
+| ID 18702879 | ID 18702879; SketchPlane; Level 1 |
+| ID 18702881 | ID 18702881; ModelLine; Model Lines |
+| ID 18702883 | ID 18702883; ModelArc; Model Lines |
+| ID 18702884 | ID 18702884; ModelLine; Model Lines |
+| ID 18702886 | ID 18702886; ModelLine; Model Lines |
+| ID 18702887 | ID 18702887; LinearDimension; Linear Dimension Style |
+| ID 18702888 | ID 18702888; LinearDimension; Linear Dimension Style |
+| ID 18702889 | ID 18702889; LinearDimension; Linear Dimension Style |
+| ID 18702890 | ID 18702890; LinearDimension; Linear Dimension Style |
+| ID 18702891 | ID 18702891; LinearDimension; Linear Dimension Style |
+| ID 18702892 | ID 18702892; LinearDimension; Linear Dimension Style |
+| ID 18702902 | ID 18702902; FamilyInstance; baluster&#95;picket 3 |
+| ID 18702917 | ID 18702917; Sketch; Sketch |
+| ID 18702918 | ID 18702918; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18702919 | ID 18702919; ElementType; Railing |
+| ID 18702920 | ID 18702920; ModelLine; Model Lines |
+| ID 18702921 | ID 18702921; TopRail; Rectangle 2" |
+| ID 18702922 | ID 18702922; ElementType; Top Rail(Internal) |
+| ID 18702923 | ID 18702923; Path3d; Picked Path |
+| ID 18702924 | ID 18702924; ReferencePlane; Reference Plane |
+| ID 18702925 | ID 18702925; SketchPlane; Reference Plane |
+| ID 18702926 | ID 18702926; SketchPlane; &lt;not associated&gt; |
+| ID 18702927 | ID 18702927; ReferencePlane; Reference Plane |
+| ID 18702928 | ID 18702928; SketchPlane; Reference Plane |
+| ID 18702929 | ID 18702929; SketchPlane; &lt;not associated&gt; |
+| ID 18702930 | ID 18702930; ModelArc; Model Lines |
+| ID 18702931 | ID 18702931; DatumPlane; Profile plane |
+| ID 18702932 | ID 18702932; SketchPlane; Level 1 |
+| ID 18702934 | ID 18702934; ModelLine; Model Lines |
+| ID 18702936 | ID 18702936; ModelArc; Model Lines |
+| ID 18702937 | ID 18702937; ModelLine; Model Lines |
+| ID 18702939 | ID 18702939; ModelLine; Model Lines |
+| ID 18702940 | ID 18702940; LinearDimension; Linear Dimension Style |
+| ID 18702941 | ID 18702941; LinearDimension; Linear Dimension Style |
+| ID 18702942 | ID 18702942; LinearDimension; Linear Dimension Style |
+| ID 18702943 | ID 18702943; LinearDimension; Linear Dimension Style |
+| ID 18702944 | ID 18702944; LinearDimension; Linear Dimension Style |
+| ID 18702945 | ID 18702945; LinearDimension; Linear Dimension Style |
+| ID 18702955 | ID 18702955; FamilyInstance; baluster&#95;picket 3 |
+| ID 18702970 | ID 18702970; Sketch; Sketch |
+| ID 18702971 | ID 18702971; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18702972 | ID 18702972; ElementType; Railing |
+| ID 18702973 | ID 18702973; ModelLine; Model Lines |
+| ID 18702974 | ID 18702974; TopRail; Rectangle 2" |
+| ID 18702975 | ID 18702975; ElementType; Top Rail(Internal) |
+| ID 18702976 | ID 18702976; Path3d; Picked Path |
+| ID 18702977 | ID 18702977; ReferencePlane; Reference Plane |
+| ID 18702978 | ID 18702978; SketchPlane; Reference Plane |
+| ID 18702979 | ID 18702979; SketchPlane; &lt;not associated&gt; |
+| ID 18702980 | ID 18702980; ReferencePlane; Reference Plane |
+| ID 18702981 | ID 18702981; SketchPlane; Reference Plane |
+| ID 18702982 | ID 18702982; SketchPlane; &lt;not associated&gt; |
+| ID 18702983 | ID 18702983; ModelArc; Model Lines |
+| ID 18702984 | ID 18702984; DatumPlane; Profile plane |
+| ID 18702985 | ID 18702985; SketchPlane; Level 1 |
+| ID 18702987 | ID 18702987; ModelLine; Model Lines |
+| ID 18702989 | ID 18702989; ModelArc; Model Lines |
+| ID 18702990 | ID 18702990; ModelLine; Model Lines |
+| ID 18702992 | ID 18702992; ModelLine; Model Lines |
+| ID 18702993 | ID 18702993; LinearDimension; Linear Dimension Style |
+| ID 18702994 | ID 18702994; LinearDimension; Linear Dimension Style |
+| ID 18702995 | ID 18702995; LinearDimension; Linear Dimension Style |
+| ID 18702996 | ID 18702996; LinearDimension; Linear Dimension Style |
+| ID 18702997 | ID 18702997; LinearDimension; Linear Dimension Style |
+| ID 18702998 | ID 18702998; LinearDimension; Linear Dimension Style |
+| ID 18703008 | ID 18703008; FamilyInstance; baluster&#95;picket 3 |
+| ID 18703023 | ID 18703023; Sketch; Sketch |
+| ID 18703024 | ID 18703024; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18703025 | ID 18703025; ElementType; Railing |
+| ID 18703026 | ID 18703026; ModelLine; Model Lines |
+| ID 18703027 | ID 18703027; TopRail; Rectangle 2" |
+| ID 18703028 | ID 18703028; ElementType; Top Rail(Internal) |
+| ID 18703029 | ID 18703029; Path3d; Picked Path |
+| ID 18703030 | ID 18703030; ReferencePlane; Reference Plane |
+| ID 18703031 | ID 18703031; SketchPlane; Reference Plane |
+| ID 18703032 | ID 18703032; SketchPlane; &lt;not associated&gt; |
+| ID 18703033 | ID 18703033; ReferencePlane; Reference Plane |
+| ID 18703034 | ID 18703034; SketchPlane; Reference Plane |
+| ID 18703035 | ID 18703035; SketchPlane; &lt;not associated&gt; |
+| ID 18703036 | ID 18703036; ModelArc; Model Lines |
+| ID 18703037 | ID 18703037; DatumPlane; Profile plane |
+| ID 18703038 | ID 18703038; SketchPlane; Level 1 |
+| ID 18703040 | ID 18703040; ModelLine; Model Lines |
+| ID 18703042 | ID 18703042; ModelArc; Model Lines |
+| ID 18703043 | ID 18703043; ModelLine; Model Lines |
+| ID 18703045 | ID 18703045; ModelLine; Model Lines |
+| ID 18703046 | ID 18703046; LinearDimension; Linear Dimension Style |
+| ID 18703047 | ID 18703047; LinearDimension; Linear Dimension Style |
+| ID 18703048 | ID 18703048; LinearDimension; Linear Dimension Style |
+| ID 18703049 | ID 18703049; LinearDimension; Linear Dimension Style |
+| ID 18703050 | ID 18703050; LinearDimension; Linear Dimension Style |
+| ID 18703051 | ID 18703051; LinearDimension; Linear Dimension Style |
+| ID 18703061 | ID 18703061; FamilyInstance; baluster&#95;picket 3 |
+| ID 18703062 | ID 18703062; Element;  |
+| ID 18703063 | ID 18703063; Element;  |
+| ID 18703064 | ID 18703064; Element;  |
+| ID 18703065 | ID 18703065; Element;  |
+| ID 18703066 | ID 18703066; Element;  |
+| ID 18703067 | ID 18703067; Element;  |
+| ID 18905022 | ID 18905022; LinearDimension; Linear Dimension Style |
+| ID 18905023 | ID 18905023; LinearDimension; Linear Dimension Style |
+| ID 18947037 | ID 18947037; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 18947038 | ID 18947038; ElementType; Railing |
+| ID 18947039 | ID 18947039; Sketch; Sketch |
+| ID 18947040 | ID 18947040; TopRail; Rectangle 2" |
+| ID 18947041 | ID 18947041; ElementType; Top Rail(Internal) |
+| ID 18947042 | ID 18947042; Path3d; Picked Path |
+| ID 18947043 | ID 18947043; ReferencePlane; Reference Plane |
+| ID 18947044 | ID 18947044; SketchPlane; Reference Plane |
+| ID 18947045 | ID 18947045; SketchPlane; &lt;not associated&gt; |
+| ID 18947046 | ID 18947046; ReferencePlane; Reference Plane |
+| ID 18947047 | ID 18947047; SketchPlane; Reference Plane |
+| ID 18947048 | ID 18947048; SketchPlane; &lt;not associated&gt; |
+| ID 18947049 | ID 18947049; ModelLine; Model Lines |
+| ID 18947050 | ID 18947050; DatumPlane; Profile plane |
+| ID 18947070 | ID 18947070; ModelLine; Model Lines |
+| ID 18947075 | ID 18947075; Element;  |
+| ID 18947152 | ID 18947152; Railing; Guardrail - Picket Cap |
+| ID 18947153 | ID 18947153; ElementType; Railing |
+| ID 18947154 | ID 18947154; Sketch; Sketch |
+| ID 18947155 | ID 18947155; TopRail; Rectangle 2" |
+| ID 18947156 | ID 18947156; ElementType; Top Rail(Internal) |
+| ID 18947157 | ID 18947157; Path3d; Picked Path |
+| ID 18947158 | ID 18947158; ReferencePlane; Reference Plane |
+| ID 18947159 | ID 18947159; SketchPlane; Reference Plane |
+| ID 18947160 | ID 18947160; SketchPlane; &lt;not associated&gt; |
+| ID 18947161 | ID 18947161; ReferencePlane; Reference Plane |
+| ID 18947162 | ID 18947162; SketchPlane; Reference Plane |
+| ID 18947163 | ID 18947163; SketchPlane; &lt;not associated&gt; |
+| ID 18947164 | ID 18947164; ModelLine; Model Lines |
+| ID 18947165 | ID 18947165; DatumPlane; Profile plane |
+| ID 18947166 | ID 18947166; HandRail; Circular 1 1/2" |
+| ID 18947167 | ID 18947167; ElementType; Handrail(Internal) |
+| ID 18947168 | ID 18947168; Path3d; Picked Path |
+| ID 18947169 | ID 18947169; ReferencePlane; Reference Plane |
+| ID 18947170 | ID 18947170; SketchPlane; Reference Plane |
+| ID 18947171 | ID 18947171; SketchPlane; &lt;not associated&gt; |
+| ID 18947172 | ID 18947172; ReferencePlane; Reference Plane |
+| ID 18947173 | ID 18947173; SketchPlane; Reference Plane |
+| ID 18947174 | ID 18947174; SketchPlane; &lt;not associated&gt; |
+| ID 18947175 | ID 18947175; ModelLine; Model Lines |
+| ID 18947176 | ID 18947176; DatumPlane; Profile plane |
+| ID 18947184 | ID 18947184; ModelLine; Model Lines |
+| ID 18947185 | ID 18947185; ModelLine; Model Lines |
+| ID 18947189 | ID 18947189; FamilyInstance; baluster&#95;picket |
+| ID 18947190 | ID 18947190; FamilyInstance; baluster&#95;picket 3 |
+| ID 18947191 | ID 18947191; Element;  |
+| ID 18947285 | ID 18947285; SketchPlane; Level 1 |
+| ID 18947318 | ID 18947318; SketchPlane; Level 1 |
+| ID 18949093 | ID 18949093; LinearDimension; Linear Dimension Style |
+| ID 18949094 | ID 18949094; LinearDimension; Linear Dimension Style |
+| ID 18949095 | ID 18949095; LinearDimension; Linear Dimension Style |
+| ID 18986434 | ID 18986434; FamilyInstance; baluster&#95;picket 3 |
+| ID 19019888 | ID 19019888; LinearDimension; Linear Dimension Style |
+| ID 19019889 | ID 19019889; FamilyInstance; baluster&#95;picket 3 |
+| ID 19020154 | ID 19020154; LinearDimension; Linear Dimension Style |
+| ID 19020176 | ID 19020176; LinearDimension; Linear Dimension Style |
+| ID 19020225 | ID 19020225; LinearDimension; Linear - Feet |
+| ID 19303679 | ID 19303679; Sketch; Sketch |
+| ID 19303680 | ID 19303680; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 19303681 | ID 19303681; ElementType; Railing |
+| ID 19303682 | ID 19303682; ModelLine; Model Lines |
+| ID 19303683 | ID 19303683; TopRail; Rectangle 2" |
+| ID 19303684 | ID 19303684; ElementType; Top Rail(Internal) |
+| ID 19303685 | ID 19303685; Path3d; Picked Path |
+| ID 19303686 | ID 19303686; ReferencePlane; Reference Plane |
+| ID 19303687 | ID 19303687; SketchPlane; Reference Plane |
+| ID 19303688 | ID 19303688; SketchPlane; &lt;not associated&gt; |
+| ID 19303689 | ID 19303689; ReferencePlane; Reference Plane |
+| ID 19303690 | ID 19303690; SketchPlane; Reference Plane |
+| ID 19303691 | ID 19303691; SketchPlane; &lt;not associated&gt; |
+| ID 19303692 | ID 19303692; ModelLine; Model Lines |
+| ID 19303693 | ID 19303693; DatumPlane; Profile plane |
+| ID 19303694 | ID 19303694; SketchPlane; Level 1 |
+| ID 19303696 | ID 19303696; ModelLine; Model Lines |
+| ID 19303699 | ID 19303699; ModelLine; Model Lines |
+| ID 19303714 | ID 19303714; Sketch; Sketch |
+| ID 19303715 | ID 19303715; Railing; Guardrail - Picket Cap |
+| ID 19303716 | ID 19303716; ElementType; Railing |
+| ID 19303717 | ID 19303717; TopRail; Rectangle 2" |
+| ID 19303718 | ID 19303718; ElementType; Top Rail(Internal) |
+| ID 19303719 | ID 19303719; Path3d; Picked Path |
+| ID 19303720 | ID 19303720; ReferencePlane; Reference Plane |
+| ID 19303721 | ID 19303721; SketchPlane; Reference Plane |
+| ID 19303722 | ID 19303722; SketchPlane; &lt;not associated&gt; |
+| ID 19303723 | ID 19303723; ReferencePlane; Reference Plane |
+| ID 19303724 | ID 19303724; SketchPlane; Reference Plane |
+| ID 19303725 | ID 19303725; SketchPlane; &lt;not associated&gt; |
+| ID 19303726 | ID 19303726; ModelLine; Model Lines |
+| ID 19303727 | ID 19303727; DatumPlane; Profile plane |
+| ID 19303728 | ID 19303728; SketchPlane; Level 1 |
+| ID 19303729 | ID 19303729; ModelLine; Model Lines |
+| ID 19303730 | ID 19303730; ModelLine; Model Lines |
+| ID 19303732 | ID 19303732; ModelLine; Model Lines |
+| ID 19303758 | ID 19303758; HandRail; Circular 1 1/2" |
+| ID 19303759 | ID 19303759; ElementType; Handrail(Internal) |
+| ID 19303760 | ID 19303760; Path3d; Picked Path |
+| ID 19303761 | ID 19303761; ReferencePlane; Reference Plane |
+| ID 19303762 | ID 19303762; SketchPlane; Reference Plane |
+| ID 19303763 | ID 19303763; SketchPlane; &lt;not associated&gt; |
+| ID 19303764 | ID 19303764; ReferencePlane; Reference Plane |
+| ID 19303765 | ID 19303765; SketchPlane; Reference Plane |
+| ID 19303766 | ID 19303766; SketchPlane; &lt;not associated&gt; |
+| ID 19303767 | ID 19303767; ModelLine; Model Lines |
+| ID 19303768 | ID 19303768; ModelLine; Model Lines |
+| ID 19303769 | ID 19303769; DatumPlane; Profile plane |
+| ID 19303888 | ID 19303888; LinearDimension; Linear Dimension Style |
+| ID 19303889 | ID 19303889; LinearDimension; Linear Dimension Style |
+| ID 19303890 | ID 19303890; LinearDimension; Linear Dimension Style |
+| ID 19303905 | ID 19303905; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 19303906 | ID 19303906; ElementType; Railing |
+| ID 19303907 | ID 19303907; Sketch; Sketch |
+| ID 19303908 | ID 19303908; TopRail; Rectangle 2" |
+| ID 19303909 | ID 19303909; ElementType; Top Rail(Internal) |
+| ID 19303910 | ID 19303910; Path3d; Picked Path |
+| ID 19303911 | ID 19303911; ReferencePlane; Reference Plane |
+| ID 19303912 | ID 19303912; SketchPlane; Reference Plane |
+| ID 19303913 | ID 19303913; SketchPlane; &lt;not associated&gt; |
+| ID 19303914 | ID 19303914; ReferencePlane; Reference Plane |
+| ID 19303915 | ID 19303915; SketchPlane; Reference Plane |
+| ID 19303916 | ID 19303916; SketchPlane; &lt;not associated&gt; |
+| ID 19303917 | ID 19303917; ModelLine; Model Lines |
+| ID 19303918 | ID 19303918; DatumPlane; Profile plane |
+| ID 19303919 | ID 19303919; SketchPlane; Level 1 |
+| ID 19303920 | ID 19303920; Railing; Guardrail - Picket Cap |
+| ID 19303921 | ID 19303921; ElementType; Railing |
+| ID 19303922 | ID 19303922; Sketch; Sketch |
+| ID 19303923 | ID 19303923; TopRail; Rectangle 2" |
+| ID 19303924 | ID 19303924; ElementType; Top Rail(Internal) |
+| ID 19303925 | ID 19303925; Path3d; Picked Path |
+| ID 19303926 | ID 19303926; ReferencePlane; Reference Plane |
+| ID 19303927 | ID 19303927; SketchPlane; Reference Plane |
+| ID 19303928 | ID 19303928; SketchPlane; &lt;not associated&gt; |
+| ID 19303929 | ID 19303929; ReferencePlane; Reference Plane |
+| ID 19303930 | ID 19303930; SketchPlane; Reference Plane |
+| ID 19303931 | ID 19303931; SketchPlane; &lt;not associated&gt; |
+| ID 19303932 | ID 19303932; ModelLine; Model Lines |
+| ID 19303933 | ID 19303933; DatumPlane; Profile plane |
+| ID 19303934 | ID 19303934; HandRail; Circular 1 1/2" |
+| ID 19303935 | ID 19303935; ElementType; Handrail(Internal) |
+| ID 19303936 | ID 19303936; Path3d; Picked Path |
+| ID 19303937 | ID 19303937; ReferencePlane; Reference Plane |
+| ID 19303938 | ID 19303938; SketchPlane; Reference Plane |
+| ID 19303939 | ID 19303939; SketchPlane; &lt;not associated&gt; |
+| ID 19303940 | ID 19303940; ReferencePlane; Reference Plane |
+| ID 19303941 | ID 19303941; SketchPlane; Reference Plane |
+| ID 19303942 | ID 19303942; SketchPlane; &lt;not associated&gt; |
+| ID 19303943 | ID 19303943; ModelLine; Model Lines |
+| ID 19303944 | ID 19303944; DatumPlane; Profile plane |
+| ID 19303945 | ID 19303945; ModelLine; Model Lines |
+| ID 19303946 | ID 19303946; ModelLine; Model Lines |
+| ID 19303947 | ID 19303947; SketchPlane; Level 1 |
+| ID 19303948 | ID 19303948; ModelLine; Model Lines |
+| ID 19303966 | ID 19303966; ModelLine; Model Lines |
+| ID 19304522 | ID 19304522; LinearDimension; Linear Dimension Style |
+| ID 19304523 | ID 19304523; LinearDimension; Linear Dimension Style |
+| ID 19304560 | ID 19304560; Railing; Guardrail - Picket Cap - No Handrail |
+| ID 19304561 | ID 19304561; ElementType; Railing |
+| ID 19304562 | ID 19304562; Sketch; Sketch |
+| ID 19304563 | ID 19304563; TopRail; Rectangle 2" |
+| ID 19304564 | ID 19304564; ElementType; Top Rail(Internal) |
+| ID 19304565 | ID 19304565; Path3d; Picked Path |
+| ID 19304566 | ID 19304566; ReferencePlane; Reference Plane |
+| ID 19304567 | ID 19304567; SketchPlane; Reference Plane |
+| ID 19304568 | ID 19304568; SketchPlane; &lt;not associated&gt; |
+| ID 19304569 | ID 19304569; ReferencePlane; Reference Plane |
+| ID 19304570 | ID 19304570; SketchPlane; Reference Plane |
+| ID 19304571 | ID 19304571; SketchPlane; &lt;not associated&gt; |
+| ID 19304572 | ID 19304572; ModelLine; Model Lines |
+| ID 19304573 | ID 19304573; DatumPlane; Profile plane |
+| ID 19304575 | ID 19304575; ModelLine; Model Lines |
+| ID 19304577 | ID 19304577; Railing; Guardrail - Picket Cap |
+| ID 19304578 | ID 19304578; ElementType; Railing |
+| ID 19304579 | ID 19304579; Sketch; Sketch |
+| ID 19304580 | ID 19304580; TopRail; Rectangle 2" |
+| ID 19304581 | ID 19304581; ElementType; Top Rail(Internal) |
+| ID 19304582 | ID 19304582; Path3d; Picked Path |
+| ID 19304583 | ID 19304583; ReferencePlane; Reference Plane |
+| ID 19304584 | ID 19304584; SketchPlane; Reference Plane |
+| ID 19304585 | ID 19304585; SketchPlane; &lt;not associated&gt; |
+| ID 19304586 | ID 19304586; ReferencePlane; Reference Plane |
+| ID 19304587 | ID 19304587; SketchPlane; Reference Plane |
+| ID 19304588 | ID 19304588; SketchPlane; &lt;not associated&gt; |
+| ID 19304589 | ID 19304589; ModelLine; Model Lines |
+| ID 19304590 | ID 19304590; DatumPlane; Profile plane |
+| ID 19304591 | ID 19304591; HandRail; Circular 1 1/2" |
+| ID 19304592 | ID 19304592; ElementType; Handrail(Internal) |
+| ID 19304593 | ID 19304593; Path3d; Picked Path |
+| ID 19304594 | ID 19304594; ReferencePlane; Reference Plane |
+| ID 19304595 | ID 19304595; SketchPlane; Reference Plane |
+| ID 19304596 | ID 19304596; SketchPlane; &lt;not associated&gt; |
+| ID 19304597 | ID 19304597; ReferencePlane; Reference Plane |
+| ID 19304598 | ID 19304598; SketchPlane; Reference Plane |
+| ID 19304599 | ID 19304599; SketchPlane; &lt;not associated&gt; |
+| ID 19304600 | ID 19304600; ModelLine; Model Lines |
+| ID 19304601 | ID 19304601; DatumPlane; Profile plane |
+| ID 19304603 | ID 19304603; ModelLine; Model Lines |
+| ID 19304604 | ID 19304604; ModelLine; Model Lines |
+| ID 19304608 | ID 19304608; SketchPlane; Level 1 |
+| ID 19304609 | ID 19304609; SketchPlane; Level 1 |
+| ID 19304610 | ID 19304610; LinearDimension; Linear Dimension Style |
+| ID 19304611 | ID 19304611; LinearDimension; Linear Dimension Style |
+| ID 19304612 | ID 19304612; LinearDimension; Linear Dimension Style |
+| ID 19304623 | ID 19304623; LinearDimension; Linear Dimension Style |
+| ID 19304625 | ID 19304625; LinearDimension; Linear Dimension Style |
+| ID 19304626 | ID 19304626; LinearDimension; Linear Dimension Style |
+| ID 19304629 | ID 19304629; FamilyInstance; baluster&#95;picket 3 |
+| ID 19304631 | ID 19304631; FamilyInstance; baluster&#95;picket |
+| ID 19304632 | ID 19304632; FamilyInstance; baluster&#95;picket 3 |
+| ID 19304634 | ID 19304634; FamilyInstance; baluster&#95;picket 3 |
+| ID 19304636 | ID 19304636; FamilyInstance; baluster&#95;picket |
+| ID 19304637 | ID 19304637; FamilyInstance; baluster&#95;picket 3 |
+| ID 19304639 | ID 19304639; FamilyInstance; baluster&#95;picket 3 |
+| ID 19304641 | ID 19304641; FamilyInstance; baluster&#95;picket |
+| ID 19304642 | ID 19304642; FamilyInstance; baluster&#95;picket 3 |
+| ID 19304741 | ID 19304741; Element;  |
+| ID 19304742 | ID 19304742; Element;  |
+| ID 19304743 | ID 19304743; Element;  |
+| ID 19304744 | ID 19304744; Element;  |
+| ID 19304745 | ID 19304745; Element;  |
+| ID 19304746 | ID 19304746; Element;  |
+| ID 19721365 | ID 19721365; LinearDimension; Linear - Feet 1/8" Rounded |
+| ID 19722441 | ID 19722441; LinearDimension; Linear - Feet |
+| ID 19727733 | ID 19727733; LinearDimension; Linear - Feet 1/8" Rounded |
+| ID 20114757 | ID 20114757; LinearDimension; Linear Dimension Style |
+| ID 20114758 | ID 20114758; LinearDimension; Linear Dimension Style |
+| ID 20114759 | ID 20114759; LinearDimension; Linear Dimension Style |
+| ID 21651065 | ID 21651065; LinearDimension; Linear Dimension Style |
+| ID 21723088 | ID 21723088; FamilyInstance; baluster&#95;picket 3 |
+| ID 21727412 | ID 21727412; FamilyInstance; baluster&#95;picket 3 |
+| ID 21727414 | ID 21727414; FamilyInstance; baluster&#95;picket 3 |
+| ID 21727415 | ID 21727415; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728900 | ID 21728900; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728904 | ID 21728904; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728907 | ID 21728907; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728908 | ID 21728908; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728910 | ID 21728910; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728914 | ID 21728914; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728916 | ID 21728916; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728917 | ID 21728917; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728918 | ID 21728918; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728920 | ID 21728920; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728924 | ID 21728924; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728925 | ID 21728925; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728928 | ID 21728928; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728932 | ID 21728932; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728933 | ID 21728933; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728937 | ID 21728937; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728942 | ID 21728942; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728943 | ID 21728943; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728944 | ID 21728944; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728945 | ID 21728945; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728946 | ID 21728946; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728947 | ID 21728947; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728948 | ID 21728948; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728967 | ID 21728967; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728968 | ID 21728968; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728969 | ID 21728969; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728973 | ID 21728973; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728974 | ID 21728974; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728977 | ID 21728977; FamilyInstance; baluster&#95;picket 3 |
+| ID 21728978 | ID 21728978; FamilyInstance; baluster&#95;picket 3 |
+| ID 21969929 | ID 21969929; LinearDimension; Linear Dimension Style |
+| ID 21969930 | ID 21969930; LinearDimension; Linear Dimension Style |
+| ID 21969931 | ID 21969931; LinearDimension; Linear Dimension Style |
+| ID 21969932 | ID 21969932; LinearDimension; Linear Dimension Style |
+| ID 21969933 | ID 21969933; LinearDimension; Linear Dimension Style |
+| ID 21969934 | ID 21969934; LinearDimension; Linear Dimension Style |
+| ID 22061723 | ID 22061723; Element;  |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 22051245 — 2026-10-02 15:21:47 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 22051245 |
+| Element.UniqueId | 31e3c14c-2ce9-4f79-904f-20ec7d474e74-015079ad |
+| API class | Autodesk.Revit.DB.FamilyInstance |
+| Name | 24" DIA |
+| Category | Structural Columns; ID -2001330; OST&#95;StructuralColumns |
+| GetTypeId() | ID 21942243; FamilySymbol; 24" DIA |
+| LevelId | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 70488 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationCurve |
+| LocationCurve.Curve class | Autodesk.Revit.DB.Line |
+| Curve.IsBound | True |
+| Curve.GetEndPoint(0) (ft) | (884.4780790530856, 638.9847088974369, 2.0000000000000036) |
+| Curve.GetEndPoint(1) (ft) | (884.4780790530856, 638.9847088974369, 5.833333333333313) |
+| Curve.Length (ft) | 3.833333333333309 |
+| BoundingBox (model, ft) | Min=(883.4201783793403, 637.9268082236916, 2.0000000000000036); Max=(885.5359797268309, 640.0426095711822, 5.833333333333313); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### FamilyInstance — свойства API
+
+| Свойство | Значение |
+| --- | --- |
+| Symbol.Family.Name | ADSK&#95;US&#95;I&#95;19&#95;Concrete-Round-Column |
+| Family.IsInPlace | False |
+| Family.FamilyPlacementType | TwoLevelsBased |
+| Host (свойство, не параметр) | null |
+| HostFace | null |
+| SuperComponent | null |
+| GetSubComponentIds() |  |
+| Mirrored | False |
+| HandFlipped | False |
+| FacingFlipped | False |
+| HandOrientation | (0.9982173622668352, -0.059683311478517236, 0) |
+| FacingOrientation | (0.059683311478517236, 0.9982173622668352, 0) |
+| GetTransform() | Origin=(884.4780790530856, 638.9847088974369, 2.0000000000000036) ft; BasisX=(0.9982173622668352, -0.059683311478517236, 0); BasisY=(0.059683311478517236, 0.9982173622668352, 0); BasisZ=(0, 0, 0.9999999999999999) |
+
+### Колонна — присоединения и соединения
+
+| Свойство | Значение |
+| --- | --- |
+| IsSlantedColumn | True |
+| ColumnAttachment — низ | null |
+| ColumnAttachment — верх | null |
+| JoinGeometryUtils.GetJoinedElements |  |
+| GetCopingIds |  |
+| SolidSolidCutUtils.GetCuttingSolids |  |
+| SolidSolidCutUtils.GetSolidsBeingCut |  |
+| InstanceVoidCutUtils.GetCuttingVoidInstances |  |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: OneLevelBased is required; placement type: TwoLevelsBased. |
+| Case 2 — columns and walls | Case 2: a vertical column with LocationPoint is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings without a host | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150207 / SLANTED&#95;COLUMN&#95;BASE&#95;EXTENSION | Base Extension | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150206 / SLANTED&#95;COLUMN&#95;TOP&#95;EXTENSION | Top Extension | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150205 / SLANTED&#95;COLUMN&#95;BASE&#95;CUT&#95;STYLE | Base Cut Style | — |  | Integer | False | True | 0 | Perpendicular | — |
+| -1150204 / SLANTED&#95;COLUMN&#95;TOP&#95;CUT&#95;STYLE | Top Cut Style | — |  | Integer | False | True | 0 | Perpendicular | — |
+| -1150173 / INSTANCE&#95;MOVE&#95;BASE&#95;WITH&#95;GRIDS | Move Base With Grids | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| -1150172 / INSTANCE&#95;MOVE&#95;TOP&#95;WITH&#95;GRIDS | Move Top With Grids | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| -1150171 / SLANTED&#95;COLUMN&#95;TYPE&#95;PARAM | Column Style | — |  | Integer | False | True | 2 | Slanted - End Point Driven | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2001330 (не разрешён в элемент документа; возможное служебное значение) | Structural Columns | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2001330 (не разрешён в элемент документа; возможное служебное значение) | Structural Columns | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 0nuy5CBEbFUP1F8Eny5pVP | 0nuy5CBEbFUP1F8Eny5pVP | — |
+| -1013449 / ANALYTICAL&#95;ELEMENT&#95;HAS&#95;ASSOCIATION | Has Association | — | autodesk.spec:spec.bool-1.0.0 | Integer | True | True | 0 | No | — |
+| -1013439 / CLEAR&#95;COVER&#95;BOTTOM | Rebar Cover - Bottom Face | — |  | ElementId | False | True | ID 3412554; RebarCoverType; Exterior - #3 to #5 | Exterior - #3 to #5 &lt;0' - 1 1/2"&gt; | — |
+| -1013438 / CLEAR&#95;COVER&#95;TOP | Rebar Cover - Top Face | — |  | ElementId | False | True | ID 3412554; RebarCoverType; Exterior - #3 to #5 | Exterior - #3 to #5 &lt;0' - 1 1/2"&gt; | — |
+| -1013437 / CLEAR&#95;COVER&#95;OTHER | Rebar Cover - Other Faces | — |  | ElementId | False | True | ID 3412554; RebarCoverType; Exterior - #3 to #5 | Exterior - #3 to #5 &lt;0' - 1 1/2"&gt; | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012806 / HOST&#95;VOLUME&#95;COMPUTED | Volume | — | autodesk.spec.aec:volume-2.0.0 | Double | True | True | 12.042616894024853 | 12.04 CF | autodesk.unit.unit:cubicFeet-1.0.1 |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1005500 / STRUCTURAL&#95;MATERIAL&#95;PARAM | Structural Material | — | autodesk.spec.aec:material-1.0.0 | ElementId | False | True | ID 2404940; Material; Concrete, Cast-in-Place gray | Concrete, Cast-in-Place gray | — |
+| -1002563 / COLUMN&#95;LOCATION&#95;MARK | Column Location Mark | — |  | String | True | True |  |  | — |
+| -1002108 / HOST&#95;ID&#95;PARAM | Host Id | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002066 / SCHEDULE&#95;TOP&#95;LEVEL&#95;OFFSET&#95;PARAM | Top Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 5.833333333333313 | 5' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002065 / SCHEDULE&#95;BASE&#95;LEVEL&#95;OFFSET&#95;PARAM | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 2.0000000000000036 | 2' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002064 / SCHEDULE&#95;TOP&#95;LEVEL&#95;PARAM | Top Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1002063 / SCHEDULE&#95;BASE&#95;LEVEL&#95;PARAM | Base Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1002062 / SCHEDULE&#95;LEVEL&#95;PARAM | Level | — |  | ElementId | True | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 70488 | 21-02 10 00 Superstructure Concrete | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 21942243; FamilySymbol; 24" DIA | ADSK&#95;US&#95;I&#95;19&#95;Concrete-Round-Column: 24" DIA | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 21942243; FamilySymbol; 24" DIA | ADSK&#95;US&#95;I&#95;19&#95;Concrete-Round-Column | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 21942243; FamilySymbol; 24" DIA | 24" DIA | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 21942243; FamilySymbol; 24" DIA | 21942243 | — |
+| -1001586 / STRUCTURAL&#95;BEND&#95;DIR&#95;ANGLE | Cross-Section Rotation | — | autodesk.spec.aec:angle-2.0.0 | Double | False | True | 0.05971880136040841 | 3.42° | autodesk.unit.unit:degrees-1.0.1 |
+| -1001375 / INSTANCE&#95;LENGTH&#95;PARAM | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 3.833333333333309 | 3' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001358 / FAMILY&#95;TOP&#95;LEVEL&#95;OFFSET&#95;PARAM | Top Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 5.833333333333313 | 5' - 10" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001357 / FAMILY&#95;BASE&#95;LEVEL&#95;OFFSET&#95;PARAM | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 2.0000000000000036 | 2' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001351 / FAMILY&#95;TOP&#95;LEVEL&#95;PARAM | Top Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1001350 / FAMILY&#95;BASE&#95;LEVEL&#95;PARAM | Base Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001007 / WALL&#95;ATTR&#95;ROOM&#95;BOUNDING | Room Bounding | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| 19226936 | Vic&#95;Zone | fb4de820-2d17-4e47-b9ac-69ddbdf23d9a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | True | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2001330 (не разрешён в элемент документа; возможное служебное значение) | Structural Columns | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2001330 (не разрешён в элемент документа; возможное служебное значение) | Structural Columns | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 28l9Q1BZP1DwgLT$ti9b&#95;H | 28l9Q1BZP1DwgLT$ti9b&#95;H | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1005556 / STRUCTURAL&#95;FAMILY&#95;CODE&#95;NAME | Code Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1005554 / STRUCTURAL&#95;SECTION&#95;NAME&#95;KEY | Section Name Key | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1005501 / STRUCTURAL&#95;SECTION&#95;SHAPE | Section Shape | — | autodesk.spec:spec.string-2.0.0 | Integer | True | True | 0 | Not Defined | — |
+| -1002503 / OMNICLASS&#95;DESCRIPTION | OmniClass Title | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002502 / OMNICLASS&#95;CODE | OmniClass Number | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 23.25.30.11.14.11 | 23.25.30.11.14.11 | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Superstructure | Superstructure | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True | B10 | B10 | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 70569 | Family  : Structural Columns : ADSK&#95;US&#95;I&#95;19&#95;Concrete-Round-Column | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | ADSK&#95;US&#95;I&#95;19&#95;Concrete-Round-Column | ADSK&#95;US&#95;I&#95;19&#95;Concrete-Round-Column | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 24" DIA | 24" DIA | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | True | CC2 | CC2 | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21942143 | b | — | autodesk.spec.aec:length-2.0.0 | Double | False | True | 2 | 2' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 21942160 | TYPE | — | autodesk.spec:spec.string-2.0.0 | String | False | True | C | C | — |
+| 21942180 | TIES | — | autodesk.spec:spec.string-2.0.0 | String | False | True | #4 @ 6" OC | #4 @ 6" OC | — |
+| 21942232 | VERTICALS | — | autodesk.spec:spec.string-2.0.0 | String | False | True | (8) #7 | (8) #7 | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| ID 22051245 | ID 22051245; FamilyInstance; 24" DIA |
+| ID 22053415 | ID 22053415; Element;  |
+
+### MEP-коннекторы
+
+| Свойство | Значение |
+| --- | --- |
+| ConnectorManager | null |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 18615150 — 2026-10-05 16:06:32 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 18615150 |
+| Element.UniqueId | dd3bd4d2-cd27-46f0-825e-724744bdcaf9-011c0b6e |
+| API class | Autodesk.Revit.DB.Architecture.Railing |
+| Name | Guardrail - Picket Cap |
+| Category | Railings; ID -2000126; OST&#95;StairsRailing |
+| GetTypeId() | ID 7981396; RailingType; Guardrail - Picket Cap |
+| LevelId | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | ID 18615080; DesignOption; OPTION 1 |
+| WorksetId | 467 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(886.1059567112883, 737.1382709268104, 10.333333333327221); Max=(889.1980738401013, 754.1829490509754, 15.583333333327223); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings without a host | Case 10: a hosted railing is not transferred separately yet. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1152300 / STAIRS&#95;RAILING&#95;PLACEMENT&#95;OFFSET | Offset from Path | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | -0.14583333333333331 | -1 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3TEzJIpIT6y89USaT5eS6N | 3TEzJIpIT6y89USaT5eS6N | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | ID 18615080; DesignOption; OPTION 1 | 18615080 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | BOARDWALK VE : OPTION 1 | BOARDWALK VE : OPTION 1 | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008621 / STAIRS&#95;RAILING&#95;HEIGHT&#95;OFFSET | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008620 / STAIRS&#95;RAILING&#95;BASE&#95;LEVEL&#95;PARAM | Base Level | — |  | ElementId | True | True | -1 (InvalidElementId) |  | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 18.950225517502535 | 18' - 11 103/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 467 | 21-02 00 00 Shell | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Railing: Guardrail - Picket Cap | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Railing | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Guardrail - Picket Cap | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 7981396; RailingType; Guardrail - Picket Cap | 7981396 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150380 / RAILING&#95;SYSTEM&#95;HAS&#95;TOP&#95;RAIL | Use Top Rail | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| -1150336 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;LATTERAL&#95;OFFSET | Lateral Offset | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150335 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150334 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;POSITION&#95;PARAM | Position | — |  | Integer | True | True | 0 | None | — |
+| -1150333 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | -1 (InvalidElementId) | &lt;None&gt; | — |
+| -1150332 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;LATTERAL&#95;OFFSET | Lateral Offset | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.2875 | 3 115/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150331 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.9166666666666665 | 2' - 11" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150330 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;POSITION&#95;PARAM | Position | — |  | Integer | False | True | 1 | Left | — |
+| -1150329 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | ID 16578975; HandRailType; Circular 1 1/2" | Circular 1 1/2" | — |
+| -1150328 / RAILING&#95;SYSTEM&#95;TOP&#95;RAIL&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 3.5 | 3' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150327 / RAILING&#95;SYSTEM&#95;TOP&#95;RAIL&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | ID 8325519; TopRailType; Rectangle 2" | Rectangle 2" | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3oPISz425DYBHRPcbSasNa | 3oPISz425DYBHRPcbSasNa | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008632 / STAIRS&#95;RAILING&#95;CONNECTION | Rail Connections | — |  | Integer | False | True | 0 | Trim | — |
+| -1008631 / STAIRS&#95;RAILING&#95;ANGLED&#95;CONNECTION | Angled Joins | — |  | Integer | False | True | 0 | Add Vertical/Horizontal Segments | — |
+| -1008630 / STAIRS&#95;RAILING&#95;TANGENT&#95;CONNECTION | Tangent Joins | — |  | Integer | False | True | 0 | Add Vertical/Horizontal Segments | — |
+| -1008629 / STAIRS&#95;RAILING&#95;HEIGHT&#95;SHIFT&#95;VAL | Landing Height Adjustment | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008628 / STAIRS&#95;RAILING&#95;HEIGHT&#95;SHIFT&#95;TYPE | Use Landing Height Adjustment | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1008626 / STAIRS&#95;RAILING&#95;BALUSTER&#95;PLACEMENT | Baluster Placement | — |  | None | False | False | (нет значения) | — | — |
+| -1008619 / STAIRS&#95;RAILING&#95;BALUSTER&#95;OFFSET | Baluster Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008615 / STAIRS&#95;RAILING&#95;RAIL&#95;STRUCTURE | Rail Structure (Non-Continuous) | — |  | None | False | False | (нет значения) | — | — |
+| -1008602 / STAIRS&#95;RAILING&#95;HEIGHT | Railing Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 3.5 | 3' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 33 | Railing Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Railing | Railing | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Guardrail - Picket Cap | Guardrail - Picket Cap | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 37 |
+| ID 18615149 | ID 18615149; Sketch; Sketch |
+| ID 18615150 | ID 18615150; Railing; Guardrail - Picket Cap |
+| ID 18615151 | ID 18615151; ElementType; Railing |
+| ID 18615152 | ID 18615152; TopRail; Rectangle 2" |
+| ID 18615153 | ID 18615153; ElementType; Top Rail(Internal) |
+| ID 18615154 | ID 18615154; Path3d; Picked Path |
+| ID 18615155 | ID 18615155; ReferencePlane; Reference Plane |
+| ID 18615156 | ID 18615156; SketchPlane; Reference Plane |
+| ID 18615157 | ID 18615157; SketchPlane; &lt;not associated&gt; |
+| ID 18615158 | ID 18615158; ReferencePlane; Reference Plane |
+| ID 18615159 | ID 18615159; SketchPlane; Reference Plane |
+| ID 18615160 | ID 18615160; SketchPlane; &lt;not associated&gt; |
+| ID 18615161 | ID 18615161; ModelLine; Model Lines |
+| ID 18615162 | ID 18615162; DatumPlane; Profile plane |
+| ID 18615163 | ID 18615163; SketchPlane; Level 1 |
+| ID 18615164 | ID 18615164; ModelLine; Model Lines |
+| ID 18615165 | ID 18615165; ModelLine; Model Lines |
+| ID 18615167 | ID 18615167; ModelLine; Model Lines |
+| ID 18615193 | ID 18615193; HandRail; Circular 1 1/2" |
+| ID 18615194 | ID 18615194; ElementType; Handrail(Internal) |
+| ID 18615195 | ID 18615195; Path3d; Picked Path |
+| ID 18615196 | ID 18615196; ReferencePlane; Reference Plane |
+| ID 18615197 | ID 18615197; SketchPlane; Reference Plane |
+| ID 18615198 | ID 18615198; SketchPlane; &lt;not associated&gt; |
+| ID 18615199 | ID 18615199; ReferencePlane; Reference Plane |
+| ID 18615200 | ID 18615200; SketchPlane; Reference Plane |
+| ID 18615201 | ID 18615201; SketchPlane; &lt;not associated&gt; |
+| ID 18615202 | ID 18615202; ModelLine; Model Lines |
+| ID 18615203 | ID 18615203; ModelLine; Model Lines |
+| ID 18615204 | ID 18615204; DatumPlane; Profile plane |
+| ID 18615366 | ID 18615366; LinearDimension; Linear Dimension Style |
+| ID 18615367 | ID 18615367; LinearDimension; Linear Dimension Style |
+| ID 18615368 | ID 18615368; LinearDimension; Linear Dimension Style |
+| ID 18615649 | ID 18615649; FamilyInstance; baluster&#95;picket |
+| ID 18615650 | ID 18615650; FamilyInstance; baluster&#95;picket 3 |
+| ID 18615665 | ID 18615665; Element;  |
+| ID 21728910 | ID 21728910; FamilyInstance; baluster&#95;picket 3 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 18683701 — 2026-10-05 17:50:16 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 18683701 |
+| Element.UniqueId | 8e7e4d8c-8ca9-48e1-a6cd-7798a56ff067-011d1735 |
+| API class | Autodesk.Revit.DB.Architecture.Railing |
+| Name | Guardrail - Picket Cap |
+| Category | Railings; ID -2000126; OST&#95;StairsRailing |
+| GetTypeId() | ID 7981396; RailingType; Guardrail - Picket Cap |
+| LevelId | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | ID 18683619; DesignOption; Current Bulletin 3 (OPTION 2c) (SELECTED)  &lt;primary&gt; |
+| WorksetId | 467 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(886.1059567112977, 737.1382709268104, 12.333333333338405); Max=(889.1980738401109, 754.3079490509749, 17.583333333338405); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Соответствует условиям отбора |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1152300 / STAIRS&#95;RAILING&#95;PLACEMENT&#95;OFFSET | Offset from Path | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | -0.14583333333333331 | -1 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2EVasCZAb8uQRDTvYaSkTI | 2EVasCZAb8uQRDTvYaSkTI | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | ID 18683619; DesignOption; Current Bulletin 3 (OPTION 2c) (SELECTED)  &lt;primary&gt; | 18683619 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | BOARDWALK VE : Current Bulletin 3 (OPTION 2c) (SELECTED) | BOARDWALK VE : Current Bulletin 3 (OPTION 2c) (SELECTED) | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008621 / STAIRS&#95;RAILING&#95;HEIGHT&#95;OFFSET | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008620 / STAIRS&#95;RAILING&#95;BASE&#95;LEVEL&#95;PARAM | Base Level | — |  | ElementId | True | True | -1 (InvalidElementId) |  | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 19.06797508434056 | 19' - 0 209/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 467 | 21-02 00 00 Shell | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Railing: Guardrail - Picket Cap | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Railing | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 7981396; RailingType; Guardrail - Picket Cap | Guardrail - Picket Cap | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 7981396; RailingType; Guardrail - Picket Cap | 7981396 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150380 / RAILING&#95;SYSTEM&#95;HAS&#95;TOP&#95;RAIL | Use Top Rail | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| -1150336 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;LATTERAL&#95;OFFSET | Lateral Offset | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150335 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150334 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;POSITION&#95;PARAM | Position | — |  | Integer | True | True | 0 | None | — |
+| -1150333 / RAILING&#95;SYSTEM&#95;SECONDARY&#95;HANDRAILS&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | -1 (InvalidElementId) | &lt;None&gt; | — |
+| -1150332 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;LATTERAL&#95;OFFSET | Lateral Offset | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.2875 | 3 115/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150331 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.9166666666666665 | 2' - 11" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150330 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;POSITION&#95;PARAM | Position | — |  | Integer | False | True | 1 | Left | — |
+| -1150329 / RAILING&#95;SYSTEM&#95;HANDRAILS&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | ID 16578975; HandRailType; Circular 1 1/2" | Circular 1 1/2" | — |
+| -1150328 / RAILING&#95;SYSTEM&#95;TOP&#95;RAIL&#95;HEIGHT&#95;PARAM | Height | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 3.5 | 3' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1150327 / RAILING&#95;SYSTEM&#95;TOP&#95;RAIL&#95;TYPES&#95;PARAM | Type | — | autodesk.spec:spec.string-2.0.0 | ElementId | False | True | ID 8325519; TopRailType; Rectangle 2" | Rectangle 2" | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000126 (не разрешён в элемент документа; возможное служебное значение) | Railings | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3oPISz425DYBHRPcbSasNa | 3oPISz425DYBHRPcbSasNa | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008632 / STAIRS&#95;RAILING&#95;CONNECTION | Rail Connections | — |  | Integer | False | True | 0 | Trim | — |
+| -1008631 / STAIRS&#95;RAILING&#95;ANGLED&#95;CONNECTION | Angled Joins | — |  | Integer | False | True | 0 | Add Vertical/Horizontal Segments | — |
+| -1008630 / STAIRS&#95;RAILING&#95;TANGENT&#95;CONNECTION | Tangent Joins | — |  | Integer | False | True | 0 | Add Vertical/Horizontal Segments | — |
+| -1008629 / STAIRS&#95;RAILING&#95;HEIGHT&#95;SHIFT&#95;VAL | Landing Height Adjustment | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008628 / STAIRS&#95;RAILING&#95;HEIGHT&#95;SHIFT&#95;TYPE | Use Landing Height Adjustment | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1008626 / STAIRS&#95;RAILING&#95;BALUSTER&#95;PLACEMENT | Baluster Placement | — |  | None | False | False | (нет значения) | — | — |
+| -1008619 / STAIRS&#95;RAILING&#95;BALUSTER&#95;OFFSET | Baluster Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008615 / STAIRS&#95;RAILING&#95;RAIL&#95;STRUCTURE | Rail Structure (Non-Continuous) | — |  | None | False | False | (нет значения) | — | — |
+| -1008602 / STAIRS&#95;RAILING&#95;HEIGHT | Railing Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 3.5 | 3' - 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 33 | Railing Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Railing | Railing | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Guardrail - Picket Cap | Guardrail - Picket Cap | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 38 |
+| ID 11287375 | ID 11287375; LinearDimension; Linear - Feet &amp; Inches |
+| ID 18683700 | ID 18683700; Sketch; Sketch |
+| ID 18683701 | ID 18683701; Railing; Guardrail - Picket Cap |
+| ID 18683702 | ID 18683702; ElementType; Railing |
+| ID 18683703 | ID 18683703; TopRail; Rectangle 2" |
+| ID 18683704 | ID 18683704; ElementType; Top Rail(Internal) |
+| ID 18683705 | ID 18683705; Path3d; Picked Path |
+| ID 18683706 | ID 18683706; ReferencePlane; Reference Plane |
+| ID 18683707 | ID 18683707; SketchPlane; Reference Plane |
+| ID 18683708 | ID 18683708; SketchPlane; &lt;not associated&gt; |
+| ID 18683709 | ID 18683709; ReferencePlane; Reference Plane |
+| ID 18683710 | ID 18683710; SketchPlane; Reference Plane |
+| ID 18683711 | ID 18683711; SketchPlane; &lt;not associated&gt; |
+| ID 18683712 | ID 18683712; ModelLine; Model Lines |
+| ID 18683713 | ID 18683713; DatumPlane; Profile plane |
+| ID 18683714 | ID 18683714; SketchPlane; Level 1 |
+| ID 18683715 | ID 18683715; ModelLine; Model Lines |
+| ID 18683716 | ID 18683716; ModelLine; Model Lines |
+| ID 18683718 | ID 18683718; ModelLine; Model Lines |
+| ID 18683744 | ID 18683744; HandRail; Circular 1 1/2" |
+| ID 18683745 | ID 18683745; ElementType; Handrail(Internal) |
+| ID 18683746 | ID 18683746; Path3d; Picked Path |
+| ID 18683747 | ID 18683747; ReferencePlane; Reference Plane |
+| ID 18683748 | ID 18683748; SketchPlane; Reference Plane |
+| ID 18683749 | ID 18683749; SketchPlane; &lt;not associated&gt; |
+| ID 18683750 | ID 18683750; ReferencePlane; Reference Plane |
+| ID 18683751 | ID 18683751; SketchPlane; Reference Plane |
+| ID 18683752 | ID 18683752; SketchPlane; &lt;not associated&gt; |
+| ID 18683753 | ID 18683753; ModelLine; Model Lines |
+| ID 18683754 | ID 18683754; ModelLine; Model Lines |
+| ID 18683755 | ID 18683755; DatumPlane; Profile plane |
+| ID 18684968 | ID 18684968; FamilyInstance; baluster&#95;picket |
+| ID 18684969 | ID 18684969; FamilyInstance; baluster&#95;picket 3 |
+| ID 18685072 | ID 18685072; Element;  |
+| ID 20114757 | ID 20114757; LinearDimension; Linear Dimension Style |
+| ID 20114758 | ID 20114758; LinearDimension; Linear Dimension Style |
+| ID 20114759 | ID 20114759; LinearDimension; Linear Dimension Style |
+| ID 21727415 | ID 21727415; FamilyInstance; baluster&#95;picket 3 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 4328625 — 2026-10-06 10:50:24 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 4328625 |
+| Element.UniqueId | b013f8cf-abf1-4d1d-858c-5926cad0c0be-00420cb1 |
+| API class | Autodesk.Revit.DB.Opening |
+| Name | Opening Cut |
+| Category | Shaft Openings; ID -2000996; OST&#95;ShaftOpening |
+| GetTypeId() | -1 (InvalidElementId) |
+| LevelId | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 467 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(1050.3800993087189, 613.9661165882907, 21.76334233653828); Max=(1052.2967659753854, 616.6327832549573, 28.542953083644505); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000996 (не разрешён в элемент документа; возможное служебное значение) | Shaft Openings | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000996 (не разрешён в элемент документа; возможное служебное значение) | Shaft Openings | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 467 | 21-02 00 00 Shell | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1001109 / WALL&#95;TOP&#95;OFFSET | Top Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 28.542953083644505 | 28' - 6 33/64" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001108 / WALL&#95;BASE&#95;OFFSET | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 21.76334233653828 | 21' - 9 41/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001107 / WALL&#95;BASE&#95;CONSTRAINT | Base Constraint | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1001105 / WALL&#95;USER&#95;HEIGHT&#95;PARAM | Unconnected Height | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.779610747106226 | 6' - 9 91/256" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001103 / WALL&#95;HEIGHT&#95;TYPE | Top Constraint | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | Up to level: LEVEL 0 | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| Свойство | Значение |
+| --- | --- |
+| Тип | Отсутствует |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 9 |
+| ID 4328623 | ID 4328623; SketchPlane; LEVEL 0 |
+| ID 4328624 | ID 4328624; Sketch; Sketch |
+| ID 4328625 | ID 4328625; Opening; Opening Cut |
+| ID 4328626 | ID 4328626; ModelLine; Model Lines |
+| ID 4328627 | ID 4328627; ModelArc; Model Lines |
+| ID 4328628 | ID 4328628; ModelLine; Model Lines |
+| ID 4328629 | ID 4328629; ModelLine; Model Lines |
+| ID 4328632 | ID 4328632; LinearDimension; Linear Dimension Style |
+| ID 4328633 | ID 4328633; LinearDimension; Linear Dimension Style |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 10667398 — 2026-10-06 11:15:13 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;A |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;A.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 10667398 |
+| Element.UniqueId | bc11eb5a-5c45-4e83-9b8e-f30381a9e43f-00a2c586 |
+| API class | Autodesk.Revit.DB.Element |
+| Name | Ramp - Concrete |
+| Category | Ramps; ID -2000180; OST&#95;Ramps |
+| GetTypeId() | ID 10667613; ElementType; Ramp - Concrete |
+| LevelId | -1 (InvalidElementId) |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 7043 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 118390; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(1015.5907243166403, 568.3989289359284, 0.9568841861952285); Max=(1024.3407243166403, 575.4380271759782, 2.125); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000180 (не разрешён в элемент документа; возможное служебное значение) | Ramps | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000180 (не разрешён в элемент документа; возможное служебное значение) | Ramps | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2y4UjQN4LEWvkEymE12o6v | 2y4UjQN4LEWvkEymE12o6v | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 118390; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1007278 / STAIRS&#95;INST&#95;ALWAYS&#95;UP | Show Up arrow in all views | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1007275 / STAIRS&#95;INST&#95;DOWN&#95;LABEL&#95;TEXT | Down text | — | autodesk.spec:spec.string-2.0.0 | String | False | True | DN | DN | — |
+| -1007274 / STAIRS&#95;INST&#95;DOWN&#95;LABEL&#95;ON | Down label | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1007272 / STAIRS&#95;INST&#95;UP&#95;LABEL&#95;TEXT | Up text | — | autodesk.spec:spec.string-2.0.0 | String | False | True | UP | UP | — |
+| -1007271 / STAIRS&#95;INST&#95;UP&#95;LABEL&#95;ON | Up label | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1007235 / STAIRS&#95;MULTISTORY&#95;TOP&#95;LEVEL&#95;PARAM | Multistory Top Level | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1007219 / STAIRS&#95;TOP&#95;OFFSET | Top Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 2.125 | 2' - 1 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1007218 / STAIRS&#95;BASE&#95;OFFSET | Base Offset | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.4583333333333335 | 1' - 5 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1007204 / STAIRS&#95;ATTR&#95;TREAD&#95;WIDTH | Width | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0.5 | 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1007201 / STAIRS&#95;TOP&#95;LEVEL&#95;PARAM | Top Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1007200 / STAIRS&#95;BASE&#95;LEVEL&#95;PARAM | Base Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 0; Elevation=0; ProjectElevation=0 ft | LEVEL 0 | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 7043 | 21-03 20 30 Flooring | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 10667613; ElementType; Ramp - Concrete | Ramp: Ramp - Concrete | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 10667613; ElementType; Ramp - Concrete | Ramp | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 10667613; ElementType; Ramp - Concrete | Ramp - Concrete | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 10667613; ElementType; Ramp - Concrete | 10667613 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890848 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 21890959 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2000180 (не разрешён в элемент документа; возможное служебное значение) | Ramps | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2000180 (не разрешён в элемент документа; возможное служебное значение) | Ramps | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2y4UjQN4LEWvkEymE12o9Y | 2y4UjQN4LEWvkEymE12o9Y | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1008310 / RAMP&#95;ATTR&#95;TEXT&#95;SIZE | Text Size | — | autodesk.spec.aec:sheetLength-2.0.0 | Double | False | True | 0.008463541666666668 | 13/128" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1008309 / RAMP&#95;ATTR&#95;TEXT&#95;FONT | Text Font | — | autodesk.spec:spec.string-2.0.0 | String | False | True | Arial Narrow | Arial Narrow | — |
+| -1008308 / RAMP&#95;ATTR&#95;MATERIAL | Ramp Material | — | autodesk.spec.aec:material-1.0.0 | ElementId | False | True | ID 134478; Material; Concrete | Concrete | — |
+| -1008305 / RAMP&#95;ATTR&#95;SHAPE | Shape | — |  | Integer | False | True | 0 | Thick | — |
+| -1008304 / RAMP&#95;ATTR&#95;THICKNESS | Thickness | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0.5 | 6" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008303 / RAMP&#95;MAX&#95;RUN&#95;LENGTH | Maximum Incline Length | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 30 | 30' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1008301 / RAMP&#95;ATTR&#95;MIN&#95;INV&#95;SLOPE | Ramp Max Slope (1/x) | — | autodesk.spec.aec:number-2.0.0 | Double | False | True | 1 | 1 | autodesk.unit.unit:general-1.0.1 |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Ramps | Ramps | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True | B1010600 | B1010600 | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 30 | Ramp Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Ramp | Ramp | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Ramp - Concrete | Ramp - Concrete | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| -1001006 / FUNCTION&#95;PARAM | Function | — |  | Integer | False | True | 0 | Interior | — |
+| 6348688 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348757 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348826 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348895 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6348964 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349033 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349102 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349171 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349240 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 6349309 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 14 |
+| ID 10667397 | ID 10667397; Sketch; Sketch |
+| ID 10667398 | ID 10667398; Element; Ramp - Concrete |
+| ID 10667399 | ID 10667399; ElementType; Ramp |
+| ID 10667402 | ID 10667402; ModelLine; Model Lines |
+| ID 10667403 | ID 10667403; ModelLine; Model Lines |
+| ID 10667404 | ID 10667404; ModelLine; Model Lines |
+| ID 10667405 | ID 10667405; ModelLine; Model Lines |
+| ID 10667406 | ID 10667406; ModelLine; Model Lines |
+| ID 21828265 | ID 21828265; SketchPlane; LEVEL 0 |
+| ID 21829242 | ID 21829242; LinearDimension; Linear Dimension Style |
+| ID 21829243 | ID 21829243; LinearDimension; Linear Dimension Style |
+| ID 21829244 | ID 21829244; LinearDimension; Linear Dimension Style |
+| ID 21829245 | ID 21829245; LinearDimension; Linear Dimension Style |
+| ID 21829246 | ID 21829246; LinearDimension; Linear Dimension Style |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+

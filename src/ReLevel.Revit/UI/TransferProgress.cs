@@ -44,11 +44,11 @@ internal sealed class TransferProgress : StackPanel
         Paint();
     }
 
-    public void Finish(bool stopped)
+    public void Finish(bool stopped, string? message = null)
     {
         clock.Stop();
         Report(completed, total, null);
-        label.Text = (stopped ? L.Get("Перенос остановлен.") : L.Get("Перенос завершён.")) + " " + label.Text;
+        label.Text = (message ?? (stopped ? L.Get("Перенос остановлен.") : L.Get("Перенос завершён."))) + " " + label.Text;
         Paint();
     }
 

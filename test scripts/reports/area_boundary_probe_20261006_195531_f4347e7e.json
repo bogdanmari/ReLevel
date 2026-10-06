@@ -1,0 +1,318 @@
+{
+  "revit_build": "25.4.41.14",
+  "failures": [],
+  "group_rollback": "RolledBack",
+  "scope": "SketchPlane assignment only; all changes rolled back; units feet",
+  "document": "US-SVL-BRGUP123_A",
+  "requested_ids": [
+    2774087,
+    2774088,
+    2774089,
+    2774090,
+    2774091,
+    2774092,
+    2774093,
+    3545837
+  ],
+  "transaction_rollback": "RolledBack",
+  "before": [
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.5884326420528,
+        797.71940738430976,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774087
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1026.0884326420528,
+        797.71940738430976,
+        0.0
+      ],
+      "id": 2774087,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc2"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1057.5884326420523,
+        797.71940738430965,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774088
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1059.0884326420523,
+        797.71940738430965,
+        0.0
+      ],
+      "id": 2774088,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc3"
+    },
+    {
+      "length_ft": 13.433630393879071,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1016.5675993097185,
+        665.35984819742532,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774089
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1003.1339689158394,
+        665.35984819742532,
+        0.0
+      ],
+      "id": 2774089,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc4"
+    },
+    {
+      "length_ft": 1.4999999999999993,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753861,
+        658.13607405097434,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774090
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753861,
+        659.63607405097434,
+        0.0
+      ],
+      "id": 2774090,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc5"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753861,
+        630.13607405097423,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774091
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753861,
+        631.63607405097423,
+        0.0
+      ],
+      "id": 2774091,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc6"
+    },
+    {
+      "length_ft": 20.812499999998636,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753858,
+        595.13607405097434,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774092
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753861,
+        615.94857405097298,
+        0.0
+      ],
+      "id": 2774092,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc7"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753858,
+        567.13607405097423,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774093
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753858,
+        568.63607405097423,
+        0.0
+      ],
+      "id": 2774093,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc8"
+    },
+    {
+      "length_ft": 69.541666666666401,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1059.9634326420507,
+        800.88607405097616,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        3545837
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        990.42176597538435,
+        800.88607405097639,
+        0.0
+      ],
+      "id": 3545837,
+      "unique_id": "3ea3daab-5367-489b-9d8b-5514a726a6db-00361603"
+    }
+  ],
+  "status": "Error",
+  "target": {
+    "elevation_ft": -6.1106675275368616e-12,
+    "id": 1518530,
+    "name": "Level LL"
+  },
+  "revit_version": "2025",
+  "last_attempted_id": 2774087,
+  "error": "Changing the SketchPlane of this CurveElem is not allowed.",
+  "areas_before": [
+    {
+      "scheme_id": 239784,
+      "id": 2219718,
+      "name": "BIKES 16",
+      "boundary_ids": [
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "level_id": 1518530,
+      "area_ft2": 224.43055555555839
+    },
+    {
+      "scheme_id": 239784,
+      "id": 3125027,
+      "name": "METER SWITCHGEAR 23",
+      "boundary_ids": [
+        [
+          2219623,
+          3124992,
+          3124956,
+          3131655
+        ]
+      ],
+      "level_id": 1518530,
+      "area_ft2": 883.74999999997453
+    }
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 118, in main\nException: Changing the SketchPlane of this CurveElem is not allowed.\n"
+}

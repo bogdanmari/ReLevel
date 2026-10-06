@@ -26,6 +26,7 @@ internal sealed class TransferWindow : Window
     private readonly List<Button> elementButtons = [];
     private readonly List<Button> viewButtons = [];
     private readonly Dictionary<long, string> statuses = [];
+    private readonly HashSet<long> additionalElementIds = [];
     private readonly Dictionary<DataGrid, CheckBox> checkAllHeaders = [];
     private readonly Dictionary<DataGrid, TableSearch> searches = [];
     private bool updatingChecks;
@@ -53,6 +54,7 @@ internal sealed class TransferWindow : Window
         var debugTools = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right,
             Margin = new Thickness(0, 0, 0, 8) };
         AddAction(debugTools, null, L.Get("Выделить все элементы по…"), SelectAllByCase);
+        AddAction(debugTools, null, L.Get("Добавить по ID"), AddElementsById);
         AddAction(debugTools, null, L.Get("ReLevel инспектор"), () => { InspectElementRequested = true; Close(); });
         DockPanel.SetDock(debugTools, Dock.Top); shell.Children.Add(debugTools);
         DockPanel.SetDock(summary, Dock.Bottom); shell.Children.Add(summary);
@@ -132,7 +134,9 @@ internal sealed class TransferWindow : Window
         try
         {
             var sourceLevelId = (source.SelectedItem as Level)?.Id;
-            IEnumerable<Element> candidates = sourceLevelId is not null ? TransferCases.Candidates(document) : [];
+            IEnumerable<Element> candidates = sourceLevelId is not null
+                ? TransferCases.Candidates(document).Concat(additionalElementIds
+                    .Select(id => document.GetElement(new ElementId(id))).OfType<Element>()).DistinctBy(e => e.Id.Value) : [];
             elementRows = candidates.OrderBy(e => e.Id.Value)
                 .Select(e => ElementRow(e, sourceLevelId, elementErrors)).OfType<TableRow>().ToList();
             if (source.SelectedItem is Level level)
@@ -178,6 +182,39 @@ internal sealed class TransferWindow : Window
         catch (Exception ex) { errors.Add($"ID {element.Id.Value}: {ex.Message}"); return null; }
     }
 
+    private void AddElementsById()
+    {
+        var dialog = new ElementIdsWindow(this);
+        if (dialog.ShowDialog() != true) return;
+        var details = new List<string>();
+        foreach (var id in dialog.Ids)
+        {
+            try
+            {
+                var element = document.GetElement(new ElementId(id));
+                var transferCase = element is null ? null : TransferCases.Find(element);
+                if (element is null) details.Add($"ID {id}: " + L.Get("Объект больше не существует."));
+                else if (transferCase is null) details.Add($"ID {id}: " + L.Get("Элемент не соответствует реализованным кейсам."));
+                else
+                {
+                    additionalElementIds.Add(id);
+                    if (source.SelectedItem is not Level level || !transferCase.IsOnLevel(element, level.Id))
+                        details.Add($"ID {id}: " + L.Get("Элемент не связан с выбранным исходным уровнем."));
+                    else if (transferCase.WriteRestriction(element, level.Id) is { } restriction)
+                        details.Add($"ID {id}: " + restriction);
+                }
+            }
+            catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
+            {
+                OperationDialogs.Show(this, L.Get("Операция отменена"), L.Get("Критическая ошибка Revit. Команда закрыта; проверьте состояние документа."));
+                Close(); return;
+            }
+            catch (Exception ex) { details.Add($"ID {id}: {ex.Message}"); }
+        }
+        Refresh();
+        if (details.Count > 0) OperationDialogs.Show(this, L.Get("Добавить по ID"), string.Join(Environment.NewLine, details));
+    }
+
     private void SelectElements()
     {
         var rows = Checked(elementRows);
@@ -191,7 +228,7 @@ internal sealed class TransferWindow : Window
     {
         var dialog = new SelectByCaseWindow(this);
         if (dialog.ShowDialog() != true) return;
-        var result = CaseElementFinder.Find(document, dialog.SelectedCase);
+        var result = CaseElementFinder.Find(document, dialog.SelectedCase, additionalElementIds);
         var details = result.Errors.OrderBy(pair => pair.Key).Select(pair => $"ID {pair.Key}: {pair.Value}").ToList();
         if (result.Ids.Count == 0)
         {
@@ -243,21 +280,17 @@ internal sealed class TransferWindow : Window
                 controls.IsEnabled = true;
                 transferProgress.Finish(stopped);
             }
-            var results = report.Items.ToDictionary(item => item.Id, item => (item.Status switch
-            {
-                ElementTransferStatus.Transferred => L.Get("Перенесён"),
-                ElementTransferStatus.Skipped => L.Get("Пропущен"),
-                _ => L.Get("Ошибка")
-            }) + ": " + item.Reason);
+            var results = report.Items.Select(ElementTransferResultRow.From).ToList();
             var title = L.Format($"Перенесено: {report.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}.");
             if (report.Stopped)
             {
-                OperationDialogs.Show(this, title, L.Get("Обработка остановлена. Ранее завершённые переносы сохранены; окно будет закрыто. Проверьте документ и при необходимости используйте Undo.")
-                    + Environment.NewLine + Format(results));
+                new ElementTransferResultsWindow(this, title, results, stopped: true).ShowDialog();
                 Close();
                 return;
             }
-            Complete(title, results);
+            foreach (var item in results) statuses[item.Id] = item.Status + ": " + item.Information;
+            Refresh();
+            new ElementTransferResultsWindow(this, title, results, stopped: false).ShowDialog();
         }
         catch (Exception ex)
         {
@@ -283,22 +316,51 @@ internal sealed class TransferWindow : Window
 
     private void RecreateViews()
     {
+        if (transferring) return;
         var rows = Checked(viewRows);
         if (rows.Count == 0 || source.SelectedItem is not Level sourceLevel) return;
         var choices = levels.Where(l => l.Id != sourceLevel.Id).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(this, L.Get("Пересоздание недоступно"), L.Get("Нет другого уровня.")); return; }
         var dialog = new RecreateViewsWindow(this, choices, rows.Count);
         if (dialog.ShowDialog() != true) return;
-        var report = new ViewRecreationService(document).Execute(rows.Select(r => new ElementId(r.Id)).ToList(), dialog.Target.Id, dialog.Prefix);
-        foreach (var item in report.Results.Items) statuses[item.ElementId] = item.Reason;
-        if (!report.CriticalFailure) Refresh();
-        new ViewLogWindow(this, report, id =>
+        try
         {
-            var created = document.GetElement(new ElementId(id)) as View
-                ?? throw new InvalidOperationException(L.Get("Созданный вид больше не существует."));
-            application.ActiveUIDocument.ActiveView = created;
-        }).ShowDialog();
-        if (report.CriticalFailure) Close();
+            ViewRecreationReport report;
+            transferring = true;
+            var controls = (UIElement)Content;
+            controls.IsEnabled = false;
+            var stopped = true;
+            try
+            {
+                transferProgress.Begin(rows.Count);
+                report = new ViewRecreationService(document).Execute(
+                    rows.Select(r => new ElementId(r.Id)).ToList(), dialog.Target.Id, dialog.Prefix,
+                    transferProgress.Report);
+                stopped = report.CriticalFailure;
+            }
+            finally
+            {
+                transferring = false;
+                controls.IsEnabled = true;
+                transferProgress.Finish(stopped, stopped
+                    ? L.Get("Пересоздание видов остановлено.") : L.Get("Пересоздание видов завершено."));
+            }
+            foreach (var item in report.Results.Items) statuses[item.ElementId] = item.Reason;
+            if (!report.CriticalFailure) Refresh();
+            new ViewLogWindow(this, report, id =>
+            {
+                var created = document.GetElement(new ElementId(id)) as View
+                    ?? throw new InvalidOperationException(L.Get("Созданный вид больше не существует."));
+                application.ActiveUIDocument.ActiveView = created;
+            }).ShowDialog();
+            if (report.CriticalFailure) Close();
+        }
+        catch (Exception ex)
+        {
+            // Do not refresh the model after an escaped transaction or regeneration error.
+            OperationDialogs.Show(this, L.Get("Операция отменена"), ex.Message);
+            Close();
+        }
     }
 
     private void OpenViews()

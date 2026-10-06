@@ -17,7 +17,7 @@ internal sealed class RecreateViewsWindow : Window
         SizeToContent = SizeToContent.Height; ResizeMode = ResizeMode.NoResize;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var panel = new StackPanel { Margin = new Thickness(16) };
-        panel.Children.Add(new TextBlock { Text = L.Format($"Выбрано видов: {count}. Исходные виды и их размещения на листах сохранятся. Новые виды на листы не размещаются."),
+        panel.Children.Add(new TextBlock { Text = L.Format($"Выбрано видов: {count}. Исходные виды и их размещения на листах сохранятся. Новые виды будут размещены на тех же листах поверх исходных."),
             TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 12) });
         panel.Children.Add(new TextBlock { Text = L.Get("Целевой уровень"), Margin = new Thickness(0, 0, 0, 6) });
         target.SetItems(levels, level => level.Name); panel.Children.Add(target);

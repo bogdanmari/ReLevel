@@ -56,7 +56,7 @@ internal sealed class ElementTransferService(Document document)
         catch (Exception ex) { return Result(ElementTransferStatus.Failed, ex.Message); }
 
         using var transaction = new Transaction(document, L.Get("ReLevel: перенос элемента"));
-        var failures = new TransferFailures();
+        var failures = new TransferFailures(allowInvalidDimensionDeletion: operation is HostedRailingOperation);
         try
         {
             Require(transaction.Start(), TransactionStatus.Started);
@@ -66,8 +66,10 @@ internal sealed class ElementTransferService(Document document)
             var status = transaction.Commit();
             if (failures.Corrupted) throw new TransferStoppedException(failures.Reason);
             if (status != TransactionStatus.Committed)
-                throw new InvalidOperationException(failures.Reason ?? L.Format($"Перенос не зафиксирован: {status}."));
-            return Result(ElementTransferStatus.Transferred, operation.SuccessMessage + failures.UnjoinMessage);
+                throw new InvalidOperationException(L.Format($"Перенос не зафиксирован: {status}.") +
+                    (failures.Reason is { } reason ? Environment.NewLine + reason : ""));
+            return Result(ElementTransferStatus.Transferred,
+                operation.SuccessMessage + failures.UnjoinMessage + failures.DeletedDimensionsMessage);
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {

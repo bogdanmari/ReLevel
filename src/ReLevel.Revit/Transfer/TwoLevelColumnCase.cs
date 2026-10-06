@@ -28,9 +28,8 @@ internal static class TwoLevelColumnCase
         var structural = element.Category.BuiltInCategory == BuiltInCategory.OST_StructuralColumns;
         if (instance.Symbol.Family.IsInPlace || instance.Symbol.Family.FamilyPlacementType != FamilyPlacementType.TwoLevelsBased)
             return L.Get("Кейс 2: требуется загружаемое семейство TwoLevelsBased.");
-        if (instance.IsSlantedColumn || instance.Location is not LocationPoint
-            || (structural && instance.get_Parameter(BuiltInParameter.SLANTED_COLUMN_TYPE_PARAM)?.AsInteger() != 0))
-            return L.Get("Кейс 2: требуется вертикальная колонна с LocationPoint.");
+        if (!HasSupportedPlacement(instance, structural))
+            return L.Get("Кейс 2: требуется Vertical с LocationPoint или вертикальная несущая колонна End Point Driven с прямой LocationCurve.");
         if (instance.Host is not null || instance.HostFace is not null || instance.SuperComponent is not null)
             return L.Get("Кейс 2: хостовые и вложенные экземпляры не поддерживаются.");
         if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
@@ -58,6 +57,23 @@ internal static class TwoLevelColumnCase
         if (top.Position.Absolute <= bottom.Position.Absolute)
             return L.Get("Кейс 2: верх должен находиться выше низа.");
         return null;
+    }
+
+    private static bool HasSupportedPlacement(FamilyInstance instance, bool structural)
+    {
+        var style = instance.get_Parameter(BuiltInParameter.SLANTED_COLUMN_TYPE_PARAM);
+        if (!instance.IsSlantedColumn && instance.Location is LocationPoint)
+            return !structural || style?.AsInteger() == 0;
+
+        // End Point Driven can have a vertical axis while still reporting IsSlantedColumn.
+        // This is case selection, not a before/after geometry check during transfer.
+        if (!structural || !instance.IsSlantedColumn || style?.AsInteger() != 2
+            || instance.Location is not LocationCurve { Curve: Line { IsBound: true } axis })
+            return false;
+        var delta = axis.GetEndPoint(1) - axis.GetEndPoint(0);
+        const double tolerance = 1e-9; // Revit internal length units (feet).
+        return delta.X * delta.X + delta.Y * delta.Y <= tolerance * tolerance
+            && Math.Abs(delta.Z) > tolerance;
     }
 
     public static string? WriteRestriction(FamilyInstance instance, ElementId source)

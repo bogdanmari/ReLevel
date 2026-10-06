@@ -5,7 +5,8 @@ namespace ReLevel.Revit.Transfer;
 
 internal sealed class ViewRecreationService(Document document)
 {
-    public ViewRecreationReport Execute(IReadOnlyList<ElementId> sourceIds, ElementId targetLevelId, string prefix)
+    public ViewRecreationReport Execute(IReadOnlyList<ElementId> sourceIds, ElementId targetLevelId, string prefix,
+        Action<int, int, long?>? progress = null)
     {
         var report = new ViewRecreationReport();
         using var allElements = new LogicalOrFilter(new ElementIsElementTypeFilter(), new ElementIsElementTypeFilter(true));
@@ -15,8 +16,13 @@ internal sealed class ViewRecreationService(Document document)
         Require(batch.Start(), TransactionStatus.Started);
         try
         {
+            var completed = 0;
             foreach (var id in sourceIds)
+            {
+                progress?.Invoke(completed, sourceIds.Count, id.Value);
                 report.Results.Items.Add(RecreateOne(id, targetLevelId, prefix, report, originalIds));
+                progress?.Invoke(++completed, sourceIds.Count, id.Value);
+            }
             Require(batch.Assimilate(), TransactionStatus.Committed);
         }
         catch (Exception ex)
@@ -108,6 +114,7 @@ internal sealed class ViewRecreationService(Document document)
             log.Check(L.Get("Наличие аннотаций после переноса графики"), () => annotations.Verify(Target()));
             log.Add(LogSeverity.Info, L.Get("Итог копирования"), annotations.Report);
         }
+        new ViewSheetPlacement(document).Place(sourceId, newId, log);
         var issues = report.Entries.Count(e => e.SourceViewId == sourceId.Value && e.Severity != LogSeverity.Info);
         return new(sourceId.Value, name, ViewResultStatus.Created,
             L.Format($"Создан «{newName}», ID {newId.Value}. Замечаний и ошибок этапов: {issues}. См. журнал."));

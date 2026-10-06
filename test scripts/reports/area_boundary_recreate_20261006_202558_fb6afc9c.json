@@ -1,0 +1,2363 @@
+{
+  "revit_build": "25.4.41.14",
+  "failures": [],
+  "group_rollback": "RolledBack",
+  "replacements": [
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774087,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        }
+      ],
+      "new_id": 22119799,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774088,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        }
+      ],
+      "new_id": 22119800,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774089,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 13.433630393879071,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        },
+        {
+          "result": "AlreadyEqual",
+          "id": -1001370,
+          "name": "Moves With Nearby Elements"
+        }
+      ],
+      "new_id": 22119801,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 13.433630393879071,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ]
+    },
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774090,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.4999999999999993,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        },
+        {
+          "result": "AlreadyEqual",
+          "id": -1001370,
+          "name": "Moves With Nearby Elements"
+        }
+      ],
+      "new_id": 22119802,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.4999999999999993,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ]
+    },
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774091,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        },
+        {
+          "result": "AlreadyEqual",
+          "id": -1001370,
+          "name": "Moves With Nearby Elements"
+        }
+      ],
+      "new_id": 22119803,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ]
+    },
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774092,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 20.812499999998636,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        },
+        {
+          "result": "AlreadyEqual",
+          "id": -1001370,
+          "name": "Moves With Nearby Elements"
+        }
+      ],
+      "new_id": 22119804,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 20.812499999998636,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ]
+    },
+    {
+      "scheme_id": 1106863,
+      "old_id": 2774093,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        },
+        {
+          "result": "AlreadyEqual",
+          "id": -1001370,
+          "name": "Moves With Nearby Elements"
+        }
+      ],
+      "new_id": 22119805,
+      "view_id": 22119789,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 1.5,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ]
+    },
+    {
+      "scheme_id": 32250,
+      "old_id": 3545837,
+      "parameters_after": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 69.541666666666401,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "bmarishenko",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ],
+      "parameter_copy": [
+        {
+          "result": "Set",
+          "id": -1002053,
+          "name": "Workset"
+        },
+        {
+          "result": "AlreadyEqual",
+          "id": -1001370,
+          "name": "Moves With Nearby Elements"
+        }
+      ],
+      "new_id": 22119817,
+      "view_id": 22119807,
+      "parameters_before": [
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140363,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -2000079,
+          "shared_guid": null,
+          "id": -1140362,
+          "name": "Category",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": -1,
+          "shared_guid": null,
+          "id": -1013201,
+          "name": "Design Option",
+          "storage": "ElementId",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "Main Model",
+          "shared_guid": null,
+          "id": -1013200,
+          "name": "Design Option",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1004011,
+          "name": "Detail Line",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 69.541666666666401,
+          "shared_guid": null,
+          "id": -1004005,
+          "name": "Length",
+          "storage": "Double",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": "",
+          "shared_guid": null,
+          "id": -1002067,
+          "name": "Edited by",
+          "storage": "String",
+          "has_value": true,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1002053,
+          "name": "Workset",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002002,
+          "name": "Family Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": null,
+          "shared_guid": null,
+          "id": -1002001,
+          "name": "Type Name",
+          "storage": "String",
+          "has_value": false,
+          "readonly": true
+        },
+        {
+          "value": 0,
+          "shared_guid": null,
+          "id": -1001370,
+          "name": "Moves With Nearby Elements",
+          "storage": "Integer",
+          "has_value": true,
+          "readonly": false
+        }
+      ]
+    }
+  ],
+  "areas_after": [
+    {
+      "scheme_id": 239784,
+      "id": 2219718,
+      "name": "BIKES 16",
+      "boundary_ids": [
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "level_id": 1518530,
+      "area_ft2": 224.43055555555839
+    },
+    {
+      "scheme_id": 239784,
+      "id": 3125027,
+      "name": "METER SWITCHGEAR 23",
+      "boundary_ids": [
+        [
+          2219623,
+          3124992,
+          3124956,
+          3131655
+        ]
+      ],
+      "level_id": 1518530,
+      "area_ft2": 883.74999999997453
+    }
+  ],
+  "scope": "Recreate boundaries in original schemes; preserve XYZ; all changes rolled back; units feet",
+  "document": "US-SVL-BRGUP123_A",
+  "requested_ids": [
+    2774087,
+    2774088,
+    2774089,
+    2774090,
+    2774091,
+    2774092,
+    2774093,
+    3545837
+  ],
+  "created_view_ids": [
+    22119789,
+    22119807
+  ],
+  "before": [
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.5884326420528,
+        797.71940738430976,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774087
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1026.0884326420528,
+        797.71940738430976,
+        0.0
+      ],
+      "id": 2774087,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc2"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1057.5884326420523,
+        797.71940738430965,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774088
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1059.0884326420523,
+        797.71940738430965,
+        0.0
+      ],
+      "id": 2774088,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc3"
+    },
+    {
+      "length_ft": 13.433630393879071,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1016.5675993097185,
+        665.35984819742532,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774089
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1003.1339689158394,
+        665.35984819742532,
+        0.0
+      ],
+      "id": 2774089,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc4"
+    },
+    {
+      "length_ft": 1.4999999999999993,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753861,
+        658.13607405097434,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774090
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753861,
+        659.63607405097434,
+        0.0
+      ],
+      "id": 2774090,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc5"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753861,
+        630.13607405097423,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774091
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753861,
+        631.63607405097423,
+        0.0
+      ],
+      "id": 2774091,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc6"
+    },
+    {
+      "length_ft": 20.812499999998636,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753858,
+        595.13607405097434,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774092
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753861,
+        615.94857405097298,
+        0.0
+      ],
+      "id": 2774092,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc7"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753858,
+        567.13607405097423,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        2774093
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        1024.4217659753858,
+        568.63607405097423,
+        0.0
+      ],
+      "id": 2774093,
+      "unique_id": "8d8b8893-9fca-41aa-93ef-29d9332f680b-002a2fc8"
+    },
+    {
+      "length_ft": 69.541666666666401,
+      "level_id": 30,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1059.9634326420507,
+        800.88607405097616,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dependent_ids": [
+        3545837
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 9800488,
+      "start_ft": [
+        990.42176597538435,
+        800.88607405097639,
+        0.0
+      ],
+      "id": 3545837,
+      "unique_id": "3ea3daab-5367-489b-9d8b-5514a726a6db-00361603"
+    }
+  ],
+  "status": "Committed",
+  "target": {
+    "elevation_ft": -6.1106675275368616e-12,
+    "id": 1518530,
+    "name": "Level LL"
+  },
+  "deleted_ids": [
+    2774087,
+    2774088,
+    2774089,
+    2774090,
+    2774091,
+    2774092,
+    2774093,
+    3545837
+  ],
+  "revit_version": "2025",
+  "last_attempted_id": 3545837,
+  "areas_before": [
+    {
+      "scheme_id": 239784,
+      "id": 2219718,
+      "name": "BIKES 16",
+      "boundary_ids": [
+        [
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "level_id": 1518530,
+      "area_ft2": 224.43055555555839
+    },
+    {
+      "scheme_id": 239784,
+      "id": 3125027,
+      "name": "METER SWITCHGEAR 23",
+      "boundary_ids": [
+        [
+          2219623,
+          3124992,
+          3124956,
+          3131655
+        ]
+      ],
+      "level_id": 1518530,
+      "area_ft2": 883.74999999997453
+    }
+  ],
+  "after": [
+    {
+      "length_ft": 1.5,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.5884326420528,
+        797.71940738430976,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119799
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1026.0884326420528,
+        797.71940738430976,
+        0.0
+      ],
+      "id": 22119799,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-01518577"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1057.5884326420523,
+        797.71940738430965,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119800
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1059.0884326420523,
+        797.71940738430965,
+        0.0
+      ],
+      "id": 22119800,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-01518578"
+    },
+    {
+      "length_ft": 13.433630393879071,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1016.5675993097185,
+        665.35984819742532,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119801
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1003.1339689158394,
+        665.35984819742532,
+        0.0
+      ],
+      "id": 22119801,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-01518579"
+    },
+    {
+      "length_ft": 1.4999999999999993,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753861,
+        658.13607405097434,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119802
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1024.4217659753861,
+        659.63607405097434,
+        0.0
+      ],
+      "id": 22119802,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-0151857a"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753861,
+        630.13607405097423,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119803
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1024.4217659753861,
+        631.63607405097423,
+        0.0
+      ],
+      "id": 22119803,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-0151857b"
+    },
+    {
+      "length_ft": 20.812499999998636,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753858,
+        595.13607405097434,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119804
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1024.4217659753861,
+        615.94857405097298,
+        0.0
+      ],
+      "id": 22119804,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-0151857c"
+    },
+    {
+      "length_ft": 1.5,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1024.4217659753858,
+        567.13607405097423,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119805
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        1024.4217659753858,
+        568.63607405097423,
+        0.0
+      ],
+      "id": 22119805,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-0151857d"
+    },
+    {
+      "length_ft": 69.541666666666401,
+      "level_id": 1518530,
+      "plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "curve_type": "Autodesk.Revit.DB.Line",
+      "end_ft": [
+        1059.9634326420507,
+        800.88607405097616,
+        0.0
+      ],
+      "plane_origin_ft": [
+        0.0,
+        0.0,
+        -6.1106675275368616e-12
+      ],
+      "dependent_ids": [
+        22119817
+      ],
+      "owner_view_id": -1,
+      "sketch_plane_id": 2215792,
+      "start_ft": [
+        990.42176597538435,
+        800.88607405097639,
+        0.0
+      ],
+      "id": 22119817,
+      "unique_id": "61e789e5-7741-4252-aa5f-cd9c7fa47e4e-01518589"
+    }
+  ],
+  "schemes": {
+    "2774091": 1106863,
+    "2774089": 1106863,
+    "2774090": 1106863,
+    "3545837": 32250,
+    "2774088": 1106863,
+    "2774093": 1106863,
+    "2774092": 1106863,
+    "2774087": 1106863
+  }
+}
