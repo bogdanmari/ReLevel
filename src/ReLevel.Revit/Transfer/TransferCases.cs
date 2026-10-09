@@ -6,11 +6,13 @@ using Autodesk.Revit.DB.Mechanical;
 namespace ReLevel.Revit.Transfer;
 
 internal sealed record TransferCase(Func<string> Caption, Type[] ElementClasses, Func<Element, string?> UnsupportedReason,
-    Func<Element, ElementId, bool> IsOnLevel, Func<Element, ElementId, string?> WriteRestriction,
+    Func<Element, ElementId, bool> IsOnLevel, Func<Element, ElementId, string?> CaseWriteRestriction,
     Func<Element, ElementId, IElementTransferOperation> Prepare, Func<Element, ElementId, string> Relation,
     BuiltInCategory? Category = null)
 {
     public string Name => Caption();
+    public string? WriteRestriction(Element element, ElementId source) => element.Pinned
+        ? L.Get("Элемент закреплён. Перенос недоступен.") : CaseWriteRestriction(element, source);
     public ElementFilter CreateFilter() => Category is { } category
         ? new ElementCategoryFilter(category) : new ElementMulticlassFilter(ElementClasses);
 }
@@ -28,7 +30,7 @@ internal static class TransferCases
         new TransferCase(() => L.Get("Кейс 1 — одноуровневое загружаемое семейство без хоста"),
             [typeof(FamilyInstance)], PointFamilyCase.UnsupportedReason,
             (element, source) => PointFamilyCase.SourceLevel(element)?.Id == source,
-            (element, _) => PointFamilyCase.WriteRestriction(element), (element, _) => new PointFamilyOperation(element),
+            (element, _) => PointFamilyCase.WriteRestriction(element), PointFamilyCase.Prepare,
             (_, _) => L.Get("Уровень")),
         new TransferCase(() => L.Get("Кейс 2 — колонны и стены"),
             [typeof(FamilyInstance), typeof(Wall)], TwoLevelCase.UnsupportedReason, TwoLevelCase.IsOnLevel,
@@ -120,7 +122,18 @@ internal static class TransferCases
             (element, source) => element.LevelId == source,
             (element, _) => AreaBoundaryCase.WriteRestriction(element),
             (element, _) => new AreaBoundaryOperation(element),
-            (_, _) => L.Get("Уровень"), BuiltInCategory.OST_AreaSchemeLines)
+            (_, _) => L.Get("Уровень"), BuiltInCategory.OST_AreaSchemeLines),
+        new TransferCase(() => L.Get("Кейс 19 — MEP Fabrication Parts"),
+            [typeof(FabricationPart)], FabricationPartCase.UnsupportedReason, FabricationPartCase.IsOnLevel,
+            (element, _) => FabricationPartCase.WriteRestriction(element),
+            (element, _) => new MepReferenceLevelOperation(element, BuiltInParameter.FABRICATION_LEVEL_PARAM),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 20 — гибкие воздуховоды Flex Ducts"),
+            [typeof(FlexDuct)], FlexDuctCase.UnsupportedReason,
+            (element, source) => FlexDuctCase.SourceLevel(element)?.Id == source,
+            (element, _) => FlexDuctCase.WriteRestriction(element),
+            (element, _) => new MepReferenceLevelOperation(element),
+            (_, _) => L.Get("Уровень"))
     });
 
     public static TransferCase? Find(Element element) => InPlaceWallCase.IsInternalWall(element)

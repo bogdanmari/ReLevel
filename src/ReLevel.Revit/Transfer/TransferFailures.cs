@@ -3,7 +3,8 @@ using Autodesk.Revit.DB;
 namespace ReLevel.Revit.Transfer;
 
 // Scoped to one transfer transaction; dimension deletion is opt-in for hosted railings.
-internal sealed class TransferFailures(bool allowInvalidDimensionDeletion = false) : IFailuresPreprocessor
+internal sealed class TransferFailures(bool allowInvalidDimensionDeletion = false,
+    bool allowFabricationRodDialog = false) : IFailuresPreprocessor
 {
     private readonly HashSet<string> attempted = [];
     private readonly SortedSet<long> participants = [];
@@ -35,8 +36,10 @@ internal sealed class TransferFailures(bool allowInvalidDimensionDeletion = fals
                 BuiltInFailures.DimensionFailures.DimensionReferencesInvalid)).ToList()
             : [];
         // Check the whole batch before resolving anything. Other errors retain rollback semantics.
-        if (errors.Any(f => !dimensions.Contains(f) && !CanUnjoin(accessor, f)))
+        if (errors.Any(f => !dimensions.Contains(f) && !CanUnjoin(accessor, f) && !AllowRodDialog(f)))
             return FailureProcessingResult.ProceedWithRollBack;
+        // Continue leaves the unresolved rod error to Revit's forced-modal failure dialog.
+        // The user chooses Detach or Cancel; this preprocessor never detaches rods itself.
         if (joins.Count == 0 && dimensions.Count == 0) return FailureProcessingResult.Continue;
         if (resolutionPasses >= 8 || joins.Any(f => !CanUnjoin(accessor, f)))
             return FailureProcessingResult.ProceedWithRollBack;
@@ -73,6 +76,11 @@ internal sealed class TransferFailures(bool allowInvalidDimensionDeletion = fals
         failure.GetFailureDefinitionId().Guid + ":" +
         string.Join(",", failure.GetFailingElementIds().Select(i => i.Value).Order()) + ":" +
         string.Join(",", failure.GetAdditionalElementIds().Select(i => i.Value).Order());
+
+    private bool AllowRodDialog(FailureMessageAccessor failure) => allowFabricationRodDialog
+        && failure.GetSeverity() == FailureSeverity.Error
+        && failure.GetFailureDefinitionId().Equals(
+            BuiltInFailures.MEPFabricationFailures.FabricationRodsDisconnectedError);
 
     private static string Describe(FailuresAccessor accessor, FailureMessageAccessor failure) =>
         $"{failure.GetDescriptionText()} [{failure.GetSeverity()}; " +

@@ -1,0 +1,91 @@
+{
+  "source_level": {
+    "id": 2640483,
+    "unique_id": "d0062c74-ec7c-44dd-ac45-74eb75b9dd4f-00284a63",
+    "group_id": -1,
+    "class": "Autodesk.Revit.DB.Level",
+    "design_option_id": null,
+    "pinned": false,
+    "name": "TO.SLAB ON GARDE",
+    "category": "Levels",
+    "assembly_id": -1,
+    "reference_level": null,
+    "level_id": -1
+  },
+  "revit_version": "2025",
+  "hosted_info": {
+    "host_id": 6866535,
+    "host": {
+      "level_offset_ft": 7.7292621323790813,
+      "class": "Autodesk.Revit.DB.FabricationPart",
+      "origin_ft": [
+        912.55750888467662,
+        621.92478206534179,
+        9.1875954657124144
+      ],
+      "pinned": false,
+      "category": "MEP Fabrication Pipework",
+      "name": "Default",
+      "reference_level": {
+        "readonly": false,
+        "storage": "ElementId",
+        "has_value": true,
+        "level_id": 2640483
+      },
+      "assembly_id": -1,
+      "design_option_id": null,
+      "id": 6866535,
+      "unique_id": "47aafe97-cd1d-413a-ba2e-3b2b44566f1f-0068c371",
+      "group_id": -1,
+      "level_id": 2640483
+    }
+  },
+  "document": "US-SVL-BRGUP123_PL",
+  "revit_build": "25.4.41.14",
+  "read_only": true,
+  "hanger": {
+    "level_offset_ft": 7.6199704657124174,
+    "class": "Autodesk.Revit.DB.FabricationPart",
+    "origin_ft": [
+      912.55750888467662,
+      623.12622424827111,
+      9.1980954657124165
+    ],
+    "pinned": false,
+    "category": "MEP Fabrication Hangers",
+    "name": "Default",
+    "reference_level": {
+      "readonly": true,
+      "storage": "ElementId",
+      "has_value": true,
+      "level_id": 2640483
+    },
+    "assembly_id": -1,
+    "design_option_id": null,
+    "id": 7377791,
+    "unique_id": "9686ec06-0bc8-4b5f-bcb5-08a764c03d6f-0070937f",
+    "group_id": -1,
+    "level_id": 2640483
+  },
+  "rod_info": {
+    "attached_to_structure": true,
+    "rods": [
+      {
+        "attachment": {
+          "host_element_id": -1,
+          "link_instance_id": 7293531,
+          "linked_element_id": 19294142
+        },
+        "index": 0,
+        "end_ft": [
+          912.55750888467662,
+          623.12622424827111,
+          11.083333333327214
+        ],
+        "length_ft": 1.5987795342814728
+      }
+    ],
+    "can_be_hosted": true,
+    "count": 1
+  }
+}

@@ -7676,3 +7676,2602 @@
 | Ошибок чтения | 0 |
 | Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
 
+
+
+## Элемент ID 4604179 — 2026-10-06 21:23:10 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;MD |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;MD.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 4604179 |
+| Element.UniqueId | 1cb01c23-8f36-460e-93e3-aca44cb722d2-00464113 |
+| API class | Autodesk.Revit.DB.FabricationPart |
+| Name | Default |
+| Category | MEP Fabrication Ductwork; ID -2008193; OST&#95;FabricationDuctwork |
+| GetTypeId() | ID 3676822; FabricationPartType; Default |
+| LevelId | ID 30; Level; LEVEL 00; Elevation=0.9583333333333333; ProjectElevation=0.9583333333333333 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 15451 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 5559718; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationCurve |
+| LocationCurve.Curve class | Autodesk.Revit.DB.Line |
+| Curve.IsBound | True |
+| Curve.GetEndPoint(0) (ft) | (961.8427998139159, 656.9191346273924, 7.496592009262348) |
+| Curve.GetEndPoint(1) (ft) | (958.5385964107993, 656.9191346273924, 7.4965905238047705) |
+| Curve.Length (ft) | 3.3042034031169507 |
+| BoundingBox (model, ft) | Min=(958.5385959237694, 655.8358012543226, 6.413257150735116); Max=(961.8428003009458, 658.0024680004622, 8.579925382332002); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1153106 / MEP&#95;ANALYTICAL&#95;CRITICALPATH&#95;PARAM | Critical Path | — | autodesk.spec:spec.bool-1.0.0 | Integer | True | False | (нет значения) | — | — |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150435 / RBS&#95;REFERENCE&#95;FREESIZE | Free Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 26ø | 26ø | — |
+| -1150434 / RBS&#95;REFERENCE&#95;OVERALLSIZE | Overall Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 26ø | 26ø | — |
+| -1141040 / RBS&#95;PIPE&#95;WALL&#95;THICKNESS | Wall Thickness | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1141033 / MEP&#95;PIPE&#95;LOWER&#95;INVERT&#95;ELEVATION | Lower End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141032 / MEP&#95;PIPE&#95;UPPER&#95;INVERT&#95;ELEVATION | Upper End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141031 / MEP&#95;PIPE&#95;LOWER&#95;OBVERT&#95;ELEVATION | Lower End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141030 / MEP&#95;PIPE&#95;UPPER&#95;OBVERT&#95;ELEVATION | Upper End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141028 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 7.621590523804939 | 7' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141027 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 5.454925342596086 | 5' - 5 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141025 / MEP&#95;LOWER&#95;BOTTOM&#95;ELEVATION | Lower End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 5.454923857138491 | 5' - 5 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141024 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION | Lower End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 7.621590523804939 | 7' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141023 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION | Upper End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 5.454925342596086 | 5' - 5 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141022 / MEP&#95;UPPER&#95;TOP&#95;ELEVATION | Upper End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 7.621592009262534 | 7' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141021 / MEP&#95;LOWER&#95;CENTERLINE&#95;ELEVATION | Lower End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.5382571904714375 | 6' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141020 / MEP&#95;UPPER&#95;CENTERLINE&#95;ELEVATION | Upper End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.538258675929015 | 6' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141018 / FABRICATION&#95;MATERIAL&#95;GAUGE | Material Gauge | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 2060 | 2060 | — |
+| -1141014 / FABRICATION&#95;PART&#95;PAT&#95;NO | Part Pattern Number | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 40 | 40 | — |
+| -1141013 / FABRICATION&#95;END&#95;SIZE | Size of Connector End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141012 / FABRICATION&#95;BRANCH&#95;SIZE | Size of Primary Branch End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141011 / FABRICATION&#95;SEC&#95;SIZE | Size of Secondary End | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 26ø | 26ø | — |
+| -1141010 / FABRICATION&#95;PRI&#95;SIZE | Size of Primary End | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 26ø | 26ø | — |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140998 / FABRICATION&#95;DOUBLEWALL&#95;MATERIAL&#95;ABBREVIATION | Double Wall Material Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140997 / FABRICATION&#95;MATERIAL&#95;ABBREVIATION | Material Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Galv | Galv | — |
+| -1140996 / FABRICATION&#95;INSULATION&#95;SPECIFICATION&#95;ABBREVIATION | Insulation Specification Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140995 / FABRICATION&#95;INSULATION&#95;ABBREVIATION | Insulation Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140994 / FABRICATION&#95;SPECIFICATION&#95;ABBREVIATION | Specification Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140993 / FABRICATION&#95;PIPE&#95;INVERT&#95;ELEVATION | Pipe Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140992 / FABRICATION&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION&#95;OF&#95;PART | Bottom Elevation with Insulation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140991 / FABRICATION&#95;BOTTOM&#95;ELEVATION&#95;OF&#95;PART | Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140990 / FABRICATION&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION&#95;OF&#95;PART | Top Elevation with Insulation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140989 / FABRICATION&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140983 / FABRICATION&#95;PART&#95;DOUBLEWALL&#95;MATERIAL&#95;AREA | Double Wall Material Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140981 / FABRICATION&#95;PART&#95;SHEETMETAL&#95;AREA | Part Sheet Metal Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 22.490999130597046 | 22.49 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140979 / FABRICATION&#95;SERVICE&#95;ABBREVIATION | Fabrication Service Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140978 / FABRICATION&#95;PART&#95;MATERIAL&#95;THICKNESS | Part Material Thickness | — | autodesk.spec.aec.piping:pipeDimension-2.0.0 | Double | True | True | 0.0034124999999999997 | 0.041 | autodesk.unit.unit:inches-1.0.1 |
+| -1140977 / FABRICATION&#95;PART&#95;NOTES | Fabrication Notes | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140976 / FABRICATION&#95;PART&#95;LINING&#95;AREA | Lining Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140975 / FABRICATION&#95;PART&#95;ITEM&#95;NUMBER | Item Number | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140974 / FABRICATION&#95;PART&#95;INSULATION&#95;AREA | Insulation Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140973 / FABRICATION&#95;SERVICE&#95;NAME | Fabrication Service Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Exhaust LP | Exhaust LP | — |
+| -1140970 / FABRICATION&#95;PART&#95;CUT&#95;TYPE | Cut Type | — |  | Integer | True | True | 3 | Spiral Straight | — |
+| -1140969 / FABRICATION&#95;PART&#95;BOUGHT&#95;OUT | Bought Out | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Yes | Yes | — |
+| -1140968 / FABRICATION&#95;PART&#95;ALIAS | Alias | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140966 / FABRICATION&#95;PRODUCT&#95;CODE | Product Code | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 26100 | 26100 | — |
+| -1140965 / FABRICATION&#95;PART&#95;TAKEOFF&#95;DIALOG&#95;PARAM | More Parameters | — |  | None | False | False | (нет значения) | — | — |
+| -1140948 / FABRICATION&#95;PART&#95;LENGTH&#95;OPTION | Length Option | — |  | String | True | True | Value | Value | — |
+| -1140947 / FABRICATION&#95;INSULATION&#95;SPEC | Insulation Specification | — |  | Integer | False | True | -1000001 | Off | — |
+| -1140944 / FABRICATION&#95;PART&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 3.3042034031169605 | 3' - 3 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140943 / FABRICATION&#95;PRODUCT&#95;ENTRY | Product Entry | — |  | String | False | True | 26" | 26" | — |
+| -1140925 / FABRICATION&#95;END&#95;OFFSET&#95;PARAM | End Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.5382571904714375 | 6' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140924 / FABRICATION&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 6.538258675929015 | 6' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140923 / FABRICATION&#95;SLOPE&#95;PARAM | Slope | — | autodesk.spec.aec:slope-2.0.0 | Double | True | True | 0 | 0" / 12" | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1140920 / FABRICATION&#95;VENDOR | Vendor | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140919 / FABRICATION&#95;BOTTOM&#95;OF&#95;PART | Lower End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 5.454923857138491 | 5' - 5 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140918 / FABRICATION&#95;TOP&#95;OF&#95;PART | Upper End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 7.621592009262534 | 7' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140917 / FABRICATION&#95;OFFSET&#95;PARAM | Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 6.538258675929292 | 6' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140916 / FABRICATION&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 00; Elevation=0.9583333333333333; ProjectElevation=0.9583333333333333 ft | LEVEL 00 | — |
+| -1140915 / FABRICATION&#95;SPECIFICATION | Specification | — |  | Integer | True | True | 54 | 2-Neg-TDC-round-smacna-05-2013 | — |
+| -1140914 / FABRICATION&#95;VENDOR&#95;CODE | Vendor Code | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140913 / FABRICATION&#95;PART&#95;WEIGHT | Weight | — | autodesk.spec.aec.piping:mass-2.0.0 | Double | True | True | 16.894110803797805 | 37.25 lbm | autodesk.unit.unit:poundsMass-1.0.1 |
+| -1140912 / FABRICATION&#95;PART&#95;DIAMETER&#95;IN | Main Primary Diameter | — | autodesk.spec.aec.piping:pipeDimension-2.0.0 | Double | True | True | 2.1666666666666665 | 26.000 | autodesk.unit.unit:inches-1.0.1 |
+| -1140910 / FABRICATION&#95;PRODUCT&#95;DATA&#95;INSTALL&#95;TYPE | Install Type | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140909 / FABRICATION&#95;PART&#95;MATERIAL | Part Material | — |  | Integer | True | True | 22 | Galv | — |
+| -1140908 / FABRICATION&#95;PRODUCT&#95;DATA&#95;OEM | OEM | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140907 / FABRICATION&#95;PRODUCT&#95;DATA&#95;PRODUCT | Product Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140906 / FABRICATION&#95;PRODUCT&#95;DATA&#95;ITEM&#95;DESCRIPTION | Product Short Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140905 / FABRICATION&#95;PRODUCT&#95;DATA&#95;SIZE&#95;DESCRIPTION | Product Size Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140904 / FABRICATION&#95;PRODUCT&#95;DATA&#95;MATERIAL&#95;DESCRIPTION | Product Material Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140903 / FABRICATION&#95;PRODUCT&#95;DATA&#95;SPECIFICATION | Product Specification Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140902 / FABRICATION&#95;PRODUCT&#95;DATA&#95;LONG&#95;DESCRIPTION | Product Long Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140901 / FABRICATION&#95;PRODUCT&#95;DATA&#95;RANGE | Product Range | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140900 / FABRICATION&#95;PRODUCT&#95;DATA&#95;FINISH&#95;DESCRIPTION | Product Finish Description | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008193 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Ductwork | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008193 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Ductwork | — |
+| -1140339 / FABRICATION&#95;SERVICE&#95;PARAM | Fabrication Service | — |  | Integer | False | True | 332 | CMI HVAC: Exhaust LP | — |
+| -1140238 / RBS&#95;PIPE&#95;OUTER&#95;DIAMETER | Outside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140212 / RBS&#95;PIPE&#95;INNER&#95;DIAM&#95;PARAM | Inside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140210 / RELATIVE&#95;ROUGHNESS | Relative Roughness | — | autodesk.spec.aec:number-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| -1140208 / FRICTION&#95;FACTOR | Friction Factor | — | autodesk.spec.aec:number-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| -1114240 / RBS&#95;CALCULATED&#95;SIZE | Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 26ø | 26ø | — |
+| -1114129 / RBS&#95;HYDRAULIC&#95;DIAMETER&#95;PARAM | Hydraulic Diameter | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | True | True | 2.1666666666666665 | 26 | autodesk.unit.unit:inches-1.0.1 |
+| -1114128 / RBS&#95;REYNOLDSNUMBER&#95;PARAM | Reynolds number | — | autodesk.spec.aec:number-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| -1114125 / RBS&#95;SECTION | Section | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | False | (нет значения) | — | — |
+| -1114121 / RBS&#95;VELOCITY&#95;PRESSURE | Velocity Pressure | — | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| -1114116 / RBS&#95;FRICTION | Friction | — | autodesk.spec.aec.hvac:friction-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:inchesOfWater60DegreesFahrenheitPer100Feet-1.0.1 |
+| -1114114 / DUCT&#95;ROUGHNESS | Roughness | — | autodesk.spec.aec.hvac:roughness-2.0.0 | Double | True | True | 0 | 0.000' | autodesk.unit.unit:feet-1.0.1 |
+| -1114108 / RBS&#95;PRESSURE&#95;DROP | Pressure Drop | — | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| -1114107 / RBS&#95;VELOCITY | Velocity | — | autodesk.spec.aec.hvac:velocity-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetPerMinute-1.0.1 |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 0Si1mZZpP63fFZhAHCyMF1 | 0Si1mZZpP63fFZhAHCyMF1 | — |
+| -1013405 / RBS&#95;DUCT&#95;FLOW&#95;PARAM | Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 5559718; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 15451 | Model Fabrication Parts | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 3676822; FabricationPartType; Default | Spiral Pipe: Default | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 3676822; FabricationPartType; Default | Spiral Pipe | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 3676822; FabricationPartType; Default | Default | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 3676822; FabricationPartType; Default | 3676822 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280040 | eM&#95;Service Name | c72cb70e-edc5-4c61-804e-0e425fd1a417 | autodesk.spec:spec.string-2.0.0 | String | False | True | Exhaust LP | Exhaust LP | — |
+| 2280052 | eM&#95;Fitting Type | 7ae03332-d0af-4e1d-9d8e-bf089a63b74c | autodesk.spec:spec.string-2.0.0 | String | False | True | Straight | Straight | — |
+| 2280064 | eM&#95;Buy Out | 86f34c8d-c1c3-4ff5-a024-a7b367188f78 | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 1 | Yes | — |
+| 2280076 | eM&#95;Service Type | 30fd4c92-964c-43bb-98f8-fd9d1cf6b51e | autodesk.spec:spec.string-2.0.0 | String | False | True | Round Spiral | Round Spiral | — |
+| 2280088 | eM&#95;Pattern Number | 2d78f697-ed2e-44ee-ae88-31e1ac1e31be | autodesk.spec.aec:number-2.0.0 | Double | False | True | 40 | 40 | autodesk.unit.unit:general-1.0.1 |
+| 2280100 | eM&#95;Service Abbreviation | 5ad499cd-da39-41a8-938c-838d4580e637 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280112 | eM&#95;Status | 6b5ceed7-565c-46f4-99d9-ab9d2569e53e | autodesk.spec:spec.string-2.0.0 | String | False | True | Issued | Issued | — |
+| 2280124 | eM&#95;Connector 4 | f4519a07-adb4-4bba-b37c-c24ae77423d4 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280128 | eM&#95;Connector 3 | a7cd3d29-54c9-41da-99b3-f38a73c18dac | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280132 | eM&#95;Connector 1 | 6dd3e038-7f8e-45fd-8869-945a8d3a47e6 | autodesk.spec:spec.string-2.0.0 | String | False | True | raw | raw | — |
+| 2280136 | eM&#95;Connector 2 | 1792174d-f086-407b-a5f1-9075dfd4de63 | autodesk.spec:spec.string-2.0.0 | String | False | True | raw | raw | — |
+| 2280140 | eM&#95;Connector 5 | 2ae5c1d2-1bc2-4c5c-bfd7-8ea8152cb238 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280144 | eM&#95;Branch Width #1 | 21924904-fd22-4121-ac84-b25f7a768bc5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280148 | eM&#95;Offset | 9fcf4b05-6e3e-4bf7-9c1c-4784cf0da77b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280152 | eM&#95;Plate Width Adjust | d3541407-872e-4504-9a63-fec357787330 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280156 | eM&#95;Hole Offset #4 | cb6d3109-521c-49e0-a282-5f58c6f9ef73 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280160 | eM&#95;Dry Wall Depth | a4bbbe09-26fe-4505-b8e9-52cea3341737 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280164 | eM&#95;Diameter | e67e9e0e-a2ec-43db-97a3-56fb5e960736 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 2.1666666666666665 | 2' - 2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280168 | eM&#95;Hole Depth #5 | 034df610-1241-4102-935d-e681447a9425 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280172 | eM&#95;Top | bbdae411-f98a-4cd8-b07f-b6b91c2b4c66 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280176 | eM&#95;Wall Thicknes + (2") | bac8f313-91de-4c88-9c26-014c7948c488 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280180 | eM&#95;Actuator In Wall | 92ac2a14-14ca-4f79-82a1-0f39855d219b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280184 | eM&#95;Tap Length | 3ca6b714-56f2-4707-8fb8-11727c44336c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280188 | eM&#95;Handle Bottom Diameter | 4e0adb15-bc12-4d59-8866-11a944b1a5fb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280192 | eM&#95;Btm Right Extension | a79cdc15-8541-4f2c-b3ea-0edf76dec0bc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280196 | eM&#95;Btm Depth | 80e16c16-197e-4d8f-b7a9-e85d065c8d85 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280200 | eM&#95;Extension | fc26f918-11ed-43bf-9067-917b0af20154 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280204 | eM&#95;Acuator Inset | 055cc91b-0ebb-460f-9dc2-95a4976033f8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280208 | eM&#95;Branch Extension #2 | 929fd31d-8f24-4007-9326-e478add8acae | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280212 | eM&#95;Handle Top Length | ca94331e-33d0-405f-812a-68f84c856a79 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280216 | eM&#95;Tap Length #2 | 8b3b561e-bd1f-48b3-a2f4-07178fe2042a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280220 | eM&#95;Depth | 6763bb1e-22d8-482e-8ddb-e9e74d2d6a75 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280224 | eM&#95;Hole Radius #4 | 9b316820-5889-4158-bb8e-81e48d20b045 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280228 | eM&#95;Hole Radius #2 | 25631821-6baa-4904-b57f-f020bab0a556 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280232 | eM&#95;Offset-Width | 36d9b623-d898-4919-9b34-a02d4ef57ac8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280236 | eM&#95;Arrow Width | b59eb723-18bc-496e-827b-7ef4460e45eb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280240 | eM&#95;Width Out | 11bcc823-f79a-4f7c-8471-087a319dedfd | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280244 | eM&#95;Bottom Width | d7d84a24-7ca0-4902-82ab-8f6806cab759 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280248 | eM&#95;Damper Angle | d6c76a28-384b-49cc-ab13-a43986522b43 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280252 | eM&#95;Handle Inset | 2348392b-0ca7-4de1-86b1-7776e48c0ba3 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280256 | eM&#95;Right Offset | 356edd2b-e831-473a-98e1-c8d44eea2b04 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280260 | eM&#95;Offset-Depth | 60ae0330-51e6-4152-b2af-f71015ea8923 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280264 | eM&#95;Hole Offset #2 | 4b9c7d30-c7cb-4ca9-85c9-13f3b82068b7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280268 | eM&#95;Splitter Distance | aed0b631-9080-43c1-b5fc-e761c0ede397 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280272 | eM&#95;Inset #2 | d487f933-673d-42ad-a3da-d7a79a668121 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280276 | eM&#95;Dry Wall Width | 4e225735-4618-45c3-ae16-5ee6d8be434c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280280 | eM&#95;Left Collar | 284ef338-8671-4612-9308-dfc7401b1060 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280284 | eM&#95;Branch Depth #2 | 0ae21439-11b4-4c68-b3fe-9fd25a1702a4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280288 | eM&#95;Depth Out | 81f4a73b-b2f6-4709-9d93-0ee3e50d84b7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280292 | eM&#95;Actuator Inset | d5a1c53c-44a5-429e-84af-8b3f01bd4c5f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280296 | eM&#95;Height | 61ce3c3f-2736-49db-a799-4b3bcb7bffff | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280300 | eM&#95;Tap Diameter #1 | f0b6ed46-0a59-4f22-b24c-04e50673531f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280304 | eM&#95;Hole Radius #5 | a34d0a48-d6f5-422c-8a43-dedcda775eba | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280308 | eM&#95;Inner Radius | 9d895348-055b-4328-ad51-02da0930b9da | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280312 | eM&#95;Left Extension | e808084b-3942-4484-8bf8-e93b9b6277d2 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280316 | eM&#95;Y-Offset | a840614b-8984-44df-b23d-84772d42e4ee | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280320 | eM&#95;Rotation #2 | cf91b14c-d953-4eef-b4f3-98b56ab97273 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280324 | eM&#95;Supported Depth | d5f2b34d-13b5-410a-b773-ac68231458ea | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280328 | eM&#95;Btm Left Extension | 4644734e-7501-43bc-a38a-2293e3c3c7ef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280332 | eM&#95;Width In | 7fc0d94e-02c1-4c22-8c63-03a54fcf71de | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280336 | eM&#95;Branch Inset #1 | 270a634f-a19f-4743-b2a5-950e25aa52a8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280340 | eM&#95;Arrow Offset | 56d5b14f-72b0-4148-957d-e24c5639ec57 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280344 | eM&#95;Collar | bfbdcd50-04b1-4e2e-b7e3-d8aa380349be | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280348 | eM&#95;Offset #1 | 8849f251-de0a-473b-b0c0-2e09ada541af | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280352 | eM&#95;Left Depth | 5cc2ba52-f185-48ee-b772-ccaacf34533f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280356 | eM&#95;Round Angle | b0495d55-8e6e-43b0-8ca2-7623f1cbb682 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280360 | eM&#95;Right Width | 2b4d9a55-767f-44b0-a761-ff38517fb52a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280364 | eM&#95;Length B | 37ca2e56-0971-4e24-b9a7-423662f19ccf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280368 | eM&#95;Extension #1 | d7e09f56-d0ca-4608-ac1b-d67cb1593169 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280372 | eM&#95;Angle | 2abc3958-3546-420d-9b1f-2aa2090e1cb4 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280376 | eM&#95;Rod Extn Above | c282dd5a-ff03-46bc-8402-30e8e7cc4b82 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280380 | eM&#95;Left Offset | c55a515d-18fb-4601-88f6-d61389584d8f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280384 | eM&#95;Right Extension | 98c6a962-85be-4f92-8e4e-d80925c4efa8 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280388 | eM&#95;Branch Angle #1 | 5345b866-e3ac-4143-86c5-750b756bbcdf | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280392 | eM&#95;Rotation #1 | c7a14e69-85ea-4c8a-80ad-a629fda1df86 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280396 | eM&#95;Right Length | e1aebe69-fc62-4d48-8eef-73a86c2b250d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280400 | eM&#95;Hole Inset #1 | 79efe069-8354-41b0-a50c-9e2ebfefe290 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280404 | eM&#95;Hole Collar #1 | aee7f369-04aa-4555-a906-9abc53137831 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280408 | eM&#95;= Hole Width #1 | bc20066d-8180-4523-8e24-7f544d16ca3c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280412 | eM&#95;Branch Rotation #1 | 90e6826d-f567-4fca-a3ad-bc79b543dc7e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280416 | eM&#95;= Hole Width #3 | 59d7846e-4192-4a19-881f-80f17e2c7cb4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280420 | eM&#95;Bottom Collar | 5f09ca6f-77b1-4012-a4d7-4adcd5e539ff | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280424 | eM&#95;Extension Out | f7745570-92f6-4803-b088-c1840c49f19c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280428 | eM&#95;Arrow Rotation | 608f8171-970d-475e-9e82-729090904f43 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280432 | eM&#95;Hole Inset #4 | c481b775-9830-408f-b590-515978859e0e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280436 | eM&#95;Angle #1 | 24331877-d257-4467-ba47-f3073b35bcad | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280440 | eM&#95;Right Collar | 93fe5778-c8c6-436c-9963-8c98715967f6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280444 | eM&#95;Diameter Out | 8dd36e79-9d83-4ea1-974f-465008fe27a7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280448 | eM&#95;Hole Depth #3 | 0154ef79-a280-475f-9c52-6cbb62037c4f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280452 | eM&#95;Branch Width #2 | 06765c7a-4e08-406c-afbf-fad1eb4e668f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280456 | eM&#95;Rod Extn Below | c6e6dd7c-bd5a-4639-bf44-1ddd792ac23c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280460 | eM&#95;Hole Offset #3 | 267d5781-dbea-407e-80bb-e78f94be73b8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280464 | eM&#95;Tap Length #1 | ae4ac181-57d9-4813-aab7-7993569efb45 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280468 | eM&#95;Right Diameter | 86978684-620e-41de-b4e0-8316c3fc327f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280472 | eM&#95;Depth #1 | 2862b384-cb02-4adf-846e-66d7ec69919e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280476 | eM&#95;Diameter In | 47d3ca84-8db0-4363-bd52-b66270faebf7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280480 | eM&#95;Pipe Leangth | 0ba4e984-a6a5-49e5-8cf1-862d8ba0c6ce | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280484 | eM&#95;Hole Depth #1 | ae47f284-6186-4276-bf60-5414eb3aa37f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280488 | eM&#95;Left Radius | 29b75085-8c34-4fc5-b904-6aaca2bf8a96 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280492 | eM&#95;Handle Bottom Length | 42a6e685-a43d-4a99-b7d4-faff1f3d5a9e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280496 | eM&#95;Top Depth | e343eb86-a201-4b4b-b607-c676988a4740 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280500 | eM&#95;Length | 48f0c487-e0aa-4b00-ae11-7b67a68f6128 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 2.0554755397861197 | 2' - 0 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280504 | eM&#95;Branch Rotation #2 | 00c83b8b-72e1-423e-b938-c7f095420172 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280508 | eM&#95;Depth #2 | c8267e8e-94bf-4ca3-9eed-a1e318b29faa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280512 | eM&#95;Bottom Diameter | d361e18f-890b-4c99-940e-aa3c25a4e941 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280516 | eM&#95;= Hole Width #5 | bc12e290-5b0e-4352-99ae-be5b22d2a08f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280520 | eM&#95;Coil Width | cad82a93-867c-46af-910a-5b016de30a83 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280524 | eM&#95;Hole Rotation #1 | 48b80997-7286-4c89-aa0c-5d99d9a55123 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280528 | eM&#95;Left Width | 3fce2a99-416a-49b6-8e8e-112567b14c79 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280532 | eM&#95;Left Angle | a060af99-86bd-4bcd-8679-2d6539f1b34e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280536 | eM&#95;Hieght | d308359a-6b1e-454b-9235-30c42fdcaf6d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280540 | eM&#95;Depth In | a156a59a-4782-40a9-b9ea-e0a58bf58627 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280544 | eM&#95;Hole Radius #1 | c0f74f9c-dfd4-4bb2-8628-cb52b05e69c9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280548 | eM&#95;Bottom Extension | 2ae1d59c-200b-4b52-9833-80c5c6fb0fce | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280552 | eM&#95;Hole Inset #2 | 32a6f69c-a82c-4d38-b555-87b85174b968 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280556 | eM&#95;Left Diameter | 64e20d9f-1204-4177-bf2c-1f2d5d3d6db2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280560 | eM&#95;Hole Collar #5 | ffd35ba0-331e-44ad-95b0-d5c3486bef93 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280564 | eM&#95;Plate Depth | 131672a1-be0e-41c7-85a9-498b4b606293 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280568 | eM&#95;Sides | af6db5a2-313c-4e77-a101-e70161ee58dd | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280572 | eM&#95;Branch Angle #2 | 8c013da5-6abd-4bd2-9b45-56d52557d56e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280576 | eM&#95;Turnover | 412702ac-911d-4eca-a82b-cc0d87332f78 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280580 | eM&#95;Slope Angle | cc394bac-7191-4306-b90a-e4bd3d374bf3 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280584 | eM&#95;Extension In | ecb494ac-3585-461e-b636-d5c276bfe6ce | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280588 | eM&#95;Dry Wall Thickness | a4b935ad-6a55-4b94-875b-f7718bc54eab | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280592 | eM&#95;Branch Depth #1 | ff6215af-8612-470b-8a2b-3d85ff904658 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280596 | eM&#95;Coil Length | 9e3531b3-769e-4047-9964-811d0c585ac9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280600 | eM&#95;Handle Top Diameter | 2b2cafb4-d9c2-4bd9-b93b-a41b22011c7f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280604 | eM&#95;Bottom | 4f611bb6-a4f7-4bc7-b184-ac919843bc2f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280608 | eM&#95;X-Offset | 50cb4db6-c8cb-4838-8fbe-cf208a87fbd2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280612 | eM&#95;Right Height | 260a2fb8-8324-4565-8d19-10adbbe1c631 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280616 | eM&#95;Twist Angle | ed50cfb8-b310-445d-b0fd-5adfabba7a3d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280620 | eM&#95;Dry Wall Inset | 44f6aeba-4afa-4fa2-b89e-f3b6c5b6c4f1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280624 | eM&#95;Right Ang | 83ff5cc4-3344-49a4-bb74-52f12cb04266 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280628 | eM&#95;Hole Inset #3 | b542f1c6-0c1b-4cb3-bd6e-bb0b41b02c85 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280632 | eM&#95;Pipe Diameter | 7b74f1c6-03fc-46b8-a44c-5f419bb8b927 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280636 | eM&#95;Branch Inset #2 | 74d32ac7-e7c3-48f6-ab88-af523f95a9c2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280640 | eM&#95;Tap Diameter | 419812c8-3ea4-4246-a2cf-c4bb96c3fcbf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280644 | eM&#95;Plate Width | a15cbaca-8c64-44e9-ab5c-1a1da1b9b472 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280648 | eM&#95;= Hole Width #2 | 093128cb-d466-4608-9bc3-4277620628c4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280652 | eM&#95;Width | 3e9036cb-dcff-45c0-9cc1-72775053504e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280656 | eM&#95;Inner Diameter | d995b4cc-2d13-430a-b0c5-8cd2b925aa6c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280660 | eM&#95;Right Radius | f20a6acd-be3e-4d10-a7c7-86a80a4092fd | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280664 | eM&#95;Hole Offset #5 | f4dd0acf-6363-49d0-81f6-b3b9dff130c8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280668 | eM&#95;Supported Width | c2c86dd3-2529-42d2-a68f-4c6963513022 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280672 | eM&#95;Hole Axis Rotn #2 | a8522cd6-1dd6-4bea-b5a4-be1e3f966bc2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280676 | eM&#95;Plate Depth Adjust | 4a3daed6-dc99-4d33-9831-b856f17fd7b0 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280680 | eM&#95;Hole Radius #3 | ecd1f8d8-2925-4b22-9de5-e441963e8cbe | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280684 | eM&#95;Hole Depth #2 | 7daf32da-f04b-4131-bfb1-1c174d9fee78 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280688 | eM&#95;Angle #2 | b8b0c1da-dc8a-4fb9-9398-4e1df6fe5529 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280692 | eM&#95;Btm Width | 967298db-f9da-495b-ae87-9381539ced8f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280696 | eM&#95;Branch Offset #1 | 4be35cdc-fffa-4d29-9bce-3724ccc02f0b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280700 | eM&#95;Length A | dbf9afdc-fd88-490d-b255-c20bb819bf40 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280704 | eM&#95;Extension #2 | 192ff8dc-9464-44f7-8cb3-471888894120 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280708 | eM&#95;Wall Thickness | af2a18dd-c954-47a0-9d8a-f173a2530171 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280712 | eM&#95;Top Width | 404b36dd-2695-4b67-8d6e-6f4f6a152fd2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280716 | eM&#95;Outer Diameter | f6bcc6e2-9071-45fe-a94d-d3416cf7ab58 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280720 | eM&#95;Panel Depth | 60d346e6-62b5-4c47-bfb0-951dece36e40 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280724 | eM&#95;Bearer Extn | 32bd72e6-54a2-4461-9f43-ccda6ae88c36 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280728 | eM&#95;Hole Collar #3 | 421e97e6-e68f-450f-ac66-35d4e7749d86 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280732 | eM&#95;Inset #1 | c6e731e7-84d2-439d-a9f9-499439658203 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280736 | eM&#95;Hole Collar #2 | 6c7b24e8-b0fc-476b-9346-36b4bcb3404c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280740 | eM&#95;Pipe Length | 067c5bea-0779-40bf-be55-dcaeb9582189 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280744 | eM&#95;Drop Rod Length #2 | 1925deeb-3dbc-4fbb-806f-2cb1358e9937 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280748 | eM&#95;Inset | 14f259ed-e029-41ea-b99e-f7f7df5e561e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280752 | eM&#95;Hole Axis Rotn #1 | 826cbeee-7b20-4901-abad-a80ff1914498 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280756 | eM&#95;Offset #2 | abe776f0-6564-4109-822e-370d40de1bb9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280760 | eM&#95;Right Rod Offset | 690770f2-c748-4d92-8c56-ed0064bc34ef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280764 | eM&#95;Hole Width #1 | ee26a6f2-4d0d-4ed5-b387-474db9bbf823 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280768 | eM&#95;Left Length | 18a5d5f2-de1c-44fc-a7aa-a6f13291bdcc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280772 | eM&#95;Oval Depth | 20664af4-c3a5-4022-8d28-07e96f447e98 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280776 | eM&#95;Tap Diameter #2 | 63d67af4-3be6-47ab-aa52-44a4ef244daf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280780 | eM&#95;Branch Offset #2 | 0cbb4af7-8ad5-483b-a226-bbf9b578d389 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280784 | eM&#95;Branch Extension #1 | 9f5580f7-c84f-4331-9714-0f90503b7e1d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280788 | eM&#95;Arrow Length | 97449ff7-ee42-49c3-a34d-5a3a5972a93c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280792 | eM&#95;Left Rod Offset | 0c4cfbf7-6708-4d4c-b001-f175f87af0ae | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280796 | eM&#95;Right Depth | 95c84bf8-a79d-454a-ba94-010792800907 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280800 | eM&#95;Coil Conection | 392084f8-0781-4078-8d25-ce332e30c609 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280804 | eM&#95;Top Length | dd0e7efb-dd03-49d3-afab-3d06e82f9812 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280808 | eM&#95;Coil Depth | 0a9484fb-86d6-4abb-a258-fed27abad011 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280812 | eM&#95;Wall Inset | dbcdf0fc-c926-473b-b7bf-ae57a67f4827 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280816 | eM&#95;Top Extension | b94806fd-3a1c-4381-9a7e-08a120bb7512 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280820 | eM&#95;Hole Offset #1 | c89e6cfd-bded-4add-89da-6a927a3be081 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280824 | eM&#95;Corner Radius | d76bc0ff-a18c-43d4-a348-455302245a98 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280828 | eM&#95;Rotation | 1449daff-28dd-4965-aa05-9ecde15ea55e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 2280832 | eM&#95;Centre Offset | c445f0ff-c913-40cb-b257-ba26d25bb826 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2280836 | eM&#95;Alternate | fde1a406-55e8-4d49-ad6a-ccc3cc49907b | autodesk.spec.aec:number-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| 2280848 | eM&#95;Drawing | 587c271a-543c-481a-a0b5-632411a355f1 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280860 | eM&#95;Blank Price | b6cc041e-c78a-47a8-ad09-5a74daeb67fb | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280872 | eM&#95;CFM | 74925b28-949c-47c0-a76d-6b9e50a25b26 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280884 | eM&#95;CF1 | 15cd4e35-5f42-488b-a990-c56a0425afaa | autodesk.spec.aec:number-2.0.0 | Double | False | True | 1 | 1 | autodesk.unit.unit:general-1.0.1 |
+| 2280896 | eM&#95;Spool | 559cae37-9e08-444e-8e49-f3cb37aef3c1 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280908 | eM&#95;Cost Code | 23cb203f-4c4e-4b94-87e3-0a9b2272032d | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280920 | eM&#95;Field 5 | 94df874b-1849-4c94-8b42-dda773a2aa32 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280932 | eM&#95;Field 6 | 54dca260-5dd7-4f0d-be22-d31744a608fc | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280944 | eM&#95;Field 8 | 741cfb66-db7d-4341-bb64-a4a11bf57496 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280956 | eM&#95;Field 9 | c0f00c68-221d-4bda-ae69-d3bcebe0ee53 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280968 | eM&#95;BOH | fcd94269-6d96-4650-b4ac-2d2f62b5e80e | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2280980 | eM&#95;Zero | 7be7016a-09ef-4d33-bf4e-dc47863de04e | autodesk.spec.aec:number-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| 2280992 | eM&#95;Field 4 | 54d68475-40d6-4a1e-82fa-5d794c0d06ca | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281004 | eM&#95;Field 2 | 42e0b582-f582-44f8-9e88-6d160d488670 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281016 | eM&#95;Special Buyout Fittings | e2d8079c-1c50-4400-80e9-b30e0735e12e | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2281028 | eM&#95;Field 7 | 9b73ebbe-27d7-4dab-91eb-de6c51a5ca6d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281040 | eM&#95;Zone | 9cbe5fc5-a78c-4cfd-b7d6-e0730ef95d56 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 2281052 | eM&#95;Field 3 | 613011e0-3e6a-4838-8610-822130a8739e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301756 | eM&#95;Rod Length | dcff6717-59b8-4536-a87e-73cf3fad1836 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2301760 | eM&#95;Hanger Diameter | f0179035-be59-466b-ba17-e62f5be6af7d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2301764 | eM&#95;Total Height | 73912b92-70fe-4de3-9ffc-23820ed380f2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2301768 | eM&#95;Rod Offset | dc6fffd8-f002-404f-9615-6bd5a6a7ada7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2301807 | Part Number | 5c024cea-0951-4488-8e45-f2ee8d13c8cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301841 | Pipe End Prep | b8f4acb2-1273-4e86-8134-42e5d0c977d5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2406985 | eM&#95;Overlap | aa3b2625-a6e6-4f19-8c32-5bffc39d1ed9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2406989 | eM&#95;Rod Diameter | 2e63b433-b855-4631-a738-224aaa10db6e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2406993 | eM&#95;Roller Inner Length | a7f64ac4-ff6d-4bca-9eef-46d2db9283f5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2406997 | eM&#95;Roller Outer Length | 997837fd-ffa3-4ad1-8144-165128dd347d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2698275 | eM&#95;Rod Take Out | 72e379c7-6a6f-4eb0-b862-92b62ba5a503 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 2966619 | eM&#95;Center Radius | b43d0eb7-8bc0-48d3-a2ab-a40bc105fcc2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219695 | eM&#95;Top Diameter | f7b7ac00-3c88-4683-bcbb-f1954355a045 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219699 | eM&#95;Bonnet Y Offset | 7ddb5601-bf17-4e52-94d5-3ed039950d84 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219703 | eM&#95;Shaft Diameter #1 | f6950910-72f2-4d75-920c-8e743509dcac | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219707 | eM&#95;Ear Length | e87a1310-bea0-4c2a-992e-ba9147659f35 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219711 | eM&#95;Handle Diameter | 52cfb310-9492-4d1f-ac70-f7a5eee0ebd9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219715 | eM&#95;Handle Length | 8d1b3f1c-8132-4dce-8a72-e864d23c3770 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219719 | eM&#95;Number Of Struts | 0ad5ab25-b9bf-4ad2-95d7-753d7ec2a59d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219723 | eM&#95;Diameter #4 | ad6cf429-7fb7-4fe8-83e0-2cfa3a3e4cd7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219727 | eM&#95;Length #2 | 9dd9ca32-b344-4d9f-96ac-c9519fe99d3a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219731 | eM&#95;Strut Diameter | 732e3138-1521-4356-b2fa-a482ce6c4a76 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219735 | eM&#95;Diameter #3 | 1e25ce3e-f979-4512-9d5e-8ac856574fa9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219739 | eM&#95;Shaft Length #1 | 60305f40-3b3a-45cc-9421-f4934b429acf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219743 | eM&#95;Square Handle Thickness | 0f20344c-f985-4e34-baa5-eac2e8dc0ea6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219747 | eM&#95;Collar #2 | 9aa4075d-f85b-441f-a720-604d122e5eef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219751 | eM&#95;Length #4 | e1c22777-07ca-423d-85df-c7bbe2841cc5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219755 | eM&#95;Square Handle Fillet | ba239581-e42e-4af3-b036-f557b1a2a1f1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219759 | eM&#95;Length #1 | a0ffaa8b-6518-45af-82f6-c6ee5c5151aa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219763 | eM&#95;Shaft Length #2 | a8ead68d-e1b4-4512-bfd3-0493aa40d048 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219767 | eM&#95;Bonnet X Offset | bbbe928e-7926-4c14-b3ba-8be9026d6005 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219771 | eM&#95;Box Width | 7b5d6395-16a4-47e9-b47d-cc44160d4901 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219775 | eM&#95;Diameter #1 | 52b0a896-580a-4b4b-b3ec-7a4f62428aa8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219779 | eM&#95;Shaft Diameter #2 | e9b47398-97eb-4e43-bced-256b3d8fd207 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219783 | eM&#95;Diameter #2 | ae098c9e-0a3e-4f7e-89c5-440337e05ae7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219787 | eM&#95;Collar #4 | 29958fa8-e1f8-43dc-84b5-9b230e74f8e9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219791 | eM&#95;Box Depth | 624cf8aa-e213-4e97-bc7e-f90a72ea11a0 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219795 | eM&#95;Shaft Diameter #3 | 40889dab-a4e8-4bb0-8b38-1142738f1bd7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219799 | eM&#95;Box Height | 01a879ae-3f2c-4328-9a81-4c60a3544c8c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219803 | eM&#95;Collar #3 | 18e208bb-86eb-49cb-a9f9-30db52a9ad04 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219807 | eM&#95;Square Handle Length | 1ee6ccbb-df87-40c4-a24f-3b6d36c982cb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219811 | eM&#95;Shaft Length #3 | e1b62fbc-9fac-4f8e-a4af-9db93dd4a0bc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219815 | eM&#95;Btm Length | 5c6c5ac0-516d-470d-bd91-37488595e54d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219819 | eM&#95;Length #3 | b2d388cb-0ecb-454f-bb48-d70bf5dee582 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219823 | eM&#95;Globe Y Diameter | bd9748d1-7972-4fce-a191-ae0ffc62152d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219827 | eM&#95;Globe X Diameter | 034784ee-b3cb-46e4-814f-17b26b917b93 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219831 | eM&#95;Collar #1 | 18600df7-8ac5-4738-895b-98aa09d2c7d3 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3219835 | eM&#95;Handle Angle | 26957afd-15f2-4215-b7a4-a8953bd95a9c | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388146 | eM&#95;Tap Length #3 | 755daa03-b8ea-4e80-963a-6d985f188546 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388150 | eM&#95;Tap Length #4 | 538df70a-aaa2-4055-bbe2-329a0551acb6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388154 | eM&#95;Branch Inset #3 | 69d14610-cef3-4744-a098-f97b4d3c455a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388158 | eM&#95;Offset #3 | 26fb8b10-d1ec-45c4-ab64-5e861e190627 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388162 | eM&#95;Offset #4 | d704901b-f773-4260-b6b8-4056765c2990 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388166 | eM&#95;Branch Depth #4 | 1f458a1d-441f-4e27-8f81-fc062d9c44cc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388170 | eM&#95;Branch Depth #3 | 8b96e51e-065d-4658-9e43-25b585ca08f7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388174 | eM&#95;Body Diameter | 42393a31-17df-4655-875a-1da42f9a1672 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388178 | eM&#95;Extension #4 | 4e55c465-ba9f-4ada-82d5-e679b5e1e950 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388182 | eM&#95;Branch Width #3 | 4d27d069-855a-4271-947f-8db6f3169027 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388186 | eM&#95;Rotation #3 | 2c8dd16d-d1e0-4f82-92c3-df8d20d6fa87 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388190 | eM&#95;Angle Out | 3251cb71-46a3-40d3-a24e-0b1512119249 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388194 | eM&#95;Extension #3 | a7a6d17a-5ee6-43da-8eb3-0fbe3111bc11 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388198 | eM&#95;Inset #3 | 341fb082-a9d4-4c12-b0b2-a30f4a0256ab | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388202 | eM&#95;Tap Diameter #3 | 149efb97-bb47-4da9-a8b2-82e2d90e0c58 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388206 | eM&#95;Angle #3 | 72137b98-a488-4432-acd8-e6bfd3b5ca07 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388210 | eM&#95;Rotation #4 | 6d00b099-7874-4307-82d7-eb854b9d3e3f | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388214 | eM&#95;Handle Tilt | 36720a9b-1726-4fd4-8d0b-44037ada7cd7 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388218 | eM&#95;Branch Width #4 | 57a4a5ac-7da3-4e49-a721-06ffc45fdfb0 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388222 | eM&#95;Base Angle | 54cabfac-f0d7-49bc-95df-d1007b29c3c5 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388226 | eM&#95;Bottom Radius | f42268cf-4708-48d5-923f-29d9754063ef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388230 | eM&#95;Inset #4 | 7156c3d8-f2b2-489e-a8a9-a481bbe148aa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3388234 | eM&#95;Angle #4 | 37184ae9-3490-4007-babf-aed0dff0fd58 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3388238 | eM&#95;C2 Inner Diameter | 4290cbf4-20d1-4b4b-804d-cd901ca3e5d7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422663 | eM&#95;C2-Extension | c89cc551-7947-4b49-bfb0-9954f04d8cad | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422667 | eM&#95;TapLengthOffset | 4fd7d55f-b3fc-4faa-bef5-53e1e346d781 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422671 | eM&#95;ElbowDiameter | da681c7c-42e6-4dbb-a0b0-6d1cefe960fb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422675 | eM&#95;TapLength | a5c3518b-2372-4187-b3d7-6eb0e85b33a6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422679 | eM&#95;ElbowAngle | 4414e0a8-ab73-4628-857e-819b6a8e4271 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3422683 | eM&#95;C3-TapOffset | 634041a9-5be5-4485-9149-d9943806b332 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422687 | eM&#95;C2-TapOffset | d35019b1-08ec-4c26-870c-38f06ed6ec76 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422691 | eM&#95;TapAngle | 406cd1c7-3963-4123-8bfb-54442c8df865 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3422695 | eM&#95;Branch Inset | ce45f0d9-5c15-41ae-a480-cc65c4002eb9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422699 | eM&#95;C3-Extension | 97c982e2-a07d-40c6-8fe5-a41351c127fa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3422703 | eM&#95;ThroatRadius | baae37e6-a09f-40a5-9f6a-2b7d2a8a6eeb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3424803 | eM&#95;Center Length | 9063cd0a-423c-4a68-af6c-0ff33491869d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3424807 | eM&#95;Center Depth | 161aeca0-2a33-48ce-bade-4b0b55590fab | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3494643 | eM&#95;Outlet Height | 3f914f1e-3051-4a49-9443-30bffe96ee2c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3494647 | eM&#95;U-bend Rad | e65f0931-1d2a-41b6-83b2-790d0a9f39be | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3494651 | eM&#95;Outlet Length | 626cda4c-6d3f-4c51-a5a5-b7f0c71b22ff | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3494655 | eM&#95;Riser Height | 5eab0493-a0a2-4f1b-8da9-8f5151649f51 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3494659 | eM&#95;Outlet Radius | 12aa9dce-3571-4a9e-8e9f-47f2e2a8bade | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3560196 | eM&#95;Twist Angle #2 | c0e57d02-588e-4a95-bdc1-720d79eee308 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3560200 | eM&#95;Twist Angle #1 | e43d6e39-3de8-4502-828c-3e6a460f8ba1 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3560204 | eM&#95;Height #1 | 7018a077-3458-4769-8b14-acad08ee615a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3560208 | eM&#95;Center Radius #2 | 87d1467e-c1c7-4080-9dbc-a17975855196 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3560212 | eM&#95;Height #2 | bb659797-2e1d-4b7f-9984-5bafef639c00 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3560216 | eM&#95;Center Radius #1 | 8ded1dbe-81d2-4cb4-a84f-d660979e9446 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3637854 | eM&#95;Thickness | fc6a7d03-d45b-47ea-afef-dff48e2f5e9a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3637858 | eM&#95;Base Width | a8d3b92c-4ee2-448f-ab99-237bef9dd4cf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3637862 | eM&#95;Centerline Length | bbd25a9f-4e8d-452f-ad69-aa31d8b3b4e1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3637866 | eM&#95;Gusset Length | 32ceb9a2-2dce-450b-b06c-47c52e0d301b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3637870 | eM&#95;Base Depth | 4470f3ef-c741-46c6-9fe3-035349507f16 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3637874 | eM&#95;Gusset Height | 7f70d5f3-ea7d-4747-9db0-943aef04ef53 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954850 | eM&#95;Handle Extension | 785d4e01-1543-4565-b668-56ce7525c612 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954854 | eM&#95;Z Position #1 | db42ad01-dde8-404a-b698-96582ca83068 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954858 | eM&#95;Handle Inset from Side 1 | d998ed08-e753-4874-9652-31c912409981 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954862 | eM&#95;Outlet Angle | ef8a2f11-7337-4aff-a0a5-3f1ebce0a44d | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3954866 | eM&#95;X Rotation #1 | caacf613-5e75-44ed-861e-033188d227eb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954870 | eM&#95;Tap Height | 234d2119-fabf-4ad2-9ece-79b21c8a6631 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954874 | eM&#95;Outlet Inset From Side 1 | 2404271e-8deb-498b-a5c5-b3c3a6b3cda4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954878 | eM&#95;Outlet Diameter | 9acf9c41-90e1-4c84-ba90-d04adaa770e6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954882 | eM&#95;Handle Rotation | 658ede52-3f38-474a-8a01-7011c124e117 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3954886 | eM&#95;Outlet Extension | 74e93353-6116-4247-935e-6d4529b20c5c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954890 | eM&#95;Handle Offset | 58475e55-2ea4-430b-99e1-9302060955aa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954894 | eM&#95;Outlet Offset | f1b8285e-ab58-4c1b-a294-92e091377fa7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954898 | eM&#95;SZ | abd0f05f-ce3c-492e-bcf8-82c9a63ae38b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954902 | eM&#95;Y | 49b06969-1f76-4605-a8a8-406c027f93ff | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954906 | eM&#95;Height = Gauge Diameter | d0114770-3c14-469b-bfe8-331b8a5027d5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954910 | eM&#95;X Position #1 | e0890c86-3931-4c2e-b969-07e64ee51497 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954914 | eM&#95;Outlet Rotation | 73cf2a88-84c8-45bb-91da-d9b54e7cd430 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 3954918 | eM&#95;Y Position #1 | 07143995-f579-4168-bea5-3672f8817bba | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954922 | eM&#95;Z Rotation #1 | b19c5ea0-9577-4f2a-9725-ce607fe8f4ee | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954926 | eM&#95;Not Used | 245d3fbe-f3fc-4eb7-864d-f13ba8a69231 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954930 | eM&#95;Gauge Diameter | 6ef166bf-3510-4515-bebb-ac26aa1d85bd | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954934 | eM&#95;Depth = Gauge Diameter | f27d9bdb-222f-487c-8857-3556f3080477 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3954938 | eM&#95;Y Rotation #1 | 4fbd0ef3-8a4a-43da-84d0-8f274595b508 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 3967263 | eM&#95;Hole Diameter | d2ba6360-25b6-4c47-bab5-c82ade7b607a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4030303 | eM&#95;Large End Dia | 0f3d7b3c-de7d-42ab-b2ba-90d607dd8f3b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4030307 | eM&#95;Small End Dia | c64d0843-55d6-436e-a1f8-92bc22077dd9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4079935 | eM&#95;Oval Collar | fa4ac133-bc17-47c9-ae4e-11f5259331e9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4079939 | eM&#95;Round Collar | d20bba8f-3337-40d6-8e6a-48fe0856d31f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4094734 | eM&#95;X Position #2 | 2805194b-1d85-459e-875e-555b644b7d94 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4094738 | eM&#95;Y Position #2 | 9156f862-5b43-4818-9a57-b74b30afefa9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4094742 | eM&#95;Z Position #2 | ea5bc98e-f54c-4e2e-8a0c-71ce329c5114 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4094746 | eM&#95;X Rotation #2 | a6c6e595-0bf1-43df-8953-7fe8202408e5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4094750 | eM&#95;Z Rotation #2 | bbc0c5ee-6109-4c34-9fb9-7a62d8d48d2f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4094754 | eM&#95;Y Rotation #2 | 1cf78bfa-5d10-433f-a797-f11b46ef771d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4174285 | eM&#95;Rect Extension | 0754500f-9899-4fac-8efd-4633995b7879 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4174289 | eM&#95;Oval Width | 88e5cea4-e4f5-4cff-9d85-26356de15940 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4296492 | eM&#95;Hole Axis Rotn #3 | c25e4f7c-3602-4ed9-92fe-8a6ae1b8fc9b | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300547 | STRATUS | 21cbf71b-1c98-405d-8730-15703a006542 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300551 | eM&#95;Partial Length | 4f910e01-7fdf-48a7-b170-a1f04e1ce308 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300555 | eM&#95;Hole Collar #4 | c313460a-c7d3-4bce-8919-2309692a2e1b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300559 | eM&#95;Strut Extension | 0be5fa0d-60c3-483f-9046-4d914798ed41 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300563 | eM&#95;Dial Rotation | 32458311-44ee-4d21-ab9a-a8db7020c75e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300567 | eM&#95;Bend Angle | 88f70812-cbb1-45ed-88f3-94398d227032 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300571 | eM&#95;Hole Axis Rotn #4 | d6ae6012-7687-44c6-ba2f-96de8869d67c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300575 | eM&#95;Left Offset Depth | 9defa514-5060-4489-bc89-80c9bc642082 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300579 | eM&#95;Reducing Size Diameter | 6e3e5817-11b0-4c13-8324-13b933681dac | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300583 | eM&#95;Dial Knob Diameter | d856b217-8fca-40b7-bc03-c34a7e7aaa9a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300587 | eM&#95;Gaps | 6d05df1d-5a9c-4a0e-8a1d-d8661b293d01 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300591 | eM&#95;Inner Length | 0d700221-862a-448a-a622-928c6a19d903 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300595 | eM&#95;Dial Knob Rotation | 1a268923-7a23-48f7-8cc3-70c98b400d6d | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300599 | eM&#95;Reducer Diameter | c6ef8d23-e75e-4490-b67a-86304a7e25ea | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300603 | eM&#95;Left Port Extension | 71bf1926-5c33-43a2-89f2-c71f819463e1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300607 | eM&#95;Total Length | 0911ff26-fe3c-4287-ad49-a41e06a1aa4b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300611 | eM&#95;Hole Length #1 | ef45852b-c8b3-445e-ac89-8b8508742f90 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300615 | eM&#95;Bend Radius | 8f24642f-f9b0-4abe-b1df-c05227f9d3bf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300619 | eM&#95;Right Port Length | 4e1f6435-8999-4de2-92a0-19c9d6ac9491 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300623 | eM&#95;Dial Knob Inset | bf8e6636-ba6d-4fec-b8c9-4ee53fa9c0ad | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300627 | eM&#95;Bend Extension #2 | fdb2d039-e19c-4fbf-99ad-3fd1800bd129 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300631 | eM&#95;Bend Inset #2 | 8badf83d-4356-4426-90b7-242b8314ef73 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300635 | eM&#95;Branch Offset | 5272a342-96a7-4306-8bae-4c6c8114d396 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300639 | eM&#95;Left Top Radius | 75a0c644-3685-4064-8acc-77a656abd30e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300643 | eM&#95;Right Offset Depth | e4256c45-b03e-4cfb-aed2-a75a32a831da | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300647 | eM&#95;Dial Inset | ad313549-bfe5-4338-91a3-193a4b0e7d82 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300651 | eM&#95;Width #1 | b092ac4c-f24c-4eb9-aef3-5d1da2319b4b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300655 | eM&#95;Left Bottom Radius | a5feb54f-a7d9-4fc3-b608-83d7489ea0d5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300659 | eM&#95;= Hole Width #4 | d1124250-a5c8-495f-859e-054b3e9b8147 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300663 | eM&#95;Dial Knob Angle | 0bceb351-1ded-4d3f-9ec0-5ec8fa1e2c3c | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300667 | eM&#95;Left Offset Width | 640b2b54-1b3c-4fae-8448-a6ad09744251 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300671 | eM&#95;Top Radius | 468dc354-0f97-416c-b037-fc8adb90cf7e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300675 | eM&#95;Hole Length #2 | fe10e154-4440-4eb8-bfdd-b42a7507a1cc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300679 | eM&#95;Dial Knob Offset | 30fd9657-9351-4537-a51e-81cdbc9b9ea8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300683 | eM&#95;Branch Reducer Length | 2a86f95a-531f-4120-b4d2-9ee06b4cfc1d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300687 | eM&#95;Bend Radius #1 | 4436a362-82af-4118-900f-d4393d1bf32c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300691 | eM&#95;Bend Angle #1 | 7613d366-09f2-4fde-aa90-4cc0c16de34b | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300695 | eM&#95;Height #3 | f34d2d6a-c669-42b7-a830-b2724f249609 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300699 | eM&#95;Dial Knob Extension | 8db44a6a-5f7a-44ba-9a63-d295cefdf04f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300703 | eM&#95;Sleeve Length | 52b9a76c-be7c-4484-9ce7-58a7331421a1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300707 | eM&#95;Branch Height #1 | f7980271-6444-4b31-84fa-0d4625a62e62 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300711 | eM&#95;Rod Inset #1 | 4c099071-4787-4c4d-8bbe-20d0d178fe0a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300715 | eM&#95;Center Width | be63b276-b666-4dc4-ac8c-c4a1c85204db | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300719 | eM&#95;Branch Reducer Diameter | 27e3797b-ba7b-4dbd-8630-5a34e2c2f5b5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300723 | eM&#95;Branch Angle | c8a8457d-6032-4e19-b6f9-ccc4f8306956 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300727 | eM&#95;Branch Extension | c258847d-858a-4408-888f-1ff8080fcc81 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300731 | eM&#95;Width #2 | 32473884-f32d-48f1-a586-27c160cb7f87 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300735 | eM&#95;Left Port Diameter | 8f0f1986-5f8f-4e01-b01a-9bee002aae0b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300739 | eM&#95;Wall End | 2b397186-711b-4083-a79e-05657c83716f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300743 | eM&#95;Right Port Extension | 978fb091-aec4-4c21-b691-eeaced8a13d2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300747 | eM&#95;Bend Inset | 39aed691-310e-454d-a7fe-ed525436c869 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300751 | eM&#95;Left Inset | 26955f94-f3ec-4530-aa21-3e6ad5f5311c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300755 | eM&#95;Bend Angle #2 | 9109d595-ccf2-432e-b7b4-94e4cb5c0d8b | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300759 | eM&#95;Right Port Offset | ae732f9a-ca10-468e-8d57-55b568aef474 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300763 | eM&#95;Right Inset | 9ed69ca0-854c-4ee6-a80d-7ad7e1fc1232 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300767 | eM&#95;Bend Extension | 07e5e7a0-228d-4647-aca3-d9b84a385baa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300771 | eM&#95;Branch Height | 140ac6a2-870c-49e2-8e89-f022caad1431 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300775 | eM&#95;Branch Reducer Diameter #2 | 7bec78a3-a9c1-452a-b0b4-9230c46e7576 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300779 | eM&#95;Outside Length | 261a2ca4-0d8e-453f-bff6-14efa1887e4c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300783 | eM&#95;Bend Extension #1 | 278076a7-57d2-41d2-9582-72f2ff7dccb5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300787 | eM&#95;Bolt Diameter | cf3bf3a9-7c4e-4d75-ab64-d3625f8e77f8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300791 | eM&#95;LE&#95;Width | f72618aa-6b10-4339-bdc5-bba7dfc14aef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300795 | eM&#95;Left Port Angle | 0b3691aa-ee13-4604-be80-69eb16b1308d | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300799 | eM&#95;Right Port Angle | e49dfaab-e560-4154-b610-ce091d46a45f | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300803 | eM&#95;Right Offset Width | 465a34b1-3493-4d37-a711-2d452b965285 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300807 | eM&#95;Hole Width #2 | 7cba53b7-20cb-4b14-992a-21f99b47e83f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300811 | eM&#95;Dial Knob Length | e06677b7-6711-4e32-b78a-da893706642f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300815 | eM&#95;Right Bottom Radius | 8da435ba-cb8a-4d48-97e6-f41fdf88bd46 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300819 | eM&#95;Branch Reducer Length #2 | fa6ea1ba-10a2-4306-bb1c-810cf29e2f7a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300823 | eM&#95;Nut Diameter | 362c21bc-4dc9-40d0-a97b-2ec84ecabd6a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300827 | eM&#95;Bottom Angle | a3e724c2-29b2-4de8-b577-64dc0828b33d | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300831 | eM&#95;LE&#95;Depth | c20437c2-425c-4fa6-af09-ecbdfc48419b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300835 | eM&#95;Duct Depth | 782698c3-54b9-4855-af41-938361059e4f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300839 | eM&#95;Branch Height #2 | e75eabc5-17cd-4d28-9f78-5ca32c9cbf27 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300843 | eM&#95;Right Port Diameter | cbfdf3c7-6dbe-490f-9416-d3fad5142b0c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300847 | eM&#95;Rod Diameter #1 | bf9654c9-69d9-4b6a-9bfa-7c23566df22f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300851 | eM&#95;Angle Extension | ac9fe1ca-cb96-42be-9a29-f4a550c4eba5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300855 | eM&#95;Bend Radius #2 | 13021acb-d2bb-4b40-8eb2-310a5392c3f2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300859 | eM&#95;Rod Length #1 | 44993dcd-72d2-4e99-8898-b45dc05e8dd9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300863 | eM&#95;Dial Offset | a50eadcd-278f-42a4-8413-a74fb4bdb537 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300867 | eM&#95;Top Angle | f04279ce-d024-468c-b6dd-893c5753f16d | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300871 | eM&#95;Actuator End | 4ba7a4d1-4703-40ab-8118-7ca71a1a34c0 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300875 | eM&#95;Bend Inset #1 | ba9016d4-9dc9-4880-a432-1bf913668fae | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300879 | eM&#95;Branch Reducer Length #1 | 002a5bd7-e33d-4945-bfb7-051b6e11ddf5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300883 | eM&#95;Hole Width #3 | e087aed7-a2ba-448b-bf67-39a5ea434654 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300887 | eM&#95;Dial Length | cdd31ad9-d301-4b74-8e16-4afb2ce511c9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300891 | eM&#95;Right Top Radius | 5653a1dc-9bdf-462d-b35e-78b7e8303c51 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300895 | eM&#95;Left Port Length | 7c96d8e0-e263-46ea-8b31-11ba1d016c18 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300899 | eM&#95;Right Port Rotation | fae0fce0-4972-4f1a-b03f-266dc375fc21 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300903 | eM&#95;Hole Length #3 | 8c4b1ce5-6da9-49ab-b624-156ee5456162 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300907 | eM&#95;Left Port Offset | 94d482e5-ca29-4378-926a-126463b73127 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300911 | eM&#95;Right Port Inset from Side 1 | e1c255e9-bf12-4280-835a-e95924dd48c0 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300915 | eM&#95;Duct Width | 8cf3b7e9-69e1-4e19-acae-a1dff4ef79dd | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300919 | eM&#95;Left Port Rotation | bb6b47ec-ae2a-41c4-8f6e-89bdc5a65c80 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300923 | eM&#95;Dial Extension | 423738ee-d9cf-443f-ab89-c38db719d385 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300927 | eM&#95;Reducer Length | b93cdcee-a805-4839-af0a-0c6654cb0d85 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300931 | eM&#95;Left Port Inset From Side 1 | a42820f5-0ef3-477c-952c-0db02afc1d68 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300935 | eM&#95;Dial Diameter | c627dcf5-f2a7-4123-9fd3-233a7e7607c2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300939 | eM&#95;Outlet Size | 0300f1f6-33b4-4eb4-b502-c9c871889f39 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300943 | eM&#95;Strut Depth | f03f6af7-57c1-4537-a2a3-4a7571047d59 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300947 | eM&#95;Bolt Length | 633cfafa-0dcb-4cf6-8b15-5e9854e88fac | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300951 | eM&#95;Hole Depth #4 | 49cf66fb-25e3-42af-b39f-ef38ca46230e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300955 | eM&#95;Inlet Size | 2de608fc-a089-4279-961b-60699763265a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300959 | eM&#95;Dial Angle | 3456a0fc-57e2-4bb1-9056-6803b97259a0 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4300963 | eM&#95;Outer Length | 88f60bfd-e532-47f4-bb0f-5e3d9f76348c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4300967 | eM&#95;Branch Reducer Diameter #1 | 9ed5d8fd-4903-4412-b3bc-446769515010 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4301016 | eM&#95;STRATUS Package Name | 7cf38c22-a55b-426e-81c1-b389e5ee0bbf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4301212 | eM&#95;STRATUS QR Code | 9c1f3a96-f127-4990-86bb-e9af1c7e84fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4365457 | eM&#95;Hole Inset #5 | 51b55e5e-75ec-4e36-8b55-c49887166328 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4366905 | eM&#95;Lap | b39e7796-6b50-4476-ba95-a2c5ce965b9e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4368396 | eM&#95;Major Axis | 4fca914f-292c-4d3d-b6b2-6363ef9d3759 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4368400 | eM&#95;Minor Axis | cda8a1ec-2db3-44b5-bc14-5fe034b3b5b3 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4404739 | Schedule Designation | 466fbe56-284d-4e54-9e92-30447542498d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4489381 | eM&#95;Connector 6 | 123035d7-d1ad-4993-ba89-3ceefd95b444 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4495532 | eM&#95;Y Position #4 | 71549e22-b59c-42f1-9c42-ddbcfb623c9c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495536 | eM&#95;Y Rotation #4 | 921bd531-3135-4b2c-8a65-94f2908756ca | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495540 | eM&#95;Z Rotation #3 | 21ace232-253b-4cf5-acf6-a2673daf98f9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495544 | eM&#95;X Rotation #3 | a2e33c3c-451f-4b87-9dc1-6d6facad81d1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495548 | eM&#95;Z Rotation #4 | ed2c554c-8dda-46dd-9284-bd1c4c13f974 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495552 | eM&#95;X Rotation #4 | 0b22a177-21e4-4ec2-9392-e2ca445b5c22 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495556 | eM&#95;X Position #4 | e10863ad-5824-44aa-8cd5-60c5fe4d6740 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495560 | eM&#95;Y Rotation #3 | 063f83b5-9bc3-4661-82b8-67d21a331ec3 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495564 | eM&#95;Z Position #4 | 2f711db9-408d-4818-aeb7-68916ed40233 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495568 | eM&#95;Y Position #3 | a99a28d2-6ba5-4158-bb98-245c8990e06f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495572 | eM&#95;X Position #3 | c12872d9-322b-483b-9726-29d437d936cc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4495576 | eM&#95;Z Position #3 | 8605c8fe-d570-4300-a205-547b8699a6c5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4605157 | eM&#95;Top Offset | 1f2c687a-26e8-4a3f-9da6-e48be29923e6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4605161 | eM&#95;Btm Left Width | 2d2b51d7-949e-48ad-be96-3216ba98876f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4605165 | eM&#95;Top Inset | b7e31def-65ea-4db2-990f-75127d013bc9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4906956 | eVolve&#95;Material | cb911cc4-b976-4ba2-88d2-a577cbe063ea | autodesk.spec.aec:material-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| 4907072 | eM&#95;DoubleWallMaterialThickness | adfd8534-f19c-4f7c-99b9-36af96c751a4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907076 | eM&#95;OriginY | f30d173b-da4a-4a70-b9da-7b629aad9e32 | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 4907080 | eM&#95;OriginX | f4ba2e43-7c65-44b2-834a-d38a5ab0d83c | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 4907084 | eM&#95;InsulationType | 8d80f853-eb27-47e9-9fea-55ca71f112b9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4907088 | eM&#95;InsulationThickness | baf74258-a0d9-406a-b8fd-fc51e569e85e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907092 | eM&#95;MaterialThickness | f6a65894-142c-4afb-9277-56ea14097a28 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907096 | eM&#95;OriginZ | 9f170696-fb35-4b2a-b125-b9e98efd06cc | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 4907100 | eM&#95;Fitting | 3b1949ab-c3ce-4426-87a2-ef5646728f35 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 4907104 | eM&#95;CenterlineLength | f0928ac3-e93e-42d6-98df-efb9d60e5a6a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907108 | eM&#95;HasDoubleWall | 80b77bc5-d945-4a58-b2a4-0923987e9c6f | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 4907112 | eM&#95;HasLining | db9587d2-519e-4633-bb46-2c452259ec8b | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 4907116 | eM&#95;LiningThickness | e805d1e4-469c-4701-afe6-146dcae64cb5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907120 | eM&#95;HasInsulation | 948b5efc-226a-4465-bf80-a7b0cce1c1d9 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 4907281 | eM&#95;Bottom Chamfer | 9ec51d1a-85e2-48c1-8fd7-86b4d97ba1eb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907285 | eM&#95;Wall Thickness +2 | 897adf28-9351-4bf3-b8d8-4fe7770ba3d8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907289 | eM&#95;Back Chamfer | e0f4152f-50ea-4c49-b5c9-1a8a839ac504 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907293 | eM&#95;Rectangular  Angle | 7a782884-9918-4ed7-a381-db873cd50c9e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 4907297 | eM&#95;End Height | 276981cd-4f37-4fb3-b4db-d2da3b06711f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907301 | eM&#95;Blade | fecb63ff-e5ea-41bf-b99d-a83217eca56f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 4907792 | eM&#95;Ancillary 1 | 7eafcb15-b9e1-486a-8aed-d8d9cccfe667 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4907796 | eM&#95;Ancillary 2 | 23dcb38d-82d1-482b-b4c1-8993d06ca307 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4907800 | eM&#95;Ancillary 3 | 170db881-fe55-4b98-913b-eeb3a545877b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4907804 | eM&#95;Ancillary 4 | 1a8a365a-a29d-497f-ade6-5a6b70cf4b75 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4908121 | Description BOM Suffix | 6ab251ac-c71a-4a6a-97d6-062906723c2a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988107 | G&#95;Instance Description | c219978c-4ed4-47c8-b5f8-919061d14519 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988109 | G&#95;Instance Name | 0e67faa8-bd93-4a71-939b-597b56f57d80 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988111 | G&#95;Manuf Warranty End Date | a227a1ca-9f41-41ac-afbd-90ccce329df6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988113 | G&#95;Manuf Warranty Start Date | 9d7aa55d-7ffe-4d10-ac23-08c2de0d14df | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988117 | G&#95;Panel Name | 11eaa1ec-b873-4166-bc75-8e51cb0fd9d2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988121 | G&#95;Serial Number | aeecb302-d678-4536-b286-cbcd61005dc7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988123 | G&#95;Service Contractor Name | 9154ab36-45d3-4567-90c3-283a713daa16 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988125 | G&#95;Service Warranty End Date | f9c0cf92-9d62-419c-9895-607504300000 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988127 | G&#95;Service Warranty Start Date | 7f4326ba-b9b9-4d4a-bce6-7491b1df86d2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988129 | G&#95;System | 0b6658ce-e03f-47c0-9bc4-6efeb1ee9ae8 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988140 | WARRANTY URL | 44fd084b-8c25-4318-b3a0-099d3f2d7a3e | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988242 | G&#95;Max Heating Capacity | 95f618e2-7537-43df-a07b-25659212743e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988331 | TAG URL | 85025b6e-81f9-4f81-bc80-03fa24e3e793 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5163677 | G&#95;Installation Date | 2bd2852a-4397-4fdd-8bd5-da60d2b8372a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5168073 | G&#95;Max Cooling Capacity | ce2a0e70-2a3d-46ee-87dc-3df7256c9ebb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5168077 | G&#95;Total Supply Air Flow | 4113aec1-1a57-4cfc-89f1-a225793d8a4c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5228768 | Cx URL | 739cae16-6819-4c7f-81b1-cec8d1bd0476 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5228769 | G&#95;BldgRm | 039bc1f7-dd0e-4bf6-b2f0-d404e2319926 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5559729 | Designated System | 35a14e0c-c5b8-451f-9cdb-e1a64a6009a5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140999 / FABRICATION&#95;FITTING&#95;DESCRIPTION | Fabrication Fitting Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Spiral Pipe | Spiral Pipe | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008193 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Ductwork | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008193 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Ductwork | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3TPgUBK7PBhPwlvNnaFzG9 | 3TPgUBK7PBhPwlvNnaFzG9 | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 151 | Fabrication Part Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Spiral Pipe | Spiral Pipe | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Default | Default | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 4744274 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744275 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744834 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744911 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744988 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4745065 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988098 | G&#95;Current | c073cd01-45c0-40b5-8dc4-5006fb4af908 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988100 | G&#95;Expected Life Span | 747ebe30-2499-46d5-a67e-31ffbe8d5a9b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988105 | G&#95;Installation Vendor Name | 75d7d757-8d0a-4f62-a93b-5ff03241d2fe | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988132 | G&#95;Type Name | 13bd03e9-736b-4c15-a185-1c1db0c44a6e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988136 | O&amp;M URL | 3357fd9c-8fb2-422a-8fda-ffdc3d2a940c | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4988138 | SUBMITTAL URL | 9af2ed08-f103-45e8-940c-e7a95efc5fe7 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5168075 | G&#95;Heating Coil Type | 3341557a-0535-4a0e-858e-e1a723235da2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| ID 4604179 | ID 4604179; FabricationPart; Default |
+| ID 4604191 | ID 4604191; Element;  |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 5889350 — 2026-10-06 22:11:08 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;MD |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;MD.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 5889350 |
+| Element.UniqueId | 875e0b59-3a7f-466d-b408-da01e2aecfba-0059dd46 |
+| API class | Autodesk.Revit.DB.FamilyInstance |
+| Name | 12" x 8" |
+| Category | Air Terminals; ID -2008013; OST&#95;DuctTerminal |
+| GetTypeId() | ID 5876296; FamilySymbol; 12" x 8" |
+| LevelId | ID 30; Level; LEVEL 00; Elevation=0.9583333333333333; ProjectElevation=0.9583333333333333 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 15147 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 5559718; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationPoint |
+| LocationPoint.Point (ft) | (1001.8978115780945, 577.608541894787, 9.10774739583327) |
+| LocationPoint.Rotation (rad) | 3.141592653589793 |
+| BoundingBox (model, ft) | Min=(1001.3268480364279, 577.608541894787, 8.70345052083327); Max=(1002.4687751197612, 579.1375648005026, 9.51204427083327); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### FamilyInstance — свойства API
+
+| Свойство | Значение |
+| --- | --- |
+| Symbol.Family.Name | AMX-M-Terminal-EA-Wall Grille |
+| Family.IsInPlace | False |
+| Family.FamilyPlacementType | OneLevelBased |
+| Host (свойство, не параметр) | null |
+| HostFace | null |
+| SuperComponent | null |
+| GetSubComponentIds() |  |
+| Mirrored | False |
+| HandFlipped | False |
+| FacingFlipped | False |
+| HandOrientation | (-1, 0, 0) |
+| FacingOrientation | (0, -1, 0) |
+| GetTransform() | Origin=(1001.8978115780945, 577.608541894787, 9.10774739583327) ft; BasisX=(-1, 0, 0); BasisY=(0, -1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Соответствует условиям отбора |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Case 19 — MEP Fabrication Parts | Case 19: a FabricationPart is required. |
+| Кейс 1: ограничение записи уровня | Нет ограничения записи параметра уровня |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150468 / RBS&#95;DUCT&#95;PIPE&#95;SYSTEM&#95;ABBREVIATION&#95;PARAM | System Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | EA 655 | EA 655 | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008013 (не разрешён в элемент документа; возможное служебное значение) | Air Terminals | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008013 (не разрешён в элемент документа; возможное служебное значение) | Air Terminals | — |
+| -1140333 / RBS&#95;DUCT&#95;SYSTEM&#95;TYPE&#95;PARAM | System Type | — |  | ElementId | True | True | ID 5560075; MechanicalSystemType; 655 Exhaust Air | 655 Exhaust Air | — |
+| -1140325 / RBS&#95;SYSTEM&#95;CLASSIFICATION&#95;PARAM | System Classification | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Exhaust Air | Exhaust Air | — |
+| -1140324 / RBS&#95;SYSTEM&#95;NAME&#95;PARAM | System Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | EA 655.002 | EA 655.002 | — |
+| -1114240 / RBS&#95;CALCULATED&#95;SIZE | Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12x8 | 12x8 | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 27NWjPEdz6RRG8sW7YznBy | 27NWjPEdz6RRG8sW7YznBy | — |
+| -1013405 / RBS&#95;DUCT&#95;FLOW&#95;PARAM | Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | False | True | 22.916666666666668 | 1375 | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1012806 / HOST&#95;VOLUME&#95;COMPUTED | Volume | — | autodesk.spec.aec:volume-2.0.0 | Double | True | True | 0.13034767574734046 | 0.13 CF | autodesk.unit.unit:cubicFeet-1.0.1 |
+| -1012805 / HOST&#95;AREA&#95;COMPUTED | Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 1.241768731011284 | 1.24 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 5559718; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002108 / HOST&#95;ID&#95;PARAM | Host Id | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002062 / SCHEDULE&#95;LEVEL&#95;PARAM | Level | — |  | ElementId | True | True | ID 30; Level; LEVEL 00; Elevation=0.9583333333333333; ProjectElevation=0.9583333333333333 ft | LEVEL 00 | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 15147 | 21-04 30 60 30 Exhaust Air | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 5876296; FamilySymbol; 12" x 8" | AMX-M-Terminal-EA-Wall Grille: 12" x 8" | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 5876296; FamilySymbol; 12" x 8" | AMX-M-Terminal-EA-Wall Grille | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 5876296; FamilySymbol; 12" x 8" | 12" x 8" | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 5876296; FamilySymbol; 12" x 8" | 5876296 | — |
+| -1001364 / INSTANCE&#95;FREE&#95;HOST&#95;OFFSET&#95;PARAM | Offset from Host | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 8.149414062499936 | 8' - 1 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001363 / INSTANCE&#95;FREE&#95;HOST&#95;PARAM | Host | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Level : LEVEL 00 | Level : LEVEL 00 | — |
+| -1001360 / INSTANCE&#95;ELEVATION&#95;PARAM | Elevation from Level | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 8.149414062499936 | 8' - 1 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1001352 / FAMILY&#95;LEVEL&#95;PARAM | Level | — |  | ElementId | False | True | ID 30; Level; LEVEL 00; Elevation=0.9583333333333333; ProjectElevation=0.9583333333333333 ft | LEVEL 00 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 1173933 | Actual Air Flow | 635b490a-7797-4523-87bf-3605fc32b093 | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | False | True | 22.916666666666668 | 1375 | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| 1173940 | Face Air Velocity | 2ab24976-2f06-43ea-8ee5-cfb50f57945f | autodesk.spec.aec.hvac:velocity-2.0.0 | Double | True | True | 34.375 | 2060 | autodesk.unit.unit:feetPerMinute-1.0.1 |
+| 1173941 | Neck Air Velocity | b37c2050-87fb-421e-892c-90a8f88293a3 | autodesk.spec.aec.hvac:velocity-2.0.0 | Double | True | True | 34.375 | 2060 | autodesk.unit.unit:feetPerMinute-1.0.1 |
+| 1173943 | Air Flow Within Range | 86f9598c-8bcb-4892-911b-2822f1a832da | autodesk.spec:spec.bool-1.0.0 | Integer | True | True | 0 | No | — |
+| 2280040 | eM&#95;Service Name | c72cb70e-edc5-4c61-804e-0e425fd1a417 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280052 | eM&#95;Fitting Type | 7ae03332-d0af-4e1d-9d8e-bf089a63b74c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280064 | eM&#95;Buy Out | 86f34c8d-c1c3-4ff5-a024-a7b367188f78 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 2280076 | eM&#95;Service Type | 30fd4c92-964c-43bb-98f8-fd9d1cf6b51e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280088 | eM&#95;Pattern Number | 2d78f697-ed2e-44ee-ae88-31e1ac1e31be | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280100 | eM&#95;Service Abbreviation | 5ad499cd-da39-41a8-938c-838d4580e637 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280112 | eM&#95;Status | 6b5ceed7-565c-46f4-99d9-ab9d2569e53e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280836 | eM&#95;Alternate | fde1a406-55e8-4d49-ad6a-ccc3cc49907b | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280848 | eM&#95;Drawing | 587c271a-543c-481a-a0b5-632411a355f1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280860 | eM&#95;Blank Price | b6cc041e-c78a-47a8-ad09-5a74daeb67fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280872 | eM&#95;CFM | 74925b28-949c-47c0-a76d-6b9e50a25b26 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280884 | eM&#95;CF1 | 15cd4e35-5f42-488b-a990-c56a0425afaa | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280896 | eM&#95;Spool | 559cae37-9e08-444e-8e49-f3cb37aef3c1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280908 | eM&#95;Cost Code | 23cb203f-4c4e-4b94-87e3-0a9b2272032d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280920 | eM&#95;Field 5 | 94df874b-1849-4c94-8b42-dda773a2aa32 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280932 | eM&#95;Field 6 | 54dca260-5dd7-4f0d-be22-d31744a608fc | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280944 | eM&#95;Field 8 | 741cfb66-db7d-4341-bb64-a4a11bf57496 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280956 | eM&#95;Field 9 | c0f00c68-221d-4bda-ae69-d3bcebe0ee53 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280968 | eM&#95;BOH | fcd94269-6d96-4650-b4ac-2d2f62b5e80e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280980 | eM&#95;Zero | 7be7016a-09ef-4d33-bf4e-dc47863de04e | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280992 | eM&#95;Field 4 | 54d68475-40d6-4a1e-82fa-5d794c0d06ca | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281004 | eM&#95;Field 2 | 42e0b582-f582-44f8-9e88-6d160d488670 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281016 | eM&#95;Special Buyout Fittings | e2d8079c-1c50-4400-80e9-b30e0735e12e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281028 | eM&#95;Field 7 | 9b73ebbe-27d7-4dab-91eb-de6c51a5ca6d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281040 | eM&#95;Zone | 9cbe5fc5-a78c-4cfd-b7d6-e0730ef95d56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281052 | eM&#95;Field 3 | 613011e0-3e6a-4838-8610-822130a8739e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2739483 | TYP. # | 90853301-bbe7-4f71-8f75-071938419e99 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4301016 | eM&#95;STRATUS Package Name | 7cf38c22-a55b-426e-81c1-b389e5ee0bbf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4301212 | eM&#95;STRATUS QR Code | 9c1f3a96-f127-4990-86bb-e9af1c7e84fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4906956 | eVolve&#95;Material | cb911cc4-b976-4ba2-88d2-a577cbe063ea | autodesk.spec.aec:material-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| 5559729 | Designated System | 35a14e0c-c5b8-451f-9cdb-e1a64a6009a5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5560295 | Designated System | 33f05922-42cb-4959-a80d-c958ca712233 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5876242 | Air Flow Arrow | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| 5876277 | Depth of Connection | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0.020833333333333332 | 0' - 0 1/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5876278 | Additional Duct Connector Width | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:inches-1.0.1 |
+| 5876279 | Additional Duct Connector Height | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:inches-1.0.1 |
+| 5876280 | Virtual Duct Height | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | True | True | 0.6666666666666667 | 8 | autodesk.unit.unit:inches-1.0.1 |
+| 5876281 | Virtual Duct Width | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | True | True | 1 | 12 | autodesk.unit.unit:inches-1.0.1 |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1154647 / FAMILY&#95;FREEINST&#95;DEFAULT&#95;ELEVATION | Default Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | True | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008013 (не разрешён в элемент документа; возможное служебное значение) | Air Terminals | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008013 (не разрешён в элемент документа; возможное служебное значение) | Air Terminals | — |
+| -1114123 / RBS&#95;MAX&#95;FLOW | Max Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1114122 / RBS&#95;MIN&#95;FLOW | Min Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2KA$eyuKbCfuYhIJR917Ay | 2KA$eyuKbCfuYhIJR917Ay | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1005556 / STRUCTURAL&#95;FAMILY&#95;CODE&#95;NAME | Code Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002503 / OMNICLASS&#95;DESCRIPTION | OmniClass Title | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Exhaust Air Grilles | Exhaust Air Grilles | — |
+| -1002502 / OMNICLASS&#95;CODE | OmniClass Number | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 23-33 49 23 11 | 23-33 49 23 11 | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 15489 | Family  : Air Terminals : AMX-M-Terminal-EA-Wall Grille | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | AMX-M-Terminal-EA-Wall Grille | AMX-M-Terminal-EA-Wall Grille | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12" x 8" | 12" x 8" | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 765842 | Equipment Number | 070bc3fb-e1c0-4828-a339-800d8af669b8 | autodesk.spec:spec.string-2.0.0 | String | False | True | 01 | 01 | — |
+| 765845 | Equipment Type | 63372841-100d-47cb-868c-0558228b49a3 | autodesk.spec:spec.string-2.0.0 | String | False | True | RG | RG | — |
+| 773557 | Location | 844826fc-e1b9-4f9f-8563-09086f90f547 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 924013 | Width | 106f2a8b-3006-4864-aaf0-d07ea744b6f1 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 1.1419270833333333 | 1' - 1 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 924014 | Length | f695fde0-3f94-4530-abf9-7fd0e5e88457 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 0.18750000000000003 | 0' - 2 1/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 924016 | Height | a3bb9abf-c324-4a46-94de-e5d413c99640 | autodesk.spec.aec:length-2.0.0 | Double | False | True | 0.8085937500000001 | 0' - 9 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 924017 | Schedule Name | 97a4a405-0fb4-4354-a886-c16b2f8c9555 | autodesk.spec:spec.string-2.0.0 | String | True | True | DIFFUSER &amp; GRILLE SCHEDULE | DIFFUSER &amp; GRILLE SCHEDULE | — |
+| 1131950 | Notes | 4910d787-840b-4e63-90de-0235847d1509 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 1169380 | Inlet Height | d598fe5b-1770-4ab3-85d7-d6ca71173ad3 | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 0.6666666666666667 | 8 | autodesk.unit.unit:inches-1.0.1 |
+| 1169381 | Inlet Width | 388dd18d-8194-4e68-b618-33ccac1daaf8 | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 1 | 12 | autodesk.unit.unit:inches-1.0.1 |
+| 1173930 | Noise Criteria | 8bf91c49-b425-467c-a3e4-dd068abe60df | autodesk.spec.aec:number-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| 1173931 | Air Terminal Border Style | 31ed1b85-8f0c-4ab0-b9a3-dc5fb0f442f5 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 1173932 | Air Terminal Maximum Static Pressure | 863b7d0a-4bd2-4911-95d2-eb4974729b5a | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | False | True | 0 | 0.00 | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| 1173942 | Face Free Area Percentage | 68f2e256-a792-4dc0-9cc1-039bddef38b6 | autodesk.spec.aec:number-2.0.0 | Double | False | True | 100 | 100 | autodesk.unit.unit:general-1.0.1 |
+| 4744274 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744275 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744834 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744911 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744988 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4745065 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5876243 | Width Half | — | autodesk.spec.aec:length-2.0.0 | Double | False | True | 0.5709635416666666 | 0' - 6 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5876244 | Height Half | — | autodesk.spec.aec:length-2.0.0 | Double | False | True | 0.40429687500000006 | 0' - 4 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5876275 | Neck Effective Area | — | autodesk.spec.aec.hvac:crossSection-2.0.0 | Double | True | True | 0.6666666666666667 | 96.00 in² | autodesk.unit.unit:squareInches-1.0.1 |
+| 5876276 | Face Effective Area | — | autodesk.spec.aec.hvac:crossSection-2.0.0 | Double | True | True | 0.6666666666666667 | 96.00 in² | autodesk.unit.unit:squareInches-1.0.1 |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 1 |
+| ID 5889350 | ID 5889350; FamilyInstance; 12" x 8" |
+
+### MEP-коннекторы
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 1 |
+| Connector 0.Domain | DomainHvac |
+| Connector 0.ConnectorType | End |
+| Connector 0.Origin (ft) | (1001.8978081301905, 577.7752085614536, 9.107639053541922) |
+| Connector 0.IsConnected | True |
+| Connector 0.AllRefs (включая логические) | ID 5889136; Duct; !Generic Rectangular; Connector 1; ID 5752824; MechanicalSystem; EA 655.002; Connector 214 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 4577314 — 2026-10-06 23:09:32 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;MD |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;MD.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 4577314 |
+| Element.UniqueId | f6574165-9faf-4638-8fe7-c1027e932f12-0045d822 |
+| API class | Autodesk.Revit.DB.Mechanical.FlexDuct |
+| Name | AMX-M-Duct-Flex |
+| Category | Flex Ducts; ID -2008020; OST&#95;FlexDuctCurves |
+| GetTypeId() | ID 139193; FlexDuctType; AMX-M-Duct-Flex |
+| LevelId | ID 1151099; Level; LEVEL 01; Elevation=12; ProjectElevation=12 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 15145 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 5559718; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationCurve |
+| LocationCurve.Curve class | Autodesk.Revit.DB.HermiteSpline |
+| Curve.IsBound | True |
+| Curve.GetEndPoint(0) (ft) | (899.7820094324345, 804.5353689396416, 24.00260416666666) |
+| Curve.GetEndPoint(1) (ft) | (902.4776279275095, 803.8318401157076, 24.6884765625) |
+| Curve.Length (ft) | 2.9029205544919843 |
+| BoundingBox (model, ft) | Min=(899.7820094324345, 803.3318401158144, 23.50260416666665); Max=(902.477670456053, 805.0353689396416, 25.18847656058412); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Case 19 — MEP Fabrication Parts | Case 19: a FabricationPart is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150468 / RBS&#95;DUCT&#95;PIPE&#95;SYSTEM&#95;ABBREVIATION&#95;PARAM | System Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | SA 651 | SA 651 | — |
+| -1150436 / DUCT&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150435 / RBS&#95;REFERENCE&#95;FREESIZE | Free Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12"ø | 12"ø | — |
+| -1150434 / RBS&#95;REFERENCE&#95;OVERALLSIZE | Overall Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 12"ø | 12"ø | — |
+| -1150433 / RBS&#95;REFERENCE&#95;LINING&#95;THICKNESS | Lining Thickness | — | autodesk.spec.aec.hvac:ductLiningThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150432 / RBS&#95;REFERENCE&#95;LINING&#95;TYPE | Lining Type | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1150431 / RBS&#95;REFERENCE&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150430 / RBS&#95;REFERENCE&#95;INSULATION&#95;TYPE | Insulation Type | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008020 (не разрешён в элемент документа; возможное служебное значение) | Flex Ducts | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008020 (не разрешён в элемент документа; возможное служебное значение) | Flex Ducts | — |
+| -1140333 / RBS&#95;DUCT&#95;SYSTEM&#95;TYPE&#95;PARAM | System Type | — |  | ElementId | False | True | ID 5560078; MechanicalSystemType; 651 Supply Air | 651 Supply Air | — |
+| -1140325 / RBS&#95;SYSTEM&#95;CLASSIFICATION&#95;PARAM | System Classification | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Supply Air | Supply Air | — |
+| -1140324 / RBS&#95;SYSTEM&#95;NAME&#95;PARAM | System Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | SA 651.002.1 | SA 651.002.1 | — |
+| -1140240 / RBS&#95;DUCT&#95;BOTTOM&#95;ELEVATION | Lower End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140239 / RBS&#95;DUCT&#95;TOP&#95;ELEVATION | Upper End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140210 / RELATIVE&#95;ROUGHNESS | Relative Roughness | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0.0003 | 0.0003 | autodesk.unit.unit:general-1.0.1 |
+| -1114167 / RBS&#95;SIZE&#95;LOCK | Size Lock | — | autodesk.spec:spec.bool-1.0.0 | Integer | False | True | 0 | No | — |
+| -1114166 / RBS&#95;ADDITIONAL&#95;FLOW | Additional Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1114129 / RBS&#95;HYDRAULIC&#95;DIAMETER&#95;PARAM | Hydraulic Diameter | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | True | True | 1 | 12 | autodesk.unit.unit:inches-1.0.1 |
+| -1114128 / RBS&#95;REYNOLDSNUMBER&#95;PARAM | Reynolds number | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 36124.407261816144 | 36124.407262 | autodesk.unit.unit:general-1.0.1 |
+| -1114125 / RBS&#95;SECTION | Section | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 52 | 52 | — |
+| -1114124 / RBS&#95;LOSS&#95;COEFFICIENT | Loss Coefficient | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0.06901772174836689 | 0.069018 | autodesk.unit.unit:general-1.0.1 |
+| -1114121 / RBS&#95;VELOCITY&#95;PRESSURE | Velocity Pressure | — | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | True | True | 0.5800411515328894 | 0.01 | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| -1114116 / RBS&#95;FRICTION | Friction | — | autodesk.spec.aec.hvac:friction-2.0.0 | Double | True | True | 0.013790635343827079 | 0.02 | autodesk.unit.unit:inchesOfWater60DegreesFahrenheitPer100Feet-1.0.1 |
+| -1114108 / RBS&#95;PRESSURE&#95;DROP | Pressure Drop | — | autodesk.spec.aec.hvac:pressure-2.0.0 | Double | True | True | 0.04003311879909927 | 0.00 | autodesk.unit.unit:inchesOfWater60DegreesFahrenheit-1.0.1 |
+| -1114107 / RBS&#95;VELOCITY | Velocity | — | autodesk.spec.aec.hvac:velocity-2.0.0 | Double | True | True | 5.835681246702829 | 350 | autodesk.unit.unit:feetPerMinute-1.0.1 |
+| -1114103 / RBS&#95;CURVE&#95;DIAMETER&#95;PARAM | Diameter | — | autodesk.spec.aec.hvac:ductSize-2.0.0 | Double | False | True | 1 | 12 | autodesk.unit.unit:inches-1.0.1 |
+| -1114005 / RBS&#95;FLEX&#95;PATTERN&#95;PARAM | Flex Pattern | — |  | Integer | False | True | 0 | Single Line | — |
+| -1114002 / RBS&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 12.00260416666666 | 12' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114000 / RBS&#95;START&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | False | True | ID 1151099; Level; LEVEL 01; Elevation=12; ProjectElevation=12 ft | LEVEL 01 | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3sLq5bdwz6E8$dmG9&#95;rlSm | 3sLq5bdwz6E8$dmG9&#95;rlSm | — |
+| -1013405 / RBS&#95;DUCT&#95;FLOW&#95;PARAM | Flow | — | autodesk.spec.aec.hvac:airFlow-2.0.0 | Double | True | True | 4.583333333333333 | 275 | autodesk.unit.unit:cubicFeetPerMinute-1.0.1 |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 5559718; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.9029205544919843 | 2' - 10 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 15145 | 21-04 30 60 10 Supply Air | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 139193; FlexDuctType; AMX-M-Duct-Flex | Flex Duct Round: AMX-M-Duct-Flex | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 139193; FlexDuctType; AMX-M-Duct-Flex | Flex Duct Round | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 139193; FlexDuctType; AMX-M-Duct-Flex | AMX-M-Duct-Flex | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 139193; FlexDuctType; AMX-M-Duct-Flex | 139193 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280040 | eM&#95;Service Name | c72cb70e-edc5-4c61-804e-0e425fd1a417 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280052 | eM&#95;Fitting Type | 7ae03332-d0af-4e1d-9d8e-bf089a63b74c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280064 | eM&#95;Buy Out | 86f34c8d-c1c3-4ff5-a024-a7b367188f78 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 2280076 | eM&#95;Service Type | 30fd4c92-964c-43bb-98f8-fd9d1cf6b51e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280088 | eM&#95;Pattern Number | 2d78f697-ed2e-44ee-ae88-31e1ac1e31be | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280100 | eM&#95;Service Abbreviation | 5ad499cd-da39-41a8-938c-838d4580e637 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280112 | eM&#95;Status | 6b5ceed7-565c-46f4-99d9-ab9d2569e53e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280836 | eM&#95;Alternate | fde1a406-55e8-4d49-ad6a-ccc3cc49907b | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280848 | eM&#95;Drawing | 587c271a-543c-481a-a0b5-632411a355f1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280860 | eM&#95;Blank Price | b6cc041e-c78a-47a8-ad09-5a74daeb67fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280872 | eM&#95;CFM | 74925b28-949c-47c0-a76d-6b9e50a25b26 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280884 | eM&#95;CF1 | 15cd4e35-5f42-488b-a990-c56a0425afaa | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280896 | eM&#95;Spool | 559cae37-9e08-444e-8e49-f3cb37aef3c1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280908 | eM&#95;Cost Code | 23cb203f-4c4e-4b94-87e3-0a9b2272032d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280920 | eM&#95;Field 5 | 94df874b-1849-4c94-8b42-dda773a2aa32 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280932 | eM&#95;Field 6 | 54dca260-5dd7-4f0d-be22-d31744a608fc | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280944 | eM&#95;Field 8 | 741cfb66-db7d-4341-bb64-a4a11bf57496 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280956 | eM&#95;Field 9 | c0f00c68-221d-4bda-ae69-d3bcebe0ee53 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280968 | eM&#95;BOH | fcd94269-6d96-4650-b4ac-2d2f62b5e80e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2280980 | eM&#95;Zero | 7be7016a-09ef-4d33-bf4e-dc47863de04e | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 2280992 | eM&#95;Field 4 | 54d68475-40d6-4a1e-82fa-5d794c0d06ca | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281004 | eM&#95;Field 2 | 42e0b582-f582-44f8-9e88-6d160d488670 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281016 | eM&#95;Special Buyout Fittings | e2d8079c-1c50-4400-80e9-b30e0735e12e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281028 | eM&#95;Field 7 | 9b73ebbe-27d7-4dab-91eb-de6c51a5ca6d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281040 | eM&#95;Zone | 9cbe5fc5-a78c-4cfd-b7d6-e0730ef95d56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2281052 | eM&#95;Field 3 | 613011e0-3e6a-4838-8610-822130a8739e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4301016 | eM&#95;STRATUS Package Name | 7cf38c22-a55b-426e-81c1-b389e5ee0bbf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4301212 | eM&#95;STRATUS QR Code | 9c1f3a96-f127-4990-86bb-e9af1c7e84fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4906956 | eVolve&#95;Material | cb911cc4-b976-4ba2-88d2-a577cbe063ea | autodesk.spec.aec:material-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| 5559729 | Designated System | 35a14e0c-c5b8-451f-9cdb-e1a64a6009a5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5560295 | Designated System | 33f05922-42cb-4959-a80d-c958ca712233 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008020 (не разрешён в элемент документа; возможное служебное значение) | Flex Ducts | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008020 (не разрешён в элемент документа; возможное служебное значение) | Flex Ducts | — |
+| -1114392 / RBS&#95;CURVETYPE&#95;MULTISHAPE&#95;TRANSITION&#95;OVALROUND&#95;PARAM | Multi Shape Transition Oval to Round | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1114391 / RBS&#95;CURVETYPE&#95;MULTISHAPE&#95;TRANSITION&#95;RECTOVAL&#95;PARAM | Multi Shape Transition Rect to Oval | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1114134 / RBS&#95;CURVETYPE&#95;PREFERRED&#95;BRANCH&#95;PARAM | Preferred Junction Type | — |  | Integer | False | True | 1 | Tee | — |
+| -1114133 / RBS&#95;CURVETYPE&#95;DEFAULT&#95;TAKEOFF&#95;PARAM | Tap | — |  | ElementId | False | True | ID 955884; FamilySymbol; Standard | AMX-M-Round Takeoff: Standard | — |
+| -1114131 / RBS&#95;CURVETYPE&#95;DEFAULT&#95;UNION&#95;PARAM | Union | — |  | ElementId | False | True | ID 959270; FamilySymbol; Standard | AMX-M-Round Union: Standard | — |
+| -1114126 / RBS&#95;CURVETYPE&#95;MULTISHAPE&#95;TRANSITION&#95;PARAM | Multi Shape Transition Rect to Round | — |  | ElementId | False | True | ID 941889; FamilySymbol; 45 Degree | AMX-M-Rectangular to Round Transition - Angle: 45 Degree | — |
+| -1114114 / DUCT&#95;ROUGHNESS | Roughness | — | autodesk.spec.aec.hvac:roughness-2.0.0 | Double | False | True | 0.0003 | 0.000' | autodesk.unit.unit:feet-1.0.1 |
+| -1114113 / RBS&#95;CURVETYPE&#95;DEFAULT&#95;TRANSITION&#95;PARAM | Transition | — |  | ElementId | False | True | ID 958546; FamilySymbol; 45 Degree | AMX-M-Round Transition - Angle: 45 Degree | — |
+| -1114111 / RBS&#95;CURVETYPE&#95;DEFAULT&#95;TEE&#95;PARAM | Tee | — |  | ElementId | False | True | ID 956890; FamilySymbol; Standard | AMX-M-Round Tee: Standard | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3NykEXhgvCjBAstS9T1oJb | 3NykEXhgvCjBAstS9T1oJb | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 69 | Flex Duct Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Flex Duct Round | Flex Duct Round | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | AMX-M-Duct-Flex | AMX-M-Duct-Flex | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 4744274 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744275 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744834 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744911 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4744988 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 4745065 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| ID 4577314 | ID 4577314; FlexDuct; AMX-M-Duct-Flex |
+| ID 4577315 | ID 4577315; Element;  |
+
+### MEP-коннекторы
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| Connector 0.Domain | DomainHvac |
+| Connector 0.ConnectorType | End |
+| Connector 0.Origin (ft) | (899.7820094324345, 804.5353689396416, 24.00260416666666) |
+| Connector 0.IsConnected | True |
+| Connector 0.AllRefs (включая логические) | ID 5757547; FamilyInstance; 12" - 7 3/4" Length; Connector 1 |
+| Connector 1.Domain | DomainHvac |
+| Connector 1.ConnectorType | End |
+| Connector 1.Origin (ft) | (902.4776279275095, 803.8318401157076, 24.6884765625) |
+| Connector 1.IsConnected | True |
+| Connector 1.AllRefs (включая логические) | ID 5903320; Duct; !Generic Round; Connector 1 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 9232064 — 2026-10-07 11:52:25 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;MP&#95;E |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;MP&#95;E.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 9232064 |
+| Element.UniqueId | 9aab20e0-add5-46eb-b36f-7122e0483081-008cdec0 |
+| API class | Autodesk.Revit.DB.Plumbing.Pipe |
+| Name | Generic |
+| Category | Pipes; ID -2008044; OST&#95;PipeCurves |
+| GetTypeId() | ID 9004258; PipeType; Generic |
+| LevelId | ID 5543638; Level; TO.SLAB ON GRADE; Elevation=1.5625; ProjectElevation=1.5625 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 21127 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 21885; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationCurve |
+| LocationCurve.Curve class | Autodesk.Revit.DB.Line |
+| Curve.IsBound | True |
+| Curve.GetEndPoint(0) (ft) | (915.9114330920498, 578.2298240521429, 3.1041666666666714) |
+| Curve.GetEndPoint(1) (ft) | (915.9114330920493, 588.7465454883794, 3.104166666666533) |
+| Curve.Length (ft) | 10.51672143623648 |
+| BoundingBox (model, ft) | Min=(915.2447664253826, 578.2298240521429, 2.4375000000000044); Max=(916.5780997587165, 588.7465454883795, 3.7708333333333384); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Соответствует условиям отбора |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Case 19 — MEP Fabrication Parts | Case 19: a FabricationPart is required. |
+| Case 20 — Flex Ducts | Case 20: a duct of the FlexDuct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1155115 / RBS&#95;PIPE&#95;BOTTOM&#95;ELEVATION | Lower End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0.8749999999998659 | 0' - 10 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1155114 / RBS&#95;PIPE&#95;TOP&#95;ELEVATION | Upper End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 2.2083333333333384 | 2' - 2 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150468 / RBS&#95;DUCT&#95;PIPE&#95;SYSTEM&#95;ABBREVIATION&#95;PARAM | System Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | HWS 231 | HWS 231 | — |
+| -1150437 / PIPE&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150434 / RBS&#95;REFERENCE&#95;OVERALLSIZE | Overall Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1150431 / RBS&#95;REFERENCE&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150430 / RBS&#95;REFERENCE&#95;INSULATION&#95;TYPE | Insulation Type | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141040 / RBS&#95;PIPE&#95;WALL&#95;THICKNESS | Wall Thickness | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1141033 / MEP&#95;PIPE&#95;LOWER&#95;INVERT&#95;ELEVATION | Lower End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.8749999999998659 | 0' - 10 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141032 / MEP&#95;PIPE&#95;UPPER&#95;INVERT&#95;ELEVATION | Upper End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.8750000000000044 | 0' - 10 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141031 / MEP&#95;PIPE&#95;LOWER&#95;OBVERT&#95;ELEVATION | Lower End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.2083333333332 | 2' - 2 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141030 / MEP&#95;PIPE&#95;UPPER&#95;OBVERT&#95;ELEVATION | Upper End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.2083333333333384 | 2' - 2 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141029 / MEP&#95;LOWER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 0.8749999999998659 | 0' - 10 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141028 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.2083333333332 | 2' - 2 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141027 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.8750000000000044 | 0' - 10 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141026 / MEP&#95;UPPER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 2.2083333333333384 | 2' - 2 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141024 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION | Lower End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.2083333333332 | 2' - 2 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141023 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION | Upper End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0.8750000000000044 | 0' - 10 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141021 / MEP&#95;LOWER&#95;CENTERLINE&#95;ELEVATION | Lower End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.5416666666665328 | 1' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141020 / MEP&#95;UPPER&#95;CENTERLINE&#95;ELEVATION | Upper End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.5416666666666776 | 1' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140334 / RBS&#95;PIPING&#95;SYSTEM&#95;TYPE&#95;PARAM | System Type | — |  | ElementId | False | True | ID 9839187; PipingSystemType; 231 Heating Water Supply | 231 Heating Water Supply | — |
+| -1140325 / RBS&#95;SYSTEM&#95;CLASSIFICATION&#95;PARAM | System Classification | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Hydronic Supply | Hydronic Supply | — |
+| -1140324 / RBS&#95;SYSTEM&#95;NAME&#95;PARAM | System Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | HWS 231.001 | HWS 231.001 | — |
+| -1140285 / PIPE&#95;VELOCITY&#95;PRESSURE | Velocity Pressure | — | autodesk.spec.aec.piping:pressure-2.0.0 | Double | True | True | 0 | 0.00 | autodesk.unit.unit:poundsForcePerSquareInch-1.0.1 |
+| -1140279 / RBS&#95;SEGMENT&#95;DESCRIPTION&#95;PARAM | Segment Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140278 / RBS&#95;PIPE&#95;JOINTTYPE&#95;PARAM | Connection Type | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Generic | Generic | — |
+| -1140277 / RBS&#95;PIPE&#95;SEGMENT&#95;PARAM | Pipe Segment | — |  | ElementId | False | True | ID 9004261; PipeSegment; Generic - Generic | Generic - Generic | — |
+| -1140256 / RBS&#95;PIPE&#95;SLOPE | Slope | — | autodesk.spec.aec.piping:slope-2.0.0 | Double | True | True | 0 | 0" / 12" | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1140238 / RBS&#95;PIPE&#95;OUTER&#95;DIAMETER | Outside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 1.3333333333333335 | 16" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140237 / RBS&#95;PIPE&#95;INVERT&#95;ELEVATION | Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.437499999999866 | 2' - 5 1/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140226 / RBS&#95;PIPE&#95;ADDITIONAL&#95;FLOW&#95;PARAM | Additional Flow | — | autodesk.spec.aec.piping:flow-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:usGallonsPerMinute-1.0.1 |
+| -1140225 / RBS&#95;PIPE&#95;DIAMETER&#95;PARAM | Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | False | True | 1.333333333333333 | 16" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140213 / RBS&#95;PIPE&#95;FLOW&#95;PARAM | Flow | — | autodesk.spec.aec.piping:flow-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:usGallonsPerMinute-1.0.1 |
+| -1140212 / RBS&#95;PIPE&#95;INNER&#95;DIAM&#95;PARAM | Inside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 1.3333333333333335 | 16" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140211 / RBS&#95;PIPE&#95;REYNOLDS&#95;NUMBER&#95;PARAM | Reynolds Number | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| -1140210 / RELATIVE&#95;ROUGHNESS | Relative Roughness | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 6.250000000000001E-06 | 0.000006 | autodesk.unit.unit:general-1.0.1 |
+| -1140209 / RBS&#95;PIPE&#95;FLOW&#95;STATE&#95;PARAM | Flow State | — |  | Integer | True | True | 0 | Laminar | — |
+| -1140208 / FRICTION&#95;FACTOR | Friction Factor | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| -1140207 / RBS&#95;PIPE&#95;VELOCITY&#95;PARAM | Velocity | — | autodesk.spec.aec.piping:velocity-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:feetPerSecond-1.0.1 |
+| -1140206 / RBS&#95;PIPE&#95;FRICTION&#95;PARAM | Friction | — | autodesk.spec.aec.piping:friction-2.0.0 | Double | True | True | 0 | 0.00 | autodesk.unit.unit:feetOfWater39.2DegreesFahrenheitPer100Feet-1.0.1 |
+| -1140205 / RBS&#95;PIPE&#95;PRESSUREDROP&#95;PARAM | Pressure Drop | — | autodesk.spec.aec.piping:pressure-2.0.0 | Double | True | True | 0 | 0.00 | autodesk.unit.unit:poundsForcePerSquareInch-1.0.1 |
+| -1140204 / PIPE&#95;ROUGHNESS | Roughness | — | autodesk.spec.aec.piping:roughness-2.0.0 | Double | True | True | 8.333333333333335E-06 | 0.00010" | autodesk.unit.unit:inches-1.0.1 |
+| -1140202 / RBS&#95;PIPE&#95;MATERIAL&#95;PARAM | Material | — | autodesk.spec.aec:material-1.0.0 | ElementId | True | True | ID 3442071; Material; Generic | Generic | — |
+| -1140200 / RBS&#95;PIPE&#95;CLASS&#95;PARAM | Schedule/Type | — |  | ElementId | True | True | ID 9004260; PipeScheduleType; Generic | Generic | — |
+| -1114240 / RBS&#95;CALCULATED&#95;SIZE | Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1114132 / RBS&#95;OFFSET&#95;PARAM | Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.5416666666666776 | 1' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114125 / RBS&#95;SECTION | Section | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 173 | 173 | — |
+| -1114120 / RBS&#95;CURVE&#95;SURFACE&#95;AREA | Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 44.05233973857438 | 44.05 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1114106 / RBS&#95;CURVE&#95;VERT&#95;OFFSET&#95;PARAM | Vertical Justification | — |  | Integer | False | True | 0 | Middle | — |
+| -1114105 / RBS&#95;CURVE&#95;HOR&#95;OFFSET&#95;PARAM | Horizontal Justification | — |  | Integer | False | True | 0 | Center | — |
+| -1114003 / RBS&#95;END&#95;OFFSET&#95;PARAM | End Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.5416666666665328 | 1' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114002 / RBS&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.5416666666666776 | 1' - 6 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114000 / RBS&#95;START&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | False | True | ID 5543638; Level; TO.SLAB ON GRADE; Elevation=1.5625; ProjectElevation=1.5625 ft | TO.SLAB ON GRADE | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2Qgo3WhTL6wxDlSIBWnEv1 | 2Qgo3WhTL6wxDlSIBWnEv1 | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 21885; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | True | Fabrication Converter Run: 20260904-184124; Source Fabrication Parts: 5513662, 5513668, 5513665, 5513673, 5513678 | Fabrication Converter Run: 20260904-184124; Source Fabrication Parts: 5513662, 5513668, 5513665, 5513673, 5513678 | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 10.51672143623648 | 10' - 6 3/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | mikhailov@synsys.co | mikhailov@synsys.co | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 21127 | 21-04 30 20 Heating Systems | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 9004258; PipeType; Generic | Pipe Types: Generic | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 9004258; PipeType; Generic | Pipe Types | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 9004258; PipeType; Generic | Generic | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 9004258; PipeType; Generic | 9004258 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 773557 | Location | 844826fc-e1b9-4f9f-8563-09086f90f547 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 990578 | Riser Identification | b63e45f8-e878-4135-8a89-c5f76088b134 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301807 | Part Number | 5c024cea-0951-4488-8e45-f2ee8d13c8cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301841 | Pipe End Prep | b8f4acb2-1273-4e86-8134-42e5d0c977d5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2493929 | Schedule Assembly Name | fbb89618-9a6c-4e16-8f84-9fdfa1bdbeb8 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5099147 | eVolve&#95;Description | dcd5b568-5c20-4681-bd0a-9f1461eacc81 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5099151 | eVolve&#95;Length | 8760c02c-eb41-407e-9bd2-a54c7f783534 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5099167 | eVolve&#95;Material | cb911cc4-b976-4ba2-88d2-a577cbe063ea | autodesk.spec.aec:material-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| 5372226 | Description BOM Suffix | 6ab251ac-c71a-4a6a-97d6-062906723c2a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521556 | STRATUS Item Number | 3332ec61-69bc-45ae-a27a-d17742402bc1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521667 | STRATUS Package Name | 00affe74-61c4-4022-b1b0-92147ae549d3 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521778 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521889 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032670 | TAG URL | 85025b6e-81f9-4f81-bc80-03fa24e3e793 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032671 | WARRANTY URL | 44fd084b-8c25-4318-b3a0-099d3f2d7a3e | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525690 | G&#95;Level | 95a355fa-2b50-48a4-8792-69ab1e027a5c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525691 | G&#95;Room Number | 13cf5993-589a-4ee0-9b3b-e8eac308ffde | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525692 | G&#95;Bldg Code | 49167cd9-4dc3-4440-ba12-ddecef1a9384 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7738747 | G&#95;Pump Size | 04a8f018-17c3-42e6-beef-f9c90bc416c6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760029 | G&#95;Installation Date | 2bd2852a-4397-4fdd-8bd5-da60d2b8372a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760031 | G&#95;Instance Description | c219978c-4ed4-47c8-b5f8-919061d14519 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760032 | G&#95;Instance Name | 0e67faa8-bd93-4a71-939b-597b56f57d80 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760033 | G&#95;Manuf Warranty End Date | a227a1ca-9f41-41ac-afbd-90ccce329df6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760034 | G&#95;Manuf Warranty Start Date | 9d7aa55d-7ffe-4d10-ac23-08c2de0d14df | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760035 | G&#95;Panel Name | 11eaa1ec-b873-4166-bc75-8e51cb0fd9d2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760037 | G&#95;Serial Number | aeecb302-d678-4536-b286-cbcd61005dc7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760038 | G&#95;Service Contractor Name | 9154ab36-45d3-4567-90c3-283a713daa16 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760039 | G&#95;Service Warranty End Date | f9c0cf92-9d62-419c-9895-607504300000 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760040 | G&#95;Service Warranty Start Date | 7f4326ba-b9b9-4d4a-bce6-7491b1df86d2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760041 | G&#95;System | 0b6658ce-e03f-47c0-9bc4-6efeb1ee9ae8 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760043 | G&#95;VFD | fdcc99b1-e29f-40f9-802c-d213e41ae12d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7896883 | Cx URL | 739cae16-6819-4c7f-81b1-cec8d1bd0476 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7896884 | G&#95;BldgRm | 039bc1f7-dd0e-4bf6-b2f0-d404e2319926 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8078460 | eVolve&#95;Offset | c3d44fb8-2b8e-4b5a-b6c4-9668955a11fa | autodesk.spec.aec:length-2.0.1 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863223 | Vic&#95;Zone | fb4de820-2d17-4e47-b9ac-69ddbdf23d9a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863248 | eV&#95;PackageStatus | 5fd1e8c7-3f37-4157-9001-d899261e0d84 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863249 | eV&#95;PackageId | 933b3bc8-1de7-440d-93d1-2ecf6e46cec7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863250 | eV&#95;PackageCondition | ecafb0df-68bb-43ae-95f2-0e95f2b32a4f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863251 | eV&#95;PackageLevel | 35eebff3-8304-4638-bedc-6c47e8dd9d7e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863252 | eM&#95;Service Name | c72cb70e-edc5-4c61-804e-0e425fd1a417 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863253 | eM&#95;Fitting Type | 7ae03332-d0af-4e1d-9d8e-bf089a63b74c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863269 | eM&#95;Buy Out | 86f34c8d-c1c3-4ff5-a024-a7b367188f78 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8863270 | eM&#95;Service Type | 30fd4c92-964c-43bb-98f8-fd9d1cf6b51e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863286 | eM&#95;Pattern Number | 2d78f697-ed2e-44ee-ae88-31e1ac1e31be | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863302 | eM&#95;Service Abbreviation | 5ad499cd-da39-41a8-938c-838d4580e637 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863303 | eM&#95;Status | 6b5ceed7-565c-46f4-99d9-ab9d2569e53e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863672 | eM&#95;Alternate | fde1a406-55e8-4d49-ad6a-ccc3cc49907b | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863688 | eM&#95;Drawing | 587c271a-543c-481a-a0b5-632411a355f1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863704 | eM&#95;Blank Price | b6cc041e-c78a-47a8-ad09-5a74daeb67fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863720 | eM&#95;STRATUS Package Name | 7cf38c22-a55b-426e-81c1-b389e5ee0bbf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863736 | eM&#95;CFM | 74925b28-949c-47c0-a76d-6b9e50a25b26 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863752 | eM&#95;CF1 | 15cd4e35-5f42-488b-a990-c56a0425afaa | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863768 | eM&#95;Spool | 559cae37-9e08-444e-8e49-f3cb37aef3c1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863784 | eM&#95;Cost Code | 23cb203f-4c4e-4b94-87e3-0a9b2272032d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863800 | eM&#95;Field 5 | 94df874b-1849-4c94-8b42-dda773a2aa32 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863816 | eM&#95;Field 8 | 741cfb66-db7d-4341-bb64-a4a11bf57496 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863832 | eM&#95;Field 9 | c0f00c68-221d-4bda-ae69-d3bcebe0ee53 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863848 | eM&#95;BOH | fcd94269-6d96-4650-b4ac-2d2f62b5e80e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863864 | eM&#95;Zero | 7be7016a-09ef-4d33-bf4e-dc47863de04e | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863880 | eM&#95;Field 4 | 54d68475-40d6-4a1e-82fa-5d794c0d06ca | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863896 | eM&#95;Field 2 | 42e0b582-f582-44f8-9e88-6d160d488670 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863912 | eM&#95;Special Buyout Fittings | e2d8079c-1c50-4400-80e9-b30e0735e12e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863928 | eM&#95;Field 7 | 9b73ebbe-27d7-4dab-91eb-de6c51a5ca6d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863944 | eM&#95;Zone | 9cbe5fc5-a78c-4cfd-b7d6-e0730ef95d56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863960 | eM&#95;Field 3 | 613011e0-3e6a-4838-8610-822130a8739e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864096 | eVolve&#95;PartSizeText | d1664ab1-fbe6-4d13-9e81-14ab90dba896 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 10419766 | Assemblies Transfer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 11542790 | WORKSET | 48c25af7-b856-4a8f-9c4a-152333be25de | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140276 / RBS&#95;ROUTING&#95;PREFERENCE&#95;PARAM | Routing Preferences | — |  | None | False | False | (нет значения) | — | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 1PzqSpXTD0nvyadGV1NJTK | 1PzqSpXTD0nvyadGV1NJTK | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | True | Not Used in Schedules | Not Used in Schedules | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 74 | Pipe Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Pipe Types | Pipe Types | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Generic | Generic | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 1453352 | Subcategory | d2292964-2f12-408c-97b6-d6c52fcc965d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7006719 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7006720 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008383 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008452 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008453 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008522 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008591 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008592 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008593 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008662 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032668 | O&amp;M URL | 3357fd9c-8fb2-422a-8fda-ffdc3d2a940c | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032669 | SUBMITTAL URL | 9af2ed08-f103-45e8-940c-e7a95efc5fe7 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760027 | G&#95;Current | c073cd01-45c0-40b5-8dc4-5006fb4af908 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760028 | G&#95;Expected Life Span | 747ebe30-2499-46d5-a67e-31ffbe8d5a9b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760030 | G&#95;Installation Vendor Name | 75d7d757-8d0a-4f62-a93b-5ff03241d2fe | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760036 | G&#95;Power | a8dd5941-553a-4fd9-a787-20cedd875d37 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760042 | G&#95;Type Name | 13bd03e9-736b-4c15-a185-1c1db0c44a6e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760044 | G&#95;Voltage | a1984d71-d71f-4481-bbfd-130bfaef114b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8858824 | RSen&#95;C&#95;content&#95;provider | 8b8009e8-b6c7-4167-8834-fd4d97e6edfa | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8858825 | RSen&#95;C&#95;content&#95;instruction | f164327b-487f-440a-bab6-471c23909c76 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8858826 | COBie.Type.Length | 3eae11c6-307f-43b0-b531-bb1bb36c9d2b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863109 | RSen&#95;C&#95;pressure&#95;class | 61a72181-6d6b-4bb9-bfb4-be79e201082c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863111 | RSen&#95;C&#95;code&#95;manufacturer&#95;gln | 9b17d619-989a-47f7-a2f0-49c6c8199297 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863112 | RSen&#95;C&#95;code&#95;ETIM | c2a98541-c0d2-433f-a4e7-7612b9cf49ad | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863113 | RSen&#95;C&#95;content&#95;creator | 67caeb59-485b-4d51-aa91-b012031dfeab | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863114 | RSen&#95;C&#95;content&#95;modification&#95;date | 731847c8-243f-4c0d-b0fa-bf2636a2cb72 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863115 | RSen&#95;C&#95;intended&#95;use | 9f6d92cf-3cc8-4b05-ac0d-572478574e48 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863116 | RSen&#95;C&#95;code&#95;ETIM&#95;url | 1a0fac1d-442d-4c13-ac3b-1744859d99bc | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863117 | RSen&#95;C&#95;content&#95;version | 48332332-bb80-41ec-aea0-60382a562245 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863118 | RSen&#95;C&#95;content&#95;releasedate | b783b13c-57e3-486c-b65f-24c57595f9e2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863119 | RSen&#95;C&#95;material&#95;colour | 6529ae05-1135-4b34-9c5a-a73927ad4f76 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863120 | RSen&#95;C&#95;level&#95;of&#95;development | 3525211b-44a6-4a59-957d-c630bf847717 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863121 | RSen&#95;C&#95;product&#95;assortment | bdd0bf55-494a-49e3-9be0-c9ec4444374d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863122 | IfcExportAs | f53d1285-ae3d-4992-a3f1-2e7978be529a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863123 | IfcExportType | 765c61bc-7588-4846-bfef-befb28681767 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863124 | IfcDescription | 99793364-7511-4937-80d1-4a6427f2c720 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863126 | RSen&#95;C&#95;code&#95;ETIM&#95;MC | ea79d41f-57a1-44b9-add4-13312db04a56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863127 | BIMObjectName | 588a702e-93f3-4db6-825b-0d3736512b77 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863128 | ClassificationName | bd3c56f9-11c4-48aa-8338-125bd7b998a2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863129 | ClassificationValue | 2c318371-26d5-4701-bade-fee90e82d7ee | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863130 | Manufacturers Telephone Number | 002fd9f1-f766-4f43-822e-4b55722c15e2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863131 | Manufacturers Email | cacddc87-2439-4a40-b846-87085358003c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863132 | Manufacturers Address | 1585ec7c-a2d2-43af-805c-58e9bae86980 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863133 | COBie.Type.Name | dcc3dc6b-e03d-40cc-ba11-9fc195ff6b00 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863134 | COBie.Type.Shape | a7d6726f-8690-45fb-8f3c-dd780afc494f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863135 | COBie.Type.Size | 5486dd17-cd5d-4233-ae36-ac8f8965c838 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863136 | COBie.Type.SustainabilityPerformance | 16c06d3d-838a-4049-bafe-5484bc1c6815 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863137 | COBie.Type.AccessibilityPerformance | 801d88c6-ece7-4adc-873b-ff124dc0bdd1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863138 | COBie.Type.Area | 782e69f8-f233-4f32-aaf5-d32f051be5c9 | autodesk.spec.aec:area-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| 8863139 | COBie.Type.AssetType | 07070fc8-cebf-4526-be91-a23ffc60d11c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863140 | COBie.Type.Category | a9c784b7-821d-48b2-9762-c0095c21175e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863141 | COBie.Type.CodePerformance | af89e628-dddb-48d2-b7e2-0c43a1caf695 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863142 | COBie.Type.Color | 5414df3b-cfb4-40f2-813c-a5c129c0c480 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863143 | COBie.Type.Constituents | 6c276cf6-7322-4358-8ca4-ec6ba087a054 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863144 | COBie.Type.CreatedBy | 8c2253a5-2cca-464a-8333-931ec0f901a9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863145 | COBie.Type.CreatedOn | 3303f7c7-2794-497c-9def-9e9dffb04a8d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863146 | COBie.Type.Description | 3ba1c328-0955-4f6c-9ab7-b873fa9edeb9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863147 | COBie.Type.DurationUnit | cc970df4-7803-4137-821f-67097616cab2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863148 | COBie.Type.ExpectedLife | bd55d52a-207a-4d1e-a5e6-646e00f0e000 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863149 | COBie.Type.Features | ec4d89ad-ea93-48a9-a316-a4dd30008dbe | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863150 | COBie.Type.Finish | 941e36f0-8489-4b4b-83c4-8627d34b3e7e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863151 | COBie.Type.Grade | 46ffbc2b-2ebe-414c-ad61-af8c8234eb8c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863152 | COBie.Type.Manufacturer | c62f2c43-d4cc-4584-97c7-1b93631821c4 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863153 | COBie.Type.ModelNumber | 2b53b174-9fda-4289-9afd-acce150c61ea | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863154 | COBie.Type.ModelReference | bb9e03c7-88da-41d3-bf7a-6eecde3fc96e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863155 | COBie.Type.Material | bee6f6de-2bf7-461a-9674-13bf26b8d77e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863156 | COBie.Type.WarrantyDurationParts | 0b029313-5040-4cc0-9f53-6cd3ea6ae189 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863157 | COBie.Type.WarrantyGuarantorParts | ca1c1731-b3c4-4c35-a9fe-06cf78d28270 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863158 | COBie.Type.WarrantyDurationUnit | 7e853141-e2bc-4ed9-b67a-220429bb19ce | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863159 | COBie.Type.WarrantyGuarantorLabor | 5e233065-a501-4b75-befd-73ae95e29807 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863160 | COBie.Type.WarrantyDurationLabor | e6b55f84-7e43-4ed3-8670-025ea5470ea9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863161 | COBie.Type.WarrantyDescription | 8bea5d8e-7168-416e-af6e-28282a95ace1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| ID 9232064 | ID 9232064; Pipe; Generic |
+| ID 9232065 | ID 9232065; Element;  |
+
+### MEP-коннекторы
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 3 |
+| Connector 0.Domain | DomainPiping |
+| Connector 0.ConnectorType | End |
+| Connector 0.Origin (ft) | (915.9114330920498, 578.2298240521429, 3.1041666666666714) |
+| Connector 0.IsConnected | True |
+| Connector 0.AllRefs (включая логические) | ID 9232064; Pipe; Generic; Connector 1; ID 9305571; FamilyInstance; Generic; Connector 1 |
+| Connector 1.Domain | DomainPiping |
+| Connector 1.ConnectorType | End |
+| Connector 1.Origin (ft) | (915.9114330920493, 588.7465454883794, 3.104166666666533) |
+| Connector 1.IsConnected | True |
+| Connector 1.AllRefs (включая логические) | ID 9232064; Pipe; Generic; Connector 0; ID 9236096; FamilyInstance; 16"; Connector 2 |
+| Connector 2.Domain | DomainPiping |
+| Connector 2.ConnectorType | Curve |
+| Connector 2.Origin (ft) | (915.9114330920495, 584.292204041923, 3.1041666666665915) |
+| Connector 2.IsConnected | True |
+| Connector 2.AllRefs (включая логические) | ID 9305619; FamilyInstance; Generic; Connector 1 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 5513762 — 2026-10-07 13:00:25 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;MP&#95;E |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;MP&#95;E.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 5513762 |
+| Element.UniqueId | 4ec18e7a-25ed-48c5-81c9-d1b49ff3ca79-00542222 |
+| API class | Autodesk.Revit.DB.FabricationPart |
+| Name | Default |
+| Category | MEP Fabrication Pipework; ID -2008208; OST&#95;FabricationPipework |
+| GetTypeId() | ID 5498885; FabricationPartType; Default |
+| LevelId | ID 5543638; Level; TO.SLAB ON GRADE; Elevation=1.5625; ProjectElevation=1.5625 ft |
+| Pinned | True |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 20258 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 21885; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(1023.2966418996417, 612.4230810684721, 6.1874999999999964); Max=(1023.3800585652355, 613.8397477351388, 7.520833333333329); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Case 19 — MEP Fabrication Parts | Соответствует условиям отбора |
+| Case 20 — Flex Ducts | Case 20: a duct of the FlexDuct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150435 / RBS&#95;REFERENCE&#95;FREESIZE | Free Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1150434 / RBS&#95;REFERENCE&#95;OVERALLSIZE | Overall Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1141040 / RBS&#95;PIPE&#95;WALL&#95;THICKNESS | Wall Thickness | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1141033 / MEP&#95;PIPE&#95;LOWER&#95;INVERT&#95;ELEVATION | Lower End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141032 / MEP&#95;PIPE&#95;UPPER&#95;INVERT&#95;ELEVATION | Upper End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141031 / MEP&#95;PIPE&#95;LOWER&#95;OBVERT&#95;ELEVATION | Lower End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141030 / MEP&#95;PIPE&#95;UPPER&#95;OBVERT&#95;ELEVATION | Upper End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141028 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141027 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141025 / MEP&#95;LOWER&#95;BOTTOM&#95;ELEVATION | Lower End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 4.6249999999999964 | 4' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141024 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION | Lower End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 5.958333333333329 | 5' - 11 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141023 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION | Upper End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 4.6249999999999964 | 4' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141022 / MEP&#95;UPPER&#95;TOP&#95;ELEVATION | Upper End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 5.958333333333329 | 5' - 11 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141021 / MEP&#95;LOWER&#95;CENTERLINE&#95;ELEVATION | Lower End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141020 / MEP&#95;UPPER&#95;CENTERLINE&#95;ELEVATION | Upper End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141014 / FABRICATION&#95;PART&#95;PAT&#95;NO | Part Pattern Number | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 2522 | 2522 | — |
+| -1141013 / FABRICATION&#95;END&#95;SIZE | Size of Connector End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141012 / FABRICATION&#95;BRANCH&#95;SIZE | Size of Primary Branch End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141011 / FABRICATION&#95;SEC&#95;SIZE | Size of Secondary End | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1141010 / FABRICATION&#95;PRI&#95;SIZE | Size of Primary End | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140998 / FABRICATION&#95;DOUBLEWALL&#95;MATERIAL&#95;ABBREVIATION | Double Wall Material Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | CU | CU | — |
+| -1140997 / FABRICATION&#95;MATERIAL&#95;ABBREVIATION | Material Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140996 / FABRICATION&#95;INSULATION&#95;SPECIFICATION&#95;ABBREVIATION | Insulation Specification Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 141-200 | 141-200 | — |
+| -1140995 / FABRICATION&#95;INSULATION&#95;ABBREVIATION | Insulation Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140994 / FABRICATION&#95;SPECIFICATION&#95;ABBREVIATION | Specification Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140993 / FABRICATION&#95;PIPE&#95;INVERT&#95;ELEVATION | Pipe Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140992 / FABRICATION&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION&#95;OF&#95;PART | Bottom Elevation with Insulation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140991 / FABRICATION&#95;BOTTOM&#95;ELEVATION&#95;OF&#95;PART | Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140990 / FABRICATION&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION&#95;OF&#95;PART | Top Elevation with Insulation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140989 / FABRICATION&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140983 / FABRICATION&#95;PART&#95;DOUBLEWALL&#95;MATERIAL&#95;AREA | Double Wall Material Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140981 / FABRICATION&#95;PART&#95;SHEETMETAL&#95;AREA | Part Sheet Metal Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140979 / FABRICATION&#95;SERVICE&#95;ABBREVIATION | Fabrication Service Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | CHWR | CHWR | — |
+| -1140977 / FABRICATION&#95;PART&#95;NOTES | Fabrication Notes | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140976 / FABRICATION&#95;PART&#95;LINING&#95;AREA | Lining Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140975 / FABRICATION&#95;PART&#95;ITEM&#95;NUMBER | Item Number | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 137 | 137 | — |
+| -1140974 / FABRICATION&#95;PART&#95;INSULATION&#95;AREA | Insulation Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140973 / FABRICATION&#95;SERVICE&#95;NAME | Fabrication Service Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | CHILLED WATER RETURN | CHILLED WATER RETURN | — |
+| -1140970 / FABRICATION&#95;PART&#95;CUT&#95;TYPE | Cut Type | — |  | Integer | True | True | 8 | Pipework | — |
+| -1140969 / FABRICATION&#95;PART&#95;BOUGHT&#95;OUT | Bought Out | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Yes | Yes | — |
+| -1140968 / FABRICATION&#95;PART&#95;ALIAS | Alias | — | autodesk.spec:spec.string-2.0.0 | String | True | True | BG | BG | — |
+| -1140966 / FABRICATION&#95;PRODUCT&#95;CODE | Product Code | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140965 / FABRICATION&#95;PART&#95;TAKEOFF&#95;DIALOG&#95;PARAM | More Parameters | — |  | None | False | False | (нет значения) | — | — |
+| -1140947 / FABRICATION&#95;INSULATION&#95;SPEC | Insulation Specification | — |  | Integer | True | True | 22 | MP: 2016 CEC HHW 141-200deg | — |
+| -1140944 / FABRICATION&#95;PART&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 8.333333333333332E-05 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140943 / FABRICATION&#95;PRODUCT&#95;ENTRY | Product Entry | — |  | String | False | True | 1" x 4-3/4" for 16" | 1" x 4-3/4" for 16" | — |
+| -1140925 / FABRICATION&#95;END&#95;OFFSET&#95;PARAM | End Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140924 / FABRICATION&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140923 / FABRICATION&#95;SLOPE&#95;PARAM | Slope | — | autodesk.spec.aec:slope-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1140920 / FABRICATION&#95;VENDOR | Vendor | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140919 / FABRICATION&#95;BOTTOM&#95;OF&#95;PART | Lower End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 4.624999999999996 | 4' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140918 / FABRICATION&#95;TOP&#95;OF&#95;PART | Upper End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 5.958333333333328 | 5' - 11 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140917 / FABRICATION&#95;OFFSET&#95;PARAM | Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 5.291666666666662 | 5' - 3 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140916 / FABRICATION&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | False | True | ID 5543638; Level; TO.SLAB ON GRADE; Elevation=1.5625; ProjectElevation=1.5625 ft | TO.SLAB ON GRADE | — |
+| -1140915 / FABRICATION&#95;SPECIFICATION | Specification | — |  | Integer | True | True | 3 | Piping Materials: Piping Materials | — |
+| -1140914 / FABRICATION&#95;VENDOR&#95;CODE | Vendor Code | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140913 / FABRICATION&#95;PART&#95;WEIGHT | Weight | — | autodesk.spec.aec.piping:mass-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:poundsMass-1.0.1 |
+| -1140912 / FABRICATION&#95;PART&#95;DIAMETER&#95;IN | Main Primary Diameter | — | autodesk.spec.aec.piping:pipeDimension-2.0.0 | Double | True | True | 1.333333333333333 | 16.000 | autodesk.unit.unit:inches-1.0.1 |
+| -1140910 / FABRICATION&#95;PRODUCT&#95;DATA&#95;INSTALL&#95;TYPE | Install Type | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140909 / FABRICATION&#95;PART&#95;MATERIAL | Part Material | — |  | Integer | True | True | 3 | Carbon Steel: Carbon Steel | — |
+| -1140908 / FABRICATION&#95;PRODUCT&#95;DATA&#95;OEM | OEM | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140907 / FABRICATION&#95;PRODUCT&#95;DATA&#95;PRODUCT | Product Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140906 / FABRICATION&#95;PRODUCT&#95;DATA&#95;ITEM&#95;DESCRIPTION | Product Short Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140905 / FABRICATION&#95;PRODUCT&#95;DATA&#95;SIZE&#95;DESCRIPTION | Product Size Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140904 / FABRICATION&#95;PRODUCT&#95;DATA&#95;MATERIAL&#95;DESCRIPTION | Product Material Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140903 / FABRICATION&#95;PRODUCT&#95;DATA&#95;SPECIFICATION | Product Specification Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140902 / FABRICATION&#95;PRODUCT&#95;DATA&#95;LONG&#95;DESCRIPTION | Product Long Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140901 / FABRICATION&#95;PRODUCT&#95;DATA&#95;RANGE | Product Range | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140900 / FABRICATION&#95;PRODUCT&#95;DATA&#95;FINISH&#95;DESCRIPTION | Product Finish Description | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008208 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Pipework | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008208 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Pipework | — |
+| -1140339 / FABRICATION&#95;SERVICE&#95;PARAM | Fabrication Service | — |  | Integer | False | True | 199 | CMI Piping: CHILLED WATER RETURN | — |
+| -1140238 / RBS&#95;PIPE&#95;OUTER&#95;DIAMETER | Outside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 1.333333333333333 | 16" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140212 / RBS&#95;PIPE&#95;INNER&#95;DIAM&#95;PARAM | Inside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 1.333333333333333 | 16" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140204 / PIPE&#95;ROUGHNESS | Roughness | — | autodesk.spec.aec.piping:roughness-2.0.0 | Double | True | True | 0 | 0.00000" | autodesk.unit.unit:inches-1.0.1 |
+| -1114240 / RBS&#95;CALCULATED&#95;SIZE | Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 16" | 16" | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 1EmOvw9Ur8nO79qRIVf&#95;XR | 1EmOvw9Ur8nO79qRIVf&#95;XR | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 21885; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 20258 | Workset1 | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 5498885; FabricationPartType; Default | 150 # Bolt Set: Default | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 5498885; FabricationPartType; Default | 150 # Bolt Set | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 5498885; FabricationPartType; Default | Default | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 5498885; FabricationPartType; Default | 5498885 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 773557 | Location | 844826fc-e1b9-4f9f-8563-09086f90f547 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301807 | Part Number | 5c024cea-0951-4488-8e45-f2ee8d13c8cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301841 | Pipe End Prep | b8f4acb2-1273-4e86-8134-42e5d0c977d5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5099159 | eVolve&#95;AssemblyGroup | d1bf582e-1f8f-48a4-b8e1-6b8933f6d32a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5099167 | eVolve&#95;Material | cb911cc4-b976-4ba2-88d2-a577cbe063ea | autodesk.spec.aec:material-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| 5372226 | Description BOM Suffix | 6ab251ac-c71a-4a6a-97d6-062906723c2a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5394638 | STRATUS | 21cbf71b-1c98-405d-8730-15703a006542 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5521556 | STRATUS Item Number | 3332ec61-69bc-45ae-a27a-d17742402bc1 | autodesk.spec:spec.string-2.0.0 | String | False | True | 137 | 137 | — |
+| 5521667 | STRATUS Package Name | 00affe74-61c4-4022-b1b0-92147ae549d3 | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| 5521778 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | True | http://gtp.one/VGTgTWDB | http://gtp.one/VGTgTWDB | — |
+| 5521889 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | True | Design | Design | — |
+| 5977890 | Schedule Designation | 466fbe56-284d-4e54-9e92-30447542498d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525690 | G&#95;Level | 95a355fa-2b50-48a4-8792-69ab1e027a5c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525691 | G&#95;Room Number | 13cf5993-589a-4ee0-9b3b-e8eac308ffde | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525692 | G&#95;Bldg Code | 49167cd9-4dc3-4440-ba12-ddecef1a9384 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760041 | G&#95;System | 0b6658ce-e03f-47c0-9bc4-6efeb1ee9ae8 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7896883 | Cx URL | 739cae16-6819-4c7f-81b1-cec8d1bd0476 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7896884 | G&#95;BldgRm | 039bc1f7-dd0e-4bf6-b2f0-d404e2319926 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8078460 | eVolve&#95;Offset | c3d44fb8-2b8e-4b5a-b6c4-9668955a11fa | autodesk.spec.aec:length-2.0.1 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863223 | Vic&#95;Zone | fb4de820-2d17-4e47-b9ac-69ddbdf23d9a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863248 | eV&#95;PackageStatus | 5fd1e8c7-3f37-4157-9001-d899261e0d84 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863249 | eV&#95;PackageId | 933b3bc8-1de7-440d-93d1-2ecf6e46cec7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863250 | eV&#95;PackageCondition | ecafb0df-68bb-43ae-95f2-0e95f2b32a4f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863251 | eV&#95;PackageLevel | 35eebff3-8304-4638-bedc-6c47e8dd9d7e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863252 | eM&#95;Service Name | c72cb70e-edc5-4c61-804e-0e425fd1a417 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863253 | eM&#95;Fitting Type | 7ae03332-d0af-4e1d-9d8e-bf089a63b74c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863269 | eM&#95;Buy Out | 86f34c8d-c1c3-4ff5-a024-a7b367188f78 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8863270 | eM&#95;Service Type | 30fd4c92-964c-43bb-98f8-fd9d1cf6b51e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863286 | eM&#95;Pattern Number | 2d78f697-ed2e-44ee-ae88-31e1ac1e31be | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863302 | eM&#95;Service Abbreviation | 5ad499cd-da39-41a8-938c-838d4580e637 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863303 | eM&#95;Status | 6b5ceed7-565c-46f4-99d9-ab9d2569e53e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863304 | eM&#95;Connector 3 | a7cd3d29-54c9-41da-99b3-f38a73c18dac | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863308 | eM&#95;Connector 1 | 6dd3e038-7f8e-45fd-8869-945a8d3a47e6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863312 | eM&#95;Connector 2 | 1792174d-f086-407b-a5f1-9075dfd4de63 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863316 | eM&#95;Top Diameter | f7b7ac00-3c88-4683-bcbb-f1954355a045 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863320 | eM&#95;Bonnet Y Offset | 7ddb5601-bf17-4e52-94d5-3ed039950d84 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863324 | eM&#95;Offset | 9fcf4b05-6e3e-4bf7-9c1c-4784cf0da77b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863328 | eM&#95;Diameter | e67e9e0e-a2ec-43db-97a3-56fb5e960736 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863332 | eM&#95;Shaft Diameter #1 | f6950910-72f2-4d75-920c-8e743509dcac | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863336 | eM&#95;Handle Diameter | 52cfb310-9492-4d1f-ac70-f7a5eee0ebd9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863340 | eM&#95;Rod Length | dcff6717-59b8-4536-a87e-73cf3fad1836 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863344 | eM&#95;Handle Length | 8d1b3f1c-8132-4dce-8a72-e864d23c3770 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863348 | eM&#95;Depth | 6763bb1e-22d8-482e-8ddb-e9e74d2d6a75 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863352 | eM&#95;Arrow Width | b59eb723-18bc-496e-827b-7ef4460e45eb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863356 | eM&#95;Overlap | aa3b2625-a6e6-4f19-8c32-5bffc39d1ed9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863360 | eM&#95;Number Of Struts | 0ad5ab25-b9bf-4ad2-95d7-753d7ec2a59d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863364 | eM&#95;Diameter #4 | ad6cf429-7fb7-4fe8-83e0-2cfa3a3e4cd7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863368 | eM&#95;Body Diameter | 42393a31-17df-4655-875a-1da42f9a1672 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863372 | eM&#95;Length #2 | 9dd9ca32-b344-4d9f-96ac-c9519fe99d3a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863376 | eM&#95;Rod Diameter | 2e63b433-b855-4631-a738-224aaa10db6e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863380 | eM&#95;Hanger Diameter | f0179035-be59-466b-ba17-e62f5be6af7d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863384 | eM&#95;Strut Diameter | 732e3138-1521-4356-b2fa-a482ce6c4a76 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863388 | eM&#95;Diameter #3 | 1e25ce3e-f979-4512-9d5e-8ac856574fa9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863392 | eM&#95;Height | 61ce3c3f-2736-49db-a799-4b3bcb7bffff | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863396 | eM&#95;Shaft Length #1 | 60305f40-3b3a-45cc-9421-f4934b429acf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863400 | eM&#95;Tap Diameter #1 | f0b6ed46-0a59-4f22-b24c-04e50673531f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863404 | eM&#95;Left Extension | e808084b-3942-4484-8bf8-e93b9b6277d2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863408 | eM&#95;Y-Offset | a840614b-8984-44df-b23d-84772d42e4ee | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863412 | eM&#95;Square Handle Thickness | 0f20344c-f985-4e34-baa5-eac2e8dc0ea6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863416 | eM&#95;Supported Depth | d5f2b34d-13b5-410a-b773-ac68231458ea | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863420 | eM&#95;Arrow Offset | 56d5b14f-72b0-4148-957d-e24c5639ec57 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863424 | eM&#95;Collar | bfbdcd50-04b1-4e2e-b7e3-d8aa380349be | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863428 | eM&#95;Offset #1 | 8849f251-de0a-473b-b0c0-2e09ada541af | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863432 | eM&#95;Round Angle | b0495d55-8e6e-43b0-8ca2-7623f1cbb682 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863436 | eM&#95;Length B | 37ca2e56-0971-4e24-b9a7-423662f19ccf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863440 | eM&#95;Extension #1 | d7e09f56-d0ca-4608-ac1b-d67cb1593169 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863444 | eM&#95;Angle | 2abc3958-3546-420d-9b1f-2aa2090e1cb4 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863448 | eM&#95;Rod Extn Above | c282dd5a-ff03-46bc-8402-30e8e7cc4b82 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863452 | eM&#95;Collar #2 | 9aa4075d-f85b-441f-a720-604d122e5eef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863456 | eM&#95;Right Extension | 98c6a962-85be-4f92-8e4e-d80925c4efa8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863460 | eM&#95;Arrow Rotation | 608f8171-970d-475e-9e82-729090904f43 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863464 | eM&#95;Angle #1 | 24331877-d257-4467-ba47-f3073b35bcad | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863468 | eM&#95;Length #4 | e1c22777-07ca-423d-85df-c7bbe2841cc5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863472 | eM&#95;Right Collar | 93fe5778-c8c6-436c-9963-8c98715967f6 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863476 | eM&#95;Diameter Out | 8dd36e79-9d83-4ea1-974f-465008fe27a7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863480 | eM&#95;Rod Extn Below | c6e6dd7c-bd5a-4639-bf44-1ddd792ac23c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863484 | eM&#95;Square Handle Fillet | ba239581-e42e-4af3-b036-f557b1a2a1f1 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863488 | eM&#95;Tap Length #1 | ae4ac181-57d9-4813-aab7-7993569efb45 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863492 | eM&#95;Right Diameter | 86978684-620e-41de-b4e0-8316c3fc327f | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863496 | eM&#95;Diameter In | 47d3ca84-8db0-4363-bd52-b66270faebf7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863500 | eM&#95;Length | 48f0c487-e0aa-4b00-ae11-7b67a68f6128 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863504 | eM&#95;Length #1 | a0ffaa8b-6518-45af-82f6-c6ee5c5151aa | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863508 | eM&#95;Shaft Length #2 | a8ead68d-e1b4-4512-bfd3-0493aa40d048 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863512 | eM&#95;Bonnet X Offset | bbbe928e-7926-4c14-b3ba-8be9026d6005 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863516 | eM&#95;Bottom Diameter | d361e18f-890b-4c99-940e-aa3c25a4e941 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863520 | eM&#95;Total Height | 73912b92-70fe-4de3-9ffc-23820ed380f2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863524 | eM&#95;Box Width | 7b5d6395-16a4-47e9-b47d-cc44160d4901 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863528 | eM&#95;Diameter #1 | 52b0a896-580a-4b4b-b3ec-7a4f62428aa8 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863532 | eM&#95;Shaft Diameter #2 | e9b47398-97eb-4e43-bced-256b3d8fd207 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863536 | eM&#95;Left Angle | a060af99-86bd-4bcd-8679-2d6539f1b34e | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863540 | eM&#95;Bottom Extension | 2ae1d59c-200b-4b52-9833-80c5c6fb0fce | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863544 | eM&#95;Diameter #2 | ae098c9e-0a3e-4f7e-89c5-440337e05ae7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863548 | eM&#95;Collar #4 | 29958fa8-e1f8-43dc-84b5-9b230e74f8e9 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863552 | eM&#95;Box Depth | 624cf8aa-e213-4e97-bc7e-f90a72ea11a0 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863556 | eM&#95;Shaft Diameter #3 | 40889dab-a4e8-4bb0-8b38-1142738f1bd7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863560 | eM&#95;Box Height | 01a879ae-3f2c-4328-9a81-4c60a3544c8c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863564 | eM&#95;Center Radius | b43d0eb7-8bc0-48d3-a2ab-a40bc105fcc2 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863568 | eM&#95;Collar #3 | 18e208bb-86eb-49cb-a9f9-30db52a9ad04 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863572 | eM&#95;Square Handle Length | 1ee6ccbb-df87-40c4-a24f-3b6d36c982cb | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863576 | eM&#95;Shaft Length #3 | e1b62fbc-9fac-4f8e-a4af-9db93dd4a0bc | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863580 | eM&#95;Btm Length | 5c6c5ac0-516d-470d-bd91-37488595e54d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863584 | eM&#95;Right Ang | 83ff5cc4-3344-49a4-bb74-52f12cb04266 | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863588 | eM&#95;Pipe Diameter | 7b74f1c6-03fc-46b8-a44c-5f419bb8b927 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863592 | eM&#95;Width | 3e9036cb-dcff-45c0-9cc1-72775053504e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863596 | eM&#95;Length #3 | b2d388cb-0ecb-454f-bb48-d70bf5dee582 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863600 | eM&#95;Globe Y Diameter | bd9748d1-7972-4fce-a191-ae0ffc62152d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863604 | eM&#95;Supported Width | c2c86dd3-2529-42d2-a68f-4c6963513022 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863608 | eM&#95;Rod Offset | dc6fffd8-f002-404f-9615-6bd5a6a7ada7 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863612 | eM&#95;Length A | dbf9afdc-fd88-490d-b255-c20bb819bf40 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863616 | eM&#95;Bearer Extn | 32bd72e6-54a2-4461-9f43-ccda6ae88c36 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863620 | eM&#95;Inset #1 | c6e731e7-84d2-439d-a9f9-499439658203 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863624 | eM&#95;Pipe Length | 067c5bea-0779-40bf-be55-dcaeb9582189 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863628 | eM&#95;Globe X Diameter | 034784ee-b3cb-46e4-814f-17b26b917b93 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863632 | eM&#95;Right Rod Offset | 690770f2-c748-4d92-8c56-ed0064bc34ef | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863636 | eM&#95;Outlet Size | 0300f1f6-33b4-4eb4-b502-c9c871889f39 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863640 | eM&#95;Collar #1 | 18600df7-8ac5-4738-895b-98aa09d2c7d3 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863644 | eM&#95;Arrow Length | 97449ff7-ee42-49c3-a34d-5a3a5972a93c | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863648 | eM&#95;Left Rod Offset | 0c4cfbf7-6708-4d4c-b001-f175f87af0ae | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863652 | eM&#95;Top Length | dd0e7efb-dd03-49d3-afab-3d06e82f9812 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863656 | eM&#95;Inlet Size | 2de608fc-a089-4279-961b-60699763265a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863660 | eM&#95;Top Extension | b94806fd-3a1c-4381-9a7e-08a120bb7512 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863664 | eM&#95;Handle Angle | 26957afd-15f2-4215-b7a4-a8953bd95a9c | autodesk.spec.aec:angle-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:degrees-1.0.1 |
+| 8863668 | eM&#95;Centre Offset | c445f0ff-c913-40cb-b257-ba26d25bb826 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863672 | eM&#95;Alternate | fde1a406-55e8-4d49-ad6a-ccc3cc49907b | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863688 | eM&#95;Drawing | 587c271a-543c-481a-a0b5-632411a355f1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863704 | eM&#95;Blank Price | b6cc041e-c78a-47a8-ad09-5a74daeb67fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863720 | eM&#95;STRATUS Package Name | 7cf38c22-a55b-426e-81c1-b389e5ee0bbf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863736 | eM&#95;CFM | 74925b28-949c-47c0-a76d-6b9e50a25b26 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863752 | eM&#95;CF1 | 15cd4e35-5f42-488b-a990-c56a0425afaa | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863768 | eM&#95;Spool | 559cae37-9e08-444e-8e49-f3cb37aef3c1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863784 | eM&#95;Cost Code | 23cb203f-4c4e-4b94-87e3-0a9b2272032d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863800 | eM&#95;Field 5 | 94df874b-1849-4c94-8b42-dda773a2aa32 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863816 | eM&#95;Field 8 | 741cfb66-db7d-4341-bb64-a4a11bf57496 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863832 | eM&#95;Field 9 | c0f00c68-221d-4bda-ae69-d3bcebe0ee53 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863848 | eM&#95;BOH | fcd94269-6d96-4650-b4ac-2d2f62b5e80e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863864 | eM&#95;Zero | 7be7016a-09ef-4d33-bf4e-dc47863de04e | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863880 | eM&#95;Field 4 | 54d68475-40d6-4a1e-82fa-5d794c0d06ca | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863896 | eM&#95;Field 2 | 42e0b582-f582-44f8-9e88-6d160d488670 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863912 | eM&#95;Special Buyout Fittings | e2d8079c-1c50-4400-80e9-b30e0735e12e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863928 | eM&#95;Field 7 | 9b73ebbe-27d7-4dab-91eb-de6c51a5ca6d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863944 | eM&#95;Zone | 9cbe5fc5-a78c-4cfd-b7d6-e0730ef95d56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863960 | eM&#95;Field 3 | 613011e0-3e6a-4838-8610-822130a8739e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864024 | eM&#95;DoubleWallMaterialThickness | adfd8534-f19c-4f7c-99b9-36af96c751a4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8864028 | eM&#95;OriginY | f30d173b-da4a-4a70-b9da-7b629aad9e32 | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8864032 | eM&#95;OriginX | f4ba2e43-7c65-44b2-834a-d38a5ab0d83c | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8864036 | eM&#95;InsulationType | 8d80f853-eb27-47e9-9fea-55ca71f112b9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864040 | eM&#95;InsulationThickness | baf74258-a0d9-406a-b8fd-fc51e569e85e | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8864044 | eM&#95;MaterialThickness | f6a65894-142c-4afb-9277-56ea14097a28 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8864048 | eM&#95;OriginZ | 9f170696-fb35-4b2a-b125-b9e98efd06cc | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8864052 | eM&#95;Fitting | 3b1949ab-c3ce-4426-87a2-ef5646728f35 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8864056 | eM&#95;CenterlineLength | f0928ac3-e93e-42d6-98df-efb9d60e5a6a | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8864060 | eM&#95;HasDoubleWall | 80b77bc5-d945-4a58-b2a4-0923987e9c6f | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8864064 | eM&#95;HasLining | db9587d2-519e-4633-bb46-2c452259ec8b | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8864068 | eM&#95;LiningThickness | e805d1e4-469c-4701-afe6-146dcae64cb5 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8864072 | eM&#95;HasInsulation | 948b5efc-226a-4465-bf80-a7b0cce1c1d9 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8864076 | eM&#95;Ancillary 1 | c026c756-6e2d-4349-a9d9-46425f0855ec | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864080 | eM&#95;Ancillary 2 | 8832f9ac-4c8e-4695-b11a-dfc4c611c25c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864084 | eM&#95;Ancillary 3 | 4769fc8b-f923-49f6-8cd7-1b6f227ba6cf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864088 | eM&#95;Ancillary 4 | 347c3bf9-f589-4895-9d51-5f788a0e1e18 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864092 | eM&#95;Ancillary 5 | 30d5d7b5-52bf-40ca-80c7-110ef3ef9ece | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864096 | eVolve&#95;PartSizeText | d1664ab1-fbe6-4d13-9e81-14ab90dba896 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864237 | G&#95;VALVE&#95;System | bfe8defd-6c9d-42e4-8a56-dc5e074bc512 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 10419766 | Assemblies Transfer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 11542790 | WORKSET | 48c25af7-b856-4a8f-9c4a-152333be25de | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140999 / FABRICATION&#95;FITTING&#95;DESCRIPTION | Fabrication Fitting Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 150 # Bolt Set | 150 # Bolt Set | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008208 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Pipework | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008208 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Pipework | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 1EmOvw9Ur8nO79qRIVe29y | 1EmOvw9Ur8nO79qRIVe29y | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 151 | Fabrication Part Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 150 # Bolt Set | 150 # Bolt Set | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Default | Default | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 7006719 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7006720 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008383 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008452 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008453 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008522 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008591 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008592 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008593 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008662 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8862704 | G&#95;Valve Size | 49f83881-da30-47d9-bfc5-558370225e2c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| ID 5513762 | ID 5513762; FabricationPart; Default |
+| ID 5513764 | ID 5513764; Element;  |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 10335984 — 2026-10-07 13:04:30 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;MP&#95;E |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;MP&#95;E.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 10335984 |
+| Element.UniqueId | 2c24e974-72ad-42b9-a4d9-e68a2959e1f2-009db6f0 |
+| API class | Autodesk.Revit.DB.Plumbing.Pipe |
+| Name | Schedule 40 Steel |
+| Category | Pipes; ID -2008044; OST&#95;PipeCurves |
+| GetTypeId() | ID 8002152; PipeType; Schedule 40 Steel |
+| LevelId | ID 5543638; Level; TO.SLAB ON GRADE; Elevation=1.5625; ProjectElevation=1.5625 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | ID 10340126; AssemblyInstance; SSP |
+| DesignOption | null |
+| WorksetId | 0 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 21885; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.LocationCurve |
+| LocationCurve.Curve class | Autodesk.Revit.DB.Line |
+| Curve.IsBound | True |
+| Curve.GetEndPoint(0) (ft) | (935.5139270433917, 604.5987612335252, 2.791341145826571) |
+| Curve.GetEndPoint(1) (ft) | (935.5139270433917, 602.56798217549, 2.791341145826572) |
+| Curve.Length (ft) | 2.0307790580352725 |
+| BoundingBox (model, ft) | Min=(935.3941353767251, 602.56798217549, 2.6715494791599044); Max=(935.6337187100584, 604.5987612335252, 2.9111328124932383); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: groups and assemblies are not supported yet. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Case 19 — MEP Fabrication Parts | Case 19: a FabricationPart is required. |
+| Case 20 — Flex Ducts | Case 20: a duct of the FlexDuct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1155115 / RBS&#95;PIPE&#95;BOTTOM&#95;ELEVATION | Lower End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.1090494791599044 | 1' - 1 5/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1155114 / RBS&#95;PIPE&#95;TOP&#95;ELEVATION | Upper End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.3486328124932383 | 1' - 4 3/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1150468 / RBS&#95;DUCT&#95;PIPE&#95;SYSTEM&#95;ABBREVIATION&#95;PARAM | System Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | HWR 232 | HWR 232 | — |
+| -1150437 / PIPE&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.piping:pipeInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150434 / RBS&#95;REFERENCE&#95;OVERALLSIZE | Overall Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 3" | 3" | — |
+| -1150431 / RBS&#95;REFERENCE&#95;INSULATION&#95;THICKNESS | Insulation Thickness | — | autodesk.spec.aec.hvac:ductInsulationThickness-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1150430 / RBS&#95;REFERENCE&#95;INSULATION&#95;TYPE | Insulation Type | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1150420 / ASSEMBLY&#95;NAME | Assembly Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | SSP | SSP | — |
+| -1141040 / RBS&#95;PIPE&#95;WALL&#95;THICKNESS | Wall Thickness | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0.016927083333333343 | 13/64" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1141033 / MEP&#95;PIPE&#95;LOWER&#95;INVERT&#95;ELEVATION | Lower End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.1259765624932374 | 1' - 1 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141032 / MEP&#95;PIPE&#95;UPPER&#95;INVERT&#95;ELEVATION | Upper End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.1259765624932383 | 1' - 1 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141031 / MEP&#95;PIPE&#95;LOWER&#95;OBVERT&#95;ELEVATION | Lower End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.3317057291599044 | 1' - 4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141030 / MEP&#95;PIPE&#95;UPPER&#95;OBVERT&#95;ELEVATION | Upper End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.3317057291599053 | 1' - 4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141029 / MEP&#95;LOWER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.1090494791599044 | 1' - 1 5/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141028 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.3486328124932374 | 1' - 4 3/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141027 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.1090494791599053 | 1' - 1 5/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141026 / MEP&#95;UPPER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.3486328124932383 | 1' - 4 3/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141024 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION | Lower End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.3486328124932374 | 1' - 4 3/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141023 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION | Upper End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.1090494791599053 | 1' - 1 5/16" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141021 / MEP&#95;LOWER&#95;CENTERLINE&#95;ELEVATION | Lower End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.228841145826571 | 1' - 2 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141020 / MEP&#95;UPPER&#95;CENTERLINE&#95;ELEVATION | Upper End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.2288411458265718 | 1' - 2 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140334 / RBS&#95;PIPING&#95;SYSTEM&#95;TYPE&#95;PARAM | System Type | — |  | ElementId | False | True | ID 9839188; PipingSystemType; 232 Heating Water Return | 232 Heating Water Return | — |
+| -1140325 / RBS&#95;SYSTEM&#95;CLASSIFICATION&#95;PARAM | System Classification | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Hydronic Return | Hydronic Return | — |
+| -1140324 / RBS&#95;SYSTEM&#95;NAME&#95;PARAM | System Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | HWR 232.004 | HWR 232.004 | — |
+| -1140285 / PIPE&#95;VELOCITY&#95;PRESSURE | Velocity Pressure | — | autodesk.spec.aec.piping:pressure-2.0.0 | Double | True | True | 0 | 0.00 | autodesk.unit.unit:poundsForcePerSquareInch-1.0.1 |
+| -1140279 / RBS&#95;SEGMENT&#95;DESCRIPTION&#95;PARAM | Segment Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140278 / RBS&#95;PIPE&#95;JOINTTYPE&#95;PARAM | Connection Type | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Generic | Generic | — |
+| -1140277 / RBS&#95;PIPE&#95;SEGMENT&#95;PARAM | Pipe Segment | — |  | ElementId | False | True | ID 726611; PipeSegment; Steel, Carbon - Schedule 40 | Steel, Carbon - Schedule 40 | — |
+| -1140256 / RBS&#95;PIPE&#95;SLOPE | Slope | — | autodesk.spec.aec.piping:slope-2.0.0 | Double | True | True | 0 | 0" / 12" | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1140238 / RBS&#95;PIPE&#95;OUTER&#95;DIAMETER | Outside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0.23958333333333337 | 2 7/8" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140237 / RBS&#95;PIPE&#95;INVERT&#95;ELEVATION | Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.6884765624932374 | 2' - 8 1/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140226 / RBS&#95;PIPE&#95;ADDITIONAL&#95;FLOW&#95;PARAM | Additional Flow | — | autodesk.spec.aec.piping:flow-2.0.0 | Double | False | True | 0 | 0 | autodesk.unit.unit:usGallonsPerMinute-1.0.1 |
+| -1140225 / RBS&#95;PIPE&#95;DIAMETER&#95;PARAM | Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | False | True | 0.20833333333333337 | 2 1/2" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140213 / RBS&#95;PIPE&#95;FLOW&#95;PARAM | Flow | — | autodesk.spec.aec.piping:flow-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:usGallonsPerMinute-1.0.1 |
+| -1140212 / RBS&#95;PIPE&#95;INNER&#95;DIAM&#95;PARAM | Inside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0.20572916666666669 | 2 15/32" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140211 / RBS&#95;PIPE&#95;REYNOLDS&#95;NUMBER&#95;PARAM | Reynolds Number | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| -1140210 / RELATIVE&#95;ROUGHNESS | Relative Roughness | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0.0007291139240506329 | 0.000729 | autodesk.unit.unit:general-1.0.1 |
+| -1140209 / RBS&#95;PIPE&#95;FLOW&#95;STATE&#95;PARAM | Flow State | — |  | Integer | True | True | 0 | Laminar | — |
+| -1140208 / FRICTION&#95;FACTOR | Friction Factor | — | autodesk.spec.aec:number-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:general-1.0.1 |
+| -1140207 / RBS&#95;PIPE&#95;VELOCITY&#95;PARAM | Velocity | — | autodesk.spec.aec.piping:velocity-2.0.0 | Double | True | True | 0 | 0 | autodesk.unit.unit:feetPerSecond-1.0.1 |
+| -1140206 / RBS&#95;PIPE&#95;FRICTION&#95;PARAM | Friction | — | autodesk.spec.aec.piping:friction-2.0.0 | Double | True | True | 0 | 0.00 | autodesk.unit.unit:feetOfWater39.2DegreesFahrenheitPer100Feet-1.0.1 |
+| -1140205 / RBS&#95;PIPE&#95;PRESSUREDROP&#95;PARAM | Pressure Drop | — | autodesk.spec.aec.piping:pressure-2.0.0 | Double | True | True | 0 | 0.00 | autodesk.unit.unit:poundsForcePerSquareInch-1.0.1 |
+| -1140204 / PIPE&#95;ROUGHNESS | Roughness | — | autodesk.spec.aec.piping:roughness-2.0.0 | Double | True | True | 0.00015000000000000001 | 0.00180" | autodesk.unit.unit:inches-1.0.1 |
+| -1140202 / RBS&#95;PIPE&#95;MATERIAL&#95;PARAM | Material | — | autodesk.spec.aec:material-1.0.0 | ElementId | True | True | ID 725266; Material; Steel, Carbon | Steel, Carbon | — |
+| -1140200 / RBS&#95;PIPE&#95;CLASS&#95;PARAM | Schedule/Type | — |  | ElementId | True | True | ID 378150; PipeScheduleType; Schedule 40 | Schedule 40 | — |
+| -1114240 / RBS&#95;CALCULATED&#95;SIZE | Size | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 2 1/2" | 2 1/2" | — |
+| -1114132 / RBS&#95;OFFSET&#95;PARAM | Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | False | True | 1.228841145826571 | 1' - 2 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114125 / RBS&#95;SECTION | Section | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 61 | 61 | — |
+| -1114120 / RBS&#95;CURVE&#95;SURFACE&#95;AREA | Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | True | 1.3291417853724181 | 1.33 SF | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1114106 / RBS&#95;CURVE&#95;VERT&#95;OFFSET&#95;PARAM | Vertical Justification | — |  | Integer | False | True | 0 | Middle | — |
+| -1114105 / RBS&#95;CURVE&#95;HOR&#95;OFFSET&#95;PARAM | Horizontal Justification | — |  | Integer | False | True | 0 | Center | — |
+| -1114003 / RBS&#95;END&#95;OFFSET&#95;PARAM | End Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.2288411458265718 | 1' - 2 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114002 / RBS&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 1.228841145826571 | 1' - 2 3/4" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1114000 / RBS&#95;START&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | False | True | ID 5543638; Level; TO.SLAB ON GRADE; Elevation=1.5625; ProjectElevation=1.5625 ft | TO.SLAB ON GRADE | — |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 0i9EbqSgr2kQJPveefn5S2 | 0i9EbqSgr2kQJPveefn5S2 | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | True | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | True | True | ID 21885; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1004005 / CURVE&#95;ELEM&#95;LENGTH | Length | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 2.0307790580352725 | 2' - 0 3/8" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 0 | Model Administration | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 8002152; PipeType; Schedule 40 Steel | Pipe Types: Schedule 40 Steel | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 8002152; PipeType; Schedule 40 Steel | Pipe Types | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 8002152; PipeType; Schedule 40 Steel | Schedule 40 Steel | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 8002152; PipeType; Schedule 40 Steel | 8002152 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 773557 | Location | 844826fc-e1b9-4f9f-8563-09086f90f547 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 990578 | Riser Identification | b63e45f8-e878-4135-8a89-c5f76088b134 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301807 | Part Number | 5c024cea-0951-4488-8e45-f2ee8d13c8cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2301841 | Pipe End Prep | b8f4acb2-1273-4e86-8134-42e5d0c977d5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 2493929 | Schedule Assembly Name | fbb89618-9a6c-4e16-8f84-9fdfa1bdbeb8 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5099147 | eVolve&#95;Description | dcd5b568-5c20-4681-bd0a-9f1461eacc81 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5099151 | eVolve&#95;Length | 8760c02c-eb41-407e-9bd2-a54c7f783534 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5099167 | eVolve&#95;Material | cb911cc4-b976-4ba2-88d2-a577cbe063ea | autodesk.spec.aec:material-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| 5372226 | Description BOM Suffix | 6ab251ac-c71a-4a6a-97d6-062906723c2a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521556 | STRATUS Item Number | 3332ec61-69bc-45ae-a27a-d17742402bc1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521667 | STRATUS Package Name | 00affe74-61c4-4022-b1b0-92147ae549d3 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521778 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5521889 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032670 | TAG URL | 85025b6e-81f9-4f81-bc80-03fa24e3e793 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032671 | WARRANTY URL | 44fd084b-8c25-4318-b3a0-099d3f2d7a3e | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525690 | G&#95;Level | 95a355fa-2b50-48a4-8792-69ab1e027a5c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525691 | G&#95;Room Number | 13cf5993-589a-4ee0-9b3b-e8eac308ffde | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7525692 | G&#95;Bldg Code | 49167cd9-4dc3-4440-ba12-ddecef1a9384 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7738747 | G&#95;Pump Size | 04a8f018-17c3-42e6-beef-f9c90bc416c6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760029 | G&#95;Installation Date | 2bd2852a-4397-4fdd-8bd5-da60d2b8372a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760031 | G&#95;Instance Description | c219978c-4ed4-47c8-b5f8-919061d14519 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760032 | G&#95;Instance Name | 0e67faa8-bd93-4a71-939b-597b56f57d80 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760033 | G&#95;Manuf Warranty End Date | a227a1ca-9f41-41ac-afbd-90ccce329df6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760034 | G&#95;Manuf Warranty Start Date | 9d7aa55d-7ffe-4d10-ac23-08c2de0d14df | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760035 | G&#95;Panel Name | 11eaa1ec-b873-4166-bc75-8e51cb0fd9d2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760037 | G&#95;Serial Number | aeecb302-d678-4536-b286-cbcd61005dc7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760038 | G&#95;Service Contractor Name | 9154ab36-45d3-4567-90c3-283a713daa16 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760039 | G&#95;Service Warranty End Date | f9c0cf92-9d62-419c-9895-607504300000 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760040 | G&#95;Service Warranty Start Date | 7f4326ba-b9b9-4d4a-bce6-7491b1df86d2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760041 | G&#95;System | 0b6658ce-e03f-47c0-9bc4-6efeb1ee9ae8 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760043 | G&#95;VFD | fdcc99b1-e29f-40f9-802c-d213e41ae12d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7896883 | Cx URL | 739cae16-6819-4c7f-81b1-cec8d1bd0476 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7896884 | G&#95;BldgRm | 039bc1f7-dd0e-4bf6-b2f0-d404e2319926 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8078460 | eVolve&#95;Offset | c3d44fb8-2b8e-4b5a-b6c4-9668955a11fa | autodesk.spec.aec:length-2.0.1 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863223 | Vic&#95;Zone | fb4de820-2d17-4e47-b9ac-69ddbdf23d9a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863248 | eV&#95;PackageStatus | 5fd1e8c7-3f37-4157-9001-d899261e0d84 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863249 | eV&#95;PackageId | 933b3bc8-1de7-440d-93d1-2ecf6e46cec7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863250 | eV&#95;PackageCondition | ecafb0df-68bb-43ae-95f2-0e95f2b32a4f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863251 | eV&#95;PackageLevel | 35eebff3-8304-4638-bedc-6c47e8dd9d7e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863252 | eM&#95;Service Name | c72cb70e-edc5-4c61-804e-0e425fd1a417 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863253 | eM&#95;Fitting Type | 7ae03332-d0af-4e1d-9d8e-bf089a63b74c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863269 | eM&#95;Buy Out | 86f34c8d-c1c3-4ff5-a024-a7b367188f78 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 8863270 | eM&#95;Service Type | 30fd4c92-964c-43bb-98f8-fd9d1cf6b51e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863286 | eM&#95;Pattern Number | 2d78f697-ed2e-44ee-ae88-31e1ac1e31be | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863302 | eM&#95;Service Abbreviation | 5ad499cd-da39-41a8-938c-838d4580e637 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863303 | eM&#95;Status | 6b5ceed7-565c-46f4-99d9-ab9d2569e53e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863672 | eM&#95;Alternate | fde1a406-55e8-4d49-ad6a-ccc3cc49907b | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863688 | eM&#95;Drawing | 587c271a-543c-481a-a0b5-632411a355f1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863704 | eM&#95;Blank Price | b6cc041e-c78a-47a8-ad09-5a74daeb67fb | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863720 | eM&#95;STRATUS Package Name | 7cf38c22-a55b-426e-81c1-b389e5ee0bbf | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863736 | eM&#95;CFM | 74925b28-949c-47c0-a76d-6b9e50a25b26 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863752 | eM&#95;CF1 | 15cd4e35-5f42-488b-a990-c56a0425afaa | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863768 | eM&#95;Spool | 559cae37-9e08-444e-8e49-f3cb37aef3c1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863784 | eM&#95;Cost Code | 23cb203f-4c4e-4b94-87e3-0a9b2272032d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863800 | eM&#95;Field 5 | 94df874b-1849-4c94-8b42-dda773a2aa32 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863816 | eM&#95;Field 8 | 741cfb66-db7d-4341-bb64-a4a11bf57496 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863832 | eM&#95;Field 9 | c0f00c68-221d-4bda-ae69-d3bcebe0ee53 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863848 | eM&#95;BOH | fcd94269-6d96-4650-b4ac-2d2f62b5e80e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863864 | eM&#95;Zero | 7be7016a-09ef-4d33-bf4e-dc47863de04e | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 8863880 | eM&#95;Field 4 | 54d68475-40d6-4a1e-82fa-5d794c0d06ca | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863896 | eM&#95;Field 2 | 42e0b582-f582-44f8-9e88-6d160d488670 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863912 | eM&#95;Special Buyout Fittings | e2d8079c-1c50-4400-80e9-b30e0735e12e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863928 | eM&#95;Field 7 | 9b73ebbe-27d7-4dab-91eb-de6c51a5ca6d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863944 | eM&#95;Zone | 9cbe5fc5-a78c-4cfd-b7d6-e0730ef95d56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863960 | eM&#95;Field 3 | 613011e0-3e6a-4838-8610-822130a8739e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8864096 | eVolve&#95;PartSizeText | d1664ab1-fbe6-4d13-9e81-14ab90dba896 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 10419766 | Assemblies Transfer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 11542790 | WORKSET | 48c25af7-b856-4a8f-9c4a-152333be25de | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008044 (не разрешён в элемент документа; возможное служебное значение) | Pipes | — |
+| -1140276 / RBS&#95;ROUTING&#95;PREFERENCE&#95;PARAM | Routing Preferences | — |  | None | False | False | (нет значения) | — | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 36NhOcjXf4I9tXIXPrzMHV | 36NhOcjXf4I9tXIXPrzMHV | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 74 | Pipe Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Pipe Types | Pipe Types | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Schedule 40 Steel | Schedule 40 Steel | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+| 1453352 | Subcategory | d2292964-2f12-408c-97b6-d6c52fcc965d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7006719 | Classification.OmniClass.23.Number | fb272f85-666a-45a4-ae16-fa4d620d81b7 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7006720 | Classification.OmniClass.23.Description | ce24f3b1-369d-42bb-987e-ac0b45c4f8da | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008383 | Classification.OmniClass.21.Number | d8b20410-414f-4777-8614-a7564519c6cd | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008452 | Classification.MasterFormat.Description | d2419913-cfac-48c8-a4ed-68cd9ba34d22 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008453 | Classification.OmniClass.22.Number | c7ce9441-9aba-45ab-acbb-74e687481466 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008522 | Classification.OmniClass.21.Description | 3f9a284a-7485-460c-b827-9df8cd50720e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008591 | Classification.UniFormat.II.Description | 430add52-84da-4f06-a722-b41e50edf92e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008592 | Classification.MasterFormat.Number | 9ecb2267-95ee-4bfc-994c-21035d452bd0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008593 | Classification.OmniClass.22.Description | 07b6cf99-a3d2-4d7a-9ea4-246058cfae1a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7008662 | Classification.UniFormat.II.Number | acd767ec-6d1d-43e4-8b9d-a75db434e751 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032668 | O&amp;M URL | 3357fd9c-8fb2-422a-8fda-ffdc3d2a940c | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7032669 | SUBMITTAL URL | 9af2ed08-f103-45e8-940c-e7a95efc5fe7 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760027 | G&#95;Current | c073cd01-45c0-40b5-8dc4-5006fb4af908 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760028 | G&#95;Expected Life Span | 747ebe30-2499-46d5-a67e-31ffbe8d5a9b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760030 | G&#95;Installation Vendor Name | 75d7d757-8d0a-4f62-a93b-5ff03241d2fe | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760036 | G&#95;Power | a8dd5941-553a-4fd9-a787-20cedd875d37 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760042 | G&#95;Type Name | 13bd03e9-736b-4c15-a185-1c1db0c44a6e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7760044 | G&#95;Voltage | a1984d71-d71f-4481-bbfd-130bfaef114b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8858824 | RSen&#95;C&#95;content&#95;provider | 8b8009e8-b6c7-4167-8834-fd4d97e6edfa | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8858825 | RSen&#95;C&#95;content&#95;instruction | f164327b-487f-440a-bab6-471c23909c76 | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8858826 | COBie.Type.Length | 3eae11c6-307f-43b0-b531-bb1bb36c9d2b | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8863109 | RSen&#95;C&#95;pressure&#95;class | 61a72181-6d6b-4bb9-bfb4-be79e201082c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863111 | RSen&#95;C&#95;code&#95;manufacturer&#95;gln | 9b17d619-989a-47f7-a2f0-49c6c8199297 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863112 | RSen&#95;C&#95;code&#95;ETIM | c2a98541-c0d2-433f-a4e7-7612b9cf49ad | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863113 | RSen&#95;C&#95;content&#95;creator | 67caeb59-485b-4d51-aa91-b012031dfeab | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863114 | RSen&#95;C&#95;content&#95;modification&#95;date | 731847c8-243f-4c0d-b0fa-bf2636a2cb72 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863115 | RSen&#95;C&#95;intended&#95;use | 9f6d92cf-3cc8-4b05-ac0d-572478574e48 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863116 | RSen&#95;C&#95;code&#95;ETIM&#95;url | 1a0fac1d-442d-4c13-ac3b-1744859d99bc | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863117 | RSen&#95;C&#95;content&#95;version | 48332332-bb80-41ec-aea0-60382a562245 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863118 | RSen&#95;C&#95;content&#95;releasedate | b783b13c-57e3-486c-b65f-24c57595f9e2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863119 | RSen&#95;C&#95;material&#95;colour | 6529ae05-1135-4b34-9c5a-a73927ad4f76 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863120 | RSen&#95;C&#95;level&#95;of&#95;development | 3525211b-44a6-4a59-957d-c630bf847717 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863121 | RSen&#95;C&#95;product&#95;assortment | bdd0bf55-494a-49e3-9be0-c9ec4444374d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863122 | IfcExportAs | f53d1285-ae3d-4992-a3f1-2e7978be529a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863123 | IfcExportType | 765c61bc-7588-4846-bfef-befb28681767 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863124 | IfcDescription | 99793364-7511-4937-80d1-4a6427f2c720 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863126 | RSen&#95;C&#95;code&#95;ETIM&#95;MC | ea79d41f-57a1-44b9-add4-13312db04a56 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863127 | BIMObjectName | 588a702e-93f3-4db6-825b-0d3736512b77 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863128 | ClassificationName | bd3c56f9-11c4-48aa-8338-125bd7b998a2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863129 | ClassificationValue | 2c318371-26d5-4701-bade-fee90e82d7ee | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863130 | Manufacturers Telephone Number | 002fd9f1-f766-4f43-822e-4b55722c15e2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863131 | Manufacturers Email | cacddc87-2439-4a40-b846-87085358003c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863132 | Manufacturers Address | 1585ec7c-a2d2-43af-805c-58e9bae86980 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863133 | COBie.Type.Name | dcc3dc6b-e03d-40cc-ba11-9fc195ff6b00 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863134 | COBie.Type.Shape | a7d6726f-8690-45fb-8f3c-dd780afc494f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863135 | COBie.Type.Size | 5486dd17-cd5d-4233-ae36-ac8f8965c838 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863136 | COBie.Type.SustainabilityPerformance | 16c06d3d-838a-4049-bafe-5484bc1c6815 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863137 | COBie.Type.AccessibilityPerformance | 801d88c6-ece7-4adc-873b-ff124dc0bdd1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863138 | COBie.Type.Area | 782e69f8-f233-4f32-aaf5-d32f051be5c9 | autodesk.spec.aec:area-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| 8863139 | COBie.Type.AssetType | 07070fc8-cebf-4526-be91-a23ffc60d11c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863140 | COBie.Type.Category | a9c784b7-821d-48b2-9762-c0095c21175e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863141 | COBie.Type.CodePerformance | af89e628-dddb-48d2-b7e2-0c43a1caf695 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863142 | COBie.Type.Color | 5414df3b-cfb4-40f2-813c-a5c129c0c480 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863143 | COBie.Type.Constituents | 6c276cf6-7322-4358-8ca4-ec6ba087a054 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863144 | COBie.Type.CreatedBy | 8c2253a5-2cca-464a-8333-931ec0f901a9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863145 | COBie.Type.CreatedOn | 3303f7c7-2794-497c-9def-9e9dffb04a8d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863146 | COBie.Type.Description | 3ba1c328-0955-4f6c-9ab7-b873fa9edeb9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863147 | COBie.Type.DurationUnit | cc970df4-7803-4137-821f-67097616cab2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863148 | COBie.Type.ExpectedLife | bd55d52a-207a-4d1e-a5e6-646e00f0e000 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863149 | COBie.Type.Features | ec4d89ad-ea93-48a9-a316-a4dd30008dbe | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863150 | COBie.Type.Finish | 941e36f0-8489-4b4b-83c4-8627d34b3e7e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863151 | COBie.Type.Grade | 46ffbc2b-2ebe-414c-ad61-af8c8234eb8c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863152 | COBie.Type.Manufacturer | c62f2c43-d4cc-4584-97c7-1b93631821c4 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863153 | COBie.Type.ModelNumber | 2b53b174-9fda-4289-9afd-acce150c61ea | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863154 | COBie.Type.ModelReference | bb9e03c7-88da-41d3-bf7a-6eecde3fc96e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863155 | COBie.Type.Material | bee6f6de-2bf7-461a-9674-13bf26b8d77e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863156 | COBie.Type.WarrantyDurationParts | 0b029313-5040-4cc0-9f53-6cd3ea6ae189 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863157 | COBie.Type.WarrantyGuarantorParts | ca1c1731-b3c4-4c35-a9fe-06cf78d28270 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863158 | COBie.Type.WarrantyDurationUnit | 7e853141-e2bc-4ed9-b67a-220429bb19ce | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863159 | COBie.Type.WarrantyGuarantorLabor | 5e233065-a501-4b75-befd-73ae95e29807 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863160 | COBie.Type.WarrantyDurationLabor | e6b55f84-7e43-4ed3-8670-025ea5470ea9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8863161 | COBie.Type.WarrantyDescription | 8bea5d8e-7168-416e-af6e-28282a95ace1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| ID 10335984 | ID 10335984; Pipe; Schedule 40 Steel |
+| ID 10335985 | ID 10335985; Element;  |
+
+### MEP-коннекторы
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 2 |
+| Connector 0.Domain | DomainPiping |
+| Connector 0.ConnectorType | End |
+| Connector 0.Origin (ft) | (935.5139270433917, 604.5987612335252, 2.791341145826571) |
+| Connector 0.IsConnected | True |
+| Connector 0.AllRefs (включая логические) | ID 10324626; FamilyInstance; Standard; Connector 2; ID 10335984; Pipe; Schedule 40 Steel; Connector 1 |
+| Connector 1.Domain | DomainPiping |
+| Connector 1.ConnectorType | End |
+| Connector 1.Origin (ft) | (935.5139270433917, 602.56798217549, 2.791341145826572) |
+| Connector 1.IsConnected | True |
+| Connector 1.AllRefs (включая логические) | ID 10335984; Pipe; Schedule 40 Steel; Connector 0; ID 10321562; FamilyInstance; Liquid Treatment Component Pressure Sand Filter Vessel for Sand Filter Assembly; Connector 2 |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+
+
+
+## Элемент ID 7377791 — 2026-10-07 17:16:57 +03:00
+
+### Документ и элемент
+
+| Свойство | Значение |
+| --- | --- |
+| Revit | Autodesk Revit 2025; 2025; build 25.4.41.14 |
+| Document.Title | US-SVL-BRGUP123&#95;PL |
+| Document.PathName | Autodesk Docs://US-SVL-BRGUP1,2,3 1390 Borregas CUP/US-SVL-BRGUP123&#95;PL.rvt |
+| ProjectInformation.UniqueId | 7cacd49c-ac17-4591-ad0a-cbc9bb40015a-00012b83 |
+| Document.IsWorkshared | True |
+| Element.Id | 7377791 |
+| Element.UniqueId | 9686ec06-0bc8-4b5f-bcb5-08a764c03d6f-0070937f |
+| API class | Autodesk.Revit.DB.FabricationPart |
+| Name | Default |
+| Category | MEP Fabrication Hangers; ID -2008203; OST&#95;FabricationHangers |
+| GetTypeId() | ID 2280403; FabricationPartType; Default |
+| LevelId | ID 2640483; Level; TO.SLAB ON GARDE; Elevation=1.4583333333333333; ProjectElevation=1.4583333333333333 ft |
+| Pinned | False |
+| GroupId | -1 (InvalidElementId) |
+| AssemblyInstanceId | -1 (InvalidElementId) |
+| DesignOption | null |
+| WorksetId | 42532 |
+| OwnerViewId | -1 (InvalidElementId) |
+| ViewSpecific | False |
+| CreatedPhaseId | ID 32440; Phase; Phase 1 |
+| DemolishedPhaseId | -1 (InvalidElementId) |
+
+### Размещение
+
+| Свойство | Значение |
+| --- | --- |
+| Location class | Autodesk.Revit.DB.Location |
+| BoundingBox (model, ft) | Min=(912.4273005563103, 623.0845575803627, 9.067887137346137); Max=(912.6877172130429, 623.1678909161795, 11.083333333327214); Origin=(0, 0, 0); BasisX=(1, 0, 0); BasisY=(0, 1, 0); BasisZ=(0, 0, 1) |
+
+### Проверка реализованных кейсов (без переноса)
+
+| Кейс | Принадлежность |
+| --- | --- |
+| Case 1 — single-level loadable family without a host | Case 1: a FamilyInstance is required. |
+| Case 2 — columns and walls | Case 2: a structural or architectural column FamilyInstance is required. |
+| Case 3 — face-hosted family | Case 3: a WorkPlaneBased loadable family is required. |
+| Case 4 — floors and foundation slabs | Case 4: a floor or foundation slab of the Floor class is required. |
+| Case 5 — extrusion roofs | Case 5: an extrusion roof of the ExtrusionRoof class is required. |
+| Case 6 — footprint roofs | Case 6: a footprint roof of the FootPrintRoof class is required. |
+| Case 7 — beams with Reference Level | Case 7: a loadable CurveDrivenStructural beam is required. |
+| Case 8 — recreate Room Separation Lines | Case 8: a straight Room Separation Line is required. |
+| Case 9 — stairs | Case 9: an element of the Stairs class is required. |
+| Case 10 — railings | Case 10: an element of the Railing class is required. |
+| Case 11 — pipes | Case 11: an element of the Pipe class is required. |
+| Case 12 — building pads | Case 12: an element of the BuildingPad class is required. |
+| Case 13 — ducts | Case 13: an element of the Duct class is required. |
+| Case 14 — shaft openings | Case 14: a shaft opening of the Opening class is required. |
+| Case 15 — ramps | Case 15: an instance of the Ramps category is required. |
+| Case 16 — internal in-place walls | Case 16: an internal wall of a hosted in-place family is required. |
+| Case 17 — room recreation | Case 17: a Room is required. |
+| Case 18 — area boundary recreation | Case 18: a straight Area Boundary Line is required. |
+| Case 19 — MEP Fabrication Parts | Соответствует условиям отбора |
+| Case 20 — Flex Ducts | Case 20: a duct of the FlexDuct class is required. |
+| Кейс 1: ограничение записи уровня | Не применяется |
+
+### Параметры экземпляра
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152385 / ALL&#95;MODEL&#95;IMAGE | Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1141040 / RBS&#95;PIPE&#95;WALL&#95;THICKNESS | Wall Thickness | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1141033 / MEP&#95;PIPE&#95;LOWER&#95;INVERT&#95;ELEVATION | Lower End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141032 / MEP&#95;PIPE&#95;UPPER&#95;INVERT&#95;ELEVATION | Upper End Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141031 / MEP&#95;PIPE&#95;LOWER&#95;OBVERT&#95;ELEVATION | Lower End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141030 / MEP&#95;PIPE&#95;UPPER&#95;OBVERT&#95;ELEVATION | Upper End Obvert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141028 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Lower End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141027 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Upper End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141024 / MEP&#95;LOWER&#95;TOP&#95;ELEVATION | Lower End Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 7.85955379904575 | 7' - 10 3/8" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141023 / MEP&#95;UPPER&#95;BOTTOM&#95;ELEVATION | Upper End Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 9.62499999999389 | 9' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141021 / MEP&#95;LOWER&#95;CENTERLINE&#95;ELEVATION | Lower End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141020 / MEP&#95;UPPER&#95;CENTERLINE&#95;ELEVATION | Upper End Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1141014 / FABRICATION&#95;PART&#95;PAT&#95;NO | Part Pattern Number | — | autodesk.spec:spec.int64-2.0.0 | Integer | True | True | 838 | 838 | — |
+| -1141013 / FABRICATION&#95;END&#95;SIZE | Size of Connector End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141012 / FABRICATION&#95;BRANCH&#95;SIZE | Size of Primary Branch End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141011 / FABRICATION&#95;SEC&#95;SIZE | Size of Secondary End | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1141010 / FABRICATION&#95;PRI&#95;SIZE | Size of Primary End | — | autodesk.spec:spec.string-2.0.0 | String | True | True | 2 1/2" | 2 1/2" | — |
+| -1141008 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG&#95;FROM&#95;BOTTOM | SU/SD from Bottom | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140998 / FABRICATION&#95;DOUBLEWALL&#95;MATERIAL&#95;ABBREVIATION | Double Wall Material Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140997 / FABRICATION&#95;MATERIAL&#95;ABBREVIATION | Material Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140996 / FABRICATION&#95;INSULATION&#95;SPECIFICATION&#95;ABBREVIATION | Insulation Specification Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140995 / FABRICATION&#95;INSULATION&#95;ABBREVIATION | Insulation Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140994 / FABRICATION&#95;SPECIFICATION&#95;ABBREVIATION | Specification Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | BDP | BDP | — |
+| -1140993 / FABRICATION&#95;PIPE&#95;INVERT&#95;ELEVATION | Pipe Invert Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140992 / FABRICATION&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION&#95;OF&#95;PART | Bottom Elevation with Insulation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140991 / FABRICATION&#95;BOTTOM&#95;ELEVATION&#95;OF&#95;PART | Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140990 / FABRICATION&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION&#95;OF&#95;PART | Top Elevation with Insulation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140989 / FABRICATION&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140988 / MEP&#95;SPOT&#95;CENTERLINE&#95;ELEVATION | Spot Centerline Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140987 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140986 / MEP&#95;SPOT&#95;BOTTOM&#95;ELEVATION | Spot Bottom Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140985 / MEP&#95;SPOT&#95;TOP&#95;ELEVATION&#95;INCLUDE&#95;INSULATION | Spot Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140984 / FABRICATION&#95;SPOT&#95;TOP&#95;ELEVATION&#95;OF&#95;PART | Spot Top Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140983 / FABRICATION&#95;PART&#95;DOUBLEWALL&#95;MATERIAL&#95;AREA | Double Wall Material Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140982 / FABRICATION&#95;SET&#95;UP&#95;DOWN&#95;TAG | SU/SD from Top | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140981 / FABRICATION&#95;PART&#95;SHEETMETAL&#95;AREA | Part Sheet Metal Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140979 / FABRICATION&#95;SERVICE&#95;ABBREVIATION | Fabrication Service Abbreviation | — | autodesk.spec:spec.string-2.0.0 | String | True | True | CW | CW | — |
+| -1140977 / FABRICATION&#95;PART&#95;NOTES | Fabrication Notes | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140976 / FABRICATION&#95;PART&#95;LINING&#95;AREA | Lining Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140975 / FABRICATION&#95;PART&#95;ITEM&#95;NUMBER | Item Number | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140974 / FABRICATION&#95;PART&#95;INSULATION&#95;AREA | Insulation Area | — | autodesk.spec.aec:area-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:squareFeet-1.0.1 |
+| -1140973 / FABRICATION&#95;SERVICE&#95;NAME | Fabrication Service Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | P-CW (CTS SHURJOINT) | P-CW (CTS SHURJOINT) | — |
+| -1140970 / FABRICATION&#95;PART&#95;CUT&#95;TYPE | Cut Type | — |  | Integer | True | True | 8 | Pipework | — |
+| -1140969 / FABRICATION&#95;PART&#95;BOUGHT&#95;OUT | Bought Out | — | autodesk.spec:spec.string-2.0.0 | String | True | True | No | No | — |
+| -1140968 / FABRICATION&#95;PART&#95;ALIAS | Alias | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140966 / FABRICATION&#95;PRODUCT&#95;CODE | Product Code | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140943 / FABRICATION&#95;PRODUCT&#95;ENTRY | Product Entry | — |  | String | True | True | 2-1/2 | 2-1/2 | — |
+| -1140925 / FABRICATION&#95;END&#95;OFFSET&#95;PARAM | End Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140924 / FABRICATION&#95;START&#95;OFFSET&#95;PARAM | Start Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 0 | 0' - 0" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140923 / FABRICATION&#95;SLOPE&#95;PARAM | Slope | — | autodesk.spec.aec:slope-2.0.0 | Double | True | False | (нет значения) | — | autodesk.unit.unit:riseDividedBy12Inches-1.0.1 |
+| -1140920 / FABRICATION&#95;VENDOR | Vendor | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140919 / FABRICATION&#95;BOTTOM&#95;OF&#95;PART | Lower End Bottom of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 7.619970465712417 | 7' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140918 / FABRICATION&#95;TOP&#95;OF&#95;PART | Upper End Top of Insulation Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 9.62499999999389 | 9' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140917 / FABRICATION&#95;OFFSET&#95;PARAM | Middle Elevation | — | autodesk.spec.aec:length-2.0.1 | Double | True | True | 7.619970465712417 | 7' - 7 1/2" | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| -1140916 / FABRICATION&#95;LEVEL&#95;PARAM | Reference Level | — |  | ElementId | True | True | ID 2640483; Level; TO.SLAB ON GARDE; Elevation=1.4583333333333333; ProjectElevation=1.4583333333333333 ft | TO.SLAB ON GARDE | — |
+| -1140914 / FABRICATION&#95;VENDOR&#95;CODE | Vendor Code | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140910 / FABRICATION&#95;PRODUCT&#95;DATA&#95;INSTALL&#95;TYPE | Install Type | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140907 / FABRICATION&#95;PRODUCT&#95;DATA&#95;PRODUCT | Product Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140905 / FABRICATION&#95;PRODUCT&#95;DATA&#95;SIZE&#95;DESCRIPTION | Product Size Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140904 / FABRICATION&#95;PRODUCT&#95;DATA&#95;MATERIAL&#95;DESCRIPTION | Product Material Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140903 / FABRICATION&#95;PRODUCT&#95;DATA&#95;SPECIFICATION | Product Specification Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140902 / FABRICATION&#95;PRODUCT&#95;DATA&#95;LONG&#95;DESCRIPTION | Product Long Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140901 / FABRICATION&#95;PRODUCT&#95;DATA&#95;RANGE | Product Range | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1140900 / FABRICATION&#95;PRODUCT&#95;DATA&#95;FINISH&#95;DESCRIPTION | Product Finish Description | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008203 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Hangers | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008203 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Hangers | — |
+| -1140339 / FABRICATION&#95;SERVICE&#95;PARAM | Fabrication Service | — |  | Integer | False | True | 8799 | &#42;The Cup Borregas: P-CW (CTS SHURJOINT) | — |
+| -1140238 / RBS&#95;PIPE&#95;OUTER&#95;DIAMETER | Outside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1140212 / RBS&#95;PIPE&#95;INNER&#95;DIAM&#95;PARAM | Inside Diameter | — | autodesk.spec.aec.piping:pipeSize-2.0.0 | Double | True | True | 0 | 0" | autodesk.unit.unit:fractionalInches-1.0.0 |
+| -1019016 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE | IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019014 / IFC&#95;EXPORT&#95;ELEMENT&#95;AS | Export to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019012 / IFC&#95;EXPORT&#95;ELEMENT | Export to IFC | — |  | Integer | False | True | 0 | By Type | — |
+| -1019000 / IFC&#95;GUID | IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 2MXkm62yXBNxor2ATaiAuG | 2MXkm62yXBNxor2ATaiAuG | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1013200 / DESIGN&#95;OPTION&#95;PARAM | Design Option | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Main Model | Main Model | — |
+| -1012101 / PHASE&#95;DEMOLISHED | Phase Demolished | — |  | ElementId | False | True | -1 (InvalidElementId) | None | — |
+| -1012100 / PHASE&#95;CREATED | Phase Created | — |  | ElementId | False | True | ID 32440; Phase; Phase 1 | Phase 1 | — |
+| -1010106 / ALL&#95;MODEL&#95;INSTANCE&#95;COMMENTS | Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True | bmarishenko | bmarishenko | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | False | True | 42532 | 21-04 20 00 00 Plumbing Supplementary Components | — |
+| -1002052 / ELEM&#95;FAMILY&#95;AND&#95;TYPE&#95;PARAM | Family and Type | — |  | ElementId | False | True | ID 2280403; FabricationPartType; Default | B-Line Fig 200F Trimeline Adjustable Band Hanger Felt Lined: Default | — |
+| -1002051 / ELEM&#95;FAMILY&#95;PARAM | Family | — |  | ElementId | False | True | ID 2280403; FabricationPartType; Default | B-Line Fig 200F Trimeline Adjustable Band Hanger Felt Lined | — |
+| -1002050 / ELEM&#95;TYPE&#95;PARAM | Type | — |  | ElementId | False | True | ID 2280403; FabricationPartType; Default | Default | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | False | (нет значения) | — | — |
+| -1002000 / SYMBOL&#95;ID&#95;PARAM | Type Id | — |  | ElementId | True | True | ID 2280403; FabricationPartType; Default | 2280403 | — |
+| -1001203 / ALL&#95;MODEL&#95;MARK | Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5932953 | Spool Tag | 79e76ec9-2881-43ea-9a10-b175990d200f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5932963 | Total Linear FT | 5460b426-84f0-45d5-8f83-f9186138a8bd | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 5932973 | Spool Size | 414cdab9-784f-4541-8c64-93cfa4907f77 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 5932983 | Spool No txt | 0cd78b70-2b3a-4006-b541-276629931603 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7086909 | FP Form Type | e897c401-6f29-4c81-8046-fc683d5a905c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7086971 | FP Joint Size | def0c719-e350-497a-b3ef-a31281dbf89a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087033 | CID | 5dfe971b-2a42-40c6-9946-21d9f07d361c | autodesk.spec:spec.int64-2.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7087095 | FP Display Joint | f01a371e-7776-4b23-a1f3-d352054fee55 | autodesk.spec:spec.int64-2.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7087157 | End Prep 2 | d9871522-9a9f-4b85-9f74-e2db8952fdf9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087219 | FP Cut Length | 3f0a4b27-526f-4bd0-a13a-e735a6e85dcf | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 7087281 | Bought Out | a8e2172b-f1bc-46ba-825a-8818341dcda1 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7087343 | End Prep 4 | 289ad534-ec61-488e-95bb-91a1bf5f0aa6 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087405 | FP Description | ac6ed937-ffb7-4b18-9c69-7541f5c0319d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087467 | FP Joint GUID | 9719ac3b-d9f2-4801-ad57-8bfedfad531f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087591 | FP Random Length | 3d12a93c-26e6-49b9-8af3-1224a10bd4b4 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 7087653 | End Prep 1 | 45d9db4b-59e9-4a92-b279-b13305d0561c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087715 | FP Display CutSheet | 17a38b4f-aa78-4fe2-9881-cb358e956653 | autodesk.spec:spec.int64-2.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7087777 | Joint Tag | aeea6763-3a63-4723-910f-2105eb02f149 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087901 | FP Size | 0f809f66-49aa-4b57-8bf3-ef773783db82 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7087963 | FP Service Color RGB | 0ae58b6b-0544-4da8-a4ef-23e2805aaa5a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088025 | End Prep 3 | baa4ff6e-7133-46eb-9921-7429fd934d0e | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088149 | FP Hanger Name | 6aa97670-157e-4c6f-9949-8042d29f4599 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088211 | FP Display BOM | 569e1179-1567-4dc7-8451-b1ed97dea171 | autodesk.spec:spec.int64-2.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7088273 | FP Joint Material Name | 6ddfed8e-ddf0-4282-b4e8-7b20c394c665 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088335 | FP Joint Description | 98094291-6022-48dc-b6fd-90d1ffb50613 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088397 | FP FormType | c0d498a6-4f9f-45cd-a14a-2fb60778ef5a | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088459 | FP Object Type | 510787a7-05d2-4cd2-92de-8365dc693fac | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 7088521 | FP Material Name | ca13fab7-1a75-49f3-81e7-d7fddb48ffe0 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088583 | FP Length | 94920fb9-7783-4909-9a84-c8c24dc84120 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 7088645 | FP Insulation Name | e26665be-0400-40f8-92fe-aa17f7372f78 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088831 | FP Diameter | 873d17f1-8cfe-40b5-8d37-24c66c1996de | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7088893 | Spool ID | 289f8524-ecde-48c6-a632-7d08fd32b87b | autodesk.spec:spec.int64-2.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7088963 | FP Job Name | 79782c28-0d95-49e3-b06a-727bc4ee3337 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089033 | Created By | 0a657838-217c-4f12-8f06-d1057bf49c66 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089103 | Level | a4a03239-189f-4c9c-9d21-9cea223c2483 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089173 | Element Package Id | 827a1e5e-ca19-4a4f-b2f6-22d094c2c192 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089243 | FP Job Number | 6e29587c-5e21-4518-bef1-83dc78fa09a1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089313 | Spool Map | 52522288-df4d-4dc5-9312-5d23083fac49 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089383 | Element Package Name | b214eb90-9abb-4432-b1ff-db0a3b1390dc | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089453 | Weight | b2de329c-b75e-4789-9fcd-8835b35502c2 | autodesk.spec.aec:number-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:general-1.0.1 |
+| 7089523 | FP Job Id | 6ab288d4-0fdd-4376-a19c-f3ee1c334a7d | autodesk.spec:spec.int64-2.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7089593 | Spool Name | f6ce77ed-8dde-4766-8491-cb3ef3cf467f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089663 | Created On | e59bcffd-e38d-4ff1-b577-3d807233c691 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089733 | FP Spool Sheet Settings Path | 92a36302-f777-4841-bed9-254132590b0f | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089796 | FP Status | c0719b3f-fbbb-4eb4-9f42-67357fc36886 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089859 | FP Area | fdcc7884-b64c-40d5-85c1-0adf0a28abee | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7089922 | FP Color | 02fea4c6-a439-4cf5-9504-4675097ddae1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090048 | FP Service Color Name | e6dfe2e2-87d7-46e4-8e4e-b630a1730036 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090111 | FP Service Name | 0039d5e4-a476-4a18-9493-ab6486cd469b | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090174 | FP Rod Size | ae352c05-d171-448b-b844-17b7098873a2 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090181 | FP Attachment ID | bbb5b92d-7fbe-4e10-ab2f-44e789f3c4f4 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090188 | HW Supported Straights | eaf77a3a-7192-49d8-8fba-f03a21fd31ac | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090195 | FP Rod Length 2 | 0ff2a163-70db-4c18-b42c-254f71f1368d | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 7090202 | FP Rod Length 1 | bd3aec8e-048d-4bb6-9a19-10ff8ed17e23 | autodesk.spec.aec:length-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 7090209 | FP Attachment Description | 4bfa0c9c-8c1b-4eab-9fe2-7081de89cac9 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 7090216 | FP Display Hanger BOM | 0142d0a7-6087-4273-bf60-6cb46e65b385 | autodesk.spec:spec.bool-1.0.0 | Integer | False | False | (нет значения) | — | — |
+| 7452795 | BLD | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8253609 | Designated System | 35a14e0c-c5b8-451f-9cdb-e1a64a6009a5 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8601241 | eVolve&#95;Offset | c3d44fb8-2b8e-4b5a-b6c4-9668955a11fa | autodesk.spec.aec:length-2.0.1 | Double | False | False | (нет значения) | — | autodesk.unit.unit:feetFractionalInches-1.0.0 |
+| 8601275 | STRATUS Item Number | 3332ec61-69bc-45ae-a27a-d17742402bc1 | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8601386 | STRATUS QR Code | f261bb2e-5798-4755-93ba-dc924c7a452c | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| 8601497 | STRATUS Status Name | ace75dae-d80b-4a4d-855b-3a7207514f4d | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+
+### Параметры типа
+
+| ID / BuiltInParameter | Имя | Shared GUID | DataType | StorageType | IsReadOnly | HasValue | Значение API | AsValueString | UnitTypeId |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1152384 / ALL&#95;MODEL&#95;TYPE&#95;IMAGE | Type Image | — | autodesk.spec.reference:image-1.0.0 | ElementId | False | False | (нет значения) | — | — |
+| -1140999 / FABRICATION&#95;FITTING&#95;DESCRIPTION | Fabrication Fitting Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True | B-Line Fig 200F Trimeline Adjustable Band Hanger Felt Lined | B-Line Fig 200F Trimeline Adjustable Band Hanger Felt Lined | — |
+| -1140422 / KEYNOTE&#95;PARAM | Keynote | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1140363 / ELEM&#95;CATEGORY&#95;PARAM&#95;MT | Category | — |  | ElementId | True | True | ID -2008203 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Hangers | — |
+| -1140362 / ELEM&#95;CATEGORY&#95;PARAM | Category | — |  | ElementId | True | True | ID -2008203 (не разрешён в элемент документа; возможное служебное значение) | MEP Fabrication Hangers | — |
+| -1019017 / IFC&#95;EXPORT&#95;PREDEFINEDTYPE&#95;TYPE | Type IFC Predefined Type | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019015 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE&#95;AS | Export Type to IFC As | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1019013 / IFC&#95;EXPORT&#95;ELEMENT&#95;TYPE | Export Type to IFC | — |  | Integer | False | True | 0 | Default | — |
+| -1019001 / IFC&#95;TYPE&#95;GUID | Type IfcGUID | — | autodesk.spec:spec.string-2.0.0 | String | False | True | 3yY53pPXX6t91itm9UBnBh | 3yY53pPXX6t91itm9UBnBh | — |
+| -1013201 / DESIGN&#95;OPTION&#95;ID | Design Option | — |  | ElementId | True | True | -1 (InvalidElementId) | -1 | — |
+| -1010109 / ALL&#95;MODEL&#95;MODEL | Model | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010108 / ALL&#95;MODEL&#95;MANUFACTURER | Manufacturer | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010105 / ALL&#95;MODEL&#95;TYPE&#95;COMMENTS | Type Comments | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010104 / ALL&#95;MODEL&#95;URL | URL | — | autodesk.spec.string:url-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1010103 / ALL&#95;MODEL&#95;DESCRIPTION | Description | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1002501 / UNIFORMAT&#95;DESCRIPTION | Assembly Description | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002500 / UNIFORMAT&#95;CODE | Assembly Code | — | autodesk.spec:spec.string-2.0.0 | String | False | True |  |  | — |
+| -1002067 / EDITED&#95;BY | Edited by | — | autodesk.spec:spec.string-2.0.0 | String | True | True |  |  | — |
+| -1002053 / ELEM&#95;PARTITION&#95;PARAM | Workset | — |  | Integer | True | True | 151 | Fabrication Part Types | — |
+| -1002002 / SYMBOL&#95;FAMILY&#95;NAME&#95;PARAM | Family Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | B-Line Fig 200F Trimeline Adjustable Band Hanger Felt Lined | B-Line Fig 200F Trimeline Adjustable Band Hanger Felt Lined | — |
+| -1002001 / ALL&#95;MODEL&#95;TYPE&#95;NAME | Type Name | — | autodesk.spec:spec.string-2.0.0 | String | True | True | Default | Default | — |
+| -1001405 / WINDOW&#95;TYPE&#95;ID | Type Mark | — | autodesk.spec:spec.string-2.0.0 | String | False | False | (нет значения) | — | — |
+| -1001205 / DOOR&#95;COST | Cost | — | autodesk.spec.measurable:currency-2.0.0 | Double | False | False | (нет значения) | — | autodesk.unit.unit:currency-1.0.0 |
+
+### Непосредственные зависимые элементы (GetDependentElements)
+
+| Свойство | Значение |
+| --- | --- |
+| Количество | 1 |
+| ID 7377791 | ID 7377791; FabricationPart; Default |
+
+### Итог снимка
+
+| Свойство | Значение |
+| --- | --- |
+| Ошибок чтения | 0 |
+| Граница анализа | Только чтение. Перенос и пробное удаление не выполнялись. Снимок не подтверждает сохранность геометрии и зависимостей при переносе. |
+

@@ -56,7 +56,8 @@ internal sealed class ElementTransferService(Document document)
         catch (Exception ex) { return Result(ElementTransferStatus.Failed, ex.Message); }
 
         using var transaction = new Transaction(document, L.Get("ReLevel: перенос элемента"));
-        var failures = new TransferFailures(allowInvalidDimensionDeletion: operation is HostedRailingOperation);
+        var failures = new TransferFailures(allowInvalidDimensionDeletion: operation is HostedRailingOperation,
+            allowFabricationRodDialog: operation is MepReferenceLevelOperation { IsFabricationPart: true });
         try
         {
             Require(transaction.Start(), TransactionStatus.Started);

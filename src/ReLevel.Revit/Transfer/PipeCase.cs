@@ -16,8 +16,8 @@ internal static class PipeCase
     {
         if (element is not Pipe)
             return L.Get("Кейс 11: требуется труба класса Pipe.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 11: группы и сборки пока не поддерживаются.");
+        if (element.GroupId != ElementId.InvalidElementId)
+            return L.Get("Кейс 11: группы пока не поддерживаются.");
         return SourceLevel(element) is null
             ? L.Get("Кейс 11: Reference Level не указывает на существующий уровень.") : null;
     }

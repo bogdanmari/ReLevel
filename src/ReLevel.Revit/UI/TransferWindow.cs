@@ -66,7 +66,7 @@ internal sealed class TransferWindow : Window
         AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name), 220);
         AddTextColumn(elementTable, L.Get("Привязка"), nameof(TableRow.Level), 90);
         AddTextColumn(elementTable, L.Get("Статус / причина"), nameof(TableRow.Status));
-        var elementsPanel = MakePanel(elementTable, L.Get("Показаны доступные элементы реализованных кейсов. Меняются только привязки к выбранному исходному уровню."), out var elementActions);
+        var elementsPanel = MakePanel(elementTable, L.Get("Показаны доступные и закреплённые элементы реализованных кейсов. Закреплённые элементы нельзя отметить для переноса."), out var elementActions);
         AddAction(elementActions, elementButtons, L.Get("Выделить элементы"), SelectElements);
         AddAction(elementActions, elementButtons, L.Get("Удалить элементы"), () => DeleteRows(elementRows, DeleteScope.Elements));
         AddAction(elementActions, elementButtons, L.Get("Перенести элементы"), TransferElements);
@@ -170,12 +170,14 @@ internal sealed class TransferWindow : Window
         try
         {
             var transferCase = TransferCases.Find(element);
-            if (sourceLevelId is null || transferCase is null || !transferCase.IsOnLevel(element, sourceLevelId)
-                || transferCase.WriteRestriction(element, sourceLevelId) is not null)
+            if (sourceLevelId is null || transferCase is null || !transferCase.IsOnLevel(element, sourceLevelId))
                 return null;
-            var status = transferCase.Name + ": " + L.Get("Доступен для переноса.");
+            var pinned = element.Pinned;
+            var restriction = transferCase.WriteRestriction(element, sourceLevelId);
+            if (!pinned && restriction is not null) return null;
+            var status = transferCase.Name + ": " + (restriction ?? L.Get("Доступен для переноса."));
             if (statuses.TryGetValue(element.Id.Value, out var result)) status += Environment.NewLine + result;
-            return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name,
+            return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name, CanCheck = !pinned,
                 Category = element.Category?.Name ?? "—", Level = transferCase.Relation(element, sourceLevelId), Status = status };
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
@@ -428,7 +430,7 @@ internal sealed class TransferWindow : Window
 
     private static string Format(Dictionary<long, string> results) => string.Join(Environment.NewLine, results.Select(p => $"ID {p.Key}: {p.Value}"));
     private List<TableRow> Checked(List<TableRow> rows) =>
-        (ReferenceEquals(rows, elementRows) ? elementTable : viewTable).Items.OfType<TableRow>().Where(r => r.IsChecked).ToList();
+        (ReferenceEquals(rows, elementRows) ? elementTable : viewTable).Items.OfType<TableRow>().Where(r => r.CanCheck && r.IsChecked).ToList();
     private void UpdateButtons()
     {
         if (updatingChecks) return;
@@ -436,7 +438,7 @@ internal sealed class TransferWindow : Window
         foreach (var button in viewButtons) button.IsEnabled = Checked(viewRows).Count > 0;
         foreach (var (table, header) in checkAllHeaders)
         {
-            var rows = table.Items.OfType<TableRow>().ToList();
+            var rows = table.Items.OfType<TableRow>().Where(r => r.CanCheck).ToList();
             var count = rows.Count(r => r.IsChecked);
             header.IsEnabled = rows.Count > 0;
             header.IsChecked = count == 0 ? false : count == rows.Count ? true : null;
@@ -484,6 +486,7 @@ internal sealed class TransferWindow : Window
 
     private void ToggleRow(DataGrid table, TableRow row)
     {
+        if (!row.CanCheck) return;
         var rows = table.SelectedItems.Contains(row)
             ? table.SelectedItems.Cast<TableRow>().ToList() : new List<TableRow> { row };
         SetChecks(rows, !row.IsChecked);
@@ -496,12 +499,13 @@ internal sealed class TransferWindow : Window
         checkAllHeaders.Add(table, header);
         header.Click += (_, e) =>
         {
-            var rows = table.Items.OfType<TableRow>().ToList();
+            var rows = table.Items.OfType<TableRow>().Where(r => r.CanCheck).ToList();
             SetChecks(rows, !rows.All(r => r.IsChecked));
             e.Handled = true;
         };
         var factory = new FrameworkElementFactory(typeof(CheckBox));
         factory.SetValue(FrameworkElement.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+        factory.SetBinding(UIElement.IsEnabledProperty, new Binding(nameof(TableRow.CanCheck)));
         factory.SetBinding(System.Windows.Controls.Primitives.ToggleButton.IsCheckedProperty,
             new Binding(nameof(TableRow.IsChecked)) { Mode = BindingMode.OneWay });
         // Handle the press before DataGrid can collapse a multiple-row selection.

@@ -4,6 +4,14 @@ namespace ReLevel.Revit.Transfer;
 
 internal static class PointFamilyCase
 {
+    private static readonly LevelOffsetBinding AirTerminalBinding = new(
+        BuiltInParameter.FAMILY_LEVEL_PARAM, BuiltInParameter.INSTANCE_ELEVATION_PARAM);
+
+    private static bool IsAirTerminal(Element element) => element.Category?.BuiltInCategory == BuiltInCategory.OST_DuctTerminal;
+
+    public static IElementTransferOperation Prepare(Element element, ElementId source) => IsAirTerminal(element)
+        ? new LevelOffsetOperation(element, source, AirTerminalBinding) : new PointFamilyOperation(element);
+
     public static Parameter? LevelParameter(Element element) =>
         element is FamilyInstance && element.get_Parameter(BuiltInParameter.FAMILY_LEVEL_PARAM) is { StorageType: StorageType.ElementId } parameter
             ? parameter : null;
@@ -25,6 +33,17 @@ internal static class PointFamilyCase
         return null;
     }
 
-    public static string? WriteRestriction(Element element) => LevelParameter(element)?.IsReadOnly == true
-        ? L.Get("Параметр FAMILY_LEVEL_PARAM недоступен для записи.") : null;
+    public static string? WriteRestriction(Element element)
+    {
+        if (LevelParameter(element)?.IsReadOnly == true)
+            return L.Get("Параметр FAMILY_LEVEL_PARAM недоступен для записи.");
+        if (IsAirTerminal(element))
+        {
+            if (element.Pinned) return L.Get("Случай 1: закреплённый воздухораспределитель не переносится.");
+            if (element.get_Parameter(BuiltInParameter.INSTANCE_ELEVATION_PARAM) is not
+                { StorageType: StorageType.Double, HasValue: true, IsReadOnly: false })
+                return L.Get("Случай 1: Elevation from Level воздухораспределителя недоступен для записи.");
+        }
+        return null;
+    }
 }
