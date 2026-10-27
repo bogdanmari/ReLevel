@@ -35,6 +35,7 @@ internal sealed class TransferWindow : Window
     private List<TableRow> elementRows = [];
     private List<TableRow> viewRows = [];
     public bool InspectElementRequested { get; private set; }
+    public bool LevelColorsRequested { get; private set; }
 
     public TransferWindow(UIApplication application, IReadOnlyList<Level> levels)
     {
@@ -56,6 +57,7 @@ internal sealed class TransferWindow : Window
         AddAction(debugTools, null, L.Get("Выделить все элементы по…"), SelectAllByCase);
         AddAction(debugTools, null, L.Get("Добавить по ID"), AddElementsById);
         AddAction(debugTools, null, L.Get("ReLevel инспектор"), () => { InspectElementRequested = true; Close(); });
+        AddAction(debugTools, null, L.Get("Цвета по уровням"), () => { LevelColorsRequested = true; Close(); });
         DockPanel.SetDock(debugTools, Dock.Top); shell.Children.Add(debugTools);
         DockPanel.SetDock(summary, Dock.Bottom); shell.Children.Add(summary);
         DockPanel.SetDock(transferProgress, Dock.Bottom); shell.Children.Add(transferProgress);

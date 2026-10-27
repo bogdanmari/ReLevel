@@ -26,6 +26,12 @@ public sealed class ReLevelCommand : IExternalCommand
             new System.Windows.Interop.WindowInteropHelper(window) { Owner = ui.MainWindowHandle };
             window.ShowDialog();
             if (window.InspectElementRequested) ElementInspectorAction.Run(ui);
+            if (window.LevelColorsRequested)
+            {
+                var colors = new LevelColorsWindow(ui.ActiveUIDocument!, levels);
+                new System.Windows.Interop.WindowInteropHelper(colors) { Owner = ui.MainWindowHandle };
+                colors.ShowDialog();
+            }
             // Operations are committed while the window is open. Closing it must not undo them.
             return Result.Succeeded;
         }

@@ -2,6 +2,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.DB.Plumbing;
 using Autodesk.Revit.DB.Mechanical;
+using Autodesk.Revit.DB.Electrical;
 
 namespace ReLevel.Revit.Transfer;
 
@@ -32,7 +33,7 @@ internal static class TransferCases
             (element, source) => PointFamilyCase.SourceLevel(element)?.Id == source,
             (element, _) => PointFamilyCase.WriteRestriction(element), PointFamilyCase.Prepare,
             (_, _) => L.Get("Уровень")),
-        new TransferCase(() => L.Get("Кейс 2 — колонны и стены"),
+        new TransferCase(() => L.Get("Кейс 2 — колонны, стены и Pipe Accessories"),
             [typeof(FamilyInstance), typeof(Wall)], TwoLevelCase.UnsupportedReason, TwoLevelCase.IsOnLevel,
             TwoLevelCase.WriteRestriction, (element, source) => new TwoLevelOperation(element, source),
             TwoLevelCase.Relation),
@@ -132,6 +133,12 @@ internal static class TransferCases
             [typeof(FlexDuct)], FlexDuctCase.UnsupportedReason,
             (element, source) => FlexDuctCase.SourceLevel(element)?.Id == source,
             (element, _) => FlexDuctCase.WriteRestriction(element),
+            (element, _) => new MepReferenceLevelOperation(element),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 21 — Conduits"),
+            [typeof(Conduit)], ConduitCase.UnsupportedReason,
+            (element, source) => ConduitCase.SourceLevel(element)?.Id == source,
+            (element, _) => ConduitCase.WriteRestriction(element),
             (element, _) => new MepReferenceLevelOperation(element),
             (_, _) => L.Get("Уровень"))
     });
