@@ -11,28 +11,48 @@ internal sealed class LevelViewGraphics : IDisposable
 {
     private sealed record Entry(ElementId Id, long LevelId, OverrideGraphicSettings Graphics, bool Hidden);
     private readonly View view;
-    private readonly List<Entry> entries = [];
+    private readonly Func<long, TransferCase?>? classifiedCase;
+    private readonly Dictionary<long, Entry> entries = [];
     private readonly HashSet<long> touched = [];
     public List<string> Diagnostics { get; } = [];
-    public int Count(long levelId) => entries.Count(e => e.LevelId == levelId);
+    public int Count(long levelId) => entries.Values.Count(e => e.LevelId == levelId);
 
-    public LevelViewGraphics(View view, IReadOnlyList<Level> levels)
+    public LevelViewGraphics(View view, IReadOnlyList<Level> levels, Func<long, TransferCase?>? classifiedCase = null)
     {
         this.view = view;
+        this.classifiedCase = classifiedCase;
+        try { Refresh(levels); }
+        catch { Dispose(); throw; }
+    }
+
+    // The modern workspace can transfer/delete elements or open another view between applications.
+    // Re-read membership while retaining the original overrides of previously captured IDs.
+    public void Refresh(IReadOnlyList<Level> levels)
+    {
         if (view.IsTemplate || !view.AreGraphicsOverridesAllowed()
             || !FilteredElementCollector.IsViewValidForElementIteration(view.Document, view.Id))
             throw new InvalidOperationException(L.Get("На этом виде переопределение графики недоступно."));
-        try
+        Diagnostics.Clear();
+        using var collector = new FilteredElementCollector(view.Document, view.Id);
+        var ids = collector.WhereElementIsNotElementType().ToElementIds().Select(id => id.Value)
+            .Concat(entries.Keys).Distinct().ToList();
+        foreach (var id in ids)
         {
-            using var collector = new FilteredElementCollector(view.Document, view.Id);
-            foreach (var element in collector.WhereElementIsNotElementType())
+            entries.TryGetValue(id, out var previous);
+            try
             {
-                try
+                var element = view.Document.GetElement(new ElementId(id));
+                if (element is null)
                 {
-                    var transferCase = TransferCases.Find(element);
-                    if (transferCase is null) continue;
+                    previous?.Graphics.Dispose(); entries.Remove(id); touched.Remove(id);
+                    continue;
+                }
+                var transferCase = classifiedCase is null ? TransferCases.Find(element) : classifiedCase(id);
+                long? levelId = null;
+                if (transferCase is not null)
+                {
                     // Multi-level cases always use the base, regardless of level ordering or language.
-                    var levelId = element switch
+                    levelId = element switch
                     {
                         Wall => TwoLevelWallCase.Bottom.Capture(element).LevelId,
                         Stairs => StairsCase.Capture(element)[0].LevelId,
@@ -44,15 +64,21 @@ internal sealed class LevelViewGraphics : IDisposable
                             => RampCase.Capture(element)[0].LevelId,
                         _ => levels.FirstOrDefault(level => transferCase.IsOnLevel(element, level.Id))?.Id.Value
                     };
-                    if (levelId is null) continue;
-                    var hidden = element.IsHidden(view);
-                    entries.Add(new(element.Id, levelId.Value, view.GetElementOverrides(element.Id), hidden));
                 }
-                catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
-                catch (Exception ex) { Diagnostics.Add($"ID {element.Id.Value}: {ex.Message}"); }
+                if (previous is not null) entries[id] = previous with { LevelId = levelId ?? -1 };
+                else if (levelId is not null)
+                {
+                    var hidden = element.IsHidden(view);
+                    entries.Add(id, new(element.Id, levelId.Value, view.GetElementOverrides(element.Id), hidden));
+                }
+            }
+            catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
+            catch (Exception ex)
+            {
+                Diagnostics.Add($"ID {id}: {ex.Message}");
+                if (previous is not null) entries[id] = previous with { LevelId = -1 };
             }
         }
-        catch { Dispose(); throw; }
     }
 
     public string Apply(IReadOnlyDictionary<long, LevelGraphicsChoice> choices)
@@ -75,7 +101,7 @@ internal sealed class LevelViewGraphics : IDisposable
             .SetFailuresPreprocessor(failures).SetClearAfterRollback(true).SetForcedModalHandling(true));
         try
         {
-            foreach (var entry in entries)
+            foreach (var entry in entries.Values)
             {
                 var action = choices.TryGetValue(entry.LevelId, out var choice) ? choice.Action : LevelGraphicsAction.Unchanged;
                 if (action == LevelGraphicsAction.Unchanged && !touched.Contains(entry.Id.Value)) continue;
@@ -121,7 +147,7 @@ internal sealed class LevelViewGraphics : IDisposable
         }
     }
 
-    public void Dispose() { foreach (var entry in entries) entry.Graphics.Dispose(); }
+    public void Dispose() { foreach (var entry in entries.Values) entry.Graphics.Dispose(); entries.Clear(); }
 
     private sealed class GraphicsFailures : IFailuresPreprocessor
     {

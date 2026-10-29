@@ -11,7 +11,8 @@ internal sealed class RecreateViewsWindow : Window
     public Level Target => (Level)target.SelectedItem;
     public string Prefix => prefix.Text;
 
-    public RecreateViewsWindow(Window owner, IEnumerable<Level> levels, int count)
+    public RecreateViewsWindow(Window owner, IEnumerable<Level> levels, int count, Level? fixedTarget = null,
+        Func<Level, string>? displayName = null)
     {
         Owner = owner; Title = L.Get("Пересоздать виды"); Width = 470;
         SizeToContent = SizeToContent.Height; ResizeMode = ResizeMode.NoResize;
@@ -20,6 +21,7 @@ internal sealed class RecreateViewsWindow : Window
         panel.Children.Add(new TextBlock { Text = L.Format($"Выбрано видов: {count}. Исходные виды и их размещения на листах сохранятся. Новые виды будут размещены на тех же листах поверх исходных."),
             TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 12) });
         panel.Children.Add(new TextBlock { Text = L.Get("Целевой уровень"), Margin = new Thickness(0, 0, 0, 6) });
+        if (displayName is not null) target.SetDisplayName(item => displayName((Level)item));
         target.SetItems(levels, level => level.Name); panel.Children.Add(target);
         panel.Children.Add(new TextBlock { Text = L.Get("Префикс имени (префикс + исходное имя)"), Margin = new Thickness(0, 12, 0, 0) });
         panel.Children.Add(prefix);
@@ -27,6 +29,11 @@ internal sealed class RecreateViewsWindow : Window
         var ok = new Button { Content = L.Get("Пересоздать"), IsDefault = true, IsEnabled = false,
             Margin = new Thickness(6), Padding = new Thickness(10, 5, 10, 5) };
         target.SelectionChanged += (_, _) => ok.IsEnabled = target.SelectedItem is Level;
+        if (fixedTarget is not null)
+        {
+            target.SelectedItem = fixedTarget;
+            target.IsEnabled = false;
+        }
         ok.Click += (_, _) => DialogResult = true;
         buttons.Children.Add(ok);
         buttons.Children.Add(new Button { Content = L.Get("Отмена"), IsCancel = true, Margin = new Thickness(6), Padding = new Thickness(10, 5, 10, 5) });

@@ -2,7 +2,8 @@ using Autodesk.Revit.DB;
 
 namespace ReLevel.Revit.Transfer;
 
-internal sealed class ShaftOpeningOperation(Element element, ElementId source) : IElementTransferOperation
+internal sealed class ShaftOpeningOperation(Element element, ElementId source,
+    IReadOnlyDictionary<BuiltInParameter, ElementId>? destinations = null) : IElementTransferOperation
 {
     private readonly ElementId id = element.Id;
     private readonly LevelOffsetState[] ends = ShaftOpeningCase.Capture(element);
@@ -12,6 +13,6 @@ internal sealed class ShaftOpeningOperation(Element element, ElementId source) :
     {
         var opening = document.GetElement(id);
         var level = (Level)document.GetElement(target);
-        foreach (var end in ends) end.Apply(opening, source, level);
+        LevelOffsetState.ApplyAll(opening, ends, source, level, destinations);
     }
 }

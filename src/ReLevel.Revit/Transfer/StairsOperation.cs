@@ -2,7 +2,8 @@ using Autodesk.Revit.DB;
 
 namespace ReLevel.Revit.Transfer;
 
-internal sealed class StairsOperation(Element stairs, ElementId source) : IElementTransferOperation
+internal sealed class StairsOperation(Element stairs, ElementId source,
+    IReadOnlyDictionary<BuiltInParameter, ElementId>? destinations = null) : IElementTransferOperation
 {
     private readonly ElementId id = stairs.Id;
     private readonly LevelOffsetState[] ends = StairsCase.Capture(stairs);
@@ -12,6 +13,6 @@ internal sealed class StairsOperation(Element stairs, ElementId source) : IEleme
     {
         var stairs = document.GetElement(id);
         var level = (Level)document.GetElement(target);
-        foreach (var end in ends) end.Apply(stairs, source, level);
+        LevelOffsetState.ApplyAll(stairs, ends, source, level, destinations);
     }
 }

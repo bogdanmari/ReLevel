@@ -10,4 +10,14 @@
     <VendorDescription>ReLevel — change levels while preserving model position</VendorDescription>
     <VisibilityMode>NotVisibleInFamily</VisibilityMode>
   </AddIn>
+  <AddIn Type="Command">
+    <Name>ReLevel UI Prototype</Name>
+    <Assembly>ReLevel\ReLevel.Revit.dll</Assembly>
+    <AddInId>634BDA68-F917-4E99-A28A-742886743917</AddInId>
+    <FullClassName>ReLevel.Revit.PrototypeCommand</FullClassName>
+    <Text>ReLevel UI Prototype</Text>
+    <VendorId>RLVL</VendorId>
+    <VendorDescription>ReLevel workspace — distribution, view colors, transfer and diagnostics</VendorDescription>
+    <VisibilityMode>NotVisibleInFamily</VisibilityMode>
+  </AddIn>
 </RevitAddIns>

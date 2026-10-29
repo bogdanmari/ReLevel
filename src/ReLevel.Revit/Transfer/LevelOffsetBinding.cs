@@ -35,4 +35,15 @@ internal sealed record LevelOffsetState(LevelOffsetBinding Binding, long LevelId
             throw new InvalidOperationException(L.Get("Revit отклонил запись уровня или смещения."));
     }
 
+    public static void ApplyAll(Element element, IEnumerable<LevelOffsetState> ends, ElementId source,
+        Level target, IReadOnlyDictionary<BuiltInParameter, ElementId>? destinations)
+    {
+        foreach (var end in ends)
+        {
+            if (destinations is null) end.Apply(element, source, target);
+            else if (destinations.TryGetValue(end.Binding.LevelParameter, out var id))
+                end.Apply(element, new ElementId(end.LevelId), (Level)element.Document.GetElement(id));
+        }
+    }
+
 }

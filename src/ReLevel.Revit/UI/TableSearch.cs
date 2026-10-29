@@ -10,6 +10,7 @@ internal sealed class TableSearch
 {
     private readonly DataGrid table;
     private readonly Action changed;
+    private readonly bool modern;
     private readonly TextBox input = new() { VerticalContentAlignment = VerticalAlignment.Center, Padding = new Thickness(6, 0, 6, 0) };
     private readonly ToggleButton filter = new() { Content = L.Get("Фильтр"), Padding = new Thickness(10, 0, 10, 0),
         Margin = new Thickness(0, 0, 8, 0), ToolTip = L.Get("Показывать только совпавшие строки. Операции действуют только на видимые строки.") };
@@ -20,10 +21,22 @@ internal sealed class TableSearch
     private string Query => input.Text.Trim();
     public DockPanel Bar { get; } = new() { Margin = new Thickness(0, 0, 0, 8), Height = 28 };
 
-    public TableSearch(DataGrid table, Action changed)
+    public TableSearch(DataGrid table, Action changed, bool modern = false)
     {
         this.table = table;
         this.changed = changed;
+        this.modern = modern;
+        if (modern)
+        {
+            Bar.Height = 32; Bar.Margin = new Thickness(0, 6, 0, 8);
+            filter.Width = 32; filter.Padding = new Thickness(0);
+            foreach (var (button, key) in new (ButtonBase Button, string Key)[]
+                { (filter, "Filter"), (previous, "Previous"), (next, "Next") })
+            {
+                Prototype.PrototypeIcons.SetSearchButtonIcon(button, key);
+            }
+            System.Windows.Automation.AutomationProperties.SetName(filter, L.Get("Фильтр"));
+        }
         DockPanel.SetDock(filter, Dock.Left); Bar.Children.Add(filter);
         var navigation = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(8, 0, 0, 0) };
         navigation.Children.Add(counter); navigation.Children.Add(previous); navigation.Children.Add(next);
@@ -98,7 +111,7 @@ internal sealed class TableSearch
     {
         var matches = MatchesInOrder();
         var index = table.SelectedItem is TableRow row ? matches.IndexOf(row) : -1;
-        counter.Text = Query.Length == 0 ? L.Get("— совпадений") : index < 0
+        counter.Text = Query.Length == 0 ? (modern ? "—" : L.Get("— совпадений")) : index < 0
             ? L.Format($"Совпадений: {matches.Count}") : L.Format($"{index + 1} из {matches.Count}");
         previous.IsEnabled = next.IsEnabled = matches.Count > 0;
     }

@@ -3,10 +3,20 @@ using ReLevel.Revit.Logic;
 
 namespace ReLevel.Revit.Transfer;
 
+internal sealed record PreparedElementTransfer(IElementTransferOperation? Operation, ElementId Target,
+    string SkipReason = "", string Description = "")
+{
+    public static PreparedElementTransfer Skip(string reason) => new(null, ElementId.InvalidElementId, reason);
+}
+
 internal sealed class ElementTransferService(Document document)
 {
     public ElementTransferReport Execute(IReadOnlyList<ElementId> ids, ElementId targetLevelId, ElementId sourceLevelId,
-        Action<int, int, long?>? progress = null)
+        Action<int, int, long?>? progress = null) =>
+        Execute(ids, id => PrepareSingle(id, targetLevelId, sourceLevelId), progress);
+
+    public ElementTransferReport Execute(IReadOnlyList<ElementId> ids,
+        Func<ElementId, PreparedElementTransfer> prepare, Action<int, int, long?>? progress = null)
     {
         var report = new ElementTransferReport();
         var completed = 0;
@@ -18,7 +28,7 @@ internal sealed class ElementTransferService(Document document)
                 continue;
             }
             progress?.Invoke(completed, ids.Count, id.Value);
-            try { report.Items.Add(TransferOne(id, targetLevelId, sourceLevelId)); }
+            try { report.Items.Add(TransferOne(id, prepare)); }
             catch (Exception ex)
             {
                 // An escaped regeneration/rollback error must not be followed by model reads.
@@ -32,25 +42,36 @@ internal sealed class ElementTransferService(Document document)
         return report;
     }
 
-    private ElementTransferResult TransferOne(ElementId id, ElementId targetLevelId, ElementId sourceLevelId)
+    private PreparedElementTransfer PrepareSingle(ElementId id, ElementId targetLevelId, ElementId sourceLevelId)
+    {
+        var element = document.GetElement(id);
+        if (element is null) return PreparedElementTransfer.Skip(L.Get("Объект больше не существует."));
+        var transferCase = TransferCases.Find(element);
+        if (transferCase is null) return PreparedElementTransfer.Skip(L.Get("Элемент не соответствует реализованным кейсам."));
+        if (!transferCase.IsOnLevel(element, sourceLevelId))
+            return PreparedElementTransfer.Skip(L.Get("Исходный уровень экземпляра изменился. Обновите таблицу."));
+        if (document.GetElement(targetLevelId) is not Level)
+            return PreparedElementTransfer.Skip(L.Get("Целевой уровень больше не существует."));
+        if (sourceLevelId == targetLevelId)
+            return PreparedElementTransfer.Skip(L.Get("Экземпляр уже принадлежит целевому уровню; изменений нет."));
+        if (transferCase.WriteRestriction(element, sourceLevelId) is { } restriction)
+            return PreparedElementTransfer.Skip(restriction);
+        return new(transferCase.Prepare(element, sourceLevelId), targetLevelId);
+    }
+
+    private ElementTransferResult TransferOne(ElementId id, Func<ElementId, PreparedElementTransfer> prepare)
     {
         ElementTransferResult Result(ElementTransferStatus status, string reason) => new(id.Value, status, reason);
         IElementTransferOperation operation;
+        ElementId targetLevelId;
+        string description;
         try
         {
-            var element = document.GetElement(id);
-            if (element is null) return Result(ElementTransferStatus.Skipped, L.Get("Объект больше не существует."));
-            var transferCase = TransferCases.Find(element);
-            if (transferCase is null) return Result(ElementTransferStatus.Skipped, L.Get("Элемент не соответствует реализованным кейсам."));
-            if (!transferCase.IsOnLevel(element, sourceLevelId))
-                return Result(ElementTransferStatus.Skipped, L.Get("Исходный уровень экземпляра изменился. Обновите таблицу."));
-            if (document.GetElement(targetLevelId) is not Level)
-                return Result(ElementTransferStatus.Skipped, L.Get("Целевой уровень больше не существует."));
-            if (sourceLevelId == targetLevelId)
-                return Result(ElementTransferStatus.Skipped, L.Get("Экземпляр уже принадлежит целевому уровню; изменений нет."));
-            if (transferCase.WriteRestriction(element, sourceLevelId) is { } restriction)
-                return Result(ElementTransferStatus.Skipped, restriction);
-            operation = transferCase.Prepare(element, sourceLevelId);
+            var prepared = prepare(id);
+            if (prepared.Operation is null) return Result(ElementTransferStatus.Skipped, prepared.SkipReason);
+            operation = prepared.Operation;
+            targetLevelId = prepared.Target;
+            description = prepared.Description.Length == 0 ? "" : "\n" + prepared.Description;
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
         catch (Exception ex) { return Result(ElementTransferStatus.Failed, ex.Message); }
@@ -70,7 +91,7 @@ internal sealed class ElementTransferService(Document document)
                 throw new InvalidOperationException(L.Format($"Перенос не зафиксирован: {status}.") +
                     (failures.Reason is { } reason ? Environment.NewLine + reason : ""));
             return Result(ElementTransferStatus.Transferred,
-                operation.SuccessMessage + failures.UnjoinMessage + failures.DeletedDimensionsMessage);
+                operation.SuccessMessage + failures.UnjoinMessage + failures.DeletedDimensionsMessage + description);
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {
@@ -86,7 +107,7 @@ internal sealed class ElementTransferService(Document document)
         {
             RollBack(transaction);
             if (failures.Corrupted) throw new TransferStoppedException(failures.Reason);
-            return Result(ElementTransferStatus.Failed, ex.Message);
+            return Result(ElementTransferStatus.Failed, ex.Message + description);
         }
     }
 

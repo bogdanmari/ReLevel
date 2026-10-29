@@ -2,7 +2,8 @@ using Autodesk.Revit.DB;
 
 namespace ReLevel.Revit.Transfer;
 
-internal sealed class TwoLevelOperation(Element element, ElementId source) : IElementTransferOperation
+internal sealed class TwoLevelOperation(Element element, ElementId source,
+    IReadOnlyDictionary<BuiltInParameter, ElementId>? destinations = null) : IElementTransferOperation
 {
     private readonly ElementId id = element.Id;
     private readonly LevelOffsetState[] ends = TwoLevelCase.Capture(element);
@@ -13,7 +14,7 @@ internal sealed class TwoLevelOperation(Element element, ElementId source) : IEl
     {
         var instance = document.GetElement(id);
         var level = (Level)document.GetElement(target);
-        foreach (var end in ends) end.Apply(instance, source, level);
+        LevelOffsetState.ApplyAll(instance, ends, source, level, destinations);
         if (hosted.Count > 0)
         {
             // Finish recalculating the wall before restoring its hosted instances.

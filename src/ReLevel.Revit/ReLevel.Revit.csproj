@@ -61,6 +61,11 @@
   </Target>
   <Target Name="CopyManifest" AfterTargets="Build">
     <Copy SourceFiles="$(MSBuildProjectDirectory)\..\..\ReLevel.addin" DestinationFolder="$(OutputPath).." />
+    <!-- The shared manifest includes the main-line-only prototype. Legacy keeps its existing commands. -->
+    <XslTransformation Condition="'$(BuildFamily)' == '2024-'"
+                       XmlInputPaths="$(MSBuildProjectDirectory)\..\..\ReLevel.addin"
+                       OutputPaths="$(OutputPath)..\ReLevel.addin"
+                       XslContent="&lt;xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'&gt;&lt;xsl:output method='xml' indent='yes'/&gt;&lt;xsl:template match='@*|node()'&gt;&lt;xsl:copy&gt;&lt;xsl:apply-templates select='@*|node()'/&gt;&lt;/xsl:copy&gt;&lt;/xsl:template&gt;&lt;xsl:template match='AddIn[FullClassName=&quot;ReLevel.Revit.PrototypeCommand&quot;]'/&gt;&lt;/xsl:stylesheet&gt;" />
     <Message Importance="high" Text="ReLevel $(BuildFamily): $(TargetPath)" />
   </Target>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />

@@ -1,5 +1,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows;
+using System.Globalization;
 
 namespace ReLevel.Revit.UI;
 
@@ -9,6 +11,37 @@ internal sealed class SearchableComboBox : ComboBox
     private Func<object, string> name = item => item.ToString() ?? "";
     private string query = "";
     private bool updating;
+    private Func<object, string>? displayName;
+
+    public void SetDisplayName(Func<object, string> formatter)
+    {
+        displayName = formatter;
+        DisplayMemberPath = "";
+        RefreshDisplay();
+    }
+
+    public void RefreshDisplay()
+    {
+        if (displayName is null) return;
+        var wasUpdating = updating;
+        updating = true;
+        try
+        {
+            var label = new FrameworkElementFactory(typeof(TextBlock));
+            label.SetValue(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Center);
+            label.SetBinding(TextBlock.TextProperty, new Binding { Converter = new NameConverter(displayName) });
+            ItemTemplate = new DataTemplate { VisualTree = label };
+            if (SelectedItem is not null) Text = displayName(SelectedItem);
+        }
+        finally { updating = wasUpdating; }
+    }
+
+    private sealed class NameConverter(Func<object, string> format) : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
+            value == DependencyProperty.UnsetValue || value is null ? "" : format(value);
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => Binding.DoNothing;
+    }
 
     public SearchableComboBox()
     {
@@ -46,7 +79,11 @@ internal sealed class SearchableComboBox : ComboBox
     {
         var wasUpdating = updating;
         updating = true;
-        try { base.OnSelectionChanged(e); }
+        try
+        {
+            base.OnSelectionChanged(e);
+            if (SelectedItem is not null && displayName is not null) Text = displayName(SelectedItem);
+        }
         finally { updating = wasUpdating; }
     }
 
@@ -66,7 +103,7 @@ internal sealed class SearchableComboBox : ComboBox
         if (updating || choices is null || e.OriginalSource is not TextBox editor
             || editor.Name != "PART_EditableTextBox" || !editor.IsKeyboardFocused) return;
         var text = editor.Text;
-        if (SelectedItem is not null && text == name(SelectedItem)) return;
+        if (SelectedItem is not null && (text == name(SelectedItem) || text == displayName?.Invoke(SelectedItem))) return;
         var start = editor.SelectionStart;
         var length = editor.SelectionLength;
         updating = true;
