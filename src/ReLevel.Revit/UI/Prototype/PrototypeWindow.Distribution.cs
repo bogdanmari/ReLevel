@@ -18,9 +18,11 @@ internal sealed partial class PrototypeWindow
         foreach (var level in levels) level.PropertyChanged += (_, e) => { if (e.PropertyName == nameof(PrototypeLevel.Keep)) Update(); };
         button.Click += (_, _) =>
         {
+            using var controls = new OperationControls(this, progress);
             progress.Begin(0);
             workspace!.Distribute(levels, progress.Report,
-                stopped => progress.Finish(stopped, text[stopped ? "DistributionStopped" : "DistributionComplete"]));
+                stopped => { progress.Finish(stopped, text[stopped ? "DistributionStopped" : "DistributionComplete"]); controls.Dispose(); },
+                () => progress.CancellationRequested);
         };
         footer.Children.Add(button); footer.Children.Add(progress);
         DockPanel.SetDock(footer, Dock.Bottom); content.Children.Add(footer);

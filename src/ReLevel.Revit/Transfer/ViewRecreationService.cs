@@ -6,7 +6,7 @@ namespace ReLevel.Revit.Transfer;
 internal sealed class ViewRecreationService(Document document)
 {
     public ViewRecreationReport Execute(IReadOnlyList<ElementId> sourceIds, ElementId targetLevelId, string prefix,
-        Action<int, int, long?>? progress = null)
+        Action<int, int, long?>? progress = null, Func<bool>? cancelled = null)
     {
         var report = new ViewRecreationReport();
         using var allElements = new LogicalOrFilter(new ElementIsElementTypeFilter(), new ElementIsElementTypeFilter(true));
@@ -20,10 +20,22 @@ internal sealed class ViewRecreationService(Document document)
             foreach (var id in sourceIds)
             {
                 progress?.Invoke(completed, sourceIds.Count, id.Value);
+                if (cancelled?.Invoke() == true) break;
                 report.Results.Items.Add(RecreateOne(id, targetLevelId, prefix, report, originalIds));
                 progress?.Invoke(++completed, sourceIds.Count, id.Value);
             }
-            Require(batch.Assimilate(), TransactionStatus.Committed);
+            if (cancelled?.Invoke() == true)
+            {
+                Require(batch.RollBack(), TransactionStatus.RolledBack);
+                report.Results.Items.Clear();
+                report.Entries.Clear();
+                foreach (var id in sourceIds)
+                    report.Results.Items.Add(new(id.Value, id.Value.ToString(), ViewResultStatus.Skipped,
+                        L.Get("Запуск отменён. Все изменения запуска отменены.")));
+                report.Entries.Add(new(LogSeverity.Info, L.Get("Отмена"), 0, null, null,
+                    L.Get("Запуск отменён. Все изменения запуска отменены."), "", ""));
+            }
+            else Require(batch.Assimilate(), TransactionStatus.Committed);
         }
         catch (Exception ex)
         {

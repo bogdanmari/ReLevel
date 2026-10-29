@@ -12,13 +12,15 @@ internal sealed record PreparedElementTransfer(IElementTransferOperation? Operat
 internal sealed class ElementTransferService(Document document)
 {
     public ElementTransferReport Execute(IReadOnlyList<ElementId> ids, ElementId targetLevelId, ElementId sourceLevelId,
-        Action<int, int, long?>? progress = null) =>
-        Execute(ids, id => PrepareSingle(id, targetLevelId, sourceLevelId), progress);
+        Action<int, int, long?>? progress = null, Func<bool>? cancelled = null) =>
+        Execute(ids, id => PrepareSingle(id, targetLevelId, sourceLevelId), progress, cancelled);
 
     public ElementTransferReport Execute(IReadOnlyList<ElementId> ids,
-        Func<ElementId, PreparedElementTransfer> prepare, Action<int, int, long?>? progress = null)
+        Func<ElementId, PreparedElementTransfer> prepare, Action<int, int, long?>? progress = null, Func<bool>? cancelled = null)
     {
         var report = new ElementTransferReport();
+        using var batch = cancelled is null ? null : new TransactionGroup(document, L.Get("ReLevel: перенос элементов"));
+        if (batch is not null) Require(batch.Start(), TransactionStatus.Started);
         var completed = 0;
         foreach (var id in ids)
         {
@@ -28,6 +30,7 @@ internal sealed class ElementTransferService(Document document)
                 continue;
             }
             progress?.Invoke(completed, ids.Count, id.Value);
+            if (cancelled?.Invoke() == true) break;
             try { report.Items.Add(TransferOne(id, prepare)); }
             catch (Exception ex)
             {
@@ -38,6 +41,17 @@ internal sealed class ElementTransferService(Document document)
             }
             completed++;
             progress?.Invoke(completed, ids.Count, null);
+        }
+        if (batch is not null)
+        {
+            if (!report.Stopped && cancelled!())
+            {
+                Require(batch.RollBack(), TransactionStatus.RolledBack);
+                report.Items.Clear();
+                foreach (var id in ids)
+                    report.Items.Add(new(id.Value, ElementTransferStatus.Skipped, L.Get("Запуск отменён. Все изменения запуска отменены.")));
+            }
+            else Require(batch.Commit(), TransactionStatus.Committed);
         }
         return report;
     }

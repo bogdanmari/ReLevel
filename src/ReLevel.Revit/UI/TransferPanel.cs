@@ -308,21 +308,21 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         {
             ElementTransferReport report;
             transferring = true;
-            var controls = (UIElement)owner.Content;
-            controls.IsEnabled = false;
+            using var controls = new OperationControls(owner, transferProgress);
+
             var stopped = true;
             try
             {
                 transferProgress.Begin(rows.Count);
                 report = new ElementTransferService(document).Execute(
                     rows.Select(row => new ElementId(row.Id)).ToList(), destination.Id, sourceLevelId,
-                    transferProgress.Report);
+                    transferProgress.Report, () => transferProgress.CancellationRequested);
                 stopped = report.Stopped;
             }
             finally
             {
                 transferring = false;
-                controls.IsEnabled = true;
+                controls.Dispose();
                 transferProgress.Finish(stopped);
             }
             var results = report.Items.Select(ElementTransferResultRow.From).ToList();
@@ -375,21 +375,21 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         {
             ViewRecreationReport report;
             transferring = true;
-            var controls = (UIElement)owner.Content;
-            controls.IsEnabled = false;
+            using var controls = new OperationControls(owner, transferProgress);
+
             var stopped = true;
             try
             {
                 transferProgress.Begin(rows.Count);
                 report = new ViewRecreationService(document).Execute(
                     rows.Select(r => new ElementId(r.Id)).ToList(), dialog.Target.Id, dialog.Prefix,
-                    transferProgress.Report);
+                    transferProgress.Report, () => transferProgress.CancellationRequested);
                 stopped = report.CriticalFailure;
             }
             finally
             {
                 transferring = false;
-                controls.IsEnabled = true;
+                controls.Dispose();
                 transferProgress.Finish(stopped, stopped
                     ? L.Get("Пересоздание видов остановлено.") : L.Get("Пересоздание видов завершено."));
             }

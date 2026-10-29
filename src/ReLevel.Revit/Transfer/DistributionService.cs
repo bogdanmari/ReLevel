@@ -8,7 +8,7 @@ internal sealed class DistributionService(Document document, IReadOnlyList<Level
 {
     public ElementTransferReport Execute(IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds,
         IReadOnlyCollection<long> additionalIds, Action<int, int, long?>? progress = null,
-        IReadOnlyCollection<long>? analyzedIds = null)
+        IReadOnlyCollection<long>? analyzedIds = null, Func<bool>? cancelled = null)
     {
         if (retained.Count == 0) throw new InvalidOperationException(L.Get("Выберите хотя бы один сохраняемый уровень."));
         var ids = (analyzedIds is null ? TransferCases.Candidates(document).Select(element => element.Id)
@@ -19,7 +19,7 @@ internal sealed class DistributionService(Document document, IReadOnlyList<Level
             ? new RetainedLevel(choice.Id, level.ProjectElevation)
             : throw new InvalidOperationException(L.Get("Целевой уровень больше не существует."))).ToList();
 
-        return new ElementTransferService(document).Execute(ids, id => Prepare(id, targets, protectedIds), progress);
+        return new ElementTransferService(document).Execute(ids, id => Prepare(id, targets, protectedIds), progress, cancelled);
     }
 
     private PreparedElementTransfer Prepare(ElementId id, IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds)

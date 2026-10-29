@@ -1,4 +1,6 @@
 {
+  "Запуск отменён. Все изменения запуска отменены.": "Run cancelled. All changes from this run have been rolled back.",
+  "ReLevel: перенос элементов": "ReLevel: transfer elements",
   "Копировать всё": "Copy all",
   "Экспорт в TSV": "Export TSV",
   "Скопировано в буфер обмена.": "Copied to clipboard.",

@@ -45,25 +45,24 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
 
     public void RunDebug(WorkspaceDebugTool tool) => transfer.RunDebug(tool);
 
-    public void Distribute(IReadOnlyList<PrototypeLevel> choices, Action<int, int, long?> progress, Action<bool> finished)
+    public void Distribute(IReadOnlyList<PrototypeLevel> choices, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled)
     {
         if (busy) return;
         var retained = choices.Where(row => row.Keep).Select(row => new RetainedLevel(row.Id, row.Elevation)).ToList();
         if (retained.Count == 0) return;
         var protectedIds = choices.Where(row => row.Keep && row.Protect).Select(row => row.Id).ToHashSet();
-        var controls = (UIElement)owner.Content;
-        busy = true; controls.IsEnabled = false;
+        busy = true;
         ElementTransferReport? report = null;
         Exception? failure = null;
         try
         {
             report = new DistributionService(application.ActiveUIDocument.Document, levels)
-                .Execute(retained, protectedIds, transfer.AdditionalElementIds, progress, index.ElementIds.ToList());
+                .Execute(retained, protectedIds, transfer.AdditionalElementIds, progress, index.ElementIds.ToList(), cancelled);
         }
         catch (Exception ex) { failure = ex; }
         finally
         {
-            busy = false; controls.IsEnabled = true;
+            busy = false;
             finished(report is null || report.Stopped);
         }
         if (failure is not null)

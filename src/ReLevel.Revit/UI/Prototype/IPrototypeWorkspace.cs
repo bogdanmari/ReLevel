@@ -9,5 +9,5 @@ internal interface IPrototypeWorkspace
     ColorPageState PrepareColors();
     string ApplyColors(IReadOnlyList<PrototypeLevel> levels, bool reset);
     void RunDebug(WorkspaceDebugTool tool);
-    void Distribute(IReadOnlyList<PrototypeLevel> levels, Action<int, int, long?> progress, Action<bool> finished);
+    void Distribute(IReadOnlyList<PrototypeLevel> levels, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled);
 }
