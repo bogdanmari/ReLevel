@@ -9,6 +9,7 @@ namespace ReLevel.Revit.UI.Prototype;
 internal sealed partial class PrototypeWindow : Window
 {
     private readonly PrototypeText text;
+    private readonly ReLevel.Revit.Logic.LengthUnitSettings units;
     private readonly Func<Window, bool, IPrototypeTransferPage>? transferFactory;
     private IPrototypeTransferPage? transferPage;
     private readonly IPrototypeWorkspace? workspace;
@@ -16,7 +17,7 @@ internal sealed partial class PrototypeWindow : Window
     private readonly IReadOnlyList<PrototypeLevel> levels;
     private readonly ListBox bottomNavigation = new() { BorderThickness = new Thickness(0), Background = Brushes.Transparent };
     private readonly List<TextBlock> navigationLabels = [];
-    private bool collapsed;
+    private bool collapsed = true;
     private readonly ContentControl body = new();
     private readonly ListBox navigation = new() { BorderThickness = new Thickness(0), Background = Brushes.Transparent };
     private static readonly Brush Ink = Brush("#183247");
@@ -30,7 +31,11 @@ internal sealed partial class PrototypeWindow : Window
         this.transferFactory = transferFactory;
         this.workspace = workspace;
         text = new(english);
-        Width = 968; Height = 624; MinWidth = 800; MinHeight = 500;
+        units = workspace?.Units ?? ReLevel.Revit.Logic.LengthUnitSettings.FeetOnly();
+        foreach (var level in levels) level.SetElevationFormatter(units.Format);
+        units.Changed += () => { foreach (var level in levels) level.RefreshUnits(); };
+        Icon = AppIcon.Create();
+        Width = 968; Height = 686.4; MinWidth = 800; MinHeight = 500;
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         FontFamily = new FontFamily("Segoe UI"); FontSize = 14; Foreground = Ink;
         Background = Brush("#F4F7FA");
@@ -42,35 +47,18 @@ internal sealed partial class PrototypeWindow : Window
         itemStyle.Setters.Add(new Setter(Control.VerticalContentAlignmentProperty, VerticalAlignment.Center));
         Resources.Add(typeof(ComboBoxItem), itemStyle);
         var shell = new Grid { LayoutTransform = new ScaleTransform(0.9, 0.9), UseLayoutRounding = true };
-        shell.ColumnDefinitions.Add(new() { Width = new GridLength(206) });
-        shell.ColumnDefinitions.Add(new() { Width = new GridLength(18) });
+        shell.ColumnDefinitions.Add(new() { Width = new GridLength(64) });
+        shell.ColumnDefinitions.Add(new() { Width = new GridLength(8) });
         shell.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star) });
         var sidebar = new DockPanel { Margin = new Thickness(8, 18, 8, 16) };
-        var brand = new StackPanel { Height = 44, ClipToBounds = true, Margin = new Thickness(10, 0, 0, 30) };
+        var brandRow = new DockPanel { Height = 44, Margin = new Thickness(2, 0, 0, 30) };
+        var logo = new Image { Source = AppIcon.Create(), Width = 36, Height = 36, Margin = new Thickness(0, 0, 10, 0) };
+        DockPanel.SetDock(logo, Dock.Left); brandRow.Children.Add(logo);
+        var brand = new StackPanel { ClipToBounds = true };
         brand.Children.Add(new TextBlock { Text = "ReLevel", FontSize = 24, FontWeight = FontWeights.Bold, Foreground = Accent });
-        brand.Children.Add(Label(transferFactory is null ? "Prototype" : "Workspace", 10, Muted));
-        DockPanel.SetDock(brand, Dock.Top); sidebar.Children.Add(brand);
-        var arrow = new System.Windows.Shapes.Path { Data = Geometry.Parse("M6,0 L1,5 L6,10"),
-            Stroke = Muted, StrokeThickness = 1.4, Width = 7, Height = 10, RenderTransformOrigin = new Point(0.5, 0.5) };
-        var collapse = new Button { Content = arrow, Width = 18, Height = 32,
-            VerticalAlignment = VerticalAlignment.Center, Background = Brushes.Transparent, BorderThickness = new Thickness(0) };
-        var collapseStyle = new Style(typeof(Button));
-        collapseStyle.Setters.Add(new Setter(BackgroundProperty, Brushes.Transparent));
-        var chrome = new FrameworkElementFactory(typeof(Border));
-        chrome.SetValue(Border.CornerRadiusProperty, new CornerRadius(4));
-        chrome.SetBinding(Border.BackgroundProperty, new Binding(nameof(Background)) { RelativeSource = RelativeSource.TemplatedParent });
-        var presenter = new FrameworkElementFactory(typeof(ContentPresenter));
-        presenter.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Center);
-        presenter.SetValue(VerticalAlignmentProperty, VerticalAlignment.Center); chrome.AppendChild(presenter);
-        collapseStyle.Setters.Add(new Setter(TemplateProperty, new ControlTemplate(typeof(Button)) { VisualTree = chrome }));
-        var hover = new Trigger { Property = IsMouseOverProperty, Value = true };
-        hover.Setters.Add(new Setter(BackgroundProperty, Brush("#DDF1F1"))); collapseStyle.Triggers.Add(hover);
-        collapse.Style = collapseStyle;
-        // Use the style value so the subtle hover background can take effect.
-        collapse.ClearValue(BackgroundProperty);
-        Bind(collapse, ToolTipProperty, "ToggleMenu");
-        Bind(collapse, System.Windows.Automation.AutomationProperties.NameProperty, "ToggleMenu");
-        Grid.SetColumn(collapse, 1); shell.Children.Add(collapse);
+        brand.Children.Add(Label("Workspace", 10, Muted));
+        brandRow.Children.Add(brand);
+        DockPanel.SetDock(brandRow, Dock.Top); sidebar.Children.Add(brandRow);
         var bottom = new StackPanel();
         bottom.Children.Add(new Border { Height = 1, Background = Brush("#D5E3E7"), Margin = new Thickness(4, 10, 4, 10) });
         bottom.Children.Add(bottomNavigation);
@@ -85,25 +73,31 @@ internal sealed partial class PrototypeWindow : Window
                     label.FontSize, Ink, VisualTreeHelper.GetDpi(this).PixelsPerDip);
                 width = Math.Max(width, Math.Ceiling(measured.WidthIncludingTrailingWhitespace) + 80);
             }
-            shell.ColumnDefinitions[0].Width = new GridLength(collapsed ? 64 : width);
+            sidebar.Width = (collapsed ? 64 : width) - 16;
         }
-        collapse.Click += (_, _) =>
+        void SetCollapsed(bool value)
         {
-            collapsed = !collapsed;
+            collapsed = value;
             FitSidebar();
-            arrow.RenderTransform = new RotateTransform(collapsed ? 180 : 0);
-            brand.Visibility = collapsed ? Visibility.Hidden : Visibility.Visible;
+            brand.Visibility = collapsed ? Visibility.Collapsed : Visibility.Visible;
             foreach (var label in navigationLabels) label.Visibility = collapsed ? Visibility.Collapsed : Visibility.Visible;
-        };
+        }
         sidebar.Children.Add(navigation);
-        shell.Children.Add(new Border { Background = Brushes.White, BorderBrush = Brush("#E0E7ED"), BorderThickness = new Thickness(0, 0, 1, 0), Child = sidebar });
+        var sidebarFrame = new Border { Background = Brushes.White, BorderBrush = Brush("#E0E7ED"),
+            BorderThickness = new Thickness(0, 0, 1, 0), Child = sidebar };
+        sidebarFrame.MouseEnter += (_, _) => SetCollapsed(false);
+        sidebarFrame.MouseLeave += (_, _) => SetCollapsed(true);
+        sidebarFrame.HorizontalAlignment = HorizontalAlignment.Left;
+        Grid.SetColumnSpan(sidebarFrame, 3); Panel.SetZIndex(sidebarFrame, 1);
+        shell.Children.Add(sidebarFrame);
         body.Margin = new Thickness(8, 18, 20, 16); Grid.SetColumn(body, 2); shell.Children.Add(body);
         Content = shell;
 
         // Register new sections here. Each page is built once, retaining table and control state.
-        AddSection("Distribute", Distribution());
+        if (transferFactory is not null) transferPage = transferFactory(this, text.English);
+        AddSection("Levels", Information());
         AddSection("Colors", ColorsPage());
-        AddSection("Transfer", Transfer());
+        AddSection("Compare", ComparisonPage());
         AddSection("Debug", Debug(), bottomNavigation);
         AddSection("Settings", Settings(), bottomNavigation);
         foreach (var menu in new[] { navigation, bottomNavigation })
@@ -115,7 +109,7 @@ internal sealed partial class PrototypeWindow : Window
         }
         text.PropertyChanged += (_, _) => FitSidebar();
         text.PropertyChanged += (_, _) => transferPage?.SetLanguage(text.English);
-        FitSidebar();
+        SetCollapsed(true);
         void Select(ListBox active, ListBox other)
         {
             if (active.SelectedItem is not ListBoxItem item) return;
@@ -125,7 +119,7 @@ internal sealed partial class PrototypeWindow : Window
         }
         navigation.SelectionChanged += (_, _) => Select(navigation, bottomNavigation);
         bottomNavigation.SelectionChanged += (_, _) => Select(bottomNavigation, navigation);
-        navigation.SelectedIndex = transferFactory is null ? 0 : 2;
+        navigation.SelectedIndex = 0;
     }
 
     private void AddSection(string key, FrameworkElement page, ListBox? target = null)
@@ -162,43 +156,28 @@ internal sealed partial class PrototypeWindow : Window
     private DockPanel Page(string key, out DockPanel content)
     {
         var page = new DockPanel();
-        Panel heading;
-        if (key == "Transfer")
-        {
-            heading = new DockPanel { Margin = new Thickness(0, 0, 0, 14) };
-            var title = Label(key, 22);
-            title.Margin = new Thickness(0, 0, 16, 0);
-            DockPanel.SetDock(title, Dock.Left); heading.Children.Add(title);
-            var description = Label(key + "Description", 13, Muted);
-            description.VerticalAlignment = VerticalAlignment.Center;
-            description.TextWrapping = TextWrapping.NoWrap;
-            description.TextTrimming = TextTrimming.CharacterEllipsis;
-            Bind(description, ToolTipProperty, key + "Description");
-            heading.Children.Add(description);
-        }
-        else
-        {
-            heading = new StackPanel { Margin = new Thickness(0, 0, 0, 22) };
-            heading.Children.Add(Label(key, 22));
-            var description = Label(key + "Description", 13); description.Margin = new Thickness(0, 12, 0, 8);
-            heading.Children.Add(description);
-        }
-
+        var heading = new Grid { Height = 32, Margin = new Thickness(0, 0, 0, 14) };
+        heading.ColumnDefinitions.Add(new() { Width = new GridLength(240) });
+        heading.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star) });
+        heading.ColumnDefinitions.Add(new() { Width = new GridLength(42) });
+        var help = new Button { Width = 30, Height = 30, Margin = new Thickness(12, 0, 0, 0),
+            Content = PrototypeIcons.Create("Help", Accent, 20), Background = Brushes.Transparent, BorderThickness = new Thickness(0) };
+        Bind(help, ToolTipProperty, "Help");
+        Bind(help, System.Windows.Automation.AutomationProperties.NameProperty, "Help");
+        help.Click += (_, _) => new ModeHelpWindow(this, text, key).ShowDialog();
+        Grid.SetColumn(help, 2); heading.Children.Add(help);
+        var title = Label(key, 22, Accent);
+        title.Margin = new Thickness(0, 0, 16, 0);
+        title.TextWrapping = TextWrapping.NoWrap;
+        title.TextTrimming = TextTrimming.CharacterEllipsis; heading.Children.Add(title);
+        var description = Label(key + "Description", 13, Muted);
+        description.VerticalAlignment = VerticalAlignment.Center;
+        description.TextWrapping = TextWrapping.NoWrap;
+        description.TextTrimming = TextTrimming.CharacterEllipsis;
+        Bind(description, ToolTipProperty, key + "Description");
+        Grid.SetColumn(description, 1); heading.Children.Add(description);
         DockPanel.SetDock(heading, Dock.Top); page.Children.Add(heading);
         content = new DockPanel(); page.Children.Add(content);
-        return page;
-    }
-
-    private FrameworkElement Distribution()
-    {
-        var page = Page("Distribute", out var content);
-        if (workspace is null) Footer(content, "RunDistribution");
-        else DistributionFooter(content);
-        var table = Table();
-        CheckColumn(table, "Keep", nameof(PrototypeLevel.Keep), 48);
-        LevelColumns(table);
-        CheckColumn(table, "Protect", nameof(PrototypeLevel.Protect), 170, nameof(PrototypeLevel.Keep));
-        content.Children.Add(TableContainer(table));
         return page;
     }
 
@@ -206,8 +185,7 @@ internal sealed partial class PrototypeWindow : Window
     {
         var page = Page("Colors", out var content);
         colorsPage = page;
-        if (workspace is null) Footer(content, "Apply");
-        else ColorFooter(content);
+        ColorFooter(content);
         var table = Table();
         CheckColumn(table, "Selected", nameof(PrototypeLevel.Selected), 48);
         LevelColumns(table);
@@ -254,40 +232,6 @@ internal sealed partial class PrototypeWindow : Window
         return page;
     }
 
-    private FrameworkElement Transfer()
-    {
-        var page = Page("Transfer", out var content);
-        if (transferFactory is not null)
-        {
-            transferPage = transferFactory(this, text.English);
-            content.Children.Add(transferPage.View);
-            return page;
-        }
-        Footer(content, "Move", "Recreate");
-        var selectors = new Grid { Margin = new Thickness(0, 0, 0, 20) };
-        selectors.ColumnDefinitions.Add(new()); selectors.ColumnDefinitions.Add(new());
-        string[] keys = ["Source", "Target"];
-        for (int i = 0; i < keys.Length; i++)
-        {
-            var panel = new StackPanel { Margin = new Thickness(i == 0 ? 0 : 12, 0, i == 0 ? 12 : 0, 0) };
-            panel.Children.Add(Label(keys[i], 13, Muted));
-            panel.Children.Add(new ComboBox { ItemsSource = new ListCollectionView(levels.ToList()), DisplayMemberPath = nameof(PrototypeLevel.Name),
-                SelectedValuePath = nameof(PrototypeLevel.Id), MinHeight = 34, Margin = new Thickness(0, 7, 0, 0) });
-            Grid.SetColumn(panel, i); selectors.Children.Add(panel);
-        }
-        DockPanel.SetDock(selectors, Dock.Top); content.Children.Add(selectors);
-        var tabs = new TabControl();
-        foreach (var key in new[] { "Elements", "Views" })
-        {
-            var empty = Label("NotLoaded", 15, Muted); empty.HorizontalAlignment = HorizontalAlignment.Center;
-            empty.VerticalAlignment = VerticalAlignment.Center; empty.Margin = new Thickness(20);
-            var tab = new TabItem { Header = Label(key, 13), Content = empty, Padding = new Thickness(12, 4, 12, 4) };
-            tabs.Items.Add(tab);
-        }
-        content.Children.Add(tabs);
-        return page;
-    }
-
     private FrameworkElement Debug()
     {
         var page = Page("Debug", out var content);
@@ -314,12 +258,27 @@ internal sealed partial class PrototypeWindow : Window
         var language = new ComboBox { ItemsSource = new[] { "Русский", "English" }, SelectedIndex = text.English ? 1 : 0,
             Width = 260, MinHeight = 36, HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 10, 0, 0) };
         language.SelectionChanged += (_, _) => text.English = language.SelectedIndex == 1;
-        panel.Children.Add(language); content.Children.Add(panel); return page;
+        panel.Children.Add(language);
+        var unitTitle = Label("Units"); unitTitle.Margin = new Thickness(0, 24, 0, 0); panel.Children.Add(unitTitle);
+        var unitChoice = new ComboBox { Width = 320, MinHeight = 36, HorizontalAlignment = HorizontalAlignment.Left,
+            Margin = new Thickness(0, 10, 0, 0) };
+        foreach (var key in new[] { "ProjectUnits", "InternalUnits" })
+        {
+            var item = new ComboBoxItem(); Bind(item, ContentControl.ContentProperty, key); unitChoice.Items.Add(item);
+        }
+        unitChoice.SelectedIndex = units.InternalFeet ? 1 : 0;
+        unitChoice.SelectionChanged += (_, _) => units.InternalFeet = unitChoice.SelectedIndex == 1;
+        panel.Children.Add(unitChoice);
+        var unitNote = Label("UnitsHelp", 12, Muted); unitNote.Margin = new Thickness(0, 10, 0, 0);
+        void UpdateNote() => unitNote.Text = text["UnitsHelp"] + " " + text["CurrentUnits"] + ": " + units.Caption(text.English);
+        units.Changed += UpdateNote; text.PropertyChanged += (_, _) => UpdateNote(); UpdateNote();
+        panel.Children.Add(unitNote);
+        content.Children.Add(panel); return page;
     }
 
     private DataGrid Table()
     {
-        var table = new DataGrid
+        var table = new CopyableDataGrid
         {
             ItemsSource = new ListCollectionView(levels.ToList()), AutoGenerateColumns = false, CanUserAddRows = false, CanUserDeleteRows = false,
             CanUserSortColumns = true, CanUserReorderColumns = false, IsReadOnly = true,
@@ -327,7 +286,7 @@ internal sealed partial class PrototypeWindow : Window
             VerticalGridLinesBrush = Brush("#D5E3E7"),
             HorizontalGridLinesBrush = Brush("#E9EEF2"), BorderBrush = Brush("#DFE6ED"), BorderThickness = new Thickness(1),
             Background = Brushes.White, RowBackground = Brushes.White, AlternatingRowBackground = Brush("#EFF7F8"),
-            RowHeight = 40, MinRowHeight = 40, SelectionMode = DataGridSelectionMode.Extended, SelectionUnit = DataGridSelectionUnit.FullRow,
+            ColumnHeaderHeight = 76, RowHeight = 40, MinRowHeight = 40, SelectionMode = DataGridSelectionMode.Extended, SelectionUnit = DataGridSelectionUnit.FullRow,
             EnableRowVirtualization = true, EnableColumnVirtualization = true
         };
         table.ColumnHeaderStyle = PrototypeTableHeader.CreateStyle();
@@ -348,21 +307,24 @@ internal sealed partial class PrototypeWindow : Window
         panel.Children.Add(grid); return panel;
     }
 
-    private void LevelColumns(DataGrid table)
+    private void LevelColumns(DataGrid table, bool showCount = true)
     {
         var name = new FrameworkElementFactory(typeof(TextBlock));
-        name.SetBinding(TextBlock.TextProperty, new Binding(nameof(PrototypeLevel.NameWithCount)));
+        name.SetBinding(TextBlock.TextProperty, new Binding(showCount ? nameof(PrototypeLevel.NameWithCount) : nameof(PrototypeLevel.Name)));
         name.SetBinding(ToolTipProperty, new Binding(nameof(PrototypeLevel.Id)) { StringFormat = "ID: {0}" });
         name.SetValue(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis);
         name.SetValue(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Center);
         name.SetValue(FrameworkElement.MarginProperty, new Thickness(10, 0, 10, 0));
         var column = TemplateColumn(table, "Name", name, 180);
+        if (!showCount) Bind((TextBlock)column.Header, ToolTipProperty, "InformationHelp");
         column.Width = new DataGridLength(1, DataGridLengthUnitType.Star); column.MinWidth = 120; column.SortMemberPath = nameof(PrototypeLevel.Name);
         var elevation = new FrameworkElementFactory(typeof(TextBlock));
         elevation.SetBinding(TextBlock.TextProperty, new Binding(nameof(PrototypeLevel.ElevationText)));
         elevation.SetValue(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Center);
         elevation.SetValue(FrameworkElement.MarginProperty, new Thickness(10, 0, 10, 0));
-        TemplateColumn(table, "Elevation", elevation, 100).SortMemberPath = nameof(PrototypeLevel.Elevation);
+        var elevationColumn = TemplateColumn(table, "Elevation", elevation, 150);
+        BindUnitLabel((TextBlock)elevationColumn.Header, "Elevation");
+        elevationColumn.SortMemberPath = nameof(PrototypeLevel.Elevation);
     }
 
     private void CheckColumn(DataGrid table, string key, string property, double width, string? enabledProperty = null)

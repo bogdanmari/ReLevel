@@ -12,7 +12,7 @@ internal sealed class PrototypeTableSearch
 {
     public DockPanel Bar { get; } = new() { Height = 32, Margin = new Thickness(0, 0, 0, 12) };
 
-    public PrototypeTableSearch(DataGrid table, PrototypeText text)
+    public PrototypeTableSearch(DataGrid table, PrototypeText text, Func<object, string>? searchableText = null)
     {
         var input = new TextBox { Padding = new Thickness(8, 0, 8, 0), VerticalContentAlignment = VerticalAlignment.Center };
         var filter = new ToggleButton { Width = 32, Margin = new Thickness(0, 0, 8, 0) };
@@ -38,23 +38,30 @@ internal sealed class PrototypeTableSearch
         placeholder.SetBinding(TextBlock.TextProperty, new Binding("[Search]") { Source = text });
         field.Children.Add(placeholder); Bar.Children.Add(field);
         string Query() => input.Text.Trim();
-        bool Matches(PrototypeLevel row) => Query().Length > 0 &&
-            (row.NameWithCount.Contains(Query(), StringComparison.CurrentCultureIgnoreCase) ||
+        bool MatchesLevel(PrototypeLevel row) => Query().Length > 0 &&
+            ((table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ModelElementCount)) ? row.Name : row.NameWithCount)
+                .Contains(Query(), StringComparison.CurrentCultureIgnoreCase) ||
+             (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ModelElementCount)) &&
+              row.ModelElementCountText.Contains(Query(), StringComparison.CurrentCultureIgnoreCase)) ||
              row.ElevationText.Contains(Query(), StringComparison.CurrentCultureIgnoreCase) ||
+             (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ViewCount)) &&
+              row.ViewCount.ToString().Contains(Query(), StringComparison.CurrentCultureIgnoreCase)) ||
              (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ElementCount)) &&
               row.ElementCount.ToString().Contains(Query(), StringComparison.CurrentCultureIgnoreCase)) ||
              (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.Hidden)) && row.Selected && row.Hidden &&
               text["Hidden"].Contains(Query(), StringComparison.CurrentCultureIgnoreCase)));
-        List<PrototypeLevel> MatchesInOrder() => table.Items.OfType<PrototypeLevel>().Where(Matches).ToList();
+        bool Matches(object item) => searchableText is null ? MatchesLevel((PrototypeLevel)item)
+            : Query().Length > 0 && searchableText(item).Contains(Query(), StringComparison.CurrentCultureIgnoreCase);
+        List<object> MatchesInOrder() => table.Items.Cast<object>().Where(Matches).ToList();
         void Count()
         {
             var matches = MatchesInOrder();
-            int index = table.SelectedItem is PrototypeLevel row ? matches.IndexOf(row) : -1;
+            int index = table.SelectedItem is object row ? matches.IndexOf(row) : -1;
             counter.Text = Query().Length == 0 ? "—" : index < 0 ? $"{text["Matches"]}: {matches.Count}" : $"{index + 1} / {matches.Count}";
             previous.IsEnabled = next.IsEnabled = matches.Count > 0;
         }
         var view = (ListCollectionView)table.ItemsSource;
-        view.Filter = item => filter.IsChecked != true || Query().Length == 0 || Matches((PrototypeLevel)item);
+        view.Filter = item => filter.IsChecked != true || Query().Length == 0 || Matches(item);
         void Refresh() { view.Refresh(); Count(); }
         void Navigate(int direction)
         {
@@ -74,7 +81,7 @@ internal sealed class PrototypeTableSearch
         table.SelectionChanged += (_, _) => Count();
         void RefreshPreservingSelection()
         {
-            var selected = table.SelectedItems.Cast<PrototypeLevel>().ToList();
+            var selected = table.SelectedItems.Cast<object>().ToList();
             Refresh();
             foreach (var row in selected.Where(table.Items.Contains)) table.SelectedItems.Add(row);
         }
@@ -84,9 +91,9 @@ internal sealed class PrototypeTableSearch
             else Count();
         };
         bool refreshPending = false;
-        foreach (var row in view.SourceCollection.Cast<PrototypeLevel>()) row.PropertyChanged += (_, e) =>
+        foreach (var row in view.SourceCollection.OfType<PrototypeLevel>()) row.PropertyChanged += (_, e) =>
         {
-            if (e.PropertyName is not (nameof(PrototypeLevel.Selected) or nameof(PrototypeLevel.Hidden) or nameof(PrototypeLevel.ElementCount) or nameof(PrototypeLevel.NameWithCount)) || refreshPending) return;
+            if (e.PropertyName is not (nameof(PrototypeLevel.ElevationText) or nameof(PrototypeLevel.Selected) or nameof(PrototypeLevel.Hidden) or nameof(PrototypeLevel.ElementCount) or nameof(PrototypeLevel.NameWithCount) or nameof(PrototypeLevel.ViewCount)) || refreshPending) return;
             refreshPending = true;
             table.Dispatcher.BeginInvoke(new Action(() =>
             {
@@ -95,6 +102,7 @@ internal sealed class PrototypeTableSearch
                 else Count();
             }));
         };
+        ((System.Collections.Specialized.INotifyCollectionChanged)view).CollectionChanged += (_, _) => Count();
         Count();
     }
 }

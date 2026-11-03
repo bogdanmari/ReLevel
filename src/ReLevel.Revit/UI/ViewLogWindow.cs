@@ -28,7 +28,7 @@ internal sealed class ViewLogWindow : Window
         grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(3, GridUnitType.Star) });
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Star) });
-        var table = new DataGrid { IsReadOnly = true, AutoGenerateColumns = false, CanUserAddRows = false,
+        var table = new CopyableDataGrid { IsReadOnly = true, AutoGenerateColumns = false, CanUserAddRows = false,
             SelectionMode = DataGridSelectionMode.Single, SelectionUnit = DataGridSelectionUnit.FullRow,
             ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader };
         void Column(string title, string property, double width) => table.Columns.Add(new DataGridTextColumn

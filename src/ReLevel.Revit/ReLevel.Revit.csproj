@@ -29,9 +29,13 @@
     <Compile Include="..\..\legacy\src\ReLevel.Revit\**\*.cs" Exclude="..\..\legacy\src\ReLevel.Revit\**\obj\**;..\..\legacy\src\ReLevel.Revit\**\bin\**" />
   </ItemGroup>
   <ItemGroup Condition="'$(BuildFamily)' != '2024-'">
+    <None Update="Assets\ReLevel16.png;Assets\ReLevel32.png" CopyToOutputDirectory="PreserveNewest" />
     <EmbeddedResource Include="Localization\English.json" />
     <AssemblyMetadata Include="ReLevelProjectDirectory" Value="$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))" />
   </ItemGroup>
+  <PropertyGroup Condition="'$(BuildFamily)' != '2024-'">
+    <ApplicationIcon>Assets\ReLevel.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="RevitAPI">
       <ExternallyResolved>true</ExternallyResolved>

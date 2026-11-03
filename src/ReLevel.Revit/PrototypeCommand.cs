@@ -25,7 +25,7 @@ public sealed class PrototypeCommand : IExternalCommand
             var levels = new FilteredElementCollector(document).OfClass(typeof(Level)).Cast<Level>()
                 .OrderBy(level => level.ProjectElevation).ThenBy(level => level.Name).ThenBy(level => level.Id.Value).ToList();
             var snapshot = levels.Select(level => new PrototypeLevel(level.Id.Value, level.Name,
-                UnitUtils.ConvertFromInternalUnits(level.ProjectElevation, UnitTypeId.Meters))
+                level.ProjectElevation)
                 { Color = System.Windows.Media.Color.FromRgb((byte)Random.Shared.Next(40, 231),
                     (byte)Random.Shared.Next(40, 231), (byte)Random.Shared.Next(40, 231)) }).ToList();
             var index = new ModelElementIndex(document, levels);

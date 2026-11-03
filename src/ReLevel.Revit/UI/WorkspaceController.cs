@@ -11,6 +11,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     IReadOnlyList<PrototypeLevel> snapshot, ModelElementIndex index)
     : IPrototypeWorkspace, IDisposable
 {
+    public LengthUnitSettings Units { get; } = ProjectLengthUnits.Create(application.ActiveUIDocument.Document);
     private Window owner = null!;
     private TransferPanel transfer = null!;
     private LevelViewGraphics? graphics;
@@ -30,8 +31,12 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
 
     private void UpdateCounts()
     {
+        var views = new FilteredElementCollector(application.ActiveUIDocument.Document).OfClass(typeof(View))
+            .Cast<View>().Where(view => !view.IsTemplate && view.GenLevel is not null)
+            .GroupBy(view => view.GenLevel.Id.Value).ToDictionary(group => group.Key, group => group.Count());
         foreach (var row in snapshot)
         {
+            row.ViewCount = views.GetValueOrDefault(row.Id);
             row.ModelElementCount = index.Count(row.Id);
             row.AnalysisIncomplete = index.Errors.Count > 0;
         }
@@ -44,6 +49,18 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     }
 
     public void RunDebug(WorkspaceDebugTool tool) => transfer.RunDebug(tool);
+    public void ProcessInformation(IReadOnlyList<long> levelIds, bool delete, bool views = false)
+    {
+        if (!views) { transfer.ProcessInformation(index.AtBaseLevels(levelIds.ToHashSet()), delete); return; }
+        try
+        {
+            var ids = new FilteredElementCollector(application.ActiveUIDocument.Document).OfClass(typeof(View))
+                .Cast<View>().Where(view => !view.IsTemplate && view.GenLevel is not null && levelIds.Contains(view.GenLevel.Id.Value))
+                .Select(view => view.Id.Value).ToList();
+            transfer.ProcessInformation(ids, delete, DeleteScope.Views);
+        }
+        catch (Exception ex) { OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message); owner.Close(); }
+    }
 
     public void Distribute(IReadOnlyList<PrototypeLevel> choices, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled)
     {

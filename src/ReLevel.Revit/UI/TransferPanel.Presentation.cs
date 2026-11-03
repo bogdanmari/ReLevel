@@ -10,8 +10,16 @@ namespace ReLevel.Revit.UI;
 
 internal sealed partial class TransferPanel
 {
-    private readonly SearchableComboBox target = new() { DisplayMemberPath = "Name" };
     private Button? transferButton, recreateButton;
+    private readonly CheckBox includeUpper = new() { Content = L.Get("Включить верхние привязки"),
+        Margin = new Thickness(0) };
+    private readonly ContentControl levelHeading = new() { VerticalContentAlignment = VerticalAlignment.Center,
+        HorizontalContentAlignment = HorizontalAlignment.Stretch, Margin = new Thickness(0, 0, 12, 0) };
+    private readonly ContentControl backNavigation = new() { HorizontalContentAlignment = HorizontalAlignment.Left };
+    public void SetNavigation(FrameworkElement title, FrameworkElement back)
+    {
+        levelHeading.Content = title; backNavigation.Content = back;
+    }
     public FrameworkElement View => this;
     public IReadOnlyCollection<long> AdditionalElementIds => additionalElementIds;
     private string LevelCaption(Level level) => index is null ? level.Name
@@ -23,28 +31,55 @@ internal sealed partial class TransferPanel
         Refresh();
     }
 
+    public void ProcessInformation(IReadOnlyList<long> ids, bool delete, Transfer.DeleteScope scope = Transfer.DeleteScope.Elements)
+    {
+        if (transferring || ids.Count == 0) return;
+        try
+        {
+            if (delete)
+                DeleteCheckedRows(ids.Select(id => new TableRow(UpdateButtons) { Id = id }).ToList(), scope);
+            else
+            {
+                application.ActiveUIDocument.Selection.SetElementIds(ids.Select(id => new Autodesk.Revit.DB.ElementId(id)).ToList());
+                var selected = application.ActiveUIDocument.Selection.GetElementIds().Select(id => id.Value).ToHashSet();
+                OperationDialogs.Show(owner, L.Get("Выделение элементов"), Format(ids.ToDictionary(id => id, id => selected.Contains(id)
+                    ? L.Get("Выделен в модели.") : L.Get("Не выделен: Revit не включил объект в выделение."))));
+            }
+        }
+        catch (Exception ex)
+        {
+            OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message);
+            Close();
+        }
+    }
+
     public void SetLanguage(bool english)
     {
         language.SelectedIndex = english ? 0 : 1;
     }
 
-    private void Close() => owner.Close();
-
-    private FrameworkElement CreateSelectors() => TransferLayout.Selectors(source, target,
-        L.Get("Исходный уровень"), L.Get("Целевой уровень"));
-
-    private void UpdateTargets()
+    public void OpenLevel(long levelId, bool views)
     {
-        var previous = target.SelectedItem as Level;
-        var sourceId = (source.SelectedItem as Level)?.Id;
-        var available = levels.Where(level => level.Id != sourceId).ToList();
-        target.SetItems(available, level => level.Name);
-        target.ClearSelection();
-        if (previous is not null && available.Any(level => level.Id == previous.Id)) target.SelectedItem = previous;
+        var level = levels.First(item => item.Id.Value == levelId);
+        if (source.SelectedItem is not Level previous || previous.Id != level.Id)
+        {
+            includeUpper.IsChecked = false;
+            source.SelectedItem = level;
+        }
+        else Refresh();
+        tabs.SelectedIndex = views ? 1 : 0;
     }
 
-    private bool HasTarget => source.SelectedItem is Level from && target.SelectedItem is Level to
-        && from.Id != to.Id;
+    private void Close() => owner.Close();
+
+    private FrameworkElement CreateSelectors()
+    {
+        var panel = new Grid { Margin = new Thickness(0, 8, 0, 0) };
+        includeUpper.Checked += (_, _) => Refresh();
+        includeUpper.Unchecked += (_, _) => Refresh();
+        panel.Children.Add(includeUpper);
+        return panel;
+    }
 
     private void ApplyModernStyle()
     {

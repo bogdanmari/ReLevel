@@ -19,6 +19,9 @@ internal sealed class ModelElementIndex(Document document, IReadOnlyList<Level> 
     public TransferCase? Case(long id) => elements.GetValueOrDefault(id)?.Case;
     public IReadOnlyList<long> AtLevel(long levelId) => byLevel.TryGetValue(levelId, out var ids) ? ids : [];
     public int Count(long levelId) => counts.GetValueOrDefault(levelId);
+    public IReadOnlyList<long> AtBaseLevels(IReadOnlySet<long> levelIds) => elements.Values
+        .Where(entry => entry.LevelIds.Count > 0 && levelIds.Contains(entry.LevelIds[0]))
+        .Select(entry => entry.Id).ToList();
     public CaseElementSearchResult FindCase(TransferCase selected) => new(
         elements.Values.Where(entry => entry.Case == selected).Select(entry => new ElementId(entry.Id)).ToList(), Errors);
 

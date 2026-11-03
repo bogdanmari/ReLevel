@@ -11,7 +11,7 @@ internal sealed class RecreateViewsWindow : Window
     public Level Target => (Level)target.SelectedItem;
     public string Prefix => prefix.Text;
 
-    public RecreateViewsWindow(Window owner, IEnumerable<Level> levels, int count, Level? fixedTarget = null,
+    public RecreateViewsWindow(Window owner, IEnumerable<Level> levels, int count,
         Func<Level, string>? displayName = null)
     {
         Owner = owner; Title = L.Get("Пересоздать виды"); Width = 470;
@@ -29,11 +29,6 @@ internal sealed class RecreateViewsWindow : Window
         var ok = new Button { Content = L.Get("Пересоздать"), IsDefault = true, IsEnabled = false,
             Margin = new Thickness(6), Padding = new Thickness(10, 5, 10, 5) };
         target.SelectionChanged += (_, _) => ok.IsEnabled = target.SelectedItem is Level;
-        if (fixedTarget is not null)
-        {
-            target.SelectedItem = fixedTarget;
-            target.IsEnabled = false;
-        }
         ok.Click += (_, _) => DialogResult = true;
         buttons.Children.Add(ok);
         buttons.Children.Add(new Button { Content = L.Get("Отмена"), IsCancel = true, Margin = new Thickness(6), Padding = new Thickness(10, 5, 10, 5) });

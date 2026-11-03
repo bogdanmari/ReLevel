@@ -16,6 +16,8 @@
     <AddInId>634BDA68-F917-4E99-A28A-742886743917</AddInId>
     <FullClassName>ReLevel.Revit.PrototypeCommand</FullClassName>
     <Text>ReLevel UI Prototype</Text>
+    <LargeImage>ReLevel\Assets\ReLevel32.png</LargeImage>
+    <SmallImage>ReLevel\Assets\ReLevel16.png</SmallImage>
     <VendorId>RLVL</VendorId>
     <VendorDescription>ReLevel workspace — distribution, view colors, transfer and diagnostics</VendorDescription>
     <VisibilityMode>NotVisibleInFamily</VisibilityMode>

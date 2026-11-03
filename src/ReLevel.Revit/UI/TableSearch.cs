@@ -28,7 +28,7 @@ internal sealed class TableSearch
         this.modern = modern;
         if (modern)
         {
-            Bar.Height = 32; Bar.Margin = new Thickness(0, 6, 0, 8);
+            Bar.Height = 32; Bar.Margin = new Thickness(0, 0, 0, 12);
             filter.Width = 32; filter.Padding = new Thickness(0);
             foreach (var (button, key) in new (ButtonBase Button, string Key)[]
                 { (filter, "Filter"), (previous, "Previous"), (next, "Next") })

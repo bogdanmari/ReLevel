@@ -23,6 +23,11 @@ internal static class PrototypeIcons
     {
         string data = key switch
         {
+            "Compare" => "M2,3 H9 V21 H2 Z M15,3 H22 V21 H15 Z M9,8 H15 M12,5 L15,8 L12,11 M15,16 H9 M12,13 L9,16 L12,19",
+            "Levels" => "M3,5 H21 M3,12 H21 M3,19 H21 M7,3 V7 M7,10 V14 M7,17 V21",
+            "Help" => "M12,2 A10,10 0 1 1 12,22 A10,10 0 1 1 12,2 M8,8 C8,3 18,5 16,10 C15,12 12,12 12,15 M12,18 V19",
+            "Information" => "M12,2 A10,10 0 1 1 12,22 A10,10 0 1 1 12,2 M12,6 V8 M10,11 H12 V18 H14 M10,18 H12",
+            "Back" => "M21,12 H3 M10,5 L3,12 L10,19",
             "Filter" => "M3,4 H21 L14,12 V19 L10,21 V12 Z",
             "Previous" => "M12,21 V3 M5,10 L12,3 L19,10",
             "Next" => "M12,3 V21 M5,14 L12,21 L19,14",

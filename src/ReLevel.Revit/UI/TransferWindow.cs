@@ -14,6 +14,7 @@ internal sealed class TransferWindow : Window
     public TransferWindow(UIApplication application, IReadOnlyList<Level> levels)
     {
         Title = "ReLevel"; Width = 920; Height = 607.2; MinWidth = 850; MinHeight = 430;
+        Icon = AppIcon.Create();
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         panel = new TransferPanel(this, application, levels);
         Content = panel;

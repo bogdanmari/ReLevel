@@ -52,9 +52,8 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         if (index is not null)
         {
             source.SetDisplayName(item => LevelCaption((Level)item));
-            target.SetDisplayName(item => LevelCaption((Level)item));
-            source.ToolTip = target.ToolTip = L.Get("В скобках — элементы кейсов во всей модели. * — неполный счётчик из-за ошибок анализа.");
-            index.Changed += () => { source.RefreshDisplay(); target.RefreshDisplay(); };
+            source.ToolTip = L.Get("В скобках — элементы кейсов во всей модели. * — неполный счётчик из-за ошибок анализа.");
+            index.Changed += () => source.RefreshDisplay();
         }
 
         var shell = new DockPanel { Margin = new Thickness(modern ? 0 : 16) };
@@ -80,6 +79,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         AddTextColumn(elementTable, "ID", nameof(TableRow.Id), 90);
         AddTextColumn(elementTable, L.Get("Категория"), nameof(TableRow.Category), 170);
         AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name), 220);
+        if (modern) AddTextColumn(elementTable, L.Get("Тип"), nameof(TableRow.Type), 160);
         AddTextColumn(elementTable, L.Get("Привязка"), nameof(TableRow.Level), 90);
         AddTextColumn(elementTable, L.Get("Статус / причина"), nameof(TableRow.Status));
         var elementsPanel = MakePanel(elementTable, L.Get("Показаны доступные и закреплённые элементы реализованных кейсов. Закреплённые элементы нельзя отметить для переноса."), out var elementActions);
@@ -106,17 +106,19 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
                 if (ReferenceEquals(e.OriginalSource, tabs))
                     actions.Content = ReferenceEquals(tabs.SelectedItem, viewsTab) ? viewActions : elementActions;
             };
-            Content = TransferLayout.Workspace(CreateSelectors(), tabs, actions, transferProgress, summary);
+            var actionBar = TransferLayout.NavigationActions(backNavigation, levelHeading, actions);
+            Content = TransferLayout.Workspace(CreateSelectors(), tabs, actionBar, transferProgress, summary);
         }
         else { shell.Children.Add(tabs); Content = shell; }
         PreviewKeyDown += (_, e) =>
         {
             if (transferring) { e.Handled = true; return; }
-            if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen && !target.IsDropDownOpen && !language.IsDropDownOpen) { e.Handled = true; Close(); }
+            if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen && !language.IsDropDownOpen) { e.Handled = true; Close(); }
         };
         owner.Closing += (_, e) => { if (transferring) e.Cancel = true; };
         if (modern) ApplyModernStyle();
-        target.SelectionChanged += (_, _) => UpdateButtons();
+        tabs.SelectionChanged += (_, _) => includeUpper.Visibility = tabs.SelectedIndex == 0
+            ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
         source.SelectionChanged += (_, _) => ChangeSource();
         if (levels.Count > 0) source.SelectedIndex = 0;
         else Refresh();
@@ -151,7 +153,6 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
     private void ChangeSource()
     {
         statuses.Clear();
-        if (modern) UpdateTargets();
         Refresh();
     }
 
@@ -164,7 +165,8 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         {
             var sourceLevelId = (source.SelectedItem as Level)?.Id;
             IEnumerable<Element> candidates = sourceLevelId is null ? [] : index is not null
-                ? index.AtLevel(sourceLevelId.Value).Select(id => document.GetElement(new ElementId(id))).OfType<Element>()
+                ? (modern && includeUpper.IsChecked != true ? index.AtBaseLevels(new HashSet<long> { sourceLevelId.Value }) : index.AtLevel(sourceLevelId.Value))
+                    .Select(id => document.GetElement(new ElementId(id))).OfType<Element>()
                 : TransferCases.Candidates(document).Concat(additionalElementIds
                     .Select(id => document.GetElement(new ElementId(id))).OfType<Element>()).DistinctBy(e => e.Id.Value);
             if (index is not null) elementErrors.AddRange(index.Errors.Select(pair => $"ID {pair.Key}: {pair.Value}"));
@@ -206,14 +208,19 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
                 return null;
             var pinned = element.Pinned;
             var restriction = transferCase.WriteRestriction(element, sourceLevelId);
-            if (!pinned && restriction is not null) return null;
+            if (!modern && !pinned && restriction is not null) return null;
             var status = transferCase.Name + ": " + (restriction ?? L.Get("Доступен для переноса."));
             if (statuses.TryGetValue(element.Id.Value, out var result)) status += Environment.NewLine + result;
-            return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name, CanCheck = !pinned,
-                Category = element.Category?.Name ?? "—", Level = transferCase.Relation(element, sourceLevelId), Status = status };
+            return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name, CanCheck = !pinned && restriction is null,
+                Category = element.Category?.Name ?? "—", Level = transferCase.Relation(element, sourceLevelId), Status = status,
+                Type = modern ? document.GetElement(element.GetTypeId())?.Name ?? "" : "" };
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
-        catch (Exception ex) { errors.Add($"ID {element.Id.Value}: {ex.Message}"); return null; }
+        catch (Exception ex)
+        {
+            errors.Add($"ID {element.Id.Value}: {ex.Message}");
+            return modern ? new TableRow(UpdateButtons) { Id = element.Id.Value, CanCheck = false, Status = ex.Message } : null;
+        }
     }
 
     private void AddElementsById()
@@ -292,18 +299,10 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         if (sourceLevelId is null) return;
         var choices = levels.Where(level => level.Id != sourceLevelId).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(owner, L.Get("Перенос недоступен"), L.Get("Нет другого уровня.")); return; }
-        Level destination;
-        if (modern)
-        {
-            if (!HasTarget) return;
-            destination = (Level)target.SelectedItem;
-        }
-        else
-        {
-            var dialog = new TargetLevelWindow(owner, choices);
-            if (dialog.ShowDialog() != true) return;
-            destination = dialog.Target;
-        }
+        var dialog = new TargetLevelWindow(owner, choices, allowNearest: modern, displayName: index is null ? null : LevelCaption);
+        if (dialog.ShowDialog() != true) return;
+        var nearest = dialog.Nearest;
+        Level? destination = nearest ? null : dialog.Target;
         try
         {
             ElementTransferReport report;
@@ -314,9 +313,14 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
             try
             {
                 transferProgress.Begin(rows.Count);
-                report = new ElementTransferService(document).Execute(
-                    rows.Select(row => new ElementId(row.Id)).ToList(), destination.Id, sourceLevelId,
-                    transferProgress.Report, () => transferProgress.CancellationRequested);
+                report = nearest
+                    ? new DistributionService(document, levels).Execute(
+                        levels.Select(level => new RetainedLevel(level.Id.Value, level.ProjectElevation)).ToList(),
+                        new HashSet<long>(), Array.Empty<long>(), transferProgress.Report,
+                        rows.Select(row => row.Id).ToList(), () => transferProgress.CancellationRequested, sourceLevelId.Value)
+                    : new ElementTransferService(document).Execute(
+                        rows.Select(row => new ElementId(row.Id)).ToList(), destination!.Id, sourceLevelId,
+                        transferProgress.Report, () => transferProgress.CancellationRequested);
                 stopped = report.Stopped;
             }
             finally
@@ -367,8 +371,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         if (rows.Count == 0 || source.SelectedItem is not Level sourceLevel) return;
         var choices = levels.Where(l => l.Id != sourceLevel.Id).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(owner, L.Get("Пересоздание недоступно"), L.Get("Нет другого уровня.")); return; }
-        if (modern && !HasTarget) return;
-        var dialog = new RecreateViewsWindow(owner, choices, rows.Count, modern ? (Level)target.SelectedItem : null,
+        var dialog = new RecreateViewsWindow(owner, choices, rows.Count,
             index is null ? null : LevelCaption);
         if (dialog.ShowDialog() != true) return;
         try
@@ -432,7 +435,11 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
 
     private void DeleteRows(List<TableRow> tableRows, DeleteScope scope)
     {
-        var rows = Checked(tableRows);
+        DeleteCheckedRows(Checked(tableRows), scope);
+    }
+
+    private void DeleteCheckedRows(List<TableRow> rows, DeleteScope scope)
+    {
         var service = new DeleteService(document, scope);
         var previews = new List<DeletePreview>();
         var results = new Dictionary<long, string>();
@@ -485,8 +492,8 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         foreach (var button in viewButtons) button.IsEnabled = Checked(viewRows).Count > 0;
         if (modern)
         {
-            if (transferButton is not null) transferButton.IsEnabled &= HasTarget;
-            if (recreateButton is not null) recreateButton.IsEnabled &= HasTarget;
+            if (transferButton is not null) transferButton.IsEnabled &= levels.Count > 1;
+            if (recreateButton is not null) recreateButton.IsEnabled &= levels.Count > 1;
         }
         foreach (var (table, header) in checkAllHeaders)
         {
@@ -501,7 +508,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
     {
         var button = new Button { Content = label, IsEnabled = buttons is null && action is not null,
             Margin = modern ? new Thickness(8, 0, 0, 6) : new Thickness(0, 8, 8, 0),
-            Padding = modern ? new Thickness(14, 8, 14, 8) : new Thickness(10, 5, 10, 5) };
+            Padding = modern ? new Thickness(18, 9, 18, 9) : new Thickness(10, 5, 10, 5) };
         if (action is not null) button.Click += (_, _) =>
         {
             ExecuteAction(action, buttons is not null);
@@ -545,7 +552,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         }
     }
 
-    private static DataGrid NewTable() => new() { AutoGenerateColumns = false, CanUserAddRows = false, CanUserDeleteRows = false,
+    private static DataGrid NewTable() => new CopyableDataGrid() { AutoGenerateColumns = false, CanUserAddRows = false, CanUserDeleteRows = false,
         IsReadOnly = true, SelectionMode = DataGridSelectionMode.Extended,
         SelectionUnit = DataGridSelectionUnit.FullRow, ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader };
 
@@ -626,7 +633,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         searches.Add(table, controller);
         var search = controller.Bar;
         DockPanel.SetDock(search, Dock.Top); panel.Children.Add(search);
-        actions = modern ? TransferLayout.Actions()
+        actions = modern ? TransferLayout.Actions(stable: true)
             : new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
         DockPanel.SetDock(actions, Dock.Bottom); if (!modern) panel.Children.Add(actions);
         panel.Children.Add(table); return panel;

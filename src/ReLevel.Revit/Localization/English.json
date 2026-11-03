@@ -1,4 +1,7 @@
 {
+  "Каждый элемент к ближайшему уровню снизу": "Each element to the nearest level below",
+  "Тип": "Type",
+  "Включить верхние привязки": "Include upper-level associations",
   "Запуск отменён. Все изменения запуска отменены.": "Run cancelled. All changes from this run have been rolled back.",
   "ReLevel: перенос элементов": "ReLevel: transfer elements",
   "Копировать всё": "Copy all",

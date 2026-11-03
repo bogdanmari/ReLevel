@@ -8,7 +8,7 @@ internal sealed class DistributionService(Document document, IReadOnlyList<Level
 {
     public ElementTransferReport Execute(IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds,
         IReadOnlyCollection<long> additionalIds, Action<int, int, long?>? progress = null,
-        IReadOnlyCollection<long>? analyzedIds = null, Func<bool>? cancelled = null)
+        IReadOnlyCollection<long>? analyzedIds = null, Func<bool>? cancelled = null, long? sourceLevelId = null)
     {
         if (retained.Count == 0) throw new InvalidOperationException(L.Get("Выберите хотя бы один сохраняемый уровень."));
         var ids = (analyzedIds is null ? TransferCases.Candidates(document).Select(element => element.Id)
@@ -19,19 +19,21 @@ internal sealed class DistributionService(Document document, IReadOnlyList<Level
             ? new RetainedLevel(choice.Id, level.ProjectElevation)
             : throw new InvalidOperationException(L.Get("Целевой уровень больше не существует."))).ToList();
 
-        return new ElementTransferService(document).Execute(ids, id => Prepare(id, targets, protectedIds), progress, cancelled);
+        return new ElementTransferService(document).Execute(ids, id => Prepare(id, targets, protectedIds, sourceLevelId), progress, cancelled);
     }
 
-    private PreparedElementTransfer Prepare(ElementId id, IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds)
+    private PreparedElementTransfer Prepare(ElementId id, IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds, long? sourceLevelId)
     {
         var element = document.GetElement(id);
         if (element is null) return PreparedElementTransfer.Skip(L.Get("Объект больше не существует."));
         var transferCase = TransferCases.Find(element);
         if (transferCase is null) return PreparedElementTransfer.Skip(L.Get("Элемент не соответствует реализованным кейсам."));
         var ends = CaptureEnds(element);
-        if (ends is not null) return PrepareEnds(element, transferCase, ends, retained, protectedIds);
+        if (ends is not null) return PrepareEnds(element, transferCase, ends, retained, protectedIds, sourceLevelId);
 
         var source = levels.FirstOrDefault(level => transferCase.IsOnLevel(element, level.Id));
+        if (sourceLevelId is not null && source?.Id.Value != sourceLevelId)
+            return PreparedElementTransfer.Skip(L.Get("Элемент не связан с выбранным исходным уровнем."));
         if (source is null) return PreparedElementTransfer.Skip(L.Get("Не удалось определить исходный уровень."));
         if (protectedIds.Contains(source.Id.Value)) return PreparedElementTransfer.Skip(L.Get("Исходный уровень защищён от распределения."));
         if (transferCase.WriteRestriction(element, source.Id) is { } restriction) return PreparedElementTransfer.Skip(restriction);
@@ -43,14 +45,14 @@ internal sealed class DistributionService(Document document, IReadOnlyList<Level
     }
 
     private PreparedElementTransfer PrepareEnds(Element element, TransferCase transferCase, LevelOffsetState[] ends,
-        IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds)
+        IReadOnlyList<RetainedLevel> retained, IReadOnlySet<long> protectedIds, long? sourceLevelId)
     {
         var destinations = new Dictionary<BuiltInParameter, ElementId>();
         var description = new List<string>();
         for (var index = 0; index < ends.Length; index++)
         {
             var end = ends[index];
-            if (protectedIds.Contains(end.LevelId)) continue;
+            if (protectedIds.Contains(end.LevelId) || (sourceLevelId is not null && end.LevelId != sourceLevelId)) continue;
             var target = DistributionTarget.Choose(retained, end.Position.Absolute, end.LevelId);
             if (target == end.LevelId) continue;
             if (transferCase.WriteRestriction(element, new ElementId(end.LevelId)) is { } restriction)

@@ -62,7 +62,7 @@ internal sealed class ElementTransferResultsWindow : Window
         var close = ActionButton("Закрыть", null); close.IsCancel = true; close.IsDefault = true;
         footer.Children.Add(actions); footer.Children.Add(feedback);
         DockPanel.SetDock(footer, Dock.Bottom); panel.Children.Add(footer);
-        table = new DataGrid
+        table = new CopyableDataGrid
         {
             IsReadOnly = true, AutoGenerateColumns = false, CanUserAddRows = false,
             CanUserDeleteRows = false, CanUserReorderColumns = false,

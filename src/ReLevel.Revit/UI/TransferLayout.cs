@@ -39,14 +39,36 @@ internal static class TransferLayout
     public static Grid Workspace(FrameworkElement selectors, TabControl tabs, FrameworkElement actions,
         FrameworkElement progress, FrameworkElement summary)
     {
-        var grid = new Grid();
-        for (int i = 0; i < 5; i++) grid.RowDefinitions.Add(new()
-            { Height = i == 1 ? new GridLength(1, GridUnitType.Star) : GridLength.Auto });
         tabs.BorderThickness = new Thickness(0); tabs.Background = Brushes.Transparent; tabs.Padding = new Thickness(0);
-        foreach (TabItem tab in tabs.Items) { tab.Padding = new Thickness(12, 4, 12, 4); tab.FontSize = 13; }
-        var children = new[] { selectors, tabs, actions, progress, summary };
-        for (int i = 0; i < children.Length; i++) { Grid.SetRow(children[i], i); grid.Children.Add(children[i]); }
-        return grid;
+        // The level overview chooses the list. Keep selection/content state without a tab strip.
+        var presenter = new FrameworkElementFactory(typeof(ContentPresenter));
+        presenter.Name = "PART_SelectedContentHost";
+        presenter.SetValue(ContentPresenter.ContentSourceProperty, "SelectedContent");
+        tabs.Template = new ControlTemplate(typeof(TabControl)) { VisualTree = presenter };
+        tabs.PreviewKeyDown += (_, e) =>
+        {
+            if (e.Key == System.Windows.Input.Key.Tab &&
+                System.Windows.Input.Keyboard.Modifiers.HasFlag(System.Windows.Input.ModifierKeys.Control))
+                e.Handled = true;
+        };
+        var status = new StackPanel();
+        status.Children.Add(progress); status.Children.Add(summary);
+        return StablePageLayout.Create(selectors, tabs, actions, status);
+    }
+
+    public static Grid NavigationActions(FrameworkElement back, FrameworkElement title, FrameworkElement actions)
+    {
+        var bar = new Grid();
+        bar.ColumnDefinitions.Add(new() { Width = GridLength.Auto });
+        bar.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star) });
+        bar.ColumnDefinitions.Add(new() { Width = GridLength.Auto });
+        title.MinWidth = 70; title.MaxWidth = 260;
+        title.HorizontalAlignment = HorizontalAlignment.Left;
+        title.VerticalAlignment = VerticalAlignment.Center;
+        bar.Children.Add(back);
+        Grid.SetColumn(title, 1); bar.Children.Add(title);
+        Grid.SetColumn(actions, 2); bar.Children.Add(actions);
+        return bar;
     }
 
     public static void StyleTableAppearance(DataGrid table)
@@ -66,6 +88,7 @@ internal static class TransferLayout
     public static void StyleTable(DataGrid table)
     {
         StyleTableAppearance(table);
+        table.ColumnHeaderHeight = 76;
         table.Columns[0].HeaderStyle = table.ColumnHeaderStyle;
         table.Columns[0].Width = 48;
         foreach (var column in table.Columns.OfType<DataGridTextColumn>())
@@ -87,11 +110,9 @@ internal static class TransferLayout
         }
     }
 
-    public static WrapPanel Actions() => new()
-    {
-        HorizontalAlignment = HorizontalAlignment.Right,
-        Margin = new Thickness(0, 12, 0, 0)
-    };
+    public static Panel Actions(bool stable = false) => stable
+        ? new StackPanel { HorizontalAlignment = HorizontalAlignment.Right, Orientation = Orientation.Horizontal }
+        : new WrapPanel { HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 12, 0, 0) };
 
     // An explicit editable template avoids theme-specific gaps in the outline and text alignment.
     private static Style LevelSelectorStyle() => (Style)XamlReader.Parse("""

@@ -7,4 +7,6 @@ internal interface IPrototypeTransferPage
 {
     FrameworkElement View { get; }
     void SetLanguage(bool english);
+    void SetNavigation(FrameworkElement title, FrameworkElement back);
+    void OpenLevel(long levelId, bool views);
 }
