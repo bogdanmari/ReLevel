@@ -39,6 +39,7 @@ internal sealed partial class PrototypeWindow : Window
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         FontFamily = new FontFamily("Segoe UI"); FontSize = 14; Foreground = Ink;
         Background = Brush("#F4F7FA");
+        Resources.Add(typeof(Button), PrototypeButtonStyle.Create());
         Bind(this, TitleProperty, transferFactory is null ? "Title" : "LiveTitle");
         var comboStyle = new Style(typeof(ComboBox));
         comboStyle.Setters.Add(new Setter(Control.VerticalContentAlignmentProperty, VerticalAlignment.Center));

@@ -8,6 +8,20 @@ internal sealed class DeleteStoppedException(string message, Exception? inner = 
 
 internal sealed class DeleteService(Document document, DeleteScope scope)
 {
+    public static void DeleteLevel(Document document, ElementId levelId)
+    {
+        using var transaction = new Transaction(document, "ReLevel: Delete Level");
+        Require(transaction.Start(), TransactionStatus.Started);
+        transaction.SetFailureHandlingOptions(transaction.GetFailureHandlingOptions()
+            .SetClearAfterRollback(true).SetForcedModalHandling(true));
+        try
+        {
+            document.Delete(levelId);
+            Require(transaction.Commit(), TransactionStatus.Committed);
+        }
+        finally { RollBack(transaction); }
+    }
+
     public DeletePreview Preview(ElementId id)
     {
         var element = document.GetElement(id) ?? throw new InvalidOperationException(L.Get("Объект больше не существует."));

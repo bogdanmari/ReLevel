@@ -11,5 +11,8 @@ internal interface IPrototypeWorkspace
     string ApplyColors(IReadOnlyList<PrototypeLevel> levels, bool reset);
     void RunDebug(WorkspaceDebugTool tool);
     void ProcessInformation(IReadOnlyList<long> levelIds, bool delete, bool views = false);
+    void DeleteLevel(long levelId);
+    void TransferLevels(IReadOnlyList<long> levelIds, Action<int> started, Action<int, int, long?> progress,
+        Action<bool> finished, Func<bool> cancelled);
     void Distribute(IReadOnlyList<PrototypeLevel> levels, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled);
 }

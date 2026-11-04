@@ -4,13 +4,14 @@ namespace ReLevel.Revit.Transfer;
 
 internal static class PointFamilyCase
 {
-    private static readonly LevelOffsetBinding AirTerminalBinding = new(
+    private static readonly LevelOffsetBinding MepFamilyBinding = new(
         BuiltInParameter.FAMILY_LEVEL_PARAM, BuiltInParameter.INSTANCE_ELEVATION_PARAM);
 
-    private static bool IsAirTerminal(Element element) => element.Category?.BuiltInCategory == BuiltInCategory.OST_DuctTerminal;
+    private static bool UsesElevationOffset(Element element) => element.Category?.BuiltInCategory is
+        BuiltInCategory.OST_DuctTerminal or BuiltInCategory.OST_MechanicalEquipment;
 
-    public static IElementTransferOperation Prepare(Element element, ElementId source) => IsAirTerminal(element)
-        ? new LevelOffsetOperation(element, source, AirTerminalBinding) : new PointFamilyOperation(element);
+    public static IElementTransferOperation Prepare(Element element, ElementId source) => UsesElevationOffset(element)
+        ? new LevelOffsetOperation(element, source, MepFamilyBinding) : new PointFamilyOperation(element);
 
     public static Parameter? LevelParameter(Element element) =>
         element is FamilyInstance && element.get_Parameter(BuiltInParameter.FAMILY_LEVEL_PARAM) is { StorageType: StorageType.ElementId } parameter
@@ -37,12 +38,12 @@ internal static class PointFamilyCase
     {
         if (LevelParameter(element)?.IsReadOnly == true)
             return L.Get("Параметр FAMILY_LEVEL_PARAM недоступен для записи.");
-        if (IsAirTerminal(element))
+        if (UsesElevationOffset(element))
         {
-            if (element.Pinned) return L.Get("Случай 1: закреплённый воздухораспределитель не переносится.");
+            if (element.Pinned) return L.Get("Случай 1: закреплённое оборудование или воздухораспределитель не переносится.");
             if (element.get_Parameter(BuiltInParameter.INSTANCE_ELEVATION_PARAM) is not
                 { StorageType: StorageType.Double, HasValue: true, IsReadOnly: false })
-                return L.Get("Случай 1: Elevation from Level воздухораспределителя недоступен для записи.");
+                return L.Get("Случай 1: Elevation from Level оборудования или воздухораспределителя недоступен для записи.");
         }
         return null;
     }

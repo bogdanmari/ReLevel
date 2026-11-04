@@ -11,6 +11,11 @@ internal sealed record PreparedElementTransfer(IElementTransferOperation? Operat
 
 internal sealed class ElementTransferService(Document document)
 {
+    public ElementTransferReport ExecuteFromLevels(IReadOnlyDictionary<long, long> sources, ElementId targetLevelId,
+        Action<int, int, long?>? progress = null, Func<bool>? cancelled = null) =>
+        Execute(sources.Keys.Select(id => new ElementId(id)).ToList(),
+            id => PrepareSingle(id, targetLevelId, new ElementId(sources[id.Value])), progress, cancelled);
+
     public ElementTransferReport Execute(IReadOnlyList<ElementId> ids, ElementId targetLevelId, ElementId sourceLevelId,
         Action<int, int, long?>? progress = null, Func<bool>? cancelled = null) =>
         Execute(ids, id => PrepareSingle(id, targetLevelId, sourceLevelId), progress, cancelled);

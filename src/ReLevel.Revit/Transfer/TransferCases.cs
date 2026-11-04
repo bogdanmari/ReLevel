@@ -101,7 +101,7 @@ internal static class TransferCases
             [typeof(Duct)], DuctCase.UnsupportedReason,
             (element, source) => DuctCase.SourceLevel(element)?.Id == source,
             (element, _) => DuctCase.WriteRestriction(element),
-            (element, _) => new MepReferenceLevelOperation(element),
+            (element, _) => new DuctLevelOperation((Duct)element),
             (_, _) => L.Get("Уровень")),
         new TransferCase(() => L.Get("Кейс 14 — шахтные проёмы"),
             [typeof(Opening)], ShaftOpeningCase.UnsupportedReason, ShaftOpeningCase.IsOnLevel,
@@ -139,6 +139,12 @@ internal static class TransferCases
             [typeof(Conduit)], ConduitCase.UnsupportedReason,
             (element, source) => ConduitCase.SourceLevel(element)?.Id == source,
             (element, _) => ConduitCase.WriteRestriction(element),
+            (element, _) => new MepReferenceLevelOperation(element),
+            (_, _) => L.Get("Уровень")),
+        new TransferCase(() => L.Get("Кейс 22 — гибкие трубы Flex Pipes"),
+            [typeof(FlexPipe)], FlexPipeCase.UnsupportedReason,
+            (element, source) => FlexPipeCase.SourceLevel(element)?.Id == source,
+            (element, _) => FlexPipeCase.WriteRestriction(element),
             (element, _) => new MepReferenceLevelOperation(element),
             (_, _) => L.Get("Уровень"))
     });

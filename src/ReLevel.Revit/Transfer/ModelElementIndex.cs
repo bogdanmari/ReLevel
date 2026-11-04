@@ -17,6 +17,8 @@ internal sealed class ModelElementIndex(Document document, IReadOnlyList<Level> 
     public event Action? Changed;
 
     public TransferCase? Case(long id) => elements.GetValueOrDefault(id)?.Case;
+    public long? BaseLevel(long id) => elements.TryGetValue(id, out var entry) && entry.LevelIds.Count > 0
+        ? entry.LevelIds[0] : null;
     public IReadOnlyList<long> AtLevel(long levelId) => byLevel.TryGetValue(levelId, out var ids) ? ids : [];
     public int Count(long levelId) => counts.GetValueOrDefault(levelId);
     public IReadOnlyList<long> AtBaseLevels(IReadOnlySet<long> levelIds) => elements.Values

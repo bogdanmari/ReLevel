@@ -1,5 +1,9 @@
 # Диагностика откатов переноса
 
+## MEP: LEVEL 2 → LEVEL 1, R93/R94
+
+`verify_mep_level_transfer.cs` — тело C# для MCP `revit_send_code_to_revit`, привязанное к модели `US-SVL-BRGUP123_MEP`, 23 ID из отчёта и MVID проверенной Release DLL. Перед запуском загрузить DLL через `Assembly.Load(File.ReadAllBytes(path))`; при другой сборке явно обновить ожидаемый MVID после сверки файла. Скрипт не заменяет зарегистрированную команду Revit. Вызывает штатный ElementTransferService в обе стороны, сравнивает положение, коннекторы и длины врезок в окружении до трёх переходов по соединениям. Внешняя TransactionGroup всегда откатывается, включая успешные переносы. При критическом останове дальнейшее чтение модели прекращается. Использовать на копии модели; результат возврата MCP содержит результаты по ID и откат. Это отдельная диагностическая проба, не проверка внутри рабочего переноса и не замена проверки UI Undo.
+
 ## Air Terminal 5889350 и ошибка Tap 5889122
 
 `probe_air_terminal_level.py` — откатываемая проба на копии US-SVL-BRGUP123_MD в RevitPythonShell. Выберите тот же целевой уровень, на котором возникла ошибка. Проверяет UniqueId решётки, задаёт FAMILY_LEVEL_PARAM и компенсированный INSTANCE_ELEVATION_PARAM до регенерации; LocationPoint и коннекторы не записываются. Это FamilyInstance (Кейс 1), а не FabricationPart. Снимаются решётка, врезка 5889122, воздуховод 5889136 и непосредственные соседи по коннекторам: параметры, точки/кривые и связи. Даже успешный Commit отменяется внешней группой; warnings/errors отклоняют Commit. Отчёт `reports/air_terminal_probe_*.json`; при начатой группе ожидается group_rollback=RolledBack. Требуются соседние inspect_transfer_failures.py, change_room_separator_plane.py и probe_area_boundary_levels.py; импортируются только функции, их операции не запускаются.

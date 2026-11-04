@@ -8,6 +8,8 @@ namespace ReLevel.Revit.UI;
 
 internal sealed class CopyableDataGrid : DataGrid
 {
+    private readonly CopyNotification notification = new();
+
     protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
     {
         base.OnPreviewMouseLeftButtonDown(e);
@@ -31,8 +33,7 @@ internal sealed class CopyableDataGrid : DataGrid
                 MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
-        MessageBox.Show(owner, L.Get("Скопировано в буфер обмена."), "ReLevel",
-            MessageBoxButton.OK, MessageBoxImage.Information);
+        notification.Show(this, L.Get("Скопировано в буфер обмена."));
     }
 
     private static IEnumerable<string> ReadText(DependencyObject element)

@@ -73,10 +73,20 @@ internal sealed partial class PrototypeWindow
         }
         CheckColumn(table, "Protect", nameof(PrototypeLevel.Protect), 170, nameof(PrototypeLevel.Keep));
         Bind(table, ToolTipProperty, "InformationHelp");
-        var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
+        var buttons = new WrapPanel { HorizontalAlignment = HorizontalAlignment.Right };
         var progress = new TransferProgress();
-        var distribute = new Button { Padding = new Thickness(18, 9, 18, 9), Margin = new Thickness(8, 0, 0, 6) };
-        Bind(distribute, ContentProperty, "RunDistribution");
+        Button ActionButton(string key, string icon, bool primary = false)
+        {
+            var button = new Button { Style = PrototypeButtonStyle.Create(primary),
+                MinHeight = 40, Padding = new Thickness(14, 8, 14, 8), Margin = new Thickness(8, 0, 0, 6) };
+            var content = new StackPanel { Orientation = Orientation.Horizontal };
+            var glyph = PrototypeIcons.Create(icon, primary ? System.Windows.Media.Brushes.White : Accent, 17);
+            glyph.Margin = new Thickness(0, 0, 9, 0); content.Children.Add(glyph);
+            content.Children.Add(Label(key, foreground: primary ? System.Windows.Media.Brushes.White : Ink)); button.Content = content;
+            Bind(button, System.Windows.Automation.AutomationProperties.NameProperty, key);
+            return button;
+        }
+        var distribute = ActionButton("RunDistribution", "Distribute");
         Bind(distribute, ToolTipProperty, "DistributeHelp");
         void UpdateDistribution() => distribute.IsEnabled = workspace is not null && levels.Any(row => row.Keep);
         foreach (var row in levels) row.PropertyChanged += (_, _) => UpdateDistribution();
@@ -89,18 +99,67 @@ internal sealed partial class PrototypeWindow
                 () => progress.CancellationRequested);
         };
         UpdateDistribution(); buttons.Children.Add(distribute);
+
+        var transfer = ActionButton("TransferLevels", "Transfer", primary: true);
+        Bind(transfer, ToolTipProperty, "TransferLevelsHelp");
+        void UpdateTransfer() => transfer.IsEnabled = workspace is not null &&
+            table.Items.OfType<PrototypeLevel>().Any(row => row.Keep && row.ModelElementCount > 0);
+        foreach (var row in levels) row.PropertyChanged += (_, _) => UpdateTransfer();
+        ((System.Collections.Specialized.INotifyCollectionChanged)table.ItemsSource).CollectionChanged += (_, _) => UpdateTransfer();
+        transfer.Click += (_, _) =>
+        {
+            OperationControls? controls = null;
+            try
+            {
+                workspace!.TransferLevels(table.Items.OfType<PrototypeLevel>().Where(row => row.Keep).Select(row => row.Id).ToList(),
+                    count => { controls = new OperationControls(this, progress); progress.Begin(count); }, progress.Report,
+                    stopped => { progress.Finish(stopped, text[stopped ? "TransferStopped" : "TransferComplete"]); controls?.Dispose(); },
+                    () => progress.CancellationRequested);
+            }
+            finally { controls?.Dispose(); }
+        };
+        UpdateTransfer(); buttons.Children.Add(transfer);
+
+        var actions = ActionButton("Actions", "Actions");
+        var menu = new ContextMenu { PlacementTarget = actions, Placement = PlacementMode.Top,
+            MinWidth = 230, Background = System.Windows.Media.Brushes.White, Foreground = Ink,
+            BorderBrush = Brush("#CBDCE2"), BorderThickness = new Thickness(1), Padding = new Thickness(6),
+            FontFamily = FontFamily, FontSize = 14 };
+        var menuBorder = new FrameworkElementFactory(typeof(Border));
+        menuBorder.SetValue(Border.BackgroundProperty, System.Windows.Media.Brushes.White);
+        menuBorder.SetValue(Border.BorderBrushProperty, Brush("#CBDCE2"));
+        menuBorder.SetValue(Border.BorderThicknessProperty, new Thickness(1));
+        menuBorder.SetValue(Border.CornerRadiusProperty, new CornerRadius(8));
+        menuBorder.SetValue(Border.PaddingProperty, new Thickness(6));
+        menuBorder.AppendChild(new FrameworkElementFactory(typeof(ItemsPresenter)));
+        menu.Template = new ControlTemplate(typeof(ContextMenu)) { VisualTree = menuBorder };
+        actions.ContextMenu = menu;
+        actions.Click += (_, _) => { menu.Placement = PlacementMode.Top; menu.IsOpen = true; };
+        actions.Unloaded += (_, _) => menu.IsOpen = false;
+        buttons.Children.Add(actions);
         foreach (var key in new[] { "SelectElements", "DeleteElements", "DeleteViews" })
         {
-            var button = new Button { Padding = new Thickness(18, 9, 18, 9), Margin = new Thickness(8, 0, 0, 6) };
-            Bind(button, ContentProperty, key);
+            var button = new MenuItem { Padding = new Thickness(12, 9, 12, 9) };
+            Bind(button, HeaderedItemsControl.HeaderProperty, key);
+            if (key != "SelectElements") button.Foreground = Brush("#A33F47");
             void Update() => button.IsEnabled = workspace is not null &&
                 table.Items.OfType<PrototypeLevel>().Any(row => row.Keep && (key == "DeleteViews" ? row.ViewCount : row.ModelElementCount) > 0);
             foreach (var row in levels) row.PropertyChanged += (_, _) => Update();
             ((System.Collections.Specialized.INotifyCollectionChanged)table.ItemsSource).CollectionChanged += (_, _) => Update();
             button.Click += (_, _) => workspace?.ProcessInformation(table.Items.OfType<PrototypeLevel>()
                 .Where(row => row.Keep).Select(row => row.Id).ToList(), key != "SelectElements", key == "DeleteViews");
-            Update(); buttons.Children.Add(button);
+            Update(); menu.Items.Add(button);
         }
+        menu.Items.Add(new Separator());
+        var deleteLevel = new MenuItem { Padding = new Thickness(12, 9, 12, 9), Foreground = Brush("#A33F47") };
+        Bind(deleteLevel, HeaderedItemsControl.HeaderProperty, "DeleteLevel");
+        Bind(deleteLevel, ToolTipProperty, "DeleteLevelHelp");
+        void UpdateDeleteLevel() => deleteLevel.IsEnabled = workspace is not null &&
+            table.Items.OfType<PrototypeLevel>().Count(row => row.Keep) == 1;
+        foreach (var row in levels) row.PropertyChanged += (_, _) => UpdateDeleteLevel();
+        ((System.Collections.Specialized.INotifyCollectionChanged)table.ItemsSource).CollectionChanged += (_, _) => UpdateDeleteLevel();
+        deleteLevel.Click += (_, _) => workspace?.DeleteLevel(table.Items.OfType<PrototypeLevel>().Single(row => row.Keep).Id);
+        UpdateDeleteLevel(); menu.Items.Add(deleteLevel);
         var status = new StackPanel();
         var counts = new TextBlock { FontSize = 12, Foreground = Muted };
         void UpdateCounts() => counts.Text = $"{text["Levels"]}: {levels.Count}. {text["Elements"]}: {levels.Sum(row => row.ModelElementCount)}. {text["Views"]}: {levels.Sum(row => row.ViewCount)}.";

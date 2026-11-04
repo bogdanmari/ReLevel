@@ -49,6 +49,15 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     }
 
     public void RunDebug(WorkspaceDebugTool tool) => transfer.RunDebug(tool);
+    public void DeleteLevel(long levelId)
+    {
+        busy = true;
+        ((UIElement)owner.Content).IsEnabled = false;
+        try { DeleteService.DeleteLevel(application.ActiveUIDocument.Document, new ElementId(levelId)); }
+        catch (Exception ex) { OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message); }
+        finally { busy = false; owner.Close(); }
+    }
+
     public void ProcessInformation(IReadOnlyList<long> levelIds, bool delete, bool views = false)
     {
         if (!views) { transfer.ProcessInformation(index.AtBaseLevels(levelIds.ToHashSet()), delete); return; }
@@ -82,6 +91,44 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
             busy = false;
             finished(report is null || report.Stopped);
         }
+        ShowTransferReport(report, failure);
+    }
+
+    public void TransferLevels(IReadOnlyList<long> levelIds, Action<int> started, Action<int, int, long?> progress,
+        Action<bool> finished, Func<bool> cancelled)
+    {
+        if (busy) return;
+        var sources = levelIds.ToHashSet();
+        var ids = index.AtBaseLevels(sources);
+        if (ids.Count == 0) return;
+        var choices = levels.Where(level => sources.Count > 1 || !sources.Contains(level.Id.Value)).ToList();
+        var dialog = new TargetLevelWindow(owner, choices, allowNearest: true,
+            displayName: level => $"{level.Name} ({index.Count(level.Id.Value)}{(index.Errors.Count > 0 ? "*" : "")})");
+        if (dialog.ShowDialog() != true) return;
+        var sourceByElement = ids.ToDictionary(id => id, id => index.BaseLevel(id)!.Value);
+        busy = true;
+        ElementTransferReport? report = null;
+        Exception? failure = null;
+        try
+        {
+            started(ids.Count);
+            var document = application.ActiveUIDocument.Document;
+            if (dialog.Nearest)
+                report = new DistributionService(document, levels).Execute(
+                    levels.Select(level => new RetainedLevel(level.Id.Value, level.ProjectElevation)).ToList(),
+                    new HashSet<long>(), Array.Empty<long>(), progress, ids, cancelled, sourceLevelIds: sourceByElement);
+            else
+            {
+                report = new ElementTransferService(document).ExecuteFromLevels(sourceByElement, dialog.Target.Id, progress, cancelled);
+            }
+        }
+        catch (Exception ex) { failure = ex; }
+        finally { busy = false; finished(report is null || report.Stopped); }
+        ShowTransferReport(report, failure);
+    }
+
+    private void ShowTransferReport(ElementTransferReport? report, Exception? failure)
+    {
         if (failure is not null)
         {
             OperationDialogs.Show(owner, L.Get("Операция отменена"), failure.Message);
