@@ -8,7 +8,7 @@ using ReLevel.Revit.UI.Prototype;
 namespace ReLevel.Revit.UI;
 
 internal sealed class WorkspaceController(UIApplication application, IReadOnlyList<Level> levels,
-    IReadOnlyList<PrototypeLevel> snapshot, ModelElementIndex index)
+    IReadOnlyList<PrototypeLevel> snapshot, ModelElementIndex index, Action close, Func<UIElement> root, Action<Action> runApi)
     : IPrototypeWorkspace, IDisposable
 {
     public LengthUnitSettings Units { get; } = ProjectLengthUnits.Create(application.ActiveUIDocument.Document);
@@ -26,7 +26,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
         UpdateCounts();
         index.Changed += UpdateCounts;
         owner.Closing += (_, e) => { if (busy) e.Cancel = true; };
-        return transfer = new TransferPanel(owner, application, levels, modern: true, index: index, refreshIndex: RefreshIndex);
+        return transfer = new TransferPanel(owner, application, levels, modern: true, index: index, refreshIndex: RefreshIndex, runApi: runApi, close: close, operationRoot: root);
     }
 
     private void UpdateCounts()
@@ -52,10 +52,10 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     public void DeleteLevel(long levelId)
     {
         busy = true;
-        ((UIElement)owner.Content).IsEnabled = false;
+        root().IsEnabled = false;
         try { DeleteService.DeleteLevel(application.ActiveUIDocument.Document, new ElementId(levelId)); }
         catch (Exception ex) { OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message); }
-        finally { busy = false; owner.Close(); }
+        finally { busy = false; close(); }
     }
 
     public void ProcessInformation(IReadOnlyList<long> levelIds, bool delete, bool views = false)
@@ -68,7 +68,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
                 .Select(view => view.Id.Value).ToList();
             transfer.ProcessInformation(ids, delete, DeleteScope.Views);
         }
-        catch (Exception ex) { OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message); owner.Close(); }
+        catch (Exception ex) { OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message); close(); }
     }
 
     public void Distribute(IReadOnlyList<PrototypeLevel> choices, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled)
@@ -132,16 +132,16 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
         if (failure is not null)
         {
             OperationDialogs.Show(owner, L.Get("Операция отменена"), failure.Message);
-            owner.Close(); return;
+            close(); return;
         }
         var summary = L.Format($"Перенесено: {report!.Transferred}. Пропущено: {report.Skipped}. Ошибки: {report.Failed}.");
         new ElementTransferResultsWindow(owner, summary, report.Items.Select(ElementTransferResultRow.From).ToList(), report.Stopped).ShowDialog();
-        if (report.Stopped) { owner.Close(); return; }
+        if (report.Stopped) { close(); return; }
         try { RefreshIndex(); }
         catch (Exception ex)
         {
             OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message);
-            owner.Close(); return;
+            close(); return;
         }
         transfer.RefreshAfterDistribution();
     }
@@ -175,7 +175,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     public string ApplyColors(IReadOnlyList<PrototypeLevel> choices, bool reset)
     {
         if (busy || graphics is null) return "";
-        var controls = (UIElement)owner.Content;
+        var controls = root();
         busy = true; controls.IsEnabled = false;
         Exception? failure = null;
         string message = "";
@@ -207,7 +207,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     private void Stop(Exception exception)
     {
         OperationDialogs.Show(owner, L.Get("Цвета по уровням"), exception.Message);
-        owner.Close();
+        close();
     }
 
     public void Dispose()

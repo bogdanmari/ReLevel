@@ -58,7 +58,9 @@ internal sealed partial class TransferPanel
         language.SelectedIndex = english ? 0 : 1;
     }
 
-    public void OpenLevel(long levelId, bool views)
+    public void OpenLevel(long levelId, bool views) => runApi(() => OpenLevelCore(levelId, views));
+
+    private void OpenLevelCore(long levelId, bool views)
     {
         var level = levels.First(item => item.Id.Value == levelId);
         if (source.SelectedItem is not Level previous || previous.Id != level.Id)
@@ -70,13 +72,13 @@ internal sealed partial class TransferPanel
         tabs.SelectedIndex = views ? 1 : 0;
     }
 
-    private void Close() => owner.Close();
+    private void Close() => close();
 
     private FrameworkElement CreateSelectors()
     {
         var panel = new Grid { Margin = new Thickness(0, 8, 0, 0) };
-        includeUpper.Checked += (_, _) => Refresh();
-        includeUpper.Unchecked += (_, _) => Refresh();
+        includeUpper.Checked += (_, _) => runApi(Refresh);
+        includeUpper.Unchecked += (_, _) => runApi(Refresh);
         panel.Children.Add(includeUpper);
         return panel;
     }

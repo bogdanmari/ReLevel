@@ -8,7 +8,7 @@ internal sealed class OperationControls : IDisposable
 {
     private readonly List<UIElement> disabled = [];
 
-    public OperationControls(Window owner, UIElement progress)
+    public OperationControls(DependencyObject owner, UIElement progress)
     {
         DependencyObject child = progress;
         while (VisualTreeHelper.GetParent(child) is { } parent && child != owner)

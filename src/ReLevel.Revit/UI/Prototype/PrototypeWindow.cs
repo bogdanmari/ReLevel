@@ -6,41 +6,38 @@ using System.Windows.Media;
 
 namespace ReLevel.Revit.UI.Prototype;
 
-internal sealed partial class PrototypeWindow : Window
+internal sealed partial class PrototypeWindow : UserControl
 {
     private readonly PrototypeText text;
     private readonly ReLevel.Revit.Logic.LengthUnitSettings units;
-    private readonly Func<Window, bool, IPrototypeTransferPage>? transferFactory;
     private IPrototypeTransferPage? transferPage;
     private readonly IPrototypeWorkspace? workspace;
     public bool English => text.English;
     private readonly IReadOnlyList<PrototypeLevel> levels;
     private readonly ListBox bottomNavigation = new() { BorderThickness = new Thickness(0), Background = Brushes.Transparent };
-    private readonly List<TextBlock> navigationLabels = [];
-    private bool collapsed = true;
-    private readonly ContentControl body = new();
+    private readonly Window dialogOwner;
+    private readonly Action<Action> runApi;
+    private readonly ContentControl body = new() { HorizontalContentAlignment = HorizontalAlignment.Stretch,
+        VerticalContentAlignment = VerticalAlignment.Stretch };
     private readonly ListBox navigation = new() { BorderThickness = new Thickness(0), Background = Brushes.Transparent };
     private static readonly Brush Ink = Brush("#183247");
     private static readonly Brush Muted = Brush("#657788");
     private static readonly Brush Accent = Brush("#157D88");
 
     public PrototypeWindow(IReadOnlyList<PrototypeLevel> levels, bool english,
-        Func<Window, bool, IPrototypeTransferPage>? transferFactory = null, IPrototypeWorkspace? workspace = null)
+        Func<Window, bool, IPrototypeTransferPage>? transferFactory = null, IPrototypeWorkspace? workspace = null, Window? dialogOwner = null, Action<Action>? runApi = null)
     {
+        this.dialogOwner = dialogOwner ?? throw new ArgumentNullException(nameof(dialogOwner));
+        this.runApi = runApi ?? (action => action());
         this.levels = levels;
-        this.transferFactory = transferFactory;
         this.workspace = workspace;
         text = new(english);
         units = workspace?.Units ?? ReLevel.Revit.Logic.LengthUnitSettings.FeetOnly();
         foreach (var level in levels) level.SetElevationFormatter(units.Format);
         units.Changed += () => { foreach (var level in levels) level.RefreshUnits(); };
-        Icon = AppIcon.Create();
-        Width = 968; Height = 686.4; MinWidth = 800; MinHeight = 500;
-        WindowStartupLocation = WindowStartupLocation.CenterScreen;
         FontFamily = new FontFamily("Segoe UI"); FontSize = 14; Foreground = Ink;
         Background = Brush("#F4F7FA");
         Resources.Add(typeof(Button), PrototypeButtonStyle.Create());
-        Bind(this, TitleProperty, transferFactory is null ? "Title" : "LiveTitle");
         var comboStyle = new Style(typeof(ComboBox));
         comboStyle.Setters.Add(new Setter(Control.VerticalContentAlignmentProperty, VerticalAlignment.Center));
         Resources.Add(typeof(ComboBox), comboStyle);
@@ -48,54 +45,24 @@ internal sealed partial class PrototypeWindow : Window
         itemStyle.Setters.Add(new Setter(Control.VerticalContentAlignmentProperty, VerticalAlignment.Center));
         Resources.Add(typeof(ComboBoxItem), itemStyle);
         var shell = new Grid { LayoutTransform = new ScaleTransform(0.9, 0.9), UseLayoutRounding = true };
-        shell.ColumnDefinitions.Add(new() { Width = new GridLength(64) });
-        shell.ColumnDefinitions.Add(new() { Width = new GridLength(8) });
-        shell.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star) });
-        var sidebar = new DockPanel { Margin = new Thickness(8, 18, 8, 16) };
-        var brandRow = new DockPanel { Height = 44, Margin = new Thickness(2, 0, 0, 30) };
-        var logo = new Image { Source = AppIcon.Create(), Width = 36, Height = 36, Margin = new Thickness(0, 0, 10, 0) };
-        DockPanel.SetDock(logo, Dock.Left); brandRow.Children.Add(logo);
-        var brand = new StackPanel { ClipToBounds = true };
-        brand.Children.Add(new TextBlock { Text = "ReLevel", FontSize = 24, FontWeight = FontWeights.Bold, Foreground = Accent });
-        brand.Children.Add(Label("Workspace", 10, Muted));
-        brandRow.Children.Add(brand);
-        DockPanel.SetDock(brandRow, Dock.Top); sidebar.Children.Add(brandRow);
-        var bottom = new StackPanel();
-        bottom.Children.Add(new Border { Height = 1, Background = Brush("#D5E3E7"), Margin = new Thickness(4, 10, 4, 10) });
-        bottom.Children.Add(bottomNavigation);
-        DockPanel.SetDock(bottom, Dock.Bottom); sidebar.Children.Add(bottom);
-        void FitSidebar()
+        shell.RowDefinitions.Add(new() { Height = GridLength.Auto });
+        shell.RowDefinitions.Add(new() { Height = new GridLength(1, GridUnitType.Star) });
+        var toolbar = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(4) };
+        toolbar.Children.Add(new Image { Source = AppIcon.Create(), Width = 24, Height = 24, Margin = new Thickness(4, 0, 8, 0) });
+        foreach (var menu in new[] { navigation, bottomNavigation })
         {
-            double width = 206;
-            foreach (var label in navigationLabels)
-            {
-                var measured = new FormattedText(text[(string)label.Tag], System.Globalization.CultureInfo.CurrentUICulture,
-                    FlowDirection.LeftToRight, new Typeface(FontFamily, FontStyles.Normal, FontWeights.SemiBold, FontStretches.Normal),
-                    label.FontSize, Ink, VisualTreeHelper.GetDpi(this).PixelsPerDip);
-                width = Math.Max(width, Math.Ceiling(measured.WidthIncludingTrailingWhitespace) + 80);
-            }
-            sidebar.Width = (collapsed ? 64 : width) - 16;
+            var panel = new FrameworkElementFactory(typeof(StackPanel));
+            panel.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
+            menu.ItemsPanel = new ItemsPanelTemplate(panel);
+            toolbar.Children.Add(menu);
         }
-        void SetCollapsed(bool value)
-        {
-            collapsed = value;
-            FitSidebar();
-            brand.Visibility = collapsed ? Visibility.Collapsed : Visibility.Visible;
-            foreach (var label in navigationLabels) label.Visibility = collapsed ? Visibility.Collapsed : Visibility.Visible;
-        }
-        sidebar.Children.Add(navigation);
-        var sidebarFrame = new Border { Background = Brushes.White, BorderBrush = Brush("#E0E7ED"),
-            BorderThickness = new Thickness(0, 0, 1, 0), Child = sidebar };
-        sidebarFrame.MouseEnter += (_, _) => SetCollapsed(false);
-        sidebarFrame.MouseLeave += (_, _) => SetCollapsed(true);
-        sidebarFrame.HorizontalAlignment = HorizontalAlignment.Left;
-        Grid.SetColumnSpan(sidebarFrame, 3); Panel.SetZIndex(sidebarFrame, 1);
-        shell.Children.Add(sidebarFrame);
-        body.Margin = new Thickness(8, 18, 20, 16); Grid.SetColumn(body, 2); shell.Children.Add(body);
+        shell.Children.Add(new ScrollViewer { Content = toolbar, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+            VerticalScrollBarVisibility = ScrollBarVisibility.Disabled, Background = Brushes.White });
+        body.Margin = new Thickness(8); Grid.SetRow(body, 1); shell.Children.Add(body);
         Content = shell;
 
         // Register new sections here. Each page is built once, retaining table and control state.
-        if (transferFactory is not null) transferPage = transferFactory(this, text.English);
+        if (transferFactory is not null) transferPage = transferFactory(this.dialogOwner, text.English);
         AddSection("Levels", Information());
         AddSection("Colors", ColorsPage());
         AddSection("Compare", ComparisonPage());
@@ -104,19 +71,17 @@ internal sealed partial class PrototypeWindow : Window
         foreach (var menu in new[] { navigation, bottomNavigation })
         {
             for (int i = 0; i < menu.Items.Count; i++)
-                ((ListBoxItem)menu.Items[i]).BorderThickness = new Thickness(1, i == 0 ? 1 : 0, 1, i == menu.Items.Count - 1 ? 1 : 0);
+                ((ListBoxItem)menu.Items[i]).BorderThickness = new Thickness(1);
             ScrollViewer.SetHorizontalScrollBarVisibility(menu, ScrollBarVisibility.Disabled);
             ScrollViewer.SetVerticalScrollBarVisibility(menu, ScrollBarVisibility.Disabled);
         }
-        text.PropertyChanged += (_, _) => FitSidebar();
-        text.PropertyChanged += (_, _) => transferPage?.SetLanguage(text.English);
-        SetCollapsed(true);
+        text.PropertyChanged += (_, _) => this.runApi(() => transferPage?.SetLanguage(text.English));
         void Select(ListBox active, ListBox other)
         {
             if (active.SelectedItem is not ListBoxItem item) return;
             other.SelectedIndex = -1;
             body.Content = item.Tag;
-            if (ReferenceEquals(item.Tag, colorsPage) && workspace is not null) PrepareColors();
+            if (ReferenceEquals(item.Tag, colorsPage) && workspace is not null) this.runApi(PrepareColors);
         }
         navigation.SelectionChanged += (_, _) => Select(navigation, bottomNavigation);
         bottomNavigation.SelectionChanged += (_, _) => Select(bottomNavigation, navigation);
@@ -130,11 +95,11 @@ internal sealed partial class PrototypeWindow : Window
         layout.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star) });
         layout.Children.Add(PrototypeIcons.Create(key, Accent));
         var caption = Label(key, 13); caption.Margin = new Thickness(8, 0, 0, 0);
-        caption.Tag = key; caption.TextWrapping = TextWrapping.NoWrap;
-        Grid.SetColumn(caption, 1); layout.Children.Add(caption); navigationLabels.Add(caption);
-        var item = new ListBoxItem { Content = layout, Tag = page, Height = 50, Padding = new Thickness(10, 12, 6, 12),
+        caption.Visibility = Visibility.Collapsed; caption.Tag = key; caption.TextWrapping = TextWrapping.NoWrap;
+        Grid.SetColumn(caption, 1); layout.Children.Add(caption);
+        var item = new ListBoxItem { Content = layout, Tag = page, Height = 34, Width = 38, Padding = new Thickness(6),
             VerticalContentAlignment = VerticalAlignment.Center,
-            Margin = new Thickness(0, 0, 0, 6), HorizontalContentAlignment = HorizontalAlignment.Stretch };
+            Margin = new Thickness(1), HorizontalContentAlignment = HorizontalAlignment.Stretch };
         var style = new Style(typeof(ListBoxItem));
         style.Setters.Add(new Setter(BorderBrushProperty, Brushes.Transparent));
         var frame = new FrameworkElementFactory(typeof(Border));
@@ -151,6 +116,7 @@ internal sealed partial class PrototypeWindow : Window
         selected.Setters.Add(new Setter(BorderBrushProperty, Brush("#C7DCDF")));
         selected.Setters.Add(new Setter(FontWeightProperty, FontWeights.SemiBold));
         style.Triggers.Add(selected); item.Style = style;
+        Bind(item, System.Windows.Automation.AutomationProperties.NameProperty, key);
         Bind(item, ToolTipProperty, key); (target ?? navigation).Items.Add(item);
     }
 
@@ -165,7 +131,7 @@ internal sealed partial class PrototypeWindow : Window
             Content = PrototypeIcons.Create("Help", Accent, 20), Background = Brushes.Transparent, BorderThickness = new Thickness(0) };
         Bind(help, ToolTipProperty, "Help");
         Bind(help, System.Windows.Automation.AutomationProperties.NameProperty, "Help");
-        help.Click += (_, _) => new ModeHelpWindow(this, text, key).ShowDialog();
+        help.Click += (_, _) => new ModeHelpWindow(dialogOwner, text, key).ShowDialog();
         Grid.SetColumn(help, 2); heading.Children.Add(help);
         var title = Label(key, 22, Accent);
         title.Margin = new Thickness(0, 0, 16, 0);
@@ -245,7 +211,7 @@ internal sealed partial class PrototypeWindow : Window
             Bind(button, ContentProperty, key);
             Bind(button, ToolTipProperty, workspace is null ? "Unavailable" : key + "Help");
             ToolTipService.SetShowOnDisabled(button, true);
-            button.Click += (_, _) => workspace?.RunDebug(tool);
+            button.Click += (_, _) => runApi(() => workspace?.RunDebug(tool));
             buttons.Children.Add(button);
         }
         if (workspace is null) buttons.Children.Add(Label("Unavailable", 13, Muted));
@@ -362,7 +328,7 @@ internal sealed partial class PrototypeWindow : Window
     private void PickColor(object sender, RoutedEventArgs e)
     {
         if (sender is not Button { DataContext: PrototypeLevel level } || !level.Selected) return;
-        var picker = new PrototypeColorWindow(text, level.Color) { Owner = this };
+        var picker = new PrototypeColorWindow(text, level.Color) { Owner = dialogOwner };
         if (picker.ShowDialog() == true) level.Color = picker.SelectedColor;
     }
 
@@ -375,4 +341,3 @@ internal sealed partial class PrototypeWindow : Window
     private void Bind(DependencyObject target, DependencyProperty property, string key) => BindingOperations.SetBinding(target, property, Translation(key));
     private static SolidColorBrush Brush(string hex) => new((Color)ColorConverter.ConvertFromString(hex));
 }
-

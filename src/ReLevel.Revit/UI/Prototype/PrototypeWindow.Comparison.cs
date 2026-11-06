@@ -75,7 +75,7 @@ internal sealed partial class PrototypeWindow
         load.Click += (_, _) =>
         {
             var dialog = new OpenFileDialog { Filter = "TSV (*.tsv)|*.tsv|Text (*.txt)|*.txt", CheckFileExists = true };
-            if (dialog.ShowDialog(this) != true) return;
+            if (dialog.ShowDialog(dialogOwner) != true) return;
             try
             {
                 using var reader = new StreamReader(dialog.FileName, new UTF8Encoding(false, true), detectEncodingFromByteOrderMarks: true);
@@ -86,7 +86,7 @@ internal sealed partial class PrototypeWindow
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or FormatException or DecoderFallbackException or Microsoft.VisualBasic.FileIO.MalformedLineException)
             {
-                OperationDialogs.Show(this, text["CompareLoadError"], text["CompareFormat"] + "\n\n" + ex.Message);
+                OperationDialogs.Show(dialogOwner, text["CompareLoadError"], text["CompareFormat"] + "\n\n" + ex.Message);
             }
         };
         clear.Click += (_, _) =>

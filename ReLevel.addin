@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ReLevel Workspace</Name>
+    <Assembly>ReLevel\ReLevel.Revit.dll</Assembly>
+    <AddInId>F225D2D4-E440-4A1F-84D9-3F957A4A673F</AddInId>
+    <FullClassName>ReLevel.Revit.ReLevelApplication</FullClassName>
+    <VendorId>RLVL</VendorId>
+  </AddIn>
   <AddIn Type="Command">
     <Name>ReLevel</Name>
     <Assembly>ReLevel\ReLevel.Revit.dll</Assembly>

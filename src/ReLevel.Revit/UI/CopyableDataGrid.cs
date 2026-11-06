@@ -29,8 +29,10 @@ internal sealed class CopyableDataGrid : DataGrid
         }
         catch (ExternalException ex)
         {
-            MessageBox.Show(owner, ex.Message, L.Get("Действие не выполнено"),
-                MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (owner is null)
+                MessageBox.Show(ex.Message, L.Get("Действие не выполнено"), MessageBoxButton.OK, MessageBoxImage.Warning);
+            else
+                MessageBox.Show(owner, ex.Message, L.Get("Действие не выполнено"), MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         notification.Show(this, L.Get("Скопировано в буфер обмена."));

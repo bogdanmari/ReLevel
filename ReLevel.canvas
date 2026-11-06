@@ -1,0 +1,492 @@
+{
+  "nodes": [
+    {
+      "id": "g_product",
+      "type": "group",
+      "x": 0,
+      "y": 0,
+      "width": 500,
+      "height": 1580,
+      "label": "01 · Назначение и сценарии",
+      "color": "5"
+    },
+    {
+      "id": "g_arch",
+      "type": "group",
+      "x": 580,
+      "y": 0,
+      "width": 500,
+      "height": 1580,
+      "label": "02 · Архитектура основной версии",
+      "color": "6"
+    },
+    {
+      "id": "g_engine",
+      "type": "group",
+      "x": 1160,
+      "y": 0,
+      "width": 500,
+      "height": 1580,
+      "label": "03 · Обработка модели",
+      "color": "4"
+    },
+    {
+      "id": "g_release",
+      "type": "group",
+      "x": 1740,
+      "y": 0,
+      "width": 500,
+      "height": 1580,
+      "label": "04 · Сборка и установка",
+      "color": "3"
+    },
+    {
+      "id": "g_checks",
+      "type": "group",
+      "x": 2320,
+      "y": 0,
+      "width": 500,
+      "height": 1580,
+      "label": "05 · Текущее состояние · 04.11.2026",
+      "color": "2"
+    },
+    {
+      "id": "g_docs",
+      "type": "group",
+      "x": 0,
+      "y": 1700,
+      "width": 2820,
+      "height": 450,
+      "label": "06 · Документы проекта — источники подробностей",
+      "color": "5"
+    },
+    {
+      "id": "purpose",
+      "type": "text",
+      "x": 30,
+      "y": 50,
+      "width": 440,
+      "height": 280,
+      "color": "5",
+      "text": "# ReLevel\n\nПлагин Autodesk Revit для переноса привязок элементов и пересоздания планов на другом уровне.\n\n**Цель:** уменьшить зависимости от исходного уровня с сохранением положения модели по согласованным кейсам.\n\nПустой список элементов не доказывает, что уровень безопасно удалять."
+    },
+    {
+      "id": "levels",
+      "type": "text",
+      "x": 30,
+      "y": 380,
+      "width": 440,
+      "height": 290,
+      "color": "5",
+      "text": "# Levels\n\nОбщая таблица уровней → Elements / Views.\n\n• Transfer Elements: явная цель или ближайший уровень снизу.\n• Distribute Elements: распределение по сохраняемым уровням.\n• Action: выделение, удаление элементов, видов и уровня.\n\nПоиск, фильтр, массовые отметки, прогресс и отмена."
+    },
+    {
+      "id": "other",
+      "type": "text",
+      "x": 30,
+      "y": 720,
+      "width": 440,
+      "height": 250,
+      "color": "5",
+      "text": "# Color · Compare\n\n**Color:** цвет и скрытие элементов по уровням на активном виде; восстановление исходной графики текущей сессии.\n\n**Compare:** сравнение имён и отметок с локальным TSV; подсветка совпадений. Модель не изменяется."
+    },
+    {
+      "id": "debug",
+      "type": "text",
+      "x": 30,
+      "y": 1020,
+      "width": 440,
+      "height": 250,
+      "color": "5",
+      "text": "# Debug · Settings\n\n**Debug:** выделение по кейсу, добавление ID и инспектор элементов.\n\n**Settings:** русский / английский; единицы проекта / десятичные футы.\n\nИнспектор записывает диагностические снимки в ELEMENTS.md."
+    },
+    {
+      "id": "reading",
+      "type": "text",
+      "x": 30,
+      "y": 1320,
+      "width": 440,
+      "height": 220,
+      "color": "3",
+      "text": "# Как читать карту\n\nКарта отражает исходники и записи TASKS на 04.11.2026.\n\nНаличие кода ≠ проверенная совместимость. Требования — в SPEC, фактические результаты — в TASKS.\n\nДля локальных ссылок откройте корень ReLevel как хранилище Obsidian."
+    },
+    {
+      "id": "entry",
+      "type": "text",
+      "x": 610,
+      "y": 50,
+      "width": 440,
+      "height": 280,
+      "color": "6",
+      "text": "# Вход в плагин\n\nReLevel.addin → ReLevelApplication.OnStartup → регистрация DockablePane.\n\nPrototypeCommand показывает закрепляемую панель.\n\nReLevelCommand сохраняет прежнее модальное окно.\n\nКод: src/ReLevel.Revit/"
+    },
+    {
+      "id": "dock",
+      "type": "text",
+      "x": 610,
+      "y": 380,
+      "width": 440,
+      "height": 290,
+      "color": "6",
+      "text": "# DockableWorkspace\n\nШтатная панель Revit + ExternalEvent для действий с моделью.\n\nОтслеживает документ, активный вид и внешние изменения. Устаревшие данные блокируются до обновления.\n\nДокумент сравнивается через Equals и IsValidObject."
+    },
+    {
+      "id": "ui",
+      "type": "text",
+      "x": 610,
+      "y": 720,
+      "width": 440,
+      "height": 250,
+      "color": "6",
+      "text": "# WPF и контроллер\n\nUI/Prototype/PrototypeWindow — содержимое панели и верхняя навигация.\n\nWorkspaceController связывает страницы с операциями.\nTransferPanel — списки элементов / видов и действия.\n\nДиалоги результатов и выбора цели остаются отдельными окнами."
+    },
+    {
+      "id": "index",
+      "type": "text",
+      "x": 610,
+      "y": 1020,
+      "width": 440,
+      "height": 250,
+      "color": "6",
+      "text": "# Общий анализ модели\n\nModelElementIndex классифицирует элементы по TransferCases и принадлежности уровням.\n\nОбщий индекс используется для счётчиков и выборок. После операций обновляется.\n\nModelAnalysisLoader показывает ход анализа."
+    },
+    {
+      "id": "support",
+      "type": "text",
+      "x": 610,
+      "y": 1320,
+      "width": 440,
+      "height": 220,
+      "color": "6",
+      "text": "# Вспомогательные слои\n\n**Logic/** — расчёты и результаты без Revit API.\n**Localization/** — язык и переводы.\n**Inspection/** — чтение диагностических данных и снимки.\n\nОтдельный Core и unit-тесты не добавляются по правилам проекта."
+    },
+    {
+      "id": "transfer",
+      "type": "text",
+      "x": 1190,
+      "y": 50,
+      "width": 440,
+      "height": 280,
+      "color": "4",
+      "text": "# Перенос элементов\n\nElementTransferService + TransferCases.\n\nДля каждого случая: отбор → ограничения записи → подготовка → перенос в транзакции.\n\nРеестр содержит кейсы 1–22. Поддержка ограничена условиями каждого кейса; наличие класса не означает поддержку всех экземпляров категории."
+    },
+    {
+      "id": "cases",
+      "type": "text",
+      "x": 1190,
+      "y": 380,
+      "width": 440,
+      "height": 290,
+      "color": "4",
+      "text": "# Семейства · конструкции · MEP\n\nСемейства, стены, колонны, перекрытия, крыши, балки, лестницы, ограждения, помещения и границы.\n\nТрубы, воздуховоды, Fabrication, Flex Ducts, Conduit и Flex Pipes.\n\nКонкретные условия и ограничения: SPEC → «Перенос элементов с уровня на уровень»."
+    },
+    {
+      "id": "views",
+      "type": "text",
+      "x": 1190,
+      "y": 720,
+      "width": 440,
+      "height": 250,
+      "color": "4",
+      "text": "# Пересоздание планов\n\nViewRecreationService.\n\nFloorPlan, CeilingPlan, EngineeringPlan.\n\nПереносятся настройки, поддержанные аннотации, графика и размещения на листах. Исходные виды сохраняются.\n\nЧастичный результат и потери отражаются в журнале."
+    },
+    {
+      "id": "delete",
+      "type": "text",
+      "x": 1190,
+      "y": 1020,
+      "width": 440,
+      "height": 250,
+      "color": "4",
+      "text": "# Удаление\n\nDeleteService.\n\nЭлементы / виды: пробное удаление с откатом → подтверждение зависимостей → фактическое удаление.\n\nDelete Level — отдельная прямая операция по SPEC; завершает рабочую сессию. Без предварительного анализа зависимостей плагином."
+    },
+    {
+      "id": "transactions",
+      "type": "text",
+      "x": 1190,
+      "y": 1320,
+      "width": 440,
+      "height": 220,
+      "color": "1",
+      "text": "# Ошибки и Undo\n\nВсе изменения — в транзакциях.\n\nСбой регенерации критический: прекратить работу и безопасно откатить операцию.\n\nПолитика частичного результата различается для переноса, пересоздания видов и удаления. Точные границы отмены — в SPEC."
+    },
+    {
+      "id": "main",
+      "type": "text",
+      "x": 1770,
+      "y": 50,
+      "width": 440,
+      "height": 280,
+      "color": "3",
+      "text": "# Основная линейка · 2025+\n\nsrc/ReLevel.Revit\n.NET 8 · базовый API Revit 2025.\nЦелевые версии: Revit 2025–2026.\n\nDebug / Release → bin/2025+.\n\nОдна DLL на линейку. Совместимость проверяется отдельно в каждой заявленной версии."
+    },
+    {
+      "id": "legacy",
+      "type": "text",
+      "x": 1770,
+      "y": 380,
+      "width": 440,
+      "height": 290,
+      "color": "3",
+      "text": "# Legacy · 2024−\n\nlegacy/src/ReLevel.Revit\n.NET Framework 4.8 · базовый API Revit 2022.\nЦелевые версии: Revit 2022–2024.\n\nКонфигурация Legacy → bin/2024− (фактическое имя: 2024-).\n\nОбновляется только по прямому запросу. Обычная сборка не синхронизирует исходники."
+    },
+    {
+      "id": "build",
+      "type": "text",
+      "x": 1770,
+      "y": 720,
+      "width": 440,
+      "height": 250,
+      "color": "3",
+      "text": "# Сборка\n\nОсновная:\n```powershell\ndotnet build ReLevel.sln -c Release\n```\nLegacy:\n```powershell\ndotnet build ReLevel.sln -c Legacy\n```\nНужны соответствующие SDK и Revit API. Сборка подтверждает компиляцию, а не поведение в модели."
+    },
+    {
+      "id": "install",
+      "type": "text",
+      "x": 1770,
+      "y": 1020,
+      "width": 440,
+      "height": 250,
+      "color": "3",
+      "text": "# Установка\n\nПри закрытом Revit скопировать содержимое папки нужной линейки в:\n\n%APPDATA%/Autodesk/Revit/Addins/<год>/\n\n• ReLevel.addin\n• ReLevel/ReLevel.Revit.dll\n• ReLevel/Assets/\n\nПерезапустить Revit. DLL Autodesk не поставляются."
+    },
+    {
+      "id": "launch",
+      "type": "text",
+      "x": 1770,
+      "y": 1320,
+      "width": 440,
+      "height": 220,
+      "color": "3",
+      "text": "# Запуск панели\n\nНадстройки → Внешние инструменты → ReLevel UI Prototype.\n\nПанель регистрируется при старте Revit; запуск одной DLL через Add-In Manager недостаточен.\n\nОбычная команда ReLevel открывает прежний интерфейс."
+    },
+    {
+      "id": "r99",
+      "type": "text",
+      "x": 2350,
+      "y": 50,
+      "width": 440,
+      "height": 280,
+      "color": "2",
+      "text": "# R99 · Пустая панель\n\n**Проверить в Revit.** Причина найдена: разные .NET-обёртки одного Document сравнивались через ==; Idling очищал содержимое.\n\nИсправлено на Equals + IsValidObject. Отдельный экземпляр новой DLL проверен в Revit 2025: содержимое сохраняется, ExternalEvent выполняется."
+    },
+    {
+      "id": "r98",
+      "type": "text",
+      "x": 2350,
+      "y": 380,
+      "width": 440,
+      "height": 290,
+      "color": "2",
+      "text": "# R98 · Закрепляемый интерфейс\n\n**Проверить в Revit.** DockablePane и верхняя навигация реализованы; Release собрана.\n\nНужен запуск установленной DLL после перезапуска: закрепление, плавающее окно, узкая ширина, диалоги, переключение документов/видов, обновление после Undo/Redo."
+    },
+    {
+      "id": "mep",
+      "type": "text",
+      "x": 2350,
+      "y": 720,
+      "width": 440,
+      "height": 250,
+      "color": "2",
+      "text": "# R94 / R95 · Проверки MEP\n\nКомпенсация высоты оборудования, сохранение длин врезок Ducts, Flex Pipes.\n\nЕсть ограниченные успешные пробы через MCP с откатом. Они не заменяют запуск зарегистрированной UI-команды.\n\nОстаются UI, Undo, регрессия и Revit 2026. Подробности — TASKS."
+    },
+    {
+      "id": "next",
+      "type": "text",
+      "x": 2350,
+      "y": 1020,
+      "width": 440,
+      "height": 250,
+      "color": "2",
+      "text": "# Следующий практический шаг\n\nУстановить исправленную DLL и перезапустить Revit.\n\nНа копии модели проверить:\n• открытие панели и обновление;\n• успешную операцию и неподдерживаемый случай;\n• ошибку, сохранность зависимостей и Undo.\n\nЗаписать версию и фактические результаты в TASKS."
+    },
+    {
+      "id": "deferred",
+      "type": "text",
+      "x": 2350,
+      "y": 1320,
+      "width": 440,
+      "height": 220,
+      "color": "1",
+      "text": "# R11 · Отложено\n\n**Нужно решение.** Общий механизм проверки результатов для тестирования отложен до завершения кейсов.\n\nНе встраивать снимки геометрии и сравнение параметров в рабочий перенос. Состав будущей проверки необходимо согласовать."
+    },
+    {
+      "id": "spec",
+      "type": "file",
+      "file": "docs/SPEC.md",
+      "x": 30,
+      "y": 1750,
+      "width": 520,
+      "height": 360,
+      "color": "5"
+    },
+    {
+      "id": "tasks",
+      "type": "file",
+      "file": "TASKS.md",
+      "x": 590,
+      "y": 1750,
+      "width": 520,
+      "height": 360,
+      "color": "5"
+    },
+    {
+      "id": "readme",
+      "type": "file",
+      "file": "README.md",
+      "x": 1150,
+      "y": 1750,
+      "width": 520,
+      "height": 360,
+      "color": "5"
+    },
+    {
+      "id": "agents",
+      "type": "file",
+      "file": "AGENTS.md",
+      "x": 1710,
+      "y": 1750,
+      "width": 520,
+      "height": 360,
+      "color": "5"
+    },
+    {
+      "id": "elements",
+      "type": "file",
+      "file": "ELEMENTS.md",
+      "x": 2270,
+      "y": 1750,
+      "width": 520,
+      "height": 360,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e001",
+      "fromNode": "purpose",
+      "fromSide": "bottom",
+      "toNode": "levels",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "рабочие сценарии"
+    },
+    {
+      "id": "e002",
+      "fromNode": "entry",
+      "fromSide": "bottom",
+      "toNode": "dock",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "регистрирует / показывает"
+    },
+    {
+      "id": "e003",
+      "fromNode": "dock",
+      "fromSide": "bottom",
+      "toNode": "ui",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "допустимый API-контекст"
+    },
+    {
+      "id": "e004",
+      "fromNode": "ui",
+      "fromSide": "bottom",
+      "toNode": "index",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "выборки и счётчики"
+    },
+    {
+      "id": "e005",
+      "fromNode": "transfer",
+      "fromSide": "bottom",
+      "toNode": "cases",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "выбор алгоритма"
+    },
+    {
+      "id": "e006",
+      "fromNode": "main",
+      "fromSide": "bottom",
+      "toNode": "build",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "Release"
+    },
+    {
+      "id": "e007",
+      "fromNode": "build",
+      "fromSide": "bottom",
+      "toNode": "install",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "артефакты"
+    },
+    {
+      "id": "e008",
+      "fromNode": "install",
+      "fromSide": "bottom",
+      "toNode": "launch",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "перезапуск Revit"
+    },
+    {
+      "id": "e009",
+      "fromNode": "r99",
+      "fromSide": "bottom",
+      "toNode": "r98",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "устранить блокер"
+    },
+    {
+      "id": "e010",
+      "fromNode": "r98",
+      "fromSide": "bottom",
+      "toNode": "mep",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "регрессия UI"
+    },
+    {
+      "id": "e011",
+      "fromNode": "mep",
+      "fromSide": "bottom",
+      "toNode": "next",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "проверка на копии"
+    },
+    {
+      "id": "e012",
+      "fromNode": "levels",
+      "fromSide": "right",
+      "toNode": "ui",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "страницы"
+    },
+    {
+      "id": "e013",
+      "fromNode": "index",
+      "fromSide": "right",
+      "toNode": "transfer",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "классификация"
+    },
+    {
+      "id": "e014",
+      "fromNode": "ui",
+      "fromSide": "right",
+      "toNode": "views",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "операции видов"
+    }
+  ]
+}

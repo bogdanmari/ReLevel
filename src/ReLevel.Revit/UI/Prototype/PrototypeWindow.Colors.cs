@@ -19,13 +19,13 @@ internal sealed partial class PrototypeWindow
             button.HorizontalAlignment = reset ? HorizontalAlignment.Left : HorizontalAlignment.Right;
             button.IsEnabled = workspace is not null;
             Bind(button, ContentProperty, key);
-            button.Click += (_, _) =>
+            button.Click += (_, _) => runApi(() =>
             {
                 var message = workspace!.ApplyColors(levels, reset);
                 SetColorStatus(message);
                 if (reset)
                     foreach (var level in levels) { level.Selected = false; level.Hidden = false; }
-            };
+            });
             buttons.Children.Add(button);
         }
         var footer = StablePageLayout.Footer(buttons, colorStatus);

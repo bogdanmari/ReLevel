@@ -13,6 +13,9 @@ namespace ReLevel.Revit.UI;
 internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeTransferPage
 {
     private readonly Window owner;
+    private readonly Action<Action> runApi;
+    private readonly Action close;
+    private readonly Func<UIElement> operationRoot;
     private readonly bool modern;
     private readonly UIApplication application;
     private readonly Document document;
@@ -43,8 +46,12 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
     public bool LevelColorsRequested { get; private set; }
 
     public TransferPanel(Window owner, UIApplication application, IReadOnlyList<Level> levels, bool modern = false,
-        ModelElementIndex? index = null, Action? refreshIndex = null)
+        ModelElementIndex? index = null, Action? refreshIndex = null, Action<Action>? runApi = null,
+        Action? close = null, Func<UIElement>? operationRoot = null)
     {
+        this.runApi = runApi ?? (action => action());
+        this.close = close ?? owner.Close;
+        this.operationRoot = operationRoot ?? (() => owner);
         this.owner = owner; this.modern = modern;
         this.application = application; document = application.ActiveUIDocument.Document;
         this.levels = levels;
@@ -119,10 +126,10 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         if (modern) ApplyModernStyle();
         tabs.SelectionChanged += (_, _) => includeUpper.Visibility = tabs.SelectedIndex == 0
             ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-        source.SelectionChanged += (_, _) => ChangeSource();
+        source.SelectionChanged += (_, _) => this.runApi(ChangeSource);
         if (levels.Count > 0) source.SelectedIndex = 0;
         else Refresh();
-        language.SelectionChanged += (_, _) => ChangeLanguage();
+        language.SelectionChanged += (_, _) => this.runApi(ChangeLanguage);
     }
 
     private void ChangeLanguage()
@@ -307,7 +314,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         {
             ElementTransferReport report;
             transferring = true;
-            using var controls = new OperationControls(owner, transferProgress);
+            using var controls = new OperationControls(operationRoot(), transferProgress);
 
             var stopped = true;
             try
@@ -378,7 +385,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         {
             ViewRecreationReport report;
             transferring = true;
-            using var controls = new OperationControls(owner, transferProgress);
+            using var controls = new OperationControls(operationRoot(), transferProgress);
 
             var stopped = true;
             try
@@ -511,7 +518,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
             Padding = modern ? new Thickness(18, 9, 18, 9) : new Thickness(10, 5, 10, 5) };
         if (action is not null) button.Click += (_, _) =>
         {
-            ExecuteAction(action, buttons is not null);
+            runApi(() => ExecuteAction(action, buttons is not null));
         };
         if (action is not null) buttons?.Add(button);
         panel.Children.Add(button);

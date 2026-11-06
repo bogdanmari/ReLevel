@@ -90,14 +90,14 @@ internal sealed partial class PrototypeWindow
         Bind(distribute, ToolTipProperty, "DistributeHelp");
         void UpdateDistribution() => distribute.IsEnabled = workspace is not null && levels.Any(row => row.Keep);
         foreach (var row in levels) row.PropertyChanged += (_, _) => UpdateDistribution();
-        distribute.Click += (_, _) =>
+        distribute.Click += (_, _) => runApi(() =>
         {
             using var controls = new OperationControls(this, progress);
             progress.Begin(0);
             workspace!.Distribute(levels, progress.Report,
                 stopped => { progress.Finish(stopped, text[stopped ? "DistributionStopped" : "DistributionComplete"]); controls.Dispose(); },
                 () => progress.CancellationRequested);
-        };
+        });
         UpdateDistribution(); buttons.Children.Add(distribute);
 
         var transfer = ActionButton("TransferLevels", "Transfer", primary: true);
@@ -106,7 +106,7 @@ internal sealed partial class PrototypeWindow
             table.Items.OfType<PrototypeLevel>().Any(row => row.Keep && row.ModelElementCount > 0);
         foreach (var row in levels) row.PropertyChanged += (_, _) => UpdateTransfer();
         ((System.Collections.Specialized.INotifyCollectionChanged)table.ItemsSource).CollectionChanged += (_, _) => UpdateTransfer();
-        transfer.Click += (_, _) =>
+        transfer.Click += (_, _) => runApi(() =>
         {
             OperationControls? controls = null;
             try
@@ -117,7 +117,7 @@ internal sealed partial class PrototypeWindow
                     () => progress.CancellationRequested);
             }
             finally { controls?.Dispose(); }
-        };
+        });
         UpdateTransfer(); buttons.Children.Add(transfer);
 
         var actions = ActionButton("Actions", "Actions");
@@ -146,8 +146,8 @@ internal sealed partial class PrototypeWindow
                 table.Items.OfType<PrototypeLevel>().Any(row => row.Keep && (key == "DeleteViews" ? row.ViewCount : row.ModelElementCount) > 0);
             foreach (var row in levels) row.PropertyChanged += (_, _) => Update();
             ((System.Collections.Specialized.INotifyCollectionChanged)table.ItemsSource).CollectionChanged += (_, _) => Update();
-            button.Click += (_, _) => workspace?.ProcessInformation(table.Items.OfType<PrototypeLevel>()
-                .Where(row => row.Keep).Select(row => row.Id).ToList(), key != "SelectElements", key == "DeleteViews");
+            button.Click += (_, _) => runApi(() => workspace?.ProcessInformation(table.Items.OfType<PrototypeLevel>()
+                .Where(row => row.Keep).Select(row => row.Id).ToList(), key != "SelectElements", key == "DeleteViews"));
             Update(); menu.Items.Add(button);
         }
         menu.Items.Add(new Separator());
@@ -158,7 +158,7 @@ internal sealed partial class PrototypeWindow
             table.Items.OfType<PrototypeLevel>().Count(row => row.Keep) == 1;
         foreach (var row in levels) row.PropertyChanged += (_, _) => UpdateDeleteLevel();
         ((System.Collections.Specialized.INotifyCollectionChanged)table.ItemsSource).CollectionChanged += (_, _) => UpdateDeleteLevel();
-        deleteLevel.Click += (_, _) => workspace?.DeleteLevel(table.Items.OfType<PrototypeLevel>().Single(row => row.Keep).Id);
+        deleteLevel.Click += (_, _) => runApi(() => workspace?.DeleteLevel(table.Items.OfType<PrototypeLevel>().Single(row => row.Keep).Id));
         UpdateDeleteLevel(); menu.Items.Add(deleteLevel);
         var status = new StackPanel();
         var counts = new TextBlock { FontSize = 12, Foreground = Muted };
