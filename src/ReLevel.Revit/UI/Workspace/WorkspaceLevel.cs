@@ -2,10 +2,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
 // A detached snapshot and window-local choices; deliberately no Revit API references.
-internal sealed class PrototypeLevel(long id, string name, double elevation) : INotifyPropertyChanged
+internal sealed class WorkspaceLevel(long id, string name, double elevation) : INotifyPropertyChanged
 {
     private bool inComparison;
     public bool InComparison { get => inComparison; set { inComparison = value; Changed(); } }

@@ -3,13 +3,13 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ReLevel.Revit.Transfer;
 using ReLevel.Revit.Logic;
-using ReLevel.Revit.UI.Prototype;
+using ReLevel.Revit.UI.Workspace;
 
 namespace ReLevel.Revit.UI;
 
 internal sealed class WorkspaceController(UIApplication application, IReadOnlyList<Level> levels,
-    IReadOnlyList<PrototypeLevel> snapshot, ModelElementIndex index, Action close, Func<UIElement> root, Action<Action> runApi)
-    : IPrototypeWorkspace, IDisposable
+    IReadOnlyList<WorkspaceLevel> snapshot, ModelElementIndex index, Action close, Func<UIElement> root, Action<Action> runApi)
+    : IWorkspace, IDisposable
 {
     public LengthUnitSettings Units { get; } = ProjectLengthUnits.Create(application.ActiveUIDocument.Document);
     private Window owner = null!;
@@ -19,14 +19,14 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     private bool busy;
     public bool InspectElementRequested => transfer.InspectElementRequested;
 
-    public IPrototypeTransferPage CreateTransfer(Window window, bool english)
+    public IWorkspaceTransferPage CreateTransfer(Window window, bool english)
     {
         owner = window;
         L.UseEnglish = english;
         UpdateCounts();
         index.Changed += UpdateCounts;
         owner.Closing += (_, e) => { if (busy) e.Cancel = true; };
-        return transfer = new TransferPanel(owner, application, levels, modern: true, index: index, refreshIndex: RefreshIndex, runApi: runApi, close: close, operationRoot: root);
+        return transfer = new TransferPanel(owner, application, levels, index: index, refreshIndex: RefreshIndex, runApi: runApi, close: close, operationRoot: root);
     }
 
     private void UpdateCounts()
@@ -71,7 +71,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
         catch (Exception ex) { OperationDialogs.Show(owner, L.Get("Операция отменена"), ex.Message); close(); }
     }
 
-    public void Distribute(IReadOnlyList<PrototypeLevel> choices, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled)
+    public void Distribute(IReadOnlyList<WorkspaceLevel> choices, Action<int, int, long?> progress, Action<bool> finished, Func<bool> cancelled)
     {
         if (busy) return;
         var retained = choices.Where(row => row.Keep).Select(row => new RetainedLevel(row.Id, row.Elevation)).ToList();
@@ -146,6 +146,48 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
         transfer.RefreshAfterDistribution();
     }
 
+    public void FillLevels(IReadOnlyList<long> levelIds, bool selectedOnly)
+    {
+        if (busy) return;
+        busy = true;
+        var controls = root();
+        controls.IsEnabled = false;
+        try
+        {
+            var ids = index.AtBaseLevels(levelIds.ToHashSet());
+            if (selectedOnly)
+            {
+                var selectedIds = application.ActiveUIDocument.Selection.GetElementIds().Select(id => id.Value).ToHashSet();
+                ids = ids.Where(selectedIds.Contains).ToList();
+                if (ids.Count == 0)
+                {
+                    OperationDialogs.Show(owner, L.Get("Заполнить уровень"), L.Get("Среди элементов отмеченных уровней нет выбранных в модели."));
+                    return;
+                }
+            }
+            if (ids.Count == 0) return;
+            var service = new FillLevelService(application.ActiveUIDocument.Document);
+            var choices = service.Parameters(ids);
+            if (choices.Count == 0)
+            {
+                OperationDialogs.Show(owner, L.Get("Заполнить уровень"), L.Get("У выбранных элементов нет текстовых параметров экземпляра."));
+                return;
+            }
+            var dialog = new FillLevelWindow(owner, choices, ids.Count);
+            if (dialog.ShowDialog() != true) return;
+            var rows = service.Execute(ids.ToDictionary(id => id, id => index.BaseLevel(id)!.Value), dialog.Parameter);
+            FillLevelWindow.ShowResults(owner, rows);
+            RefreshIndex();
+            transfer.RefreshAfterDistribution();
+        }
+        catch (Exception ex)
+        {
+            OperationDialogs.Show(owner, L.Get("Заполнить уровень"), ex.Message);
+            close();
+        }
+        finally { busy = false; controls.IsEnabled = true; }
+    }
+
     public ColorPageState PrepareColors()
     {
         try
@@ -172,7 +214,7 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
         catch (Exception ex) { return new(false, ex.Message, new Dictionary<long, int>()); }
     }
 
-    public string ApplyColors(IReadOnlyList<PrototypeLevel> choices, bool reset)
+    public string ApplyColors(IReadOnlyList<WorkspaceLevel> choices, bool reset)
     {
         if (busy || graphics is null) return "";
         var controls = root();

@@ -3,11 +3,11 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
 internal sealed class ModeHelpWindow : Window
 {
-    public ModeHelpWindow(Window owner, PrototypeText text, string mode)
+    public ModeHelpWindow(Window owner, WorkspaceText text, string mode)
     {
         Owner = owner; Icon = AppIcon.Create(); Title = $"ReLevel · {text[mode]} · {text["Help"]}";
         Width = 660; Height = 550; MinWidth = 440; MinHeight = 330;

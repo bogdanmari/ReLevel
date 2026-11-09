@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using Level = Autodesk.Revit.DB.Level;
-using ReLevel.Revit.UI.Prototype;
+using ReLevel.Revit.UI.Workspace;
 using Binding = System.Windows.Data.Binding;
 
 namespace ReLevel.Revit.UI;
@@ -83,8 +83,16 @@ internal sealed partial class TransferPanel
         return panel;
     }
 
-    private void ApplyModernStyle()
+    private void ApplyWorkspaceStyle()
     {
+        foreach (var button in elementButtons.Concat(viewButtons))
+        {
+            button.Style = WorkspaceButtonStyle.Create(button == transferButton || button == recreateButton);
+            button.Height = 34;
+            button.Padding = new Thickness(12, 0, 12, 0);
+            button.ToolTip = L.Get("Отметьте доступные видимые строки для операции.");
+        }
+        summary.FontSize = 12; summary.Foreground = ReLevelTheme.Muted;
         foreach (var table in new[] { elementTable, viewTable })
         {
             TransferLayout.StyleTable(table);

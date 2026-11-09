@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Markup;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
-internal static class PrototypeTableHeader
+internal static class WorkspaceTableHeader
 {
     // Explicit glyphs keep sorting visible regardless of the Windows/Revit theme.
     // Preserve the named grippers used by DataGridColumnHeader for column resizing.
@@ -11,11 +11,11 @@ internal static class PrototypeTableHeader
         <Style xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                TargetType="DataGridColumnHeader">
-          <Setter Property="Background" Value="#D1E9EC"/>
-          <Setter Property="Foreground" Value="#183247"/>
-          <Setter Property="BorderBrush" Value="#ACCBD0"/>
+          <Setter Property="Background" Value="#E5EFF0"/>
+          <Setter Property="Foreground" Value="#242424"/>
+          <Setter Property="BorderBrush" Value="#D6DADF"/>
           <Setter Property="BorderThickness" Value="0,0,1,1"/>
-          <Setter Property="Padding" Value="6,12"/>
+          <Setter Property="Padding" Value="10,0"/>
           <Setter Property="FontSize" Value="12"/>
           <Setter Property="FontWeight" Value="SemiBold"/>
           <Setter Property="Template">

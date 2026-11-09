@@ -6,19 +6,19 @@ using System.Windows.Data;
 using Microsoft.Win32;
 using ReLevel.Revit.Logic;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
-internal sealed partial class PrototypeWindow
+internal sealed partial class WorkspaceView
 {
     private void HighlightComparedLevels(DataGrid table)
     {
-        var style = new Style(typeof(DataGridCell));
-        var match = new DataTrigger { Binding = new Binding(nameof(PrototypeLevel.InComparison)), Value = true };
+        var style = new Style(typeof(DataGridCell), ReLevelTheme.Cells());
+        var match = new DataTrigger { Binding = new Binding(nameof(WorkspaceLevel.InComparison)), Value = true };
         match.Setters.Add(new Setter(Control.BackgroundProperty, Brush("#C4EDE3")));
         style.Triggers.Add(match);
         var selected = new Trigger { Property = DataGridCell.IsSelectedProperty, Value = true };
-        selected.Setters.Add(new Setter(Control.BackgroundProperty, SystemColors.HighlightBrush));
-        selected.Setters.Add(new Setter(Control.ForegroundProperty, SystemColors.HighlightTextBrush));
+        selected.Setters.Add(new Setter(Control.BackgroundProperty, ReLevelTheme.Selected));
+        selected.Setters.Add(new Setter(Control.ForegroundProperty, ReLevelTheme.Text));
         style.Triggers.Add(selected); table.CellStyle = style;
     }
 
@@ -42,14 +42,15 @@ internal sealed partial class PrototypeWindow
                 : new Binding(property) { Converter = new LengthDisplayConverter(units) };
             cell.SetBinding(TextBlock.TextProperty, binding);
             cell.SetBinding(ToolTipProperty, binding);
+            if (property is "FileElevation" or "ModelElevation") cell.SetValue(TextBlock.TextAlignmentProperty, TextAlignment.Right);
             var column = TemplateColumn(table, key, cell, 160);
             if (property is "FileElevation" or "ModelElevation") BindUnitLabel((TextBlock)column.Header, key);
-            column.SortMemberPath = property;
+            column.MinWidth = property == "Name" ? 220 : property == "StatusKey" ? 160 : 128; column.SortMemberPath = property;
             column.Width = new DataGridLength(property == "Name" || property == "StatusKey" ? 1.5 : 1, DataGridLengthUnitType.Star);
         }
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
-        var load = new Button { Padding = new Thickness(18, 9, 18, 9), Margin = new Thickness(8, 0, 0, 6) };
-        var clear = new Button { Padding = load.Padding, Margin = load.Margin, IsEnabled = false };
+        var load = new Button { Style = WorkspaceButtonStyle.Create(true), Height = 34, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(8, 0, 0, 6) };
+        var clear = new Button { Height = 34, Padding = load.Padding, Margin = load.Margin, IsEnabled = false };
         Bind(load, ContentProperty, "LoadTsv"); Bind(clear, ContentProperty, "ClearComparison");
         var status = new TextBlock { FontSize = 12, Foreground = Muted, TextTrimming = TextTrimming.CharacterEllipsis };
         IReadOnlyList<ComparisonLevel>? imported = null;
@@ -99,17 +100,28 @@ internal sealed partial class PrototypeWindow
         units.Changed += Update; Update();
         buttons.Children.Add(clear); buttons.Children.Add(load);
         var tablePanel = new DockPanel();
-        var search = new PrototypeTableSearch(table, text, item =>
+        var search = new WorkspaceTableSearch(table, text, item =>
         {
             var row = (LevelComparisonResult)item;
             return $"{row.Name} {units.Format(row.FileElevation)} {units.Format(row.ModelElevation)} {text[row.StatusKey]}";
         }).Bar;
-        DockPanel.SetDock(search, Dock.Top); tablePanel.Children.Add(search); tablePanel.Children.Add(table);
+        DockPanel.SetDock(search, Dock.Top); tablePanel.Children.Add(search);
+        var tableHost = new Grid(); tableHost.Children.Add(table);
+        var empty = Label("CompareEmpty", 13, Muted);
+        empty.HorizontalAlignment = HorizontalAlignment.Center; empty.VerticalAlignment = VerticalAlignment.Center;
+        empty.IsHitTestVisible = false; tableHost.Children.Add(empty);
+        void EmptyState()
+        {
+            Bind(empty, TextBlock.TextProperty, imported is null ? "CompareEmpty" : "NoMatches");
+            empty.Visibility = table.Items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+        ((System.Collections.Specialized.INotifyCollectionChanged)table.Items).CollectionChanged += (_, _) => EmptyState();
+        EmptyState(); tablePanel.Children.Add(tableHost);
         content.Children.Add(StablePageLayout.Create(fileName, tablePanel, buttons, status));
         return page;
     }
 
-    private sealed class ComparisonStatusConverter(PrototypeText text) : IValueConverter
+    private sealed class ComparisonStatusConverter(WorkspaceText text) : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) => text[(string)value];
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) => Binding.DoNothing;

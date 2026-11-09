@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
-internal sealed partial class PrototypeWindow
+internal sealed partial class WorkspaceView
 {
     private FrameworkElement? colorsPage;
     private readonly TextBlock colorStatus = new() { Visibility = Visibility.Collapsed, TextTrimming = TextTrimming.CharacterEllipsis, MaxHeight = 22 };
@@ -12,9 +12,14 @@ internal sealed partial class PrototypeWindow
     private void ColorFooter(DockPanel content)
     {
         var buttons = new Grid();
+        buttons.ColumnDefinitions.Add(new() { Width = GridLength.Auto });
+        buttons.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star), MinWidth = 8 });
+        buttons.ColumnDefinitions.Add(new() { Width = GridLength.Auto });
         foreach (var (button, key, reset) in new[] { (resetColors, "Reset", true), (applyColors, "Colorize", false) })
         {
-            button.Padding = new Thickness(18, 9, 18, 9);
+            button.Style = WorkspaceButtonStyle.Create(!reset);
+            button.Height = 34; button.Padding = new Thickness(12, 0, 12, 0);
+            Grid.SetColumn(button, reset ? 0 : 2);
             button.Margin = new Thickness(0, 0, 0, 6);
             button.HorizontalAlignment = reset ? HorizontalAlignment.Left : HorizontalAlignment.Right;
             button.IsEnabled = workspace is not null;

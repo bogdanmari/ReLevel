@@ -6,7 +6,7 @@ using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
 using ReLevel.Revit.Transfer;
-using ReLevel.Revit.UI.Prototype;
+using ReLevel.Revit.UI.Workspace;
 
 namespace ReLevel.Revit.UI;
 
@@ -16,7 +16,10 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
     private readonly DockPanel host = new() { Background = System.Windows.Media.Brushes.WhiteSmoke };
     private readonly ContentControl content = new() { HorizontalContentAlignment = HorizontalAlignment.Stretch,
         VerticalContentAlignment = VerticalAlignment.Stretch };
-    private readonly Button refresh = new() { Margin = new Thickness(6), Padding = new Thickness(8) };
+    private readonly Button refresh = new() { Margin = new Thickness(8, 0, 0, 0), Padding = new Thickness(10, 0, 10, 0),
+        Height = 28, MinWidth = 100, Style = WorkspaceButtonStyle.Create() };
+    private readonly TextBlock freshness = new() { FontSize = 12, Foreground = ReLevelTheme.Muted,
+        VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis };
     private readonly ExternalEvent externalEvent;
     private Window? dialogOwner;
     private WorkspaceController? workspace;
@@ -29,8 +32,12 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
     public DockableWorkspace()
     {
         externalEvent = ExternalEvent.Create(this);
-        DockPanel.SetDock(refresh, Dock.Bottom);
-        host.Children.Add(refresh);
+        var strip = new System.Windows.Controls.Border { Height = 40, Background = System.Windows.Media.Brushes.White,
+            BorderBrush = ReLevelTheme.Border, BorderThickness = new Thickness(0, 1, 0, 0), Padding = new Thickness(12, 0, 12, 0) };
+        var bar = new DockPanel(); DockPanel.SetDock(refresh, Dock.Right);
+        bar.Children.Add(refresh); bar.Children.Add(freshness); strip.Child = bar;
+        DockPanel.SetDock(strip, Dock.Bottom);
+        host.Children.Add(strip);
         host.Children.Add(content);
         refresh.Click += (_, _) => QueueRefresh();
         UpdateRefreshLabel();
@@ -145,7 +152,7 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
         {
             var levels = new FilteredElementCollector(document).OfClass(typeof(Level)).Cast<Level>()
                 .OrderBy(level => level.ProjectElevation).ThenBy(level => level.Name).ThenBy(level => level.Id.Value).ToList();
-            var snapshot = levels.Select(level => new PrototypeLevel(level.Id.Value, level.Name, level.ProjectElevation)
+            var snapshot = levels.Select(level => new WorkspaceLevel(level.Id.Value, level.Name, level.ProjectElevation)
             {
                 Color = System.Windows.Media.Color.FromRgb((byte)Random.Shared.Next(40, 231),
                     (byte)Random.Shared.Next(40, 231), (byte)Random.Shared.Next(40, 231))
@@ -157,7 +164,7 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
             new WindowInteropHelper(dialogOwner) { Owner = ui.MainWindowHandle }.EnsureHandle();
             workspace = new WorkspaceController(ui, levels, snapshot, index, () => Run(() => closeRequested = true),
                 () => (UIElement)content.Content, Run);
-            content.Content = new PrototypeWindow(snapshot, L.UseEnglish, workspace.CreateTransfer, workspace, dialogOwner, Run);
+            content.Content = new WorkspaceView(snapshot, L.UseEnglish, workspace.CreateTransfer, workspace, dialogOwner, Run);
             stale = false;
             content.IsEnabled = true;
         }
@@ -207,9 +214,21 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
         first is null ? second is null : second is not null
             && first.IsValidObject && second.IsValidObject && first.Equals(second);
 
-    private void UpdateRefreshLabel() => refresh.Content = L.UseEnglish
-        ? stale ? "Refresh model data" : "Refresh"
-        : stale ? "Обновить данные модели" : "Обновить";
+    private void UpdateRefreshLabel()
+    {
+        var english = content.Content is WorkspaceView panel ? panel.English : L.UseEnglish;
+        var label = english ? "Refresh" : "Обновить";
+        var body = new StackPanel { Orientation = Orientation.Horizontal };
+        body.Children.Add(WorkspaceIcons.Create("Refresh", ReLevelTheme.Accent, 16));
+        body.Children.Add(new TextBlock { Text = label, Margin = new Thickness(8, 0, 0, 0) });
+        refresh.Content = body; refresh.ToolTip = label;
+        System.Windows.Automation.AutomationProperties.SetName(refresh, label);
+        freshness.Text = workspace is null
+            ? english ? "Open an editable Revit project." : "Откройте доступный для изменения проект."
+            : stale ? english ? "Data changed. Refresh the panel." : "Данные изменились. Обновите панель."
+            : english ? "Data is up to date" : "Данные актуальны";
+        freshness.ToolTip = freshness.Text;
+    }
 
     private void Clear()
     {

@@ -5,29 +5,32 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
 // Same search/navigation rules as the original table, with independent prototype localization.
-internal sealed class PrototypeTableSearch
+internal sealed class WorkspaceTableSearch
 {
-    public DockPanel Bar { get; } = new() { Height = 32, Margin = new Thickness(0, 0, 0, 12) };
+    public DockPanel Bar { get; } = new() { Height = 32, Margin = new Thickness(0, 0, 0, 8) };
 
-    public PrototypeTableSearch(DataGrid table, PrototypeText text, Func<object, string>? searchableText = null)
+    public WorkspaceTableSearch(DataGrid table, WorkspaceText text, Func<object, string>? searchableText = null)
     {
         var input = new TextBox { Padding = new Thickness(8, 0, 8, 0), VerticalContentAlignment = VerticalAlignment.Center };
         var filter = new ToggleButton { Width = 32, Margin = new Thickness(0, 0, 8, 0) };
         input.SetBinding(FrameworkElement.ToolTipProperty, new Binding("[Search]") { Source = text });
         input.SetBinding(System.Windows.Automation.AutomationProperties.NameProperty, new Binding("[Search]") { Source = text });
         var counter = new TextBlock { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(8, 0, 8, 0) };
-        var previous = new Button { Width = 28 };
-        var next = new Button { Width = 28, Margin = new Thickness(4, 0, 0, 0) };
+        var previous = new Button { Width = 32 };
+        var next = new Button { Width = 32, Margin = new Thickness(4, 0, 0, 0) };
         void SetIcon(ButtonBase button, string key)
         {
-            PrototypeIcons.SetSearchButtonIcon(button, key);
+            WorkspaceIcons.SetSearchButtonIcon(button, key);
             button.SetBinding(FrameworkElement.ToolTipProperty, new Binding($"[{key}]") { Source = text });
             button.SetBinding(System.Windows.Automation.AutomationProperties.NameProperty, new Binding($"[{key}]") { Source = text });
         }
         SetIcon(filter, "Filter"); SetIcon(previous, "Previous"); SetIcon(next, "Next");
+        void FilterTip() => filter.SetBinding(FrameworkElement.ToolTipProperty,
+            new Binding(filter.IsChecked == true ? "[FilterActive]" : "[Filter]") { Source = text });
+        filter.Checked += (_, _) => FilterTip(); filter.Unchecked += (_, _) => FilterTip();
         var actions = new StackPanel { Orientation = Orientation.Horizontal };
         actions.Children.Add(counter); actions.Children.Add(previous); actions.Children.Add(next);
         DockPanel.SetDock(filter, Dock.Left); Bar.Children.Add(filter);
@@ -38,19 +41,19 @@ internal sealed class PrototypeTableSearch
         placeholder.SetBinding(TextBlock.TextProperty, new Binding("[Search]") { Source = text });
         field.Children.Add(placeholder); Bar.Children.Add(field);
         string Query() => input.Text.Trim();
-        bool MatchesLevel(PrototypeLevel row) => Query().Length > 0 &&
-            ((table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ModelElementCount)) ? row.Name : row.NameWithCount)
+        bool MatchesLevel(WorkspaceLevel row) => Query().Length > 0 &&
+            ((table.Columns.Any(c => c.SortMemberPath == nameof(WorkspaceLevel.ModelElementCount)) ? row.Name : row.NameWithCount)
                 .Contains(Query(), StringComparison.CurrentCultureIgnoreCase) ||
-             (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ModelElementCount)) &&
+             (table.Columns.Any(c => c.SortMemberPath == nameof(WorkspaceLevel.ModelElementCount)) &&
               row.ModelElementCountText.Contains(Query(), StringComparison.CurrentCultureIgnoreCase)) ||
              row.ElevationText.Contains(Query(), StringComparison.CurrentCultureIgnoreCase) ||
-             (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ViewCount)) &&
+             (table.Columns.Any(c => c.SortMemberPath == nameof(WorkspaceLevel.ViewCount)) &&
               row.ViewCount.ToString().Contains(Query(), StringComparison.CurrentCultureIgnoreCase)) ||
-             (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.ElementCount)) &&
+             (table.Columns.Any(c => c.SortMemberPath == nameof(WorkspaceLevel.ElementCount)) &&
               row.ElementCount.ToString().Contains(Query(), StringComparison.CurrentCultureIgnoreCase)) ||
-             (table.Columns.Any(c => c.SortMemberPath == nameof(PrototypeLevel.Hidden)) && row.Selected && row.Hidden &&
+             (table.Columns.Any(c => c.SortMemberPath == nameof(WorkspaceLevel.Hidden)) && row.Selected && row.Hidden &&
               text["Hidden"].Contains(Query(), StringComparison.CurrentCultureIgnoreCase)));
-        bool Matches(object item) => searchableText is null ? MatchesLevel((PrototypeLevel)item)
+        bool Matches(object item) => searchableText is null ? MatchesLevel((WorkspaceLevel)item)
             : Query().Length > 0 && searchableText(item).Contains(Query(), StringComparison.CurrentCultureIgnoreCase);
         List<object> MatchesInOrder() => table.Items.Cast<object>().Where(Matches).ToList();
         void Count()
@@ -66,7 +69,7 @@ internal sealed class PrototypeTableSearch
         void Navigate(int direction)
         {
             var matches = MatchesInOrder(); if (matches.Count == 0) return;
-            int current = table.SelectedItem is PrototypeLevel row ? matches.IndexOf(row) : -1;
+            int current = table.SelectedItem is WorkspaceLevel row ? matches.IndexOf(row) : -1;
             int index = current < 0 ? (direction > 0 ? 0 : matches.Count - 1) : (current + direction + matches.Count) % matches.Count;
             table.SelectedItems.Clear(); table.SelectedItem = matches[index]; table.ScrollIntoView(matches[index]); Count();
         }
@@ -91,9 +94,9 @@ internal sealed class PrototypeTableSearch
             else Count();
         };
         bool refreshPending = false;
-        foreach (var row in view.SourceCollection.OfType<PrototypeLevel>()) row.PropertyChanged += (_, e) =>
+        foreach (var row in view.SourceCollection.OfType<WorkspaceLevel>()) row.PropertyChanged += (_, e) =>
         {
-            if (e.PropertyName is not (nameof(PrototypeLevel.ElevationText) or nameof(PrototypeLevel.Selected) or nameof(PrototypeLevel.Hidden) or nameof(PrototypeLevel.ElementCount) or nameof(PrototypeLevel.NameWithCount) or nameof(PrototypeLevel.ViewCount)) || refreshPending) return;
+            if (e.PropertyName is not (nameof(WorkspaceLevel.ElevationText) or nameof(WorkspaceLevel.Selected) or nameof(WorkspaceLevel.Hidden) or nameof(WorkspaceLevel.ElementCount) or nameof(WorkspaceLevel.NameWithCount) or nameof(WorkspaceLevel.ViewCount)) || refreshPending) return;
             refreshPending = true;
             table.Dispatcher.BeginInvoke(new Action(() =>
             {

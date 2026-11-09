@@ -4,17 +4,17 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
-internal static class PrototypeIcons
+internal static class WorkspaceIcons
 {
     public static void SetSearchButtonIcon(ButtonBase button, string key)
     {
         var icon = Create(key, new SolidColorBrush(Color.FromRgb(21, 125, 136)), 16);
         icon.IsHitTestVisible = false;
-        var style = new Style(typeof(FrameworkElement));
+        var style = new Style(typeof(Path));
         var disabled = new Trigger { Property = UIElement.IsEnabledProperty, Value = false };
-        disabled.Setters.Add(new Setter(UIElement.OpacityProperty, 0.35)); style.Triggers.Add(disabled);
+        disabled.Setters.Add(new Setter(Shape.StrokeProperty, ReLevelTheme.Color("#737373"))); style.Triggers.Add(disabled);
         icon.Style = style; button.Content = icon;
         ToolTipService.SetShowOnDisabled(button, true);
     }
@@ -23,6 +23,7 @@ internal static class PrototypeIcons
     {
         string data = key switch
         {
+            "Refresh" => "M20,9 A8,8 0 1 0 20,16 M20,3 V9 H14",
             "Compare" => "M2,3 H9 V21 H2 Z M15,3 H22 V21 H15 Z M9,8 H15 M12,5 L15,8 L12,11 M15,16 H9 M12,13 L9,16 L12,19",
             "Levels" => "M3,5 H21 M3,12 H21 M3,19 H21 M7,3 V7 M7,10 V14 M7,17 V21",
             "Help" => "M12,2 A10,10 0 1 1 12,22 A10,10 0 1 1 12,2 M8,8 C8,3 18,5 16,10 C15,12 12,12 12,15 M12,18 V19",

@@ -3,18 +3,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
-internal sealed class PrototypeColorWindow : Window
+internal sealed class WorkspaceColorWindow : Window
 {
     public Color SelectedColor { get; private set; }
-    public PrototypeColorWindow(PrototypeText text, Color current)
+    public WorkspaceColorWindow(WorkspaceText text, Color current)
     {
         SelectedColor = current;
         Title = text["PickColor"]; Width = 351; SizeToContent = SizeToContent.Height;
         ResizeMode = ResizeMode.NoResize; WindowStartupLocation = WindowStartupLocation.CenterOwner;
         FontFamily = new FontFamily("Segoe UI"); FontSize = 14;
-        var panel = new StackPanel { Margin = new Thickness(20), LayoutTransform = new ScaleTransform(0.9, 0.9) };
+        var panel = new StackPanel { Margin = new Thickness(20) };
         panel.Children.Add(new TextBlock { Text = text["ColorHelp"], TextWrapping = TextWrapping.Wrap });
         var palette = new WrapPanel { Margin = new Thickness(0, 12, 0, 12) };
         var input = new TextBox { Text = $"#{current.R:X2}{current.G:X2}{current.B:X2}", MaxLength = 7, Padding = new Thickness(8) };
@@ -26,7 +26,7 @@ internal sealed class PrototypeColorWindow : Window
             System.Windows.Automation.AutomationProperties.SetName(swatch, hex);
             swatch.Click += (_, _) => input.Text = hex; palette.Children.Add(swatch);
         }
-        panel.Children.Add(new PrototypeColorPalette(current, color => input.Text = $"#{color.R:X2}{color.G:X2}{color.B:X2}"));
+        panel.Children.Add(new WorkspaceColorPalette(current, color => input.Text = $"#{color.R:X2}{color.G:X2}{color.B:X2}"));
         panel.Children.Add(palette); panel.Children.Add(input); panel.Children.Add(preview);
         var error = new TextBlock { Foreground = Brushes.Firebrick, TextWrapping = TextWrapping.Wrap };
         panel.Children.Add(error);

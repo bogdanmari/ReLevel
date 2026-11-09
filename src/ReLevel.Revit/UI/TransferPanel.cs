@@ -10,13 +10,12 @@ using Panel = System.Windows.Controls.Panel;
 
 namespace ReLevel.Revit.UI;
 
-internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeTransferPage
+internal sealed partial class TransferPanel : UserControl, Workspace.IWorkspaceTransferPage
 {
     private readonly Window owner;
     private readonly Action<Action> runApi;
     private readonly Action close;
     private readonly Func<UIElement> operationRoot;
-    private readonly bool modern;
     private readonly UIApplication application;
     private readonly Document document;
     private readonly IReadOnlyList<Level> levels;
@@ -43,16 +42,15 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
     private List<TableRow> elementRows = [];
     private List<TableRow> viewRows = [];
     public bool InspectElementRequested { get; private set; }
-    public bool LevelColorsRequested { get; private set; }
 
-    public TransferPanel(Window owner, UIApplication application, IReadOnlyList<Level> levels, bool modern = false,
+    public TransferPanel(Window owner, UIApplication application, IReadOnlyList<Level> levels,
         ModelElementIndex? index = null, Action? refreshIndex = null, Action<Action>? runApi = null,
         Action? close = null, Func<UIElement>? operationRoot = null)
     {
         this.runApi = runApi ?? (action => action());
         this.close = close ?? owner.Close;
         this.operationRoot = operationRoot ?? (() => owner);
-        this.owner = owner; this.modern = modern;
+        this.owner = owner;
         this.application = application; document = application.ActiveUIDocument.Document;
         this.levels = levels;
         this.index = index; this.refreshIndex = refreshIndex;
@@ -63,30 +61,14 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
             index.Changed += () => source.RefreshDisplay();
         }
 
-        var shell = new DockPanel { Margin = new Thickness(modern ? 0 : 16) };
-        var top = new DockPanel { Margin = new Thickness(0, 0, 0, 12) };
-        DockPanel.SetDock(language, Dock.Right); top.Children.Add(language);
         language.SelectedIndex = L.UseEnglish ? 0 : 1;
-        var header = new StackPanel { Orientation = Orientation.Horizontal };
-        header.Children.Add(new TextBlock { Text = L.Get("Уровень"), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 10, 0) });
-        source.SetItems(levels, level => level.Name); if (!modern) header.Children.Add(source);
-        top.Children.Add(header);
-        DockPanel.SetDock(top, Dock.Top); if (!modern) shell.Children.Add(top);
-        var debugTools = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right,
-            Margin = new Thickness(0, 0, 0, 8) };
-        AddAction(debugTools, null, L.Get("Выделить все элементы по…"), SelectAllByCase);
-        AddAction(debugTools, null, L.Get("Добавить по ID"), AddElementsById);
-        AddAction(debugTools, null, L.Get("ReLevel инспектор"), () => { InspectElementRequested = true; Close(); });
-        AddAction(debugTools, null, L.Get("Цвета по уровням"), () => { LevelColorsRequested = true; Close(); });
-        DockPanel.SetDock(debugTools, Dock.Top); if (!modern) shell.Children.Add(debugTools);
-        DockPanel.SetDock(summary, Dock.Bottom); if (!modern) shell.Children.Add(summary);
-        DockPanel.SetDock(transferProgress, Dock.Bottom); if (!modern) shell.Children.Add(transferProgress);
+        source.SetItems(levels, level => level.Name);
 
         AddCheckColumn(elementTable);
         AddTextColumn(elementTable, "ID", nameof(TableRow.Id), 90);
         AddTextColumn(elementTable, L.Get("Категория"), nameof(TableRow.Category), 170);
         AddTextColumn(elementTable, L.Get("Имя элемента"), nameof(TableRow.Name), 220);
-        if (modern) AddTextColumn(elementTable, L.Get("Тип"), nameof(TableRow.Type), 160);
+        AddTextColumn(elementTable, L.Get("Тип"), nameof(TableRow.Type), 160);
         AddTextColumn(elementTable, L.Get("Привязка"), nameof(TableRow.Level), 90);
         AddTextColumn(elementTable, L.Get("Статус / причина"), nameof(TableRow.Status));
         var elementsPanel = MakePanel(elementTable, L.Get("Показаны доступные и закреплённые элементы реализованных кейсов. Закреплённые элементы нельзя отметить для переноса."), out var elementActions);
@@ -105,7 +87,6 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         AddAction(viewActions, viewButtons, L.Get("Удалить виды"), () => DeleteRows(viewRows, DeleteScope.Views));
         recreateButton = AddAction(viewActions, viewButtons, L.Get("Пересоздать виды"), RecreateViews);
         viewsTab.Content = viewsPanel; tabs.Items.Add(viewsTab);
-        if (modern)
         {
             var actions = new ContentControl { Content = elementActions, HorizontalContentAlignment = HorizontalAlignment.Stretch };
             tabs.SelectionChanged += (_, e) =>
@@ -116,14 +97,14 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
             var actionBar = TransferLayout.NavigationActions(backNavigation, levelHeading, actions);
             Content = TransferLayout.Workspace(CreateSelectors(), tabs, actionBar, transferProgress, summary);
         }
-        else { shell.Children.Add(tabs); Content = shell; }
+
         PreviewKeyDown += (_, e) =>
         {
             if (transferring) { e.Handled = true; return; }
             if (e.Key == System.Windows.Input.Key.Escape && !source.IsDropDownOpen && !language.IsDropDownOpen) { e.Handled = true; Close(); }
         };
         owner.Closing += (_, e) => { if (transferring) e.Cancel = true; };
-        if (modern) ApplyModernStyle();
+        ApplyWorkspaceStyle();
         tabs.SelectionChanged += (_, _) => includeUpper.Visibility = tabs.SelectedIndex == 0
             ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
         source.SelectionChanged += (_, _) => this.runApi(ChangeSource);
@@ -172,7 +153,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         {
             var sourceLevelId = (source.SelectedItem as Level)?.Id;
             IEnumerable<Element> candidates = sourceLevelId is null ? [] : index is not null
-                ? (modern && includeUpper.IsChecked != true ? index.AtBaseLevels(new HashSet<long> { sourceLevelId.Value }) : index.AtLevel(sourceLevelId.Value))
+                ? (includeUpper.IsChecked != true ? index.AtBaseLevels(new HashSet<long> { sourceLevelId.Value }) : index.AtLevel(sourceLevelId.Value))
                     .Select(id => document.GetElement(new ElementId(id))).OfType<Element>()
                 : TransferCases.Candidates(document).Concat(additionalElementIds
                     .Select(id => document.GetElement(new ElementId(id))).OfType<Element>()).DistinctBy(e => e.Id.Value);
@@ -215,18 +196,18 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
                 return null;
             var pinned = element.Pinned;
             var restriction = transferCase.WriteRestriction(element, sourceLevelId);
-            if (!modern && !pinned && restriction is not null) return null;
+
             var status = transferCase.Name + ": " + (restriction ?? L.Get("Доступен для переноса."));
             if (statuses.TryGetValue(element.Id.Value, out var result)) status += Environment.NewLine + result;
             return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name, CanCheck = !pinned && restriction is null,
                 Category = element.Category?.Name ?? "—", Level = transferCase.Relation(element, sourceLevelId), Status = status,
-                Type = modern ? document.GetElement(element.GetTypeId())?.Name ?? "" : "" };
+                Type = document.GetElement(element.GetTypeId())?.Name ?? "" };
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
         catch (Exception ex)
         {
             errors.Add($"ID {element.Id.Value}: {ex.Message}");
-            return modern ? new TableRow(UpdateButtons) { Id = element.Id.Value, CanCheck = false, Status = ex.Message } : null;
+            return new TableRow(UpdateButtons) { Id = element.Id.Value, CanCheck = false, Status = ex.Message };
         }
     }
 
@@ -306,7 +287,7 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         if (sourceLevelId is null) return;
         var choices = levels.Where(level => level.Id != sourceLevelId).ToList();
         if (choices.Count == 0) { OperationDialogs.Show(owner, L.Get("Перенос недоступен"), L.Get("Нет другого уровня.")); return; }
-        var dialog = new TargetLevelWindow(owner, choices, allowNearest: modern, displayName: index is null ? null : LevelCaption);
+        var dialog = new TargetLevelWindow(owner, choices, allowNearest: true, displayName: index is null ? null : LevelCaption);
         if (dialog.ShowDialog() != true) return;
         var nearest = dialog.Nearest;
         Level? destination = nearest ? null : dialog.Target;
@@ -497,7 +478,6 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         if (updatingChecks) return;
         foreach (var button in elementButtons) button.IsEnabled = Checked(elementRows).Count > 0;
         foreach (var button in viewButtons) button.IsEnabled = Checked(viewRows).Count > 0;
-        if (modern)
         {
             if (transferButton is not null) transferButton.IsEnabled &= levels.Count > 1;
             if (recreateButton is not null) recreateButton.IsEnabled &= levels.Count > 1;
@@ -514,8 +494,8 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
     private Button AddAction(Panel panel, List<Button>? buttons, string label, Action? action)
     {
         var button = new Button { Content = label, IsEnabled = buttons is null && action is not null,
-            Margin = modern ? new Thickness(8, 0, 0, 6) : new Thickness(0, 8, 8, 0),
-            Padding = modern ? new Thickness(18, 9, 18, 9) : new Thickness(10, 5, 10, 5) };
+            Margin = new Thickness(8, 0, 0, 6),
+            Padding = new Thickness(12, 0, 12, 0) };
         if (action is not null) button.Click += (_, _) =>
         {
             runApi(() => ExecuteAction(action, buttons is not null));
@@ -525,15 +505,15 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
         return button;
     }
 
-    public void RunDebug(Prototype.WorkspaceDebugTool tool)
+    public void RunDebug(Workspace.WorkspaceDebugTool tool)
     {
         ExecuteAction(() =>
         {
             switch (tool)
             {
-                case Prototype.WorkspaceDebugTool.SelectByCase: SelectAllByCase(); break;
-                case Prototype.WorkspaceDebugTool.AddById: AddElementsById(); break;
-                case Prototype.WorkspaceDebugTool.Inspector: InspectElementRequested = true; Close(); break;
+                case Workspace.WorkspaceDebugTool.SelectByCase: SelectAllByCase(); break;
+                case Workspace.WorkspaceDebugTool.AddById: AddElementsById(); break;
+                case Workspace.WorkspaceDebugTool.Inspector: InspectElementRequested = true; Close(); break;
             }
         });
     }
@@ -633,16 +613,15 @@ internal sealed partial class TransferPanel : UserControl, Prototype.IPrototypeT
 
     private DockPanel MakePanel(DataGrid table, string hint, out Panel actions)
     {
-        var panel = new DockPanel { Margin = new Thickness(modern ? 0 : 8) };
-        var text = new TextBlock { Text = hint, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 8) };
-        DockPanel.SetDock(text, Dock.Top); if (!modern) panel.Children.Add(text);
-        var controller = new TableSearch(table, UpdateButtons, modern);
+        var panel = new DockPanel();
+        table.ToolTip = hint;
+
+        var controller = new TableSearch(table, UpdateButtons);
         searches.Add(table, controller);
         var search = controller.Bar;
         DockPanel.SetDock(search, Dock.Top); panel.Children.Add(search);
-        actions = modern ? TransferLayout.Actions(stable: true)
-            : new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
-        DockPanel.SetDock(actions, Dock.Bottom); if (!modern) panel.Children.Add(actions);
+        actions = TransferLayout.Actions(stable: true);
+
         panel.Children.Add(table); return panel;
     }
 

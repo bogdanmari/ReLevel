@@ -3,11 +3,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
-internal sealed class PrototypeColorPalette : StackPanel
+internal sealed class WorkspaceColorPalette : StackPanel
 {
-    public PrototypeColorPalette(Color current, Action<Color> changed)
+    public WorkspaceColorPalette(Color current, Action<Color> changed)
     {
         double r = current.R / 255d, g = current.G / 255d, b = current.B / 255d;
         double max = Math.Max(r, Math.Max(g, b)), min = Math.Min(r, Math.Min(g, b)), delta = max - min;

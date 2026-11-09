@@ -1,7 +1,6 @@
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using ReLevel.Revit.UI;
 
 namespace ReLevel.Revit;
 
@@ -20,19 +19,7 @@ public sealed class ReLevelCommand : IExternalCommand
         }
         try
         {
-            var levels = new FilteredElementCollector(document).OfClass(typeof(Level)).Cast<Level>()
-                .OrderBy(l => l.ProjectElevation).ThenBy(l => l.Name).ToList();
-            var window = new TransferWindow(ui, levels);
-            new System.Windows.Interop.WindowInteropHelper(window) { Owner = ui.MainWindowHandle };
-            window.ShowDialog();
-            if (window.InspectElementRequested) ElementInspectorAction.Run(ui);
-            if (window.LevelColorsRequested)
-            {
-                var colors = new LevelColorsWindow(ui.ActiveUIDocument!, levels);
-                new System.Windows.Interop.WindowInteropHelper(colors) { Owner = ui.MainWindowHandle };
-                colors.ShowDialog();
-            }
-            // Operations are committed while the window is open. Closing it must not undo them.
+            ReLevelApplication.Pane.Show(ui);
             return Result.Succeeded;
         }
         catch (Exception ex)

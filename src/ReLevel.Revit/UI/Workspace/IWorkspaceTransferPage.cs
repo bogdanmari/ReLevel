@@ -1,9 +1,9 @@
 using System.Windows;
 
-namespace ReLevel.Revit.UI.Prototype;
+namespace ReLevel.Revit.UI.Workspace;
 
 // The shell can host the working page without depending on Revit objects.
-internal interface IPrototypeTransferPage
+internal interface IWorkspaceTransferPage
 {
     FrameworkElement View { get; }
     void SetLanguage(bool english);

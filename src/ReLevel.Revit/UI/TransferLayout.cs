@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Data;
-using ReLevel.Revit.UI.Prototype;
+using ReLevel.Revit.UI.Workspace;
 using System.Windows.Media;
 
 namespace ReLevel.Revit.UI;
@@ -73,7 +73,7 @@ internal static class TransferLayout
 
     public static void StyleTableAppearance(DataGrid table)
     {
-        table.ColumnHeaderStyle = PrototypeTableHeader.CreateStyle();
+        table.ColumnHeaderStyle = WorkspaceTableHeader.CreateStyle();
         table.HeadersVisibility = DataGridHeadersVisibility.Column;
         table.GridLinesVisibility = DataGridGridLinesVisibility.All;
         table.VerticalGridLinesBrush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(213, 227, 231));
@@ -88,7 +88,8 @@ internal static class TransferLayout
     public static void StyleTable(DataGrid table)
     {
         StyleTableAppearance(table);
-        table.ColumnHeaderHeight = 76;
+        ReLevelTheme.Table(table);
+        table.ColumnHeaderHeight = 40;
         table.Columns[0].HeaderStyle = table.ColumnHeaderStyle;
         table.Columns[0].Width = 48;
         foreach (var column in table.Columns.OfType<DataGridTextColumn>())
@@ -99,13 +100,15 @@ internal static class TransferLayout
             column.HeaderTemplate = new DataTemplate { VisualTree = caption };
             var property = ((Binding)column.Binding).Path.Path;
             column.SortMemberPath = property;
-            column.MinWidth = property == nameof(TableRow.Id) ? 65 : 85;
-            column.Width = property == nameof(TableRow.Id) ? new DataGridLength(75)
+            column.MinWidth = property == nameof(TableRow.Id) ? 96 : property == nameof(TableRow.Name) ? 220 : 128;
+            column.Width = property == nameof(TableRow.Id) ? new DataGridLength(96)
                 : new DataGridLength(property == nameof(TableRow.Status) ? 1.7 : 1, DataGridLengthUnitType.Star);
             var style = new Style(typeof(TextBlock), column.ElementStyle);
-            style.Setters.Add(new Setter(FrameworkElement.MarginProperty, new Thickness(8, 7, 8, 7)));
+            style.Setters.Add(new Setter(FrameworkElement.MarginProperty, new Thickness(10, 0, 10, 0)));
             style.Setters.Add(new Setter(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Center));
-            style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.Wrap));
+            style.Setters.Add(new Setter(TextBlock.TextWrappingProperty, TextWrapping.NoWrap));
+            style.Setters.Add(new Setter(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis));
+            style.Setters.Add(new Setter(FrameworkElement.ToolTipProperty, new Binding(property)));
             column.ElementStyle = style;
         }
     }
