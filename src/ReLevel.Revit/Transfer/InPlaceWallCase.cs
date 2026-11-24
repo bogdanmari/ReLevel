@@ -21,9 +21,9 @@ internal static class InPlaceWallCase
             return L.Get("Кейс 16: требуется внутренняя стена хостового семейства In-Place.");
         var wall = (Wall)element;
         if (wall.WallType.Kind != WallKind.Basic || wall.CrossSection != WallCrossSection.Vertical
-            || wall.IsStackedWallMember || wall.GroupId != ElementId.InvalidElementId
+            || wall.IsStackedWallMember
             || wall.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 16: требуется вертикальная Basic Wall без группы и сборки.");
+            return L.Get("Кейс 16: требуется вертикальная Basic Wall без сборки.");
         if (wall.get_Parameter(BuiltInParameter.WALL_BOTTOM_IS_ATTACHED)?.AsInteger() == 1)
             return L.Get("Кейс 16: присоединённый низ не поддерживается.");
         TwoLevelWallCase.Bottom.Capture(wall);

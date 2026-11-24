@@ -11,8 +11,8 @@ internal static class FootPrintRoofCase
     {
         if (element is not FootPrintRoof || element.Category?.BuiltInCategory != BuiltInCategory.OST_Roofs)
             return L.Get("Кейс 6: требуется крыша по контуру класса FootPrintRoof.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 6: элементы групп и сборок пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 6: элементы сборок пока не поддерживаются.");
         if (element.get_Parameter(BuiltInParameter.ROOF_UPTO_LEVEL_PARAM) is not
             { StorageType: StorageType.ElementId, HasValue: true } cutoff
             || cutoff.AsElementId() != ElementId.InvalidElementId)

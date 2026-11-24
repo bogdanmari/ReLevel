@@ -23,36 +23,37 @@ internal static class TwoLevelColumnCase
     public static string? UnsupportedReason(Element element)
     {
         if (element is not FamilyInstance instance || element.Category?.BuiltInCategory is not
-            (BuiltInCategory.OST_StructuralColumns or BuiltInCategory.OST_Columns or BuiltInCategory.OST_PipeAccessory))
-            return L.Get("Кейс 2: требуется колонна или Pipe Accessory FamilyInstance.");
-        var accessory = element.Category.BuiltInCategory == BuiltInCategory.OST_PipeAccessory;
+            (BuiltInCategory.OST_StructuralColumns or BuiltInCategory.OST_Columns or BuiltInCategory.OST_PipeAccessory
+             or BuiltInCategory.OST_GenericModel))
+            return L.Get("Кейс 2: требуется колонна, Pipe Accessory или Generic Model FamilyInstance.");
+        var pointFamily = element.Category.BuiltInCategory is BuiltInCategory.OST_PipeAccessory or BuiltInCategory.OST_GenericModel;
         var structural = element.Category.BuiltInCategory == BuiltInCategory.OST_StructuralColumns;
         if (instance.Symbol.Family.IsInPlace || instance.Symbol.Family.FamilyPlacementType != FamilyPlacementType.TwoLevelsBased)
             return L.Get("Кейс 2: требуется загружаемое семейство TwoLevelsBased.");
-        if (accessory && instance.Location is not LocationPoint)
-            return L.Get("Кейс 2: для Pipe Accessory требуется LocationPoint.");
-        if (!accessory && !HasSupportedPlacement(instance, structural))
+        if (pointFamily && instance.Location is not LocationPoint)
+            return L.Get("Кейс 2: для Pipe Accessory и Generic Model требуется LocationPoint.");
+        if (!pointFamily && !HasSupportedPlacement(instance, structural))
             return L.Get("Кейс 2: требуется Vertical с LocationPoint или вертикальная несущая колонна End Point Driven с прямой LocationCurve.");
         if (instance.Host is not null || instance.HostFace is not null || instance.SuperComponent is not null)
             return L.Get("Кейс 2: хостовые и вложенные экземпляры не поддерживаются.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 2: элементы групп и сборок пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 2: элементы сборок пока не поддерживаются.");
         if (instance.GetSubComponentIds().Count > 0)
             return L.Get("Кейс 2: экземпляры с вложенными компонентами пока не поддерживаются.");
-        if (!accessory && ColumnAttachment.IsValidColumn(instance))
+        if (!pointFamily && ColumnAttachment.IsValidColumn(instance))
         {
             using var baseAttachment = ColumnAttachment.GetColumnAttachment(instance, 0);
             if (baseAttachment is not null)
                 return L.Get("Кейс 2: присоединённый низ колонны пока не поддерживается.");
         }
         // Joins, solid cuts and dependent elements do not change the level/offset algorithm.
-        if (!accessory && instance.GetCopingIds().Count > 0)
+        if (!pointFamily && instance.GetCopingIds().Count > 0)
             return L.Get("Кейс 2: подрезки coping пока не поддерживаются.");
         if (InstanceVoidCutUtils.CanBeCutWithVoid(element) && InstanceVoidCutUtils.GetCuttingVoidInstances(element).Count > 0)
             return L.Get("Кейс 2: внешние вырезы пока не поддерживаются.");
         // Analytical association does not prevent changing the physical column's level/offset pairs.
         // Keep the association; analytical elements are not edited by this operation.
-        if (!accessory && new[] { BuiltInParameter.STRUCT_CONNECTION_COLUMN_BASE, BuiltInParameter.STRUCT_CONNECTION_COLUMN_TOP }
+        if (!pointFamily && new[] { BuiltInParameter.STRUCT_CONNECTION_COLUMN_BASE, BuiltInParameter.STRUCT_CONNECTION_COLUMN_TOP }
             .Any(name => instance.get_Parameter(name) is { HasValue: true } parameter && parameter.AsElementId() != ElementId.InvalidElementId))
             return L.Get("Кейс 2: соединения концов колонны пока не поддерживаются.");
         var bottom = Bottom.Capture(element);

@@ -11,9 +11,9 @@ internal static class FabricationPartCase
     {
         if (element is not FabricationPart)
             return L.Get("Кейс 19: требуется FabricationPart.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId
             || element.DesignOption is not null)
-            return L.Get("Кейс 19: группы, сборки и варианты конструкции пока не поддерживаются.");
+            return L.Get("Кейс 19: сборки и варианты конструкции пока не поддерживаются.");
         if (LevelParameter(element) is not
                 { StorageType: StorageType.ElementId, HasValue: true } level
             || element.Document.GetElement(level.AsElementId()) is not Level)

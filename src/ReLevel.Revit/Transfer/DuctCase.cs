@@ -16,8 +16,8 @@ internal static class DuctCase
     {
         if (element is not Duct)
             return L.Get("Кейс 13: требуется воздуховод класса Duct.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 13: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 13: сборки пока не поддерживаются.");
         return SourceLevel(element) is null
             ? L.Get("Кейс 13: Reference Level не указывает на существующий уровень.") : null;
     }

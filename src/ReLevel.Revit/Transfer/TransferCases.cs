@@ -12,7 +12,8 @@ internal sealed record TransferCase(Func<string> Caption, Type[] ElementClasses,
     BuiltInCategory? Category = null)
 {
     public string Name => Caption();
-    public string? WriteRestriction(Element element, ElementId source) => element.Pinned
+    public string? WriteRestriction(Element element, ElementId source) => element.GroupId != ElementId.InvalidElementId
+        ? GroupTransferStructure.Restriction(element) : element.Pinned
         ? L.Get("Элемент закреплён. Перенос недоступен.") : CaseWriteRestriction(element, source);
     public ElementFilter CreateFilter() => Category is { } category
         ? new ElementCategoryFilter(category) : new ElementMulticlassFilter(ElementClasses);
@@ -33,7 +34,7 @@ internal static class TransferCases
             (element, source) => PointFamilyCase.SourceLevel(element)?.Id == source,
             (element, _) => PointFamilyCase.WriteRestriction(element), PointFamilyCase.Prepare,
             (_, _) => L.Get("Уровень")),
-        new TransferCase(() => L.Get("Кейс 2 — колонны, стены и Pipe Accessories"),
+        new TransferCase(() => L.Get("Кейс 2 — колонны, стены, Pipe Accessories и Generic Models"),
             [typeof(FamilyInstance), typeof(Wall)], TwoLevelCase.UnsupportedReason, TwoLevelCase.IsOnLevel,
             TwoLevelCase.WriteRestriction, (element, source) => new TwoLevelOperation(element, source),
             TwoLevelCase.Relation),

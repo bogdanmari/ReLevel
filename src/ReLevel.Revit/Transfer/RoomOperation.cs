@@ -7,6 +7,7 @@ internal sealed class RoomOperation(Element source) : IElementTransferOperation
 {
     private readonly ElementId id = source.Id;
     private long replacementId;
+    public long? ReplacementId => replacementId == 0 ? null : replacementId;
     private bool unplaced;
     private static readonly HashSet<long> SpatialParameters =
     [

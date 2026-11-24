@@ -60,6 +60,33 @@ internal sealed class ModelElementIndex(Document document, IReadOnlyList<Level> 
         Changed?.Invoke();
     }
 
+    public void RefreshElements(IEnumerable<long> ids)
+    {
+        var errors = Errors.ToDictionary(pair => pair.Key, pair => pair.Value);
+        foreach (var id in ids.Distinct())
+        {
+            if (elements.Remove(id, out var previous))
+            {
+                foreach (var levelId in previous.LevelIds) byLevel[levelId].Remove(id);
+                if (previous.LevelIds.Count > 0) counts[previous.LevelIds[0]]--;
+            }
+            errors.Remove(id);
+            try
+            {
+                var element = document.GetElement(new ElementId(id));
+                if (element is null || TransferCases.Find(element) is not { } transferCase) continue;
+                var memberships = Membership(element, transferCase).Where(byLevel.ContainsKey).Distinct().ToList();
+                elements.Add(id, new(id, transferCase, memberships));
+                foreach (var levelId in memberships) byLevel[levelId].Add(id);
+                if (memberships.Count > 0) counts[memberships[0]]++;
+            }
+            catch (Autodesk.Revit.Exceptions.RegenerationFailedException) { throw; }
+            catch (Exception ex) { errors[id] = ex.Message; }
+        }
+        Errors = errors;
+        Changed?.Invoke();
+    }
+
     private IEnumerable<long> Membership(Element element, TransferCase transferCase)
     {
         // Read the case's bindings once, rather than recapturing both ends for every level.

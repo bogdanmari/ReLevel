@@ -8,9 +8,9 @@ internal static class RoomCase
     public static string? UnsupportedReason(Element element)
     {
         if (element is not Room room) return L.Get("Кейс 17: требуется Room.");
-        if (room.GroupId != ElementId.InvalidElementId || room.AssemblyInstanceId != ElementId.InvalidElementId
+        if (room.AssemblyInstanceId != ElementId.InvalidElementId
             || room.DesignOption is not null)
-            return L.Get("Кейс 17: группы, сборки и варианты конструкции пока не поддерживаются.");
+            return L.Get("Кейс 17: сборки и варианты конструкции пока не поддерживаются.");
         if (room.Document.GetElement(room.LevelId) is not Level || Phase(room) is null)
             return L.Get("Кейс 17: не найден исходный уровень или фаза помещения.");
         if (room.Location is not null and not LocationPoint)

@@ -28,6 +28,7 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
     private Action? pending;
     private bool running, stale = true, closeRequested;
     private bool refreshRequested;
+    private bool viewRefreshRequested;
 
     public DockableWorkspace()
     {
@@ -110,6 +111,7 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
                 return;
             }
             action?.Invoke();
+            if (!closeRequested) workspace?.FlushChanges();
             if (workspace?.InspectElementRequested == true) ElementInspectorAction.Run(ui);
         }
         catch (Exception ex)
@@ -178,12 +180,15 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
 
     internal void OnDocumentChanged(object? sender, DocumentChangedEventArgs e)
     {
-        if (!running && SameDocument(e.GetDocument(), document)) Invalidate();
+        if (!SameDocument(e.GetDocument(), document)) return;
+        if (!running) { Invalidate(); return; }
+        workspace?.RecordChanges(e.GetAddedElementIds().Concat(e.GetModifiedElementIds()).Concat(e.GetDeletedElementIds()));
     }
 
     internal void OnViewActivated(object? sender, ViewActivatedEventArgs e)
     {
-        if (!running) Invalidate();
+        if (!SameDocument(document, e.CurrentActiveView.Document)) { Invalidate(); return; }
+        viewRefreshRequested = true;
     }
 
     internal void OnIdling(object? sender, IdlingEventArgs e)
@@ -195,6 +200,11 @@ internal sealed class DockableWorkspace : IDockablePaneProvider, IExternalEventH
             Clear();
             document = ui.ActiveUIDocument?.Document;
             Invalidate();
+        }
+        if (viewRefreshRequested && !stale && pending is null)
+        {
+            viewRefreshRequested = false;
+            Run(() => (content.Content as WorkspaceView)?.RefreshActiveView());
         }
     }
 

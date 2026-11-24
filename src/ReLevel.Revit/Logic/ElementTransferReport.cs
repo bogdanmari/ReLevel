@@ -1,7 +1,7 @@
 namespace ReLevel.Revit.Logic;
 
 internal enum ElementTransferStatus { Transferred, Skipped, Failed }
-internal sealed record ElementTransferResult(long Id, ElementTransferStatus Status, string Reason);
+internal sealed record ElementTransferResult(long Id, ElementTransferStatus Status, string Reason, long? ReplacementId = null);
 
 internal sealed class ElementTransferReport
 {

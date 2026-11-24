@@ -5,6 +5,7 @@ namespace ReLevel.Revit.Transfer;
 internal interface IElementTransferOperation
 {
     string SuccessMessage { get; }
+    long? ReplacementId => null;
     void Apply(Document document, ElementId target);
 }
 

@@ -16,8 +16,8 @@ internal static class ConduitCase
     {
         if (element is not Conduit)
             return L.Get("Кейс 21: требуется элемент класса Conduit.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 21: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 21: сборки пока не поддерживаются.");
         return SourceLevel(element) is null
             ? L.Get("Кейс 21: Reference Level не указывает на существующий уровень.") : null;
     }

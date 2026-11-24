@@ -11,8 +11,8 @@ internal static class ExtrusionRoofCase
     {
         if (element is not ExtrusionRoof || element.Category?.BuiltInCategory != BuiltInCategory.OST_Roofs)
             return L.Get("Кейс 5: требуется крыша выдавливанием класса ExtrusionRoof.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 5: элементы групп и сборок пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 5: элементы сборок пока не поддерживаются.");
         if (SourceLevel(element) is null)
             return L.Get("Кейс 5: Reference Level не указывает на существующий уровень.");
         if (element.get_Parameter(Binding.OffsetParameter) is not { StorageType: StorageType.Double, HasValue: true })

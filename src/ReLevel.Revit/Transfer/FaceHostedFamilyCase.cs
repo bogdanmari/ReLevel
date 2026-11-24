@@ -19,8 +19,8 @@ internal static class FaceHostedFamilyCase
             return L.Get("Кейс 3: вложенный экземпляр не переносится самостоятельно.");
         if (instance.Location is not LocationPoint)
             return L.Get("Кейс 3: требуется точечное размещение LocationPoint.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 3: элементы групп и сборок пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 3: элементы сборок пока не поддерживаются.");
         if (SourceLevel(instance) is null)
             return L.Get("Кейс 3: Schedule Level не указывает на существующий уровень.");
         if (instance.get_Parameter(BuiltInParameter.INSTANCE_ELEVATION_PARAM) is not { StorageType: StorageType.Double, HasValue: true })

@@ -10,8 +10,8 @@ internal static class FlexPipeCase
     public static string? UnsupportedReason(Element element)
     {
         if (element is not FlexPipe) return L.Get("Кейс 22: требуется труба класса FlexPipe.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 22: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 22: сборки пока не поддерживаются.");
         return SourceLevel(element) is null
             ? L.Get("Кейс 22: Reference Level не указывает на существующий уровень.") : null;
     }

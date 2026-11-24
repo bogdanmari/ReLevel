@@ -18,8 +18,8 @@ internal static class StairsCase
     {
         if (element is not Stairs stairs)
             return L.Get("Кейс 9: требуется лестница класса Stairs.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 9: лестницы в группах и сборках пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 9: лестницы в сборках пока не поддерживаются.");
         if (stairs.MultistoryStairsId != ElementId.InvalidElementId)
             return L.Get("Кейс 9: многоэтажные лестницы пока не поддерживаются.");
         if (element.get_Parameter(Top.LevelParameter) is not { StorageType: StorageType.ElementId, HasValue: true })

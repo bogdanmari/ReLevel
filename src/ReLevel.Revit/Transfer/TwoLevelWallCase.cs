@@ -13,8 +13,8 @@ internal static class TwoLevelWallCase
             return L.Get("Кейс 2: требуется самостоятельная стена Basic Wall или Curtain Wall.");
         if (wall.CrossSection != WallCrossSection.Vertical)
             return L.Get("Кейс 2: требуется вертикальная стена.");
-        if (wall.GroupId != ElementId.InvalidElementId || wall.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 2: элементы групп и сборок пока не поддерживаются.");
+        if (wall.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 2: элементы сборок пока не поддерживаются.");
         if (wall.get_Parameter(BuiltInParameter.WALL_BOTTOM_IS_ATTACHED)?.AsInteger() == 1)
             return L.Get("Кейс 2: присоединённый низ стены пока не поддерживается.");
         // An attached top keeps its attachment. Compensating both level/offset pairs

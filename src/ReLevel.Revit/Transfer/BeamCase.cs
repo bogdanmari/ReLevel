@@ -22,9 +22,9 @@ internal static class BeamCase
             return L.Get("Кейс 7: требуется загружаемая балка CurveDrivenStructural.");
         if (instance.Location is not LocationCurve { Curve: Line { IsBound: true } })
             return L.Get("Кейс 7: требуется прямая балка с LocationCurve.");
-        if (instance.SuperComponent is not null || element.GroupId != ElementId.InvalidElementId
+        if (instance.SuperComponent is not null
             || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 7: вложенные экземпляры, группы и сборки пока не поддерживаются.");
+            return L.Get("Кейс 7: вложенные экземпляры и сборки пока не поддерживаются.");
         if (SourceLevel(element) is not { } level)
             return L.Get("Кейс 7: Reference Level не указывает на существующий уровень.");
         if (instance.HostFace is not null || (instance.Host is not null

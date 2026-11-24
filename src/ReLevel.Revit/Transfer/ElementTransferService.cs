@@ -9,7 +9,7 @@ internal sealed record PreparedElementTransfer(IElementTransferOperation? Operat
     public static PreparedElementTransfer Skip(string reason) => new(null, ElementId.InvalidElementId, reason);
 }
 
-internal sealed class ElementTransferService(Document document)
+internal sealed partial class ElementTransferService(Document document)
 {
     public ElementTransferReport ExecuteFromLevels(IReadOnlyDictionary<long, long> sources, ElementId targetLevelId,
         Action<int, int, long?>? progress = null, Func<bool>? cancelled = null) =>
@@ -24,27 +24,38 @@ internal sealed class ElementTransferService(Document document)
         Func<ElementId, PreparedElementTransfer> prepare, Action<int, int, long?>? progress = null, Func<bool>? cancelled = null)
     {
         var report = new ElementTransferReport();
+        var units = PlanUnits(ids);
         using var batch = cancelled is null ? null : new TransactionGroup(document, L.Get("ReLevel: перенос элементов"));
         if (batch is not null) Require(batch.Start(), TransactionStatus.Started);
         var completed = 0;
-        foreach (var id in ids)
+        foreach (var unit in units)
         {
             if (report.Stopped)
             {
-                report.Items.Add(new(id.Value, ElementTransferStatus.Skipped, L.Get("Не обработан: выполнение остановлено.")));
+                foreach (var id in unit.Ids)
+                    report.Items.Add(new(id.Value, ElementTransferStatus.Skipped, L.Get("Не обработан: выполнение остановлено.")));
                 continue;
             }
-            progress?.Invoke(completed, ids.Count, id.Value);
+            progress?.Invoke(completed, ids.Count, unit.Ids[0].Value);
             if (cancelled?.Invoke() == true) break;
-            try { report.Items.Add(TransferOne(id, prepare)); }
+            try
+            {
+                if (unit.Error is { } error)
+                    report.Items.Add(new(unit.Ids[0].Value, ElementTransferStatus.Failed, error));
+                else if (unit.Root == ElementId.InvalidElementId)
+                    report.Items.Add(TransferOne(unit.Ids[0], prepare));
+                else report.Items.AddRange(TransferGroup(unit, prepare, cancelled,
+                    count => progress?.Invoke(completed + count, ids.Count, null)));
+            }
             catch (Exception ex)
             {
                 // An escaped regeneration/rollback error must not be followed by model reads.
                 report.Stopped = true;
-                report.Items.Add(new(id.Value, ElementTransferStatus.Failed,
-                    L.Format($"Обработка остановлена: {ex.Message}")));
+                foreach (var id in unit.Ids)
+                    report.Items.Add(new(id.Value, ElementTransferStatus.Failed,
+                        L.Format($"Обработка остановлена: {ex.Message}")));
             }
-            completed++;
+            completed += unit.Ids.Count;
             progress?.Invoke(completed, ids.Count, null);
         }
         if (batch is not null)
@@ -109,8 +120,9 @@ internal sealed class ElementTransferService(Document document)
             if (status != TransactionStatus.Committed)
                 throw new InvalidOperationException(L.Format($"Перенос не зафиксирован: {status}.") +
                     (failures.Reason is { } reason ? Environment.NewLine + reason : ""));
-            return Result(ElementTransferStatus.Transferred,
-                operation.SuccessMessage + failures.UnjoinMessage + failures.DeletedDimensionsMessage + description);
+            return new(id.Value, ElementTransferStatus.Transferred,
+                operation.SuccessMessage + failures.UnjoinMessage + failures.DeletedDimensionsMessage + description,
+                operation.ReplacementId);
         }
         catch (Autodesk.Revit.Exceptions.RegenerationFailedException)
         {

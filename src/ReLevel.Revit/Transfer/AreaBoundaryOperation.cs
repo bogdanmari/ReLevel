@@ -7,6 +7,7 @@ internal sealed class AreaBoundaryOperation(Element source) : IElementTransferOp
     private readonly ElementId id = source.Id;
     private readonly ElementId schemeId = AreaBoundaryCase.FindScheme(source);
     private long replacementId;
+    public long? ReplacementId => replacementId == 0 ? null : replacementId;
     private long? createdViewId;
     public string SuccessMessage => L.Format($"Линия пересоздана. Новый ID: {replacementId}. Доступные параметры перенесены.")
         + (createdViewId is { } viewId ? " " + L.Format($"Создан план площадей. ID: {viewId}.") : "");

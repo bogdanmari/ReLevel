@@ -12,8 +12,8 @@ internal static class BuildingPadCase
     {
         if (element is not BuildingPad)
             return L.Get("Кейс 12: требуется площадка класса BuildingPad.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 12: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 12: сборки пока не поддерживаются.");
         if (SourceLevel(element) is null)
             return L.Get("Кейс 12: LEVEL_PARAM не указывает на существующий уровень.");
         if (element.get_Parameter(Binding.OffsetParameter) is not { StorageType: StorageType.Double, HasValue: true })

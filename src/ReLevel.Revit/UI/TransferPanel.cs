@@ -194,12 +194,13 @@ internal sealed partial class TransferPanel : UserControl, Workspace.IWorkspaceT
             var transferCase = index is null ? TransferCases.Find(element) : index.Case(element.Id.Value);
             if (sourceLevelId is null || transferCase is null || (index is null && !transferCase.IsOnLevel(element, sourceLevelId)))
                 return null;
-            var pinned = element.Pinned;
             var restriction = transferCase.WriteRestriction(element, sourceLevelId);
 
-            var status = transferCase.Name + ": " + (restriction ?? L.Get("Доступен для переноса."));
+            var status = transferCase.Name + ": " + (restriction ?? (element.GroupId != ElementId.InvalidElementId
+                ? L.Get("Перенос с разгруппировкой и повторной группировкой; ограничения записи проверяются после разгруппировки.")
+                : L.Get("Доступен для переноса.")));
             if (statuses.TryGetValue(element.Id.Value, out var result)) status += Environment.NewLine + result;
-            return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name, CanCheck = !pinned && restriction is null,
+            return new TableRow(UpdateButtons) { Id = element.Id.Value, Name = element.Name, CanCheck = restriction is null,
                 Category = element.Category?.Name ?? "—", Level = transferCase.Relation(element, sourceLevelId), Status = status,
                 Type = document.GetElement(element.GetTypeId())?.Name ?? "" };
         }

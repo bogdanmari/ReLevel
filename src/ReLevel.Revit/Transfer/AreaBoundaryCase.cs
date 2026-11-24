@@ -8,9 +8,9 @@ internal static class AreaBoundaryCase
     {
         if (element is not ModelLine line || element.Category?.BuiltInCategory != BuiltInCategory.OST_AreaSchemeLines)
             return L.Get("Кейс 18: требуется прямая Area Boundary Line.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId
             || element.DesignOption is not null)
-            return L.Get("Кейс 18: группы, сборки и варианты конструкции пока не поддерживаются.");
+            return L.Get("Кейс 18: сборки и варианты конструкции пока не поддерживаются.");
         if (element.Document.GetElement(element.LevelId) is not Level level)
             return L.Get("Кейс 18: не найден исходный уровень.");
         var curve = line.GeometryCurve;

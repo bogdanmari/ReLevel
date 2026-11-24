@@ -13,8 +13,8 @@ internal static class RampCase
     {
         if (element is ElementType || element.Category?.BuiltInCategory != BuiltInCategory.OST_Ramps)
             return L.Get("Кейс 15: требуется экземпляр категории Ramps.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 15: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 15: сборки пока не поддерживаются.");
         if (element.get_Parameter(BuiltInParameter.STAIRS_MULTISTORY_TOP_LEVEL_PARAM) is not
             { StorageType: StorageType.ElementId, HasValue: true } multistory
             || multistory.AsElementId() != ElementId.InvalidElementId)

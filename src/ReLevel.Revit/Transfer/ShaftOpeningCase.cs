@@ -13,8 +13,8 @@ internal static class ShaftOpeningCase
     {
         if (element is not Opening || element.Category?.BuiltInCategory != BuiltInCategory.OST_ShaftOpening)
             return L.Get("Кейс 14: требуется шахтный проём класса Opening.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 14: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 14: сборки пока не поддерживаются.");
         foreach (var binding in new[] { Bottom, Top })
         {
             if (element.get_Parameter(binding.LevelParameter) is not { StorageType: StorageType.ElementId, HasValue: true } level

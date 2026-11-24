@@ -38,6 +38,11 @@ internal sealed partial class WorkspaceView
         DockPanel.SetDock(footer, Dock.Bottom); content.Children.Add(footer);
     }
 
+    public void RefreshActiveView()
+    {
+        if (ReferenceEquals(body.Content, colorsPage)) PrepareColors();
+    }
+
     private void PrepareColors()
     {
         var state = workspace!.PrepareColors();

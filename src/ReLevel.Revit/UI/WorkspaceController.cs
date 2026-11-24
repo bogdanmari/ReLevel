@@ -17,6 +17,18 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
     private LevelViewGraphics? graphics;
     private readonly Dictionary<long, LevelViewGraphics> viewGraphics = [];
     private bool busy;
+    private readonly HashSet<long> changedIds = [];
+    private readonly HashSet<long> indexedAdditionalIds = [];
+
+    // Cache maintenance only: no geometry snapshots or validation of operation results.
+    public void RecordChanges(IEnumerable<ElementId> ids) => changedIds.UnionWith(ids.Select(id => id.Value));
+
+    public void FlushChanges()
+    {
+        if (changedIds.Count == 0) return;
+        RefreshIndex();
+        transfer.RefreshAfterDistribution();
+    }
     public bool InspectElementRequested => transfer.InspectElementRequested;
 
     public IWorkspaceTransferPage CreateTransfer(Window window, bool english)
@@ -44,8 +56,10 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
 
     private void RefreshIndex()
     {
-        using var loader = new ModelAnalysisLoader();
-        index.Refresh(transfer.AdditionalElementIds, loader.Report);
+        changedIds.UnionWith(transfer.AdditionalElementIds.Except(indexedAdditionalIds));
+        index.RefreshElements(changedIds);
+        changedIds.Clear();
+        indexedAdditionalIds.UnionWith(transfer.AdditionalElementIds);
     }
 
     public void RunDebug(WorkspaceDebugTool tool) => transfer.RunDebug(tool);
@@ -216,7 +230,9 @@ internal sealed class WorkspaceController(UIApplication application, IReadOnlyLi
 
     public string ApplyColors(IReadOnlyList<WorkspaceLevel> choices, bool reset)
     {
-        if (busy || graphics is null) return "";
+        if (busy) return "";
+        var state = PrepareColors();
+        if (!state.Available || graphics is null) return state.Message;
         var controls = root();
         busy = true; controls.IsEnabled = false;
         Exception? failure = null;

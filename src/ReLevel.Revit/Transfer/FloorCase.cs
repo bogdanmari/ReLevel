@@ -11,8 +11,8 @@ internal static class FloorCase
     {
         if (element is not Floor || element.Category?.BuiltInCategory is not (BuiltInCategory.OST_Floors or BuiltInCategory.OST_StructuralFoundation))
             return L.Get("Кейс 4: требуется перекрытие или фундаментная плита класса Floor.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 4: элементы групп и сборок пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 4: элементы сборок пока не поддерживаются.");
         if (SourceLevel(element) is null)
             return L.Get("Кейс 4: LEVEL_PARAM не указывает на существующий уровень.");
         if (element.get_Parameter(Binding.OffsetParameter) is not { StorageType: StorageType.Double, HasValue: true })

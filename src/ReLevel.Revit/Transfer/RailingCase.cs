@@ -12,8 +12,8 @@ internal static class RailingCase
     {
         if (element is not Railing railing)
             return L.Get("Кейс 10: требуется ограждение класса Railing.");
-        if (element.GroupId != ElementId.InvalidElementId || element.AssemblyInstanceId != ElementId.InvalidElementId)
-            return L.Get("Кейс 10: группы и сборки пока не поддерживаются.");
+        if (element.AssemblyInstanceId != ElementId.InvalidElementId)
+            return L.Get("Кейс 10: сборки пока не поддерживаются.");
         if (railing.HasHost != (railing.HostId != ElementId.InvalidElementId))
             return L.Get("Кейс 10: состояние хоста ограждения противоречиво.");
         if (railing.HasHost && element.Document.GetElement(railing.HostId) is not Floor)
